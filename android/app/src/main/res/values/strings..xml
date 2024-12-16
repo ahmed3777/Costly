@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">costly</string>
+      <string name="facebook_app_id">454513507243743</string>
+            <string name="fb_login_protocol_scheme">fb1234</string>
+            <string name="facebook_client_token">9abb96461e75208c420c6585036f9b82</string> 
+</resources>

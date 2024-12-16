@@ -1,0 +1,23 @@
+{
+    "app_name": "Costly",
+    "welcome": "WELCOME" ,
+    "start_shopping": "Start Shopping",
+    "sign_up_to_get_started": "Sign Up To Get Started",
+    "signUp": "SIGN UP",
+    "signIn": " SIGN IN",
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "RepeatPassword",
+    "fulltName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "alreadyHaveAnAccount": "Already have an account? ",
+    "forgotPassword": "Forgot Password?",
+    "Or_signin_with_social_account":"Or sign in with social account",
+    "login": "LOGIN",
+    "customer":"Customer",
+    "vendor":"Vendor",
+    "sign_up_as": "Sign Up As",
+    "businessName": "Business Name"
+    
+
+}

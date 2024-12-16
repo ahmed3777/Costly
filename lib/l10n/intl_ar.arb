@@ -1,0 +1,21 @@
+{
+    "app_name": "Costly",
+    "welcome": "مرحبا بك",
+    "start_shopping": "ابدأ التسوق",
+    "sign_up_to_get_started": "سجل للحصول على بدء",
+    "signUp": "تسجيل",
+    "signIn": "تسجيل الدخول",
+    "email": " البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "repeatPassword": "تكرار كلمة المرور",
+    "fulltName": "الاسم الكامل",
+    "phoneNumber": "رقم الهاتف",
+    "alreadyHaveAnAccount": "لديك حساب؟",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "Or_signin_with_social_account":"أو تسجيل الدخول باستخدام حساب التواصل الاجتماعي",
+    "login": "تسجيل الدخول",
+    "customer":"عميل",
+    "vendor":"مورد",
+    "sign_up_as": "تسجيل ك ",
+    "businessName":"اسم الشركة"
+}
