@@ -5,6 +5,7 @@ import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
+import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/home/presentation/views/home_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
@@ -127,8 +128,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
-              // Navigate to profile screen or perform an action
-              Navigator.pop(context);
+               Navigator.pushNamed(context, CategoryView.routeName);
             },
           ),
 

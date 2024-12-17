@@ -1,14 +1,15 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_search_text_field.dart';
-import 'package:costly/features/home/presentation/views/widgets/notification_widget.dart';
+import 'package:costly/core/widgets/notification_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar(
-      {super.key, this.centerText, required this.scaffoldKey});
+      {super.key, this.centerText, required this.scaffoldKey, this.visible});
   final String? centerText;
+  final bool? visible;
   final GlobalKey<ScaffoldState>
       scaffoldKey; // Accept scaffoldKey as a parameter
 
@@ -47,7 +48,7 @@ class CustomHomeAppBar extends StatelessWidget {
                         height: 31.30.h,
                         child: Image.asset("assets/images/costly.png"),
                       ),
-                NotificationWidget(),
+                NotificationWidget(visible: visible ?? false,),
               ],
             ),
           ),
