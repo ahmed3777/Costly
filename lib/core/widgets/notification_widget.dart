@@ -12,17 +12,19 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 50.w,
       child: Row(
         children: [
-          Visibility(
-            visible: visible?? false,
-            child: IconButton(onPressed: () {}, icon: 
-            SvgPicture.asset(
-              Assets.imagesFiltericon,
-              width: 24,
-              height: 24,
-            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Visibility(
+              visible: visible?? false,
+              child: IconButton(onPressed: () {}, icon: 
+              SvgPicture.asset(
+                Assets.imagesFiltericon,
+                width: 24,
+                height: 24,
+              ),
+              ),
             ),
           ),
           IconButton(onPressed: () {},

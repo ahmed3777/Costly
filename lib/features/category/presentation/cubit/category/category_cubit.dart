@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:costly/features/home/data/models/categories_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:costly/features/category/data/models/categories_model.dart';
 import 'package:costly/features/home/domin/repos/home_repo.dart';
-import 'package:meta/meta.dart';
-
 part 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {

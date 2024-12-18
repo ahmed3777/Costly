@@ -1,8 +1,8 @@
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
+import 'package:costly/features/category/presentation/views/widgets/category_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'category_item_list.dart';
 
 class CategoryViewBody extends StatefulWidget {
   const CategoryViewBody({super.key, required this.scaffoldKey});
@@ -23,7 +23,10 @@ class _CategoryViewBodyState extends State<CategoryViewBody> {
             visible: true,
             ),
             SizedBox(height: 1.h,),
-           // CategoryItemsList(),
+            CategoryItemsList(),
+            SizedBox(height: 20.h,),
+            
+            
         ],
       ),
     );

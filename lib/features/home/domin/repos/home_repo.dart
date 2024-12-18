@@ -1,5 +1,5 @@
 import 'package:costly/features/home/data/models/banners.dart';
-import 'package:costly/features/home/data/models/categories_model.dart';
+import 'package:costly/features/category/data/models/categories_model.dart';
 import 'package:costly/features/home/data/models/main_response_model.dart';
 import 'package:costly/features/home/data/models/product_details/product_details.dart';
 import 'package:costly/features/home/data/models/products/main_products_response.dart';
