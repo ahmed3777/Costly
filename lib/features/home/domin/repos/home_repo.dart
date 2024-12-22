@@ -15,6 +15,8 @@ abstract class HomeRepo {
       bool? mostPopular,
       bool? mostRecently,
       bool? highestRated,
+      bool? priceLow,
+      bool? priceHigh,
     }
   );
   Future<Either<Failure, ProductDetails>> getSingleProduct(String productId, String productVariationId);

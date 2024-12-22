@@ -13,12 +13,16 @@ class ProductCubit extends Cubit<ProductState> {
       bool? mostPopular,
       bool? mostRecently,
       bool? highestRated,
+      bool? priceLow,
+      bool? priceHigh,
   }) async {
     emit(ProductLoading());
     final result = await homeRepo.getProducts(
       mostPopular: mostPopular,
       mostRecently: mostRecently,
       highestRated: highestRated,
+      priceLow: priceLow,
+      priceHigh: priceHigh,
     );
     result.fold(
       (failure) {

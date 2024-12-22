@@ -16,6 +16,8 @@ class _ProductFilterButtonsState extends State<ProductFilterButtons> {
     "Most Recently",
     "Highest Rated",
     "Most Popular",
+    "Lowest Price",
+    "Highest Price",
   ];
 
   // Selected index to track which button is active
@@ -49,6 +51,12 @@ class _ProductFilterButtonsState extends State<ProductFilterButtons> {
                     productCubit.getProducts(highestRated: true);
                   } else if (index == 3) {
                     productCubit.getProducts(mostPopular: true);
+                  }
+                  else if (index == 4) {
+                    productCubit.getProducts(priceLow: true);
+                  }
+                  else if (index == 5) {
+                    productCubit.getProducts(priceHigh: true);
                   }
                 },
                 style: ElevatedButton.styleFrom(

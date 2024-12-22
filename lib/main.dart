@@ -3,7 +3,6 @@ import 'package:costly/core/services/custom_bloc_observer.dart';
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
 import 'package:costly/core/utils/app_colors.dart';
-import 'package:costly/core/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';

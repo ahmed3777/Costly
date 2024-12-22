@@ -56,6 +56,8 @@ Future<Either<Failure, MainProductsResponse>> getProducts({
   bool? mostPopular,
   bool? mostRecently,
   bool? highestRated,
+  bool? priceLow,
+  bool? priceHigh,
 }) async {
   try {
     // Build query parameters based on filter
@@ -63,6 +65,8 @@ Future<Either<Failure, MainProductsResponse>> getProducts({
       if (mostPopular != null) 'most_popular': mostPopular,
       if (mostRecently != null) 'most_recently': mostRecently,
       if (highestRated != null) 'highest_rated': highestRated,
+      if (priceLow != null) 'price_low': priceLow,
+      if (priceHigh != null) 'price_high': priceHigh
     };
     final response = await apiService.get(
       ApiEndPoints.products,
