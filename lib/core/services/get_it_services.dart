@@ -44,6 +44,7 @@ void setupGetIt() {
   getIt.registerFactory<SingleproductCubit>(
       () => SingleproductCubit(getIt<HomeRepo>()));
 
+
   ///services
   getIt.registerFactory<ServiceDetailsCubit>(
       () => ServiceDetailsCubit(getIt<AuthRepo>()));

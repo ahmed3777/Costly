@@ -1,7 +1,6 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NotificationWidget extends StatelessWidget {

@@ -9,9 +9,17 @@ class ProductCubit extends Cubit<ProductState> {
   ProductCubit(this.homeRepo) : super(ProductInitial());
   final HomeRepo homeRepo;
 
-  Future<void> getProducts() async {
+  Future<void> getProducts({
+      bool? mostPopular,
+      bool? mostRecently,
+      bool? highestRated,
+  }) async {
     emit(ProductLoading());
-    final result = await homeRepo.getProducts();
+    final result = await homeRepo.getProducts(
+      mostPopular: mostPopular,
+      mostRecently: mostRecently,
+      highestRated: highestRated,
+    );
     result.fold(
       (failure) {
         emit(ProductFailure(failure.errMessage));
@@ -21,18 +29,5 @@ class ProductCubit extends Cubit<ProductState> {
       },
     );
   }
-
-  // Future<void> getSingleProduct(String productId, String productVariationId) async {
-  //   emit(ProductLoading());
-  //   final result = await homeRepo.getSingleProduct(productId, productVariationId);
-  //   result.fold(
-  //     (failure) {
-  //       emit(ProductFailure(failure.errMessage));
-  //     },
-  //     (products) {
-  //       emit(ProductSuccess(products));
-  //       print ("from cubit single product ${products}");
-  //     },
-  //   );
-  // }
+    
 }

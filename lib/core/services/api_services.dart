@@ -6,9 +6,9 @@ import '../networking/dio_factory.dart'; // Import your DioFactory class
 class ApiService {
   final Dio _dio = DioFactory.getDio();
   // Method to perform a GET request
-  Future<Response> get(String endpoint) async {
+  Future<Response> get(String endpoint , {Map<String, dynamic>? queryParameters}) async {
     try {
-      final response = await _dio.get(endpoint);
+      final response = await _dio.get(endpoint, queryParameters: queryParameters);
       return response;
       // Return the response if successful
     } on DioException catch (e) {
@@ -22,7 +22,7 @@ class ApiService {
   }
 
   // Method to perform a POST request
-  Future<dynamic> post(String endpoint, data) async {
+  Future<dynamic> post(String endpoint, data,) async {
     try {
       // Perform the POST request
       final response = await _dio.post(

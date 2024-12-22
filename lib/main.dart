@@ -2,6 +2,8 @@ import 'package:costly/core/helper_functions/on_generate_route.dart';
 import 'package:costly/core/services/custom_bloc_observer.dart';
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
+import 'package:costly/core/utils/app_colors.dart';
+import 'package:costly/core/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt.get<ProductCubit>()..getProducts(),
+          
         ),
         BlocProvider(
           create: (context) => getIt.get<ServicesCubit>()..getServices(),
@@ -59,6 +62,12 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 fontFamily: 'JosefinSans',
                 scaffoldBackgroundColor: Colors.white,
+                primaryColor: AppColors.primaryColor,
+                colorScheme: const ColorScheme.light(
+                  primary: AppColors.primaryColor,
+                  secondary: AppColors.secondaryColor,
+                  
+                ),
               ),
               onGenerateRoute: onGenerateRoute,
               initialRoute: SplashView.routeName,

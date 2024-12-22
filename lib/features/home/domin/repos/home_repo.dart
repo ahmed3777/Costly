@@ -10,7 +10,13 @@ import '../../../../core/errors/failure.dart';
 abstract class HomeRepo {
   Future<Either<Failure, MainResponseModel<Banners>>> getBanners();
   Future<Either<Failure, MainResponseModel<CategoriesModel>>> getCategories();
-  Future<Either<Failure, MainProductsResponse>> getProducts();
-  Future<Either<Failure, ProductDetails>> getSingleProduct(
-      String productId, String productVariationId);
+  Future<Either<Failure, MainProductsResponse>> getProducts(
+    {
+      bool? mostPopular,
+      bool? mostRecently,
+      bool? highestRated,
+    }
+  );
+  Future<Either<Failure, ProductDetails>> getSingleProduct(String productId, String productVariationId);
+  
 }
