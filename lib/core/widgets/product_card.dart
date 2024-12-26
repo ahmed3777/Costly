@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../utils/app_text_styles.dart';
 
 class ProductCard extends StatelessWidget {
-  final String imageUrl;
+  final String? imageUrl;
   final String title;
   final int? salePrice;
   final int? originalPrice;
@@ -37,10 +37,16 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, ProductDetailsView.routeName, arguments: {
+       if (productVariationId != null ) {
+          Navigator.popAndPushNamed(context, ProductDetailsView.routeName,
+           arguments: {
           'productId': productId,
           'productVariationId': productVariationId
         });
+        } else {
+        // Handle navigation error (e.g., show a toast or log the error)
+        print('Invalid product or variation ID');
+        }
       },
       child: Container(
         height: cardHeight,
@@ -62,9 +68,9 @@ class ProductCard extends StatelessWidget {
                       0xFFC4C4C4), // Default background if image loading fails
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: NetworkImage(imageUrl.isNotEmpty
-                        ? imageUrl
-                        : "fallback_image_url"), // Fallback URL if empty
+                    image: NetworkImage(
+                      imageUrl ?? Assets.imagesBag
+                        ), // Fallback URL if empty
                     fit: BoxFit.cover,
                   ),
                 ),

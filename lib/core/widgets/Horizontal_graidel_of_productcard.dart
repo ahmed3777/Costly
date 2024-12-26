@@ -1,4 +1,5 @@
 import 'package:costly/core/helper_functions/is_arbic.dart';
+import 'package:costly/core/utils/assets.dart';
 import 'package:costly/core/widgets/product_card.dart';
 import 'package:costly/features/home/data/models/product_details/related_product.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,17 @@ class HorizontalListOfProductCard extends StatelessWidget {
               : relatedProduct[index].enName;
           return // Add space between cards
               ProductCard(
-            productId: relatedProduct[index].id,
-            imageUrl: relatedProduct[index].mediaLinks![0].link ??
-                '', // Replace with an actual fallback image URL
+               productId: relatedProduct[index].id,
+               productVariationId: relatedProduct[index].mainVariation?.id ?? '',
+               imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
+                ? relatedProduct[index].mediaLinks![0].link
+                : Assets.imagesBag,
+            // Replace with an actual fallback image URL
             title: title,
-            salePrice: relatedProduct[index].mainVariation!.priceAfterDiscount,
-            originalPrice: relatedProduct[index]
-                .mainVariation!
-                .price, // Use dynamic value for originalPrice if available
+            salePrice:
+                relatedProduct[index].mainVariation?.priceAfterDiscount ?? 0,
+            originalPrice: relatedProduct[index].mainVariation?.price ??
+                0, // Use dynamic value for originalPrice if available
           );
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

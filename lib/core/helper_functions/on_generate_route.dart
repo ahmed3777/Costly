@@ -66,15 +66,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
 
-    case ProductDetailsView.routeName:
-      final args = settings.arguments
+       case ProductDetailsView.routeName:
+         final args = settings.arguments
           as Map<String, String?>; // Passing arguments as a Map<String, String>
-      final productId = args['productId']; // Extract productId
-      final productVariationId = args['productVariationId'];
-      return MaterialPageRoute(
-          builder: (context) => ProductDetailsView(
-                productId: productId,
-                productVariationId: productVariationId,
+          final productId = args['productId']; // Extract productId
+          final productVariationId = args['productVariationId'];
+            return MaterialPageRoute(
+             builder: (context) => ProductDetailsView(
+                productId: productId??'',
+                productVariationId: productVariationId??'',
               ));
 
     case SignUpFormField.routeName:

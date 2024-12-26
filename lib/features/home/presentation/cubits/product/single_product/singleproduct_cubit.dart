@@ -12,8 +12,7 @@ class SingleproductCubit extends Cubit<SingleproductState> {
   Future<void> getSingleProduct(
       String productId, String productVariationId) async {
     emit(SingleproductLoading());
-    final result =
-        await homeRepo.getSingleProduct(productId, productVariationId);
+    final result = await homeRepo.getSingleProduct(productId, productVariationId);
     result.fold(
       (failure) {
         emit(SingleproductFailure(failure.errMessage));

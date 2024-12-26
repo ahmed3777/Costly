@@ -9,9 +9,9 @@ class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView(
       {super.key, required this.productId, required this.productVariationId});
 
-  static const routeName = '/product_details';
-  final String? productId;
-  final String? productVariationId;
+  static const routeName = 'product_details';
+  final String productId;
+  final String productVariationId;
 
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
@@ -21,12 +21,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        drawer: CustomDrawer(),
-        body: BlocProvider(
-          create: (context) => getIt.get<SingleproductCubit>()
-            ..getSingleProduct(widget.productId!, widget.productVariationId!),
-          child: ProductDetailsBlocBuilder(),
+      child: BlocProvider(
+        create: (context) => getIt<SingleproductCubit>(),
+        child: Scaffold(
+          drawer: CustomDrawer(),
+          body: ProductDetailsBlocBuilder(
+            productId: widget.productId,
+            productVariationId: widget.productVariationId,
+          ),
         ),
       ),
     );
