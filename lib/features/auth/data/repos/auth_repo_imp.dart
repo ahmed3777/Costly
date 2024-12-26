@@ -19,8 +19,8 @@ class AuthRepoImp implements AuthRepo {
 
   AuthRepoImp({required this.apiService, required this.firebaseAuthService});
   @override
-  Future<Either<Failure, SignupResponse>> signUp({
-      required String email,
+  Future<Either<Failure, SignupResponse>> signUp(
+      {required String email,
       required String password,
       required String name,
       required String phoneNumber,
@@ -28,22 +28,26 @@ class AuthRepoImp implements AuthRepo {
       String? businessName,
       bool? hasAHomeServices,
       String? serviceId}) async {
-       try {
-         final response = await apiService.post(ApiEndPoints.signup, {
-         'email': email,
-          'password': password,
-          'name': name,
-          'phone': phoneNumber,
-          'type': userType,
+    try {
+      final response = await apiService.post(ApiEndPoints.signup, {
+        'email': email,
+        'password': password,
+        'name': name,
+        'phone': phoneNumber,
+        'type': userType,
         if (hasAHomeServices != null)
           'have_a_home_visit_service': hasAHomeServices,
         if (businessName != null) 'business_name': businessName,
         if (serviceId != null) 'service_type_id': serviceId
       });
       var userData = SignupResponse.fromJson(response);
-      SharedPref.setData(SharedPrefKeys.userImageUrl,userData.userData!.userLogo,);
+      SharedPref.setData(
+        SharedPrefKeys.userImageUrl,
+        userData.userData!.userLogo,
+      );
       SharedPref.setData(SharedPrefKeys.userName, userData.userData!.userName);
-      SharedPref.setData(SharedPrefKeys.userEmail, userData.userData!.userEmail);
+      SharedPref.setData(
+          SharedPrefKeys.userEmail, userData.userData!.userEmail);
       SharedPref.setData(SharedPrefKeys.userPhoneNumber, phoneNumber);
       return right(userData);
     } catch (e) {
@@ -67,7 +71,7 @@ class AuthRepoImp implements AuthRepo {
       SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
       SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
       SharedPref.setData(SharedPrefKeys.userEmail, userData.user!.userEmail);
-      SharedPref.setData(SharedPrefKeys.userPhoneNumber,phone);
+      SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
       // return right(UserModel.fromJson(response));
       return right(userData);
     } catch (e) {
@@ -118,12 +122,12 @@ class AuthRepoImp implements AuthRepo {
         'type': type,
         'account_social_provider': accountSocialProvider
       });
-      print(
-          "API Response: $request"); // Add a print statement to debug the API response
+ // Add a print statement to debug the API response
 
       if (request != null && request['payload'] != null) {
-        return right(UserData.fromJson(
-            request['payload'])); // Ensure 'payload' is used correctly
+        var userData = UserData.fromJson(request['payload']);
+        SharedPref.setSecuredString(SharedPrefKeys.userToken, userData.token!);
+        return right(userData); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));
       }
@@ -154,10 +158,10 @@ class AuthRepoImp implements AuthRepo {
       SharedPref.setData(SharedPrefKeys.userEmail, user.email);
       final signupRequestToApi =
           await apiService.post(ApiEndPoints.socialLogin, {
-          'email': email,
-          'name': name,
-         'type': 'customer',
-         'account_social_provider': accountSocialProvider,
+        'email': email,
+        'name': name,
+        'type': 'customer',
+        'account_social_provider': accountSocialProvider,
       });
       if (signupRequestToApi != null && signupRequestToApi != null) {
         print("Payload: $signupRequestToApi");
@@ -205,7 +209,8 @@ class AuthRepoImp implements AuthRepo {
   Future<Either<Failure, SingleService>> getSingleService(
       String serviceId) async {
     try {
-      final result =await apiService.get("${ApiEndPoints.serviceType}/$serviceId");
+      final result =
+          await apiService.get("${ApiEndPoints.serviceType}/$serviceId");
       return right(SingleService.fromJson(result.data));
     } catch (e) {
       if (e is DioException) {

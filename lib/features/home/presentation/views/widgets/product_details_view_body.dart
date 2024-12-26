@@ -17,15 +17,15 @@ class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key, required this.productDetails});
   final ProductDetails productDetails;
   @override
-  Widget build(BuildContext context) { 
-   var productRelated= productDetails.payload!.relatedProducts;
+  Widget build(BuildContext context) {
+    var productRelated = productDetails.payload!.relatedProducts;
 
     List<Map<String, dynamic>> availableColors = [
       {'name': 'Red', 'value': Colors.red},
       {'name': 'Blue', 'value': Colors.blue},
       {'name': 'Green', 'value': Colors.green},
-    ]; 
-   // List <Map<String, dynamic>> colorsAvailable= productDetails.payload!.product!.mainVariation!.color as Map<String ,dynamic>  ;
+    ];
+    // List <Map<String, dynamic>> colorsAvailable= productDetails.payload!.product!.mainVariation!.color as Map<String ,dynamic>  ;
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: (8.0),
@@ -106,7 +106,6 @@ class ProductDetailsViewBody extends StatelessWidget {
                     }).toList(),
                   ),
                   Spacer(),
-                
                   SizedBox(
                     width: 105.w,
                     height: 34.h,
@@ -114,11 +113,9 @@ class ProductDetailsViewBody extends StatelessWidget {
                       text: isArabic() ? 'الأحجام' : 'Sizes',
                       onPressed: () {
                         showModalBottomSheet(
-                          context: context, 
-                          builder:
-                         (context) => CustomShetButtom());              
-                    },
-                  
+                            context: context,
+                            builder: (context) => CustomShetButtom());
+                      },
                     ),
                   ),
                 ],
@@ -127,31 +124,29 @@ class ProductDetailsViewBody extends StatelessWidget {
                 height: 10.h,
               ),
               Html(
-                data: 
-                isArabic()
+                data: isArabic()
                     ? '${productDetails.payload!.product!.arOverview}'
                     : '${productDetails.payload!.product!.enOverview}',
-                      style: {
-                              'body': Style(
-                                fontSize: FontSize(14.0),
-                                 color: Colors.black,
-                                    ),
-          },
+                style: {
+                  'body': Style(
+                    fontSize: FontSize(14.0),
+                    color: Colors.black,
+                  ),
+                },
               ),
               SizedBox(
                 height: 10.h,
               ),
               Html(
-                data: 
-                isArabic()
+                data: isArabic()
                     ? '${productDetails.payload!.product!.arOverview}'
                     : '${productDetails.payload!.product!.enOverview}',
                 style: {
-                    'body': Style(
-                      fontSize: FontSize(14.0),
-                      color: Colors.grey,
-                    ),
-                  },
+                  'body': Style(
+                    fontSize: FontSize(14.0),
+                    color: Colors.grey,
+                  ),
+                },
               ),
               SizedBox(
                 height: 25.h,
@@ -174,8 +169,7 @@ class ProductDetailsViewBody extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              HorizontalListOfProductCard(
-                  relatedProduct:productRelated)
+              HorizontalListOfProductCard(relatedProduct: productRelated)
             ],
           ),
         ),

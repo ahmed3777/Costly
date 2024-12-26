@@ -11,7 +11,8 @@ class CustomShetButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height *0.5, // You can adjust this as per your need
+      height: MediaQuery.of(context).size.height *
+          0.5, // You can adjust this as per your need
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

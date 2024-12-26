@@ -14,7 +14,8 @@ class HomeViewBody extends StatefulWidget {
     super.key,
     required this.scaffoldKey,
   });
-  final GlobalKey<ScaffoldState>scaffoldKey; // Accept scaffoldKey as a parameter
+  final GlobalKey<ScaffoldState>
+      scaffoldKey; // Accept scaffoldKey as a parameter
 
   @override
   State<HomeViewBody> createState() => _HomeViewBodyState();

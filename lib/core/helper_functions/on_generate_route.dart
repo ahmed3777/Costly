@@ -43,26 +43,24 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ServicesView.routeName:
       return MaterialPageRoute(builder: (context) => const ServicesView());
 
-       case CategoryView.routeName:
+    case CategoryView.routeName:
       return MaterialPageRoute(builder: (context) => const CategoryView());
 
     case UserAccountView.routeName:
       return MaterialPageRoute(builder: (context) => const UserAccountView());
 
     case UserSetting.routeName:
-      final args = settings.arguments as Map<String, dynamic>;
-      final userName = args['userName'];
-      final userEmail = args['userEmail'];
-      final userImageUrl = args['userImageUrl'];
-      final userPhoneNumber =
-          args['userPhoneNumber']; // Using dynamic type for scaffoldKey
-
+      // final args = settings.arguments as Map<String, dynamic>;
+      // final userName = args['userName'];
+      // final userEmail = args['userEmail'];
+      // final userImageUrl = args['userImageUrl'];
+      // final userPhoneNumber =args['userPhoneNumber']; // Using dynamic type for scaffoldKey
       return MaterialPageRoute(
           builder: (context) => UserSetting(
-                userName: userName,
-                userEmail: userEmail,
-                userImageUrl: userImageUrl,
-                userPhoneNumber: userPhoneNumber,
+                // userName: userName,
+                // userEmail: userEmail,
+                // userImageUrl: userImageUrl,
+                // userPhoneNumber: userPhoneNumber,
               ));
 
     case HomeView.routeName:

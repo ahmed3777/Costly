@@ -48,7 +48,9 @@ class CustomHomeAppBar extends StatelessWidget {
                         height: 31.30.h,
                         child: Image.asset("assets/images/costly.png"),
                       ),
-                NotificationWidget(visible: visible ?? false,),
+                NotificationWidget(
+                  visible: visible ?? false,
+                ),
               ],
             ),
           ),

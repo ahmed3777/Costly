@@ -54,11 +54,10 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
                 ),
               );
             });
-      } 
-        return const SliverToBoxAdapter(
-          child: Center(child: Text("No Data")),
-        );
-      
+      }
+      return const SliverToBoxAdapter(
+        child: Center(child: Text("No Data")),
+      );
     });
   }
 }

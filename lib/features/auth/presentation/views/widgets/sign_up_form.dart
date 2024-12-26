@@ -5,7 +5,7 @@ import 'package:costly/core/widgets/custom_chek_box_widget.dart';
 import 'package:costly/core/widgets/custom_textfield.dart';
 import 'package:costly/core/widgets/password_field.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signupcubit/sign_up_cubit.dart';
-import 'package:costly/features/auth/presentation/views/widgets/services_view_body.dart';
+import 'package:costly/features/auth/presentation/views/widgets/services_dropdown_button.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,7 +109,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         // TODO: Add services view
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
-                            child: ServicesViewBody(
+                            child: ServicesDropdownButton(
                               onServiceSelected: (serviceId) {
                                 selectedServiceId = serviceId;
                                 print("service id $serviceId");

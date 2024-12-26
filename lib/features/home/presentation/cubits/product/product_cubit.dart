@@ -10,11 +10,11 @@ class ProductCubit extends Cubit<ProductState> {
   final HomeRepo homeRepo;
 
   Future<void> getProducts({
-      bool? mostPopular,
-      bool? mostRecently,
-      bool? highestRated,
-      bool? priceLow,
-      bool? priceHigh,
+    bool? mostPopular,
+    bool? mostRecently,
+    bool? highestRated,
+    bool? priceLow,
+    bool? priceHigh,
   }) async {
     emit(ProductLoading());
     final result = await homeRepo.getProducts(
@@ -33,5 +33,4 @@ class ProductCubit extends Cubit<ProductState> {
       },
     );
   }
-    
 }

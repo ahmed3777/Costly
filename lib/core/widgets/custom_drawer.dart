@@ -115,7 +115,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             onTap: () {
               // Navigate to profile screen or perform an action
-              Navigator.pushNamed(context,UserAccountView.routeName);
+              Navigator.pushNamed(context, UserAccountView.routeName);
             },
           ),
           ListTile(
@@ -124,28 +124,28 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Categories',
-              style: TextStyles.regular18.copyWith(color: Colors.white),
-            ),
-            onTap: () {
-               Navigator.pushNamed(context, CategoryView.routeName);
-            },
-          ),
-
-          ListTile(
-            leading: Icon(
-              Icons.photo_filter,
-              color: AppColors.secondaryColor,
-            ),
-            title: Text(
               'Products',
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
-              // Navigate to profile screen or perform an action
-              Navigator.pop(context);
+              Navigator.pushNamed(context, CategoryView.routeName);
             },
           ),
+
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.photo_filter,
+          //     color: AppColors.secondaryColor,
+          //   ),
+          //   title: Text(
+          //     'Products',
+          //     style: TextStyles.regular18.copyWith(color: Colors.white),
+          //   ),
+          //   onTap: () {
+          //     // Navigate to profile screen or perform an action
+          //     Navigator.pop(context);
+          //   },
+          // ),
 
           ListTile(
             leading: Icon(

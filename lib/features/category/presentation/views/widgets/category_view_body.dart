@@ -4,37 +4,38 @@ import 'package:costly/features/category/presentation/views/widgets/product_filt
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class CategoryViewBody extends StatefulWidget {
   const CategoryViewBody({super.key, required this.scaffoldKey});
-    final GlobalKey<ScaffoldState>scaffoldKey; 
+  final GlobalKey<ScaffoldState> scaffoldKey;
   @override
   State<CategoryViewBody> createState() => _CategoryViewBodyState();
 }
 
 class _CategoryViewBodyState extends State<CategoryViewBody> {
- // Accept scaffoldKey as a parameter
+  // Accept scaffoldKey as a parameter
   @override
   Widget build(BuildContext context) {
-    return  CustomScrollView(
-      slivers: <Widget>[
-         SliverToBoxAdapter(
-           child: Column(
-                   children: [
-              CustomHomeAppBar(scaffoldKey: widget.scaffoldKey,
+    return CustomScrollView(slivers: <Widget>[
+      SliverToBoxAdapter(
+        child: Column(
+          children: [
+            CustomHomeAppBar(
+              scaffoldKey: widget.scaffoldKey,
               centerText: "Discover",
               visible: true,
-              ),
-              SizedBox(height: 4.h,),
-              ProductFilterButtons(),
-             // CategoryItemsList(),
-              SizedBox(height: 20.h,),
-                   ],
-                 ),
-                 ),
-             VerticalGraidelOfProductCard(),
-      ]
-     
-    );
+            ),
+            SizedBox(
+              height: 4.h,
+            ),
+            ProductFilterButtons(),
+            // CategoryItemsList(),
+            SizedBox(
+              height: 20.h,
+            ),
+          ],
+        ),
+      ),
+      VerticalGraidelOfProductCard(),
+    ]);
   }
 }

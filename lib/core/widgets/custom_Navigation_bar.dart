@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key, required this.scaffoldKey});
-  final GlobalKey<ScaffoldState>scaffoldKey; // Accept scaffoldKey as a parameter
+  final GlobalKey<ScaffoldState>
+      scaffoldKey; // Accept scaffoldKey as a parameter
   @override
   State<CustomNavigationBar> createState() => _CustomNavigationBarState();
 }

@@ -40,22 +40,19 @@ class _ProductFilterButtonsState extends State<ProductFilterButtons> {
                     selectedIndex = index;
                   });
                   // Handle filter action here based on selectedIndex
-              final productCubit = context.read<ProductCubit>();
+                  final productCubit = context.read<ProductCubit>();
 
                   if (index == 0) {
                     productCubit.getProducts();
                   } else if (index == 1) {
                     productCubit.getProducts(mostRecently: true);
-
                   } else if (index == 2) {
                     productCubit.getProducts(highestRated: true);
                   } else if (index == 3) {
                     productCubit.getProducts(mostPopular: true);
-                  }
-                  else if (index == 4) {
+                  } else if (index == 4) {
                     productCubit.getProducts(priceLow: true);
-                  }
-                  else if (index == 5) {
+                  } else if (index == 5) {
                     productCubit.getProducts(priceHigh: true);
                   }
                 },

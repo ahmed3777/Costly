@@ -30,14 +30,16 @@ class CategoryItemsList extends StatelessWidget {
                       decoration: ShapeDecoration(
                         color: AppColors.brownColor,
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 0.40, color: Color(0xFF9B9B9B)),
+                          side:
+                              BorderSide(width: 0.40, color: Color(0xFF9B9B9B)),
                           borderRadius: BorderRadius.circular(40),
                         ),
                       ),
                       child: Center(
                         child: Text(
                           'All',
-                          style: TextStyles.regular14.copyWith(color: AppColors.white),
+                          style: TextStyles.regular14
+                              .copyWith(color: AppColors.white),
                         ),
                       ),
                     ),
@@ -53,7 +55,8 @@ class CategoryItemsList extends StatelessWidget {
                       itemCount: state.category.length,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true, // Allow ListView to wrap content
-                      physics: const NeverScrollableScrollPhysics(), // Disable ListView's scrolling
+                      physics:
+                          const NeverScrollableScrollPhysics(), // Disable ListView's scrolling
                     ),
                   ],
                 ),

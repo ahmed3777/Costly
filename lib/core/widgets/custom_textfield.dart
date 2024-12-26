@@ -11,7 +11,10 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIcon,
       this.onSaved,
       this.obscureText = false,
-      required this.validatorMassege, this.hintTextStyle, this.cursorColor, this.textStyle});
+      required this.validatorMassege,
+      this.hintTextStyle,
+      this.cursorColor,
+      this.textStyle});
 
   final String hintText;
   final TextInputType keyboardType;
@@ -21,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final String validatorMassege;
   final TextStyle? hintTextStyle;
-    final TextStyle? textStyle;
+  final TextStyle? textStyle;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,9 +33,10 @@ class CustomTextFormField extends StatelessWidget {
         maxLines: 1,
         autocorrect: false,
         enableSuggestions: false,
-        cursorColor: cursorColor ?? AppColors.white ,
-        style: textStyle?? TextStyles.light16
-            .copyWith(color: AppColors.white, decoration: TextDecoration.none),
+        cursorColor: cursorColor ?? AppColors.white,
+        style: textStyle ??
+            TextStyles.light16.copyWith(
+                color: AppColors.white, decoration: TextDecoration.none),
         obscureText: obscureText,
         onSaved: onSaved,
         validator: (value) {
@@ -64,9 +68,9 @@ class CustomTextFormField extends StatelessWidget {
                     .withOpacity(0.5), // Set the color of the border
               )),
           hintText: hintText,
-          hintStyle: hintTextStyle ?? TextStyles.light16.copyWith(color: AppColors.white),
+          hintStyle: hintTextStyle ??
+              TextStyles.light16.copyWith(color: AppColors.white),
           suffixIcon: suffixIcon,
-          
         ),
       ),
     );

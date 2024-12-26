@@ -20,6 +20,9 @@ class SocialLogin extends StatelessWidget {
                   image: 'assets/images/google.png',
                   onPressed: () {
                     context.read<SignUpCubit>().signinWithGoogle();
+                    if (context.read<SignUpCubit>().state is SignUpLoading) {
+                      const CircularProgressIndicator();
+                    }
                   })),
           SizedBox(
             width: 10.w,
@@ -30,6 +33,9 @@ class SocialLogin extends StatelessWidget {
                 image: 'assets/images/facebook.png',
                 onPressed: () {
                   context.read<SignUpCubit>().signinWithFacebook();
+                  if (context.read<SignUpCubit>().state is SignUpLoading) {
+                    const CircularProgressIndicator();
+                  }
                 }),
           ),
         ],

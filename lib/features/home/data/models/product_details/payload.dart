@@ -28,7 +28,9 @@ class Payload {
             : SelectedVariation.fromJson(
                 json['selected_variation'] as Map<String, dynamic>),
         parent: json['parent'] as dynamic,
-        children: (json['children'] as List<dynamic>?)?.map((e) => Child.fromJson(e as Map<String, dynamic>)).toList(),
+        children: (json['children'] as List<dynamic>?)
+            ?.map((e) => Child.fromJson(e as Map<String, dynamic>))
+            .toList(),
         relatedProducts: (json['relatedProducts'] as List<dynamic>?)!
             .map((e) => RelatedProduct.fromJson(e as Map<String, dynamic>))
             .toList(),

@@ -7,12 +7,14 @@ class PasswordField extends StatefulWidget {
   const PasswordField({
     super.key,
     this.onSaved,
-    required this.hintText,  this.hintTextStyle, this.textStyle,
+    required this.hintText,
+    this.hintTextStyle,
+    this.textStyle,
   });
   final String hintText;
   final void Function(String?)? onSaved;
   final TextStyle? hintTextStyle;
-      final TextStyle? textStyle;
+  final TextStyle? textStyle;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -23,12 +25,11 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-    
       validatorMassege: 'Please Enter Valid Password',
       obscureText: obscureText,
       onSaved: widget.onSaved,
       cursorColor: Colors.grey,
-      textStyle: widget.textStyle ,
+      textStyle: widget.textStyle,
       suffixIcon: GestureDetector(
         onTap: () {
           obscureText = !obscureText;
@@ -45,8 +46,9 @@ class _PasswordFieldState extends State<PasswordField> {
               ),
       ),
       hintText: widget.hintText,
-      hintTextStyle: widget.hintTextStyle??
-       TextStyles.light16.copyWith(color: AppColors.white, decoration: TextDecoration.none),
+      hintTextStyle: widget.hintTextStyle ??
+          TextStyles.light16.copyWith(
+              color: AppColors.white, decoration: TextDecoration.none),
       keyboardType: TextInputType.visiblePassword,
     );
   }

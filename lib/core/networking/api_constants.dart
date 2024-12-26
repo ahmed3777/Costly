@@ -8,6 +8,8 @@ class ApiEndPoints {
   static const String categories = 'categories';
   static const String products = 'products';
   static const String singleProduct = 'product-variation';
+    static const String profile = 'profile';
+
 }
 
 class ApiErrors {
@@ -37,5 +39,4 @@ class SharedPrefKeys {
   static const String userPhoneNumber = 'phoneNumber';
   static const String userImageUrl = 'imageUrl';
   static const String userEmail = 'email';
-
 }

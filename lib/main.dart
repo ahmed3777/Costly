@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt.get<ProductCubit>()..getProducts(),
-          
         ),
         BlocProvider(
           create: (context) => getIt.get<ServicesCubit>()..getServices(),
@@ -65,7 +64,6 @@ class MyApp extends StatelessWidget {
                 colorScheme: const ColorScheme.light(
                   primary: AppColors.primaryColor,
                   secondary: AppColors.secondaryColor,
-                  
                 ),
               ),
               onGenerateRoute: onGenerateRoute,
