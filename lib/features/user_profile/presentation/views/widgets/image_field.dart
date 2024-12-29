@@ -24,9 +24,7 @@ class _ImageFieldState extends State<ImageField> {
       child: GestureDetector(
         onTap: () async {
           isLoading = true;
-          setState(() {
-            
-          });
+          setState(() {});
           try {
             await pickImage();
           } catch (e) {

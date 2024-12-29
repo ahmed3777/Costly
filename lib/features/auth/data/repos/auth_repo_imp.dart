@@ -41,14 +41,14 @@ class AuthRepoImp implements AuthRepo {
         if (serviceId != null) 'service_type_id': serviceId
       });
       var userData = SignupResponse.fromJson(response);
-      SharedPref.setData(
-        SharedPrefKeys.userImageUrl,
-        userData.userData!.userLogo,
-      );
-      SharedPref.setData(SharedPrefKeys.userName, userData.userData!.userName);
-      SharedPref.setData(
-          SharedPrefKeys.userEmail, userData.userData!.userEmail);
-      SharedPref.setData(SharedPrefKeys.userPhoneNumber, phoneNumber);
+      // SharedPref.setData(
+      //   SharedPrefKeys.userImageUrl,
+      //   userData.userData!.userLogo,
+      // );
+      // SharedPref.setData(SharedPrefKeys.userName, userData.userData!.userName);
+      // SharedPref.setData(
+      //     SharedPrefKeys.userEmail, userData.userData!.userEmail);
+      // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phoneNumber);
       return right(userData);
     } catch (e) {
       if (e is DioException) {
@@ -68,10 +68,10 @@ class AuthRepoImp implements AuthRepo {
         'password': password,
       });
       var userData = LoginResponse.fromJson(response);
-      SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
-      SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
-      SharedPref.setData(SharedPrefKeys.userEmail, userData.user!.userEmail);
-      SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
+      // SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
+      // SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
+      // SharedPref.setData(SharedPrefKeys.userEmail, userData.user!.userEmail);
+      // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
       // return right(UserModel.fromJson(response));
       return right(userData);
     } catch (e) {
@@ -122,7 +122,7 @@ class AuthRepoImp implements AuthRepo {
         'type': type,
         'account_social_provider': accountSocialProvider
       });
- // Add a print statement to debug the API response
+      // Add a print statement to debug the API response
 
       if (request != null && request['payload'] != null) {
         var userData = UserData.fromJson(request['payload']);

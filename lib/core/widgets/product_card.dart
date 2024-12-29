@@ -37,15 +37,15 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-       if (productVariationId != null ) {
-          Navigator.popAndPushNamed(context, ProductDetailsView.routeName,
-           arguments: {
-          'productId': productId,
-          'productVariationId': productVariationId
-        });
+        if (productVariationId != null) {
+          Navigator.pushReplacementNamed(context, ProductDetailsView.routeName,
+              arguments: {
+                'productId': productId,
+                'productVariationId': productVariationId
+              });
         } else {
-        // Handle navigation error (e.g., show a toast or log the error)
-        print('Invalid product or variation ID');
+          // Handle navigation error (e.g., show a toast or log the error)
+          print('Invalid product or variation ID');
         }
       },
       child: Container(
@@ -69,8 +69,7 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: NetworkImage(
-                      imageUrl ?? Assets.imagesBag
-                        ), // Fallback URL if empty
+                        imageUrl ?? Assets.imagesBag), // Fallback URL if empty
                     fit: BoxFit.cover,
                   ),
                 ),

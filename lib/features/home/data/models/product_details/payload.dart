@@ -1,11 +1,11 @@
 import 'package:costly/features/home/data/models/product_details/child.dart';
 import 'package:costly/features/home/data/models/product_details/related_product.dart';
+import 'package:costly/features/home/data/models/products/product.dart';
 
-import 'product.dart';
 import 'selected_variation.dart';
 
 class Payload {
-  SingleProduct? product;
+  Product? product;
   SelectedVariation? selectedVariation;
   dynamic parent;
   List<Child>? children;
@@ -22,7 +22,7 @@ class Payload {
   factory Payload.fromJson(Map<String, dynamic> json) => Payload(
         product: json['product'] == null
             ? null
-            : SingleProduct.fromJson(json['product'] as Map<String, dynamic>),
+            : Product.fromJson(json['product'] as Map<String, dynamic>),
         selectedVariation: json['selected_variation'] == null
             ? null
             : SelectedVariation.fromJson(

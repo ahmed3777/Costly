@@ -50,15 +50,16 @@ void setupGetIt() {
   ///services
   getIt.registerFactory<ServiceDetailsCubit>(
       () => ServiceDetailsCubit(getIt<AuthRepo>()));
-///profile
-   getIt.registerLazySingleton<ProfileRepo>(() => getIt<ProfileRepoImp>());
 
-   getIt.registerLazySingleton<ProfileRepoImp>(
+  ///profile
+  getIt.registerLazySingleton<ProfileRepo>(() => getIt<ProfileRepoImp>());
+
+  getIt.registerLazySingleton<ProfileRepoImp>(
     () => ProfileRepoImp(
-        apiService: getIt<ApiService>(),),);
+      apiService: getIt<ApiService>(),
+    ),
+  );
 
-   getIt.registerFactory<UserProfileCubit>(
+  getIt.registerFactory<UserProfileCubit>(
       () => UserProfileCubit(getIt<ProfileRepo>()));
 }
- 
-

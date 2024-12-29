@@ -6,19 +6,18 @@ import '../networking/dio_factory.dart'; // Import your DioFactory class
 class ApiService {
   final Dio _dio = DioFactory.getDio();
   // Method to perform a GET request
-  Future<Response> get(String endpoint,
-     
-      {Map<String, dynamic>? queryParameters, String? token,}) async {
+  Future<Response> get(
+    String endpoint, {
+    Map<String, dynamic>? queryParameters,
+    String? token,
+  }) async {
     try {
-         final headers = <String, String>{};
-        if (token != null && token.isNotEmpty) {
-          headers['Authorization'] = 'Bearer $token';
-        }
-      final response =
-          await _dio.get(
-            endpoint,
-            options: Options(headers: headers),
-            queryParameters: queryParameters);
+      final headers = <String, String>{};
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
+      }
+      final response = await _dio.get(endpoint,
+          options: Options(headers: headers), queryParameters: queryParameters);
       return response;
       // Return the response if successful
     } on DioException catch (e) {

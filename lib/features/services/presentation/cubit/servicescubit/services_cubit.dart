@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 
 part 'services_state.dart';
 
-class  ServicesCubit extends Cubit<ServicesState> {
+class ServicesCubit extends Cubit<ServicesState> {
   ServicesCubit(this.authRepo) : super(ServicesInitial());
   final AuthRepo authRepo;
 

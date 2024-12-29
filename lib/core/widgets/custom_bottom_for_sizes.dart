@@ -1,12 +1,19 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
+import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Assuming you're using this package for SVG images
 
 // Custom widget to represent the bottom sheet content
-class CustomShetButtom extends StatelessWidget {
+class CustomShetButtom extends StatefulWidget {
   const CustomShetButtom({super.key});
 
+  @override
+  State<CustomShetButtom> createState() => _CustomShetButtomState();
+}
+
+class _CustomShetButtomState extends State<CustomShetButtom> {
+  String? _selectedSize;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -41,7 +48,24 @@ class CustomShetButtom extends StatelessWidget {
                   backgroundColor: AppColors
                       .primaryColor // Replace with your AppColor.primaryColor
                   ),
-              onPressed: () {},
+              onPressed: () {
+                if (_selectedSize != null) {
+                  Navigator.pushNamed(
+                    context,
+                    CartView.routeName,
+                    // arguments: {
+                    //   'selectedSize': _selectedSize, // Pass the selected size
+                    // },
+                  );
+                } else {
+                  // Show a message if no size is selected
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Please select a size before proceeding.'),
+                    ),
+                  );
+                }
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,10 +101,21 @@ class CustomShetButtom extends StatelessWidget {
     return SizedBox(
       height: 40.0, // Adjust as per your design
       child: MaterialButton(
-        color: Colors.white,
-        onPressed: () {},
-        child: Text(size,
-            textAlign: TextAlign.center, style: TextStyles.regular14),
+        color: _selectedSize == size
+            ? AppColors.primaryColor // Highlight selected button
+            : Colors.white, // Default button color
+        onPressed: () {
+          setState(() {
+            _selectedSize = size; // Save the selected size
+          });
+        },
+        child: Text(
+          size,
+          textAlign: TextAlign.center,
+          style: TextStyles.regular14.copyWith(
+            color: _selectedSize == size ? Colors.white : Colors.black,
+          ),
+        ),
       ),
     );
   }

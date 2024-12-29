@@ -2,6 +2,7 @@ import 'package:costly/features/auth/presentation/views/forget_password_view.dar
 import 'package:costly/features/auth/presentation/views/signin_view.dart';
 import 'package:costly/features/auth/presentation/views/signup_view.dart';
 import 'package:costly/features/auth/presentation/views/widgets/sign_up_form_feild.dart';
+import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
@@ -57,25 +58,28 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       // final userPhoneNumber =args['userPhoneNumber']; // Using dynamic type for scaffoldKey
       return MaterialPageRoute(
           builder: (context) => UserSetting(
-                // userName: userName,
-                // userEmail: userEmail,
-                // userImageUrl: userImageUrl,
-                // userPhoneNumber: userPhoneNumber,
+              // userName: userName,
+              // userEmail: userEmail,
+              // userImageUrl: userImageUrl,
+              // userPhoneNumber: userPhoneNumber,
               ));
 
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
 
-       case ProductDetailsView.routeName:
-         final args = settings.arguments
+    case ProductDetailsView.routeName:
+      final args = settings.arguments
           as Map<String, String?>; // Passing arguments as a Map<String, String>
-          final productId = args['productId']; // Extract productId
-          final productVariationId = args['productVariationId'];
-            return MaterialPageRoute(
-             builder: (context) => ProductDetailsView(
-                productId: productId??'',
-                productVariationId: productVariationId??'',
+      final productId = args['productId']; // Extract productId
+      final productVariationId = args['productVariationId'];
+      return MaterialPageRoute(
+          builder: (context) => ProductDetailsView(
+                productId: productId ?? '',
+                productVariationId: productVariationId ?? '',
               ));
+
+    case CartView.routeName:
+      return MaterialPageRoute(builder: (context) => const CartView());
 
     case SignUpFormField.routeName:
       final userType = settings.arguments as String;

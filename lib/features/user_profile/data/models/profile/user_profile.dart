@@ -37,7 +37,7 @@ class UserProfile {
     this.id,
     required this.name,
     required this.email,
-     this.phone,
+    this.phone,
     this.phoneCode,
     this.status,
     this.type,
@@ -51,7 +51,7 @@ class UserProfile {
     this.createdAt,
     this.updatedAt,
     this.businessName,
-     this.bio,
+    this.bio,
     this.haveAHomeVisitService,
     this.serviceTypeId,
     this.hasDefaultPaymentAddress,
@@ -103,7 +103,7 @@ class UserProfile {
         shippingPostalCode: json['shipping_postal_code'] as dynamic,
         shippingCountryId: json['shipping_country_id'] as dynamic,
         shippingCityId: json['shipping_city_id'] as dynamic,
-        logoUrl: json['logo_url'] as String ,
+        logoUrl: json['logo_url'] as String,
       );
 
   Map<String, dynamic> toJson() => {

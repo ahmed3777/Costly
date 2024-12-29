@@ -8,23 +8,22 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class ProfileRepoImp implements ProfileRepo {
- final  ApiService apiService;
+  final ApiService apiService;
 
   ProfileRepoImp({required this.apiService});
 
   @override
   Future<Either<Failure, Profile>> getUserProfile() async {
-      try{
-        final response = await apiService.get(ApiEndPoints.profile);
-        final Profile profile = Profile.fromJson(response.data);
-        return right(profile);
-        }catch(e){
-        if(e is DioException){
-          return left(handleError(e));
-        }
-        else{
-          return left(ServerFailure(e.toString()));
-        }
+    try {
+      final response = await apiService.get(ApiEndPoints.profile);
+      final Profile profile = Profile.fromJson(response.data);
+      return right(profile);
+    } catch (e) {
+      if (e is DioException) {
+        return left(handleError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
       }
+    }
   }
 }

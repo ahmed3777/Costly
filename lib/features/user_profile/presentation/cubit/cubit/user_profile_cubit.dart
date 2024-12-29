@@ -13,10 +13,10 @@ class UserProfileCubit extends Cubit<UserProfileState> {
     final result = await profileRepo.getUserProfile();
     result.fold(
       (failure) {
-        emit(UserProfileFailure( message: failure.errMessage));
+        emit(UserProfileFailure(message: failure.errMessage));
       },
       (profile) {
-        emit(UserProfileSuccess( profile:profile.payload));
+        emit(UserProfileSuccess(profile: profile.payload));
       },
     );
   }

@@ -23,9 +23,9 @@ class HorizontalListOfProductCard extends StatelessWidget {
               : relatedProduct[index].enName;
           return // Add space between cards
               ProductCard(
-               productId: relatedProduct[index].id,
-               productVariationId: relatedProduct[index].mainVariation?.id ?? '',
-               imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
+            productId: relatedProduct[index].id,
+            productVariationId: relatedProduct[index].mainVariation?.id ?? '',
+            imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
                 ? relatedProduct[index].mediaLinks![0].link
                 : Assets.imagesBag,
             // Replace with an actual fallback image URL

@@ -4,27 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsBlocBuilder extends StatefulWidget {
-  const ProductDetailsBlocBuilder({super.key, required this.productId, required this.productVariationId});
+  const ProductDetailsBlocBuilder(
+      {super.key, required this.productId, required this.productVariationId});
   final String productId;
   final String productVariationId;
 
   @override
-  State<ProductDetailsBlocBuilder> createState() => _ProductDetailsBlocBuilderState();
+  State<ProductDetailsBlocBuilder> createState() =>
+      _ProductDetailsBlocBuilderState();
 }
-
 
 class _ProductDetailsBlocBuilderState extends State<ProductDetailsBlocBuilder> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<SingleproductCubit>().getSingleProduct(widget.productId, widget.productVariationId);
+    context
+        .read<SingleproductCubit>()
+        .getSingleProduct(widget.productId, widget.productVariationId);
   }
+
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<SingleproductCubit, SingleproductState>(
-      
         builder: (context, state) {
       if (state is SingleproductLoading) {
         return const Center(child: CircularProgressIndicator());
@@ -38,4 +40,4 @@ class _ProductDetailsBlocBuilderState extends State<ProductDetailsBlocBuilder> {
       return const Center(child: Text("No products available"));
     });
   }
-} 
+}

@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserSetting extends StatelessWidget {
-  const UserSetting(
-      {super.key});
+  const UserSetting({super.key});
   static const routeName = 'userSetting';
 
   @override
@@ -19,8 +18,7 @@ class UserSetting extends StatelessWidget {
       child: Scaffold(
           key: scaffoldKey,
           drawer: CustomDrawer(),
-          body: UserSettingViewBody(scaffoldKey: scaffoldKey)
-          ),
+          body: UserSettingViewBody(scaffoldKey: scaffoldKey)),
     ));
   }
 }

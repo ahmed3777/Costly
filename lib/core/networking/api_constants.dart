@@ -8,8 +8,7 @@ class ApiEndPoints {
   static const String categories = 'categories';
   static const String products = 'products';
   static const String singleProduct = 'product-variation';
-    static const String profile = 'profile';
-
+  static const String profile = 'profile';
 }
 
 class ApiErrors {

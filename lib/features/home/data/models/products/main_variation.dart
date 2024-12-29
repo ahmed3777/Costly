@@ -1,3 +1,5 @@
+import '../product_details/color.dart';
+
 class MainVariation {
   String? id;
   int? price;
@@ -10,7 +12,7 @@ class MainVariation {
   String? updatedAt;
   dynamic fabricId;
   bool? isInCart;
-  dynamic color;
+  Color? color;
   dynamic classification;
   dynamic fabric;
 
