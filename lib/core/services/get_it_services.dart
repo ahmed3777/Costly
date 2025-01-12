@@ -3,6 +3,9 @@ import 'package:costly/core/services/api_services.dart';
 import 'package:costly/core/services/firebase_services.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:costly/features/auth/domin/repos/auth_repo.dart';
+import 'package:costly/features/cart/data/repos/cart_repo_imp.dart';
+import 'package:costly/features/cart/domain/repos/cart_repo.dart';
+import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/service_detail/service_details_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signincubit/cubit/signin_cubit.dart';
@@ -53,13 +56,17 @@ void setupGetIt() {
 
   ///profile
   getIt.registerLazySingleton<ProfileRepo>(() => getIt<ProfileRepoImp>());
-
   getIt.registerLazySingleton<ProfileRepoImp>(
-    () => ProfileRepoImp(
-      apiService: getIt<ApiService>(),
-    ),
+    () => ProfileRepoImp(apiService: getIt<ApiService>()),
   );
-
   getIt.registerFactory<UserProfileCubit>(
       () => UserProfileCubit(getIt<ProfileRepo>()));
+
+  ///cart
+  getIt.registerLazySingleton<CartRepo>(() => getIt<CartRepoImp>());
+
+  getIt.registerLazySingleton<CartRepoImp>(
+    () => CartRepoImp( apiService: getIt<ApiService>(),),
+  );
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 }

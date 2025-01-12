@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CartItem extends StatefulWidget {
-  final String productImage;
-  final String productName;
-  final double productPrice;
+  final String? productImage;
+  final String? productName;
+  final int? productPrice;
   final Function? onDelete; // Callback for delete action
 
   const CartItem({
@@ -23,7 +23,7 @@ class _CartItemState extends State<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    double totalPrice = widget.productPrice * quantity;
+    int totalPrice = widget.productPrice! * quantity;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       padding: const EdgeInsets.all(12.0),
@@ -44,7 +44,7 @@ class _CartItemState extends State<CartItem> {
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.asset(
-              widget.productImage,
+              widget.productImage!,
               width: 60.0,
               height: 60.0,
               fit: BoxFit.fill,
@@ -57,7 +57,7 @@ class _CartItemState extends State<CartItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.productName,
+                  widget.productName!,
                   style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,

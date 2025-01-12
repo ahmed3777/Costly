@@ -1,4 +1,4 @@
-import '../product_details/color.dart';
+import 'package:costly/features/home/data/models/product_details/color.dart';
 
 class MainVariation {
   String? id;
@@ -45,7 +45,7 @@ class MainVariation {
         updatedAt: json['updated_at'] as String?,
         fabricId: json['fabric_id'] as dynamic,
         isInCart: json['is_in_cart'] as bool?,
-        color: json['color'] as dynamic,
+        color:  json['color'] != null ? Color.fromJson(json['color']) : null,
         classification: json['classification'] as dynamic,
         fabric: json['fabric'] as dynamic,
       );

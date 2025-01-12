@@ -9,9 +9,9 @@ class CartResponse {
   CartResponse({this.payload, this.status, this.code, this.messages});
 
   factory CartResponse.fromJson(Map<String, dynamic> json) => CartResponse(
-        payload: json['payload'] == null
-            ? null
-            : Cart.fromJson(json['payload'] as Map<String, dynamic>),
+  payload: json['payload'] is Map<String, dynamic>
+      ? Cart.fromJson(json['payload'])
+      : Cart(items: []), // Fallback to an empty cart if payload is not a Map
         status: json['status'] as bool?,
         code: json['code'] as int?,
         messages: json['messages'] as dynamic,

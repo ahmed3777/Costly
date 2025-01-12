@@ -9,6 +9,10 @@ class ApiEndPoints {
   static const String products = 'products';
   static const String singleProduct = 'product-variation';
   static const String profile = 'profile';
+  static const String cart = 'profile/show/my-cart';
+  static const String addToCart = 'carts/add-to-cart';
+
+    
 }
 
 class ApiErrors {

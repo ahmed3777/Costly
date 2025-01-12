@@ -29,12 +29,9 @@ class ApiService {
       // Handle error and return a custom response
     }
   }
-
-  // Method to perform a POST request
+// Method to perform a POST request
   Future<dynamic> post(
-    String endpoint,
-    data,
-  ) async {
+    String endpoint,data,) async {
     try {
       // Perform the POST request
       final response = await _dio.post(

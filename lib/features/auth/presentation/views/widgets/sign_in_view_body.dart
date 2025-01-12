@@ -18,8 +18,8 @@ class SignInViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
           decoration: const BoxDecoration(
             color: AppColors.darkPrimaryColor,
           ),

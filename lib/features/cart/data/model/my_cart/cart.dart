@@ -24,7 +24,18 @@ class Cart {
             ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
+   factory Cart.fromJsonList(List<dynamic>? jsonList) {
+  if (jsonList == null || jsonList.isEmpty) {
+    return Cart(items: []); // Return an empty list of items
+  }
 
+  return Cart(
+    items: jsonList
+        .where((e) => e != null) // Filter out null entries
+        .map((e) => Item.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
   Map<String, dynamic> toJson() => {
         'id': id,
         'total_price': totalPrice,

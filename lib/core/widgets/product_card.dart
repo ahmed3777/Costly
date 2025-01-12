@@ -2,7 +2,6 @@ import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/home/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../utils/app_text_styles.dart';
 
 class ProductCard extends StatelessWidget {
@@ -26,8 +25,8 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get the screen size for responsiveness
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.sizeOf(context).width;
+    double screenHeight = MediaQuery.sizeOf(context).height;
 
     // Use the screen width for dynamic sizing
     double cardWidth = screenWidth * 0.45; // 45% of the screen width
@@ -37,15 +36,15 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (productVariationId != null) {
+       if (productVariationId != null ) {
           Navigator.pushReplacementNamed(context, ProductDetailsView.routeName,
-              arguments: {
-                'productId': productId,
-                'productVariationId': productVariationId
-              });
+           arguments: {
+          'productId': productId,
+          'productVariationId': productVariationId
+        });
         } else {
-          // Handle navigation error (e.g., show a toast or log the error)
-          print('Invalid product or variation ID');
+        // Handle navigation error (e.g., show a toast or log the error)
+        print('Invalid product or variation ID');
         }
       },
       child: Container(
@@ -69,7 +68,8 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: NetworkImage(
-                        imageUrl ?? Assets.imagesBag), // Fallback URL if empty
+                      imageUrl ?? Assets.imagesBag
+                        ), // Fallback URL if empty
                     fit: BoxFit.cover,
                   ),
                 ),

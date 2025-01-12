@@ -46,7 +46,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * .3,
                   child: Image.network(
-                    productDetails.payload!.product!.mainMediaUrl ?? '',
+                    productDetails.payload!.product!.mainMediaUrl ,
                     fit: BoxFit.cover,
                   )),
               SizedBox(
@@ -54,8 +54,8 @@ class ProductDetailsViewBody extends StatelessWidget {
               ),
               Text(
                 isArabic()
-                    ? "${productDetails.payload!.product!.arName}"
-                    : " ${productDetails.payload!.product!.enName ?? ''}",
+                    ? productDetails.payload!.product!.arName
+                    : productDetails.payload!.product!.enName,
                 style:
                     TextStyles.bold24.copyWith(color: AppColors.primaryColor),
               ),
