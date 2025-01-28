@@ -1,5 +1,6 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
+import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,15 +27,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     // Define _widgetOptions inside build method to access widget.scaffoldKey correctly
-    final List<Widget> _widgetOptions = <Widget>[
-      const Center(child: Text('Bag Screen')),
+    final List<Widget> widgetOptions = <Widget>[
+      // const Center(child: Text('Bag Screen')),
+      CartView(),
       HomeViewBody(
           scaffoldKey: widget.scaffoldKey), // Pass scaffoldKey to HomeViewBody
       const Center(child: Text('Profile Screen')),
     ];
 
     return Scaffold(
-      body: _widgetOptions[
+      body: widgetOptions[
           _selectedIndex], // Show the corresponding widget based on selected index
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(

@@ -3,11 +3,14 @@ import 'package:costly/core/services/custom_bloc_observer.dart';
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
 import 'package:costly/core/utils/app_colors.dart';
+import 'package:costly/features/cart/data/model/my_cart/cart.dart';
+import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
 import 'package:costly/features/splash/presentation/views/splash_view.dart';
+import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
 import 'package:costly/firebase_options.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -50,6 +53,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt.get<ServicesCubit>()..getServices(),
         ),
+        BlocProvider(
+          create: (context) => getIt.get<UserProfileCubit>()..getUserProfile(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<CartCubit>(),
+        )
       ],
       child: ScreenUtilInit(
           designSize: const Size(360, 690),

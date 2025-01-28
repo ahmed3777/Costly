@@ -43,7 +43,7 @@ class _CartItemState extends State<CartItem> {
           // Product Image
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
+            child: Image.network(
               widget.productImage!,
               width: 60.0,
               height: 60.0,
@@ -81,7 +81,10 @@ class _CartItemState extends State<CartItem> {
                       icon: const Icon(Icons.remove, size: 20.0),
                       onPressed: () {
                         setState(() {
-                          if (quantity > 1) quantity--;
+                          if (quantity > 1) {
+                            quantity--;
+                          }
+                          ;
                         });
                       },
                     ),

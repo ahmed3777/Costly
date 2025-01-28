@@ -1,7 +1,8 @@
 import 'package:costly/core/utils/assets.dart';
+import 'package:costly/core/widgets/add_to_cart_button.dart';
 import 'package:costly/features/home/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import '../utils/app_text_styles.dart';
 
 class ProductCard extends StatelessWidget {
@@ -36,15 +37,14 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-       if (productVariationId != null ) {
-          Navigator.pushReplacementNamed(context, ProductDetailsView.routeName,
-           arguments: {
-          'productId': productId,
-          'productVariationId': productVariationId
-        });
+        if (productVariationId != null) {
+          Navigator.pushNamed(context, ProductDetailsView.routeName,
+              arguments: {
+                'productId': productId,
+                'productVariationId': productVariationId
+              });
         } else {
-        // Handle navigation error (e.g., show a toast or log the error)
-        print('Invalid product or variation ID');
+          print('Invalid product or variation ID');
         }
       },
       child: Container(
@@ -68,8 +68,7 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: NetworkImage(
-                      imageUrl ?? Assets.imagesBag
-                        ), // Fallback URL if empty
+                        imageUrl ?? Assets.imagesBag), // Fallback URL if empty
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -97,24 +96,12 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 60,
-              right: 8,
-              child: Container(
-                width: 35,
-                height: 35,
-                decoration: BoxDecoration(
-                  color: Color(0xFF7DCEDB),
-                  borderRadius: BorderRadius.circular(45),
-                ),
-                child: Center(
-                  child: SizedBox(
-                    width: 18,
-                    height: 18,
-                    child: SvgPicture.asset(Assets.imagesCart),
-                  ),
-                ),
-              ),
-            ),
+                bottom: 60,
+                right: 8,
+                child: AddToCartButton(
+                  productId: productId,
+                  productVariationId: productVariationId ?? '',
+                )),
             Positioned(
               left: 2.55,
               top: imageHeight + 10, // Adjust based on image height
@@ -159,11 +146,16 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            // Title of the product (e.g., T-Shirt name)
-            // Cart button (icon with a shadow)
           ],
         ),
       ),
     );
   }
 }
+
+
+
+       
+    
+  
+

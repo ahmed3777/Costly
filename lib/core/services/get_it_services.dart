@@ -66,7 +66,9 @@ void setupGetIt() {
   getIt.registerLazySingleton<CartRepo>(() => getIt<CartRepoImp>());
 
   getIt.registerLazySingleton<CartRepoImp>(
-    () => CartRepoImp( apiService: getIt<ApiService>(),),
+    () => CartRepoImp(
+      apiService: getIt<ApiService>(),
+    ),
   );
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 }

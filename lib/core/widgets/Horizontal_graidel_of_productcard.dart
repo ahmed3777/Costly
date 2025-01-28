@@ -21,8 +21,7 @@ class HorizontalListOfProductCard extends StatelessWidget {
           String title = isArabic()
               ? relatedProduct[index].arName
               : relatedProduct[index].enName;
-          return // Add space between cards
-              ProductCard(
+          return ProductCard(
             productId: relatedProduct[index].id,
             productVariationId: relatedProduct[index].mainVariation?.id ?? '',
             imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true

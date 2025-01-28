@@ -45,7 +45,7 @@ class MainVariation {
         updatedAt: json['updated_at'] as String?,
         fabricId: json['fabric_id'] as dynamic,
         isInCart: json['is_in_cart'] as bool?,
-        color:  json['color'] != null ? Color.fromJson(json['color']) : null,
+        color: json['color'] != null ? Color.fromJson(json['color']) : null,
         classification: json['classification'] as dynamic,
         fabric: json['fabric'] as dynamic,
       );

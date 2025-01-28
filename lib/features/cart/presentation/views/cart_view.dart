@@ -11,7 +11,6 @@ class CartView extends StatefulWidget {
   @override
   State<CartView> createState() => _CartViewState();
 }
-
 class _CartViewState extends State<CartView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override

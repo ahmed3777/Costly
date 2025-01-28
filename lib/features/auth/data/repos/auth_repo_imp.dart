@@ -68,8 +68,10 @@ class AuthRepoImp implements AuthRepo {
         'password': password,
       });
       var userData = LoginResponse.fromJson(response);
-      // SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
-      // SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
+      SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
+      SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
+      SharedPref.setSecuredString(
+          SharedPrefKeys.userToken, userData.user!.token!);
       // SharedPref.setData(SharedPrefKeys.userEmail, userData.user!.userEmail);
       // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
       // return right(UserModel.fromJson(response));
