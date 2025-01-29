@@ -4,14 +4,14 @@ class CartItem extends StatefulWidget {
   final String? productImage;
   final String? productName;
   final int? productPrice;
-  final Function? onDelete; // Callback for delete action
+  final Function onDelete; // Callback for delete action
 
   const CartItem({
     super.key,
     required this.productImage,
     required this.productName,
     required this.productPrice,
-    this.onDelete,
+    required this.onDelete,
   });
 
   @override
@@ -84,7 +84,6 @@ class _CartItemState extends State<CartItem> {
                           if (quantity > 1) {
                             quantity--;
                           }
-                          ;
                         });
                       },
                     ),
@@ -107,19 +106,15 @@ class _CartItemState extends State<CartItem> {
                     ),
                     const Spacer(),
                     IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: () {
-                        if (widget.onDelete != null) {
-                          widget.onDelete!(); // Call delete callback
-                        }
-                      },
-                    ),
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () =>
+                            widget.onDelete() // Call delete callback
+                        ),
                   ],
                 ),
               ],
             ),
           ),
-
           // Delete Button
         ],
       ),

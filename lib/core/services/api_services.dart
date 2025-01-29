@@ -66,7 +66,26 @@ class ApiService {
       }
     }
   }
-//  }
+
+  Future<dynamic> delete(String endpoint, data) async {
+    try {
+      final response = await _dio.delete(endpoint, data: data);
+      return response.data;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        // If there's a response from the server, extract the message
+        String errorMessage;
+        if (e.response!.data is Map<String, dynamic>) {
+          // Check if the response data is a map and contains a 'message' key
+          errorMessage = e.response!.data['messages'].toString();
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
+        throw Exception(
+            errorMessage); // Throw a custom exception with the message
+      }
+    }
+  }
   // Method to perform a PUT request
 
 // Centralized error handling method

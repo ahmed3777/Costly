@@ -14,7 +14,7 @@ class CartViewConsumer extends StatelessWidget {
       builder: (context, state) {
         if (state is CartLoading) {
           return const SliverFillRemaining(
-              child: const Center(child: CircularProgressIndicator()));
+              child: Center(child: CircularProgressIndicator()));
         }
         if (state is CartFailure) {
           return SliverFillRemaining(child: Center(child: Text(state.message)));
@@ -34,7 +34,9 @@ class CartViewConsumer extends StatelessWidget {
             );
           }
           // Use SliverList to display cart items
-          return CartItemList(items: items);
+          return CartItemList(
+            items: items,
+          );
         }
         // Default state: Use SliverFillRemaining
         return const SliverFillRemaining(

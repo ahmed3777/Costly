@@ -3,6 +3,7 @@ import 'package:costly/core/helper_functions/helpererror.dart';
 import 'package:costly/core/networking/api_constants.dart';
 import 'package:costly/core/services/api_services.dart';
 import 'package:costly/features/cart/data/model/add_to_cart/add_to_cart.dart';
+import 'package:costly/features/cart/data/model/delete_from_cart/delete_from_cart/delete_from_cart.dart';
 import 'package:costly/features/cart/data/model/my_cart/cart_response.dart';
 import 'package:costly/features/cart/domain/repos/cart_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -51,16 +52,25 @@ class CartRepoImp implements CartRepo {
         }
   }
 }
-  
-//   @override
-//   Future<Either<Failure, CartResponse>> addToCart({required String productId, required String productVariationId, required int quantity})async {
-//        try{
-//          final response =await apiService.post(ApiEndPoints.addToCart, {
-//           'product_id': productId,
-//           'product_variation_id': productVariationId,
-//           'quantity': quantity
-//         });
-       
-//        }
+
+  @override
+  Future<Either<Failure, DeleteFromCart>> deleteFromCart({required String productId, required String productVariationId}) async {
+      try{
+        final response =await apiService.delete(ApiEndPoints.removeFromCart, {
+          'product_id': productId,
+          'product_variation_id': productVariationId,
+        });
+        print ("response: $response");
+        final removeFromCart  = DeleteFromCart.fromJson(response);
+        return right(removeFromCart);
+        }
+      catch(e){
+        if (e is DioException) {
+          return left(handleError(e));
+        } else {
+          return left(ServerFailure(e.toString()));
+        }
   }
- 
+
+  }
+}

@@ -1,4 +1,3 @@
-
 import 'package:costly/core/helper_functions/build_error_bar.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
@@ -17,14 +16,11 @@ class AddToCartButton extends StatefulWidget {
   final String productId;
   final String productVariationId;
   @override
- 
   @override
   State<AddToCartButton> createState() => _AddToCartButtonState();
 }
 
 class _AddToCartButtonState extends State<AddToCartButton> {
-
-  
   bool isLoading = false;
 
   Future<void> _handleAddToCart(BuildContext context) async {
@@ -39,19 +35,17 @@ class _AddToCartButtonState extends State<AddToCartButton> {
           );
 
       // Show success message
-        buildErrorBar(context, 'Product added to cart successfully.');
-      
+      buildErrorBar(context, 'Product added to cart successfully.');
     } catch (e) {
       // Show error message
       buildErrorBar(context, 'Failed to add product to cart.');
-     
     } finally {
       setState(() => isLoading = false); // Stop loading
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       width: 35,
       height: 35,

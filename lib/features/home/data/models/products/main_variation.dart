@@ -1,7 +1,7 @@
 import 'package:costly/features/home/data/models/product_details/color.dart';
 
 class MainVariation {
-  String? id;
+  String id;
   int? price;
   int priceAfterDiscount;
   int? quantity;
@@ -17,7 +17,7 @@ class MainVariation {
   dynamic fabric;
 
   MainVariation({
-    this.id,
+    required this.id,
     this.price,
     required this.priceAfterDiscount,
     this.quantity,
@@ -34,7 +34,7 @@ class MainVariation {
   });
 
   factory MainVariation.fromJson(Map<String, dynamic> json) => MainVariation(
-        id: json['id'] as String?,
+        id: json['id'] as String ,
         price: json['price'] as int?,
         priceAfterDiscount: json['price_after_discount'] as int,
         quantity: json['quantity'] as int?,

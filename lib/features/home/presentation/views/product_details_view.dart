@@ -23,8 +23,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     return SafeArea(
       child: BlocProvider(
         create: (context) => getIt<SingleproductCubit>(),
-
-          child: Scaffold(
+        child: Scaffold(
           drawer: CustomDrawer(),
           body: ProductDetailsBlocBuilder(
             productId: widget.productId,

@@ -36,6 +36,11 @@ class _CartViewBodyState extends State<CartViewBody> {
                 ),
               ),
               const CartViewConsumer(),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 100.h,
+                ),
+              ),
             ],
           ),
         ),
