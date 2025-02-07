@@ -115,9 +115,11 @@ class ProductDetailsViewBody extends StatelessWidget {
                         showModalBottomSheet(
                             context: context,
                             builder: (context) => CustomShetButtom(
-                              productId: productDetails.payload!.product!.id, 
-                              productVariationId:  productDetails.payload!.product!.mainVariation!.id,
-                            ));
+                                  productId:
+                                      productDetails.payload!.product!.id,
+                                  productVariationId: productDetails
+                                      .payload!.product!.mainVariation!.id,
+                                ));
                       },
                     ),
                   ),

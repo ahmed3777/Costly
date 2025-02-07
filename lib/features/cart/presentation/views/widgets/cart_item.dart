@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 
-class CartItem extends StatefulWidget {
+class CartItem extends StatelessWidget {
   final String? productImage;
   final String? productName;
   final int? productPrice;
-  final Function onDelete; // Callback for delete action
-
+  final int quantity;
+  final int? totalPrice;
+  final VoidCallback incrementQuantity;
+  final VoidCallback decrementQuantity;
+   final VoidCallback onDelete;
+   final bool isLoading;
   const CartItem({
     super.key,
     required this.productImage,
     required this.productName,
     required this.productPrice,
-    required this.onDelete,
+    required this.quantity,
+     required this.onDelete,
+    required this.incrementQuantity,
+    required this.decrementQuantity, 
+    required this.totalPrice, 
+     this.isLoading = false,
   });
 
   @override
-  State<CartItem> createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
-  int quantity = 1;
-
-  @override
   Widget build(BuildContext context) {
-    int totalPrice = widget.productPrice! * quantity;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       padding: const EdgeInsets.all(12.0),
@@ -40,24 +41,22 @@ class _CartItemState extends State<CartItem> {
       ),
       child: Row(
         children: [
-          // Product Image
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
-              widget.productImage!,
+              productImage!,
               width: 60.0,
               height: 60.0,
               fit: BoxFit.fill,
             ),
           ),
           const SizedBox(width: 12.0),
-          // Product Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.productName!,
+                  productName!,
                   style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
@@ -67,7 +66,7 @@ class _CartItemState extends State<CartItem> {
                 ),
                 const SizedBox(height: 4.0),
                 Text(
-                  '\$${totalPrice.toStringAsFixed(2)}',
+                  '$totalPrice',
                   style: const TextStyle(
                     fontSize: 14.0,
                     color: Colors.grey,
@@ -75,47 +74,49 @@ class _CartItemState extends State<CartItem> {
                 ),
                 const SizedBox(height: 2.0),
                 Row(
-                  children: [
-                    // Subtract Button
-                    IconButton(
+                  children: [ 
+                    isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        :  IconButton(
                       icon: const Icon(Icons.remove, size: 20.0),
                       onPressed: () {
-                        setState(() {
-                          if (quantity > 1) {
-                            quantity--;
-                          }
-                        });
+                        if (quantity > 1) {
+                           decrementQuantity();
+                        }
                       },
                     ),
-                    // Quantity Display
                     Text(
-                      "$quantity", // Display updated price
+                      "$quantity",
                       style: const TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
                       ),
                     ),
-                    // Add Button
-                    IconButton(
+                     isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        :  IconButton(
                       icon: const Icon(Icons.add, size: 20.0),
-                      onPressed: () {
-                        setState(() {
-                          quantity++;
-                        });
-                      },
+                      
+                      onPressed: incrementQuantity,
                     ),
                     const Spacer(),
                     IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () =>
-                            widget.onDelete() // Call delete callback
-                        ),
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: onDelete,
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          // Delete Button
         ],
       ),
     );

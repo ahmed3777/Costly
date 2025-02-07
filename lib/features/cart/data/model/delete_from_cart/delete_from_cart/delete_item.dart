@@ -4,7 +4,7 @@ class DeleteItemFromCard {
   String? customerId;
   String? createdAt;
   List<dynamic>? items;
-  
+
   DeleteItemFromCard({
     this.id,
     this.totalPrice,
@@ -13,7 +13,8 @@ class DeleteItemFromCard {
     this.items,
   });
 
-  factory DeleteItemFromCard.fromJson(Map<String, dynamic> json) => DeleteItemFromCard(
+  factory DeleteItemFromCard.fromJson(Map<String, dynamic> json) =>
+      DeleteItemFromCard(
         id: json['id'] as String?,
         totalPrice: json['total_price'] as int?,
         customerId: json['customer_id'] as String?,

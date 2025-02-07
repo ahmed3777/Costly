@@ -10,7 +10,6 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   final CartRepo cartRepo;
   CartCubit(this.cartRepo) : super(CartInitial());
-
   Future<void> getCart() async {
     emit(CartLoading());
     final result = await cartRepo.getCart();
@@ -19,6 +18,7 @@ class CartCubit extends Cubit<CartState> {
         emit(CartFailure(message: failure.errMessage));
       },
       (cart) {
+        print("Cart Success: ${cart.payload.items!.isEmpty}"); // Log empty cart
         emit(CartSuccess(cart: cart));
       },
     );
@@ -28,7 +28,7 @@ class CartCubit extends Cubit<CartState> {
       {required String productId,
       required String productVariationId,
       required int quantity}) async {
-    emit(CartLoading());
+      emit(CartLoading());
     final result = await cartRepo.addToCart(
         productId: productId,
         productVariationId: productVariationId,
@@ -37,25 +37,93 @@ class CartCubit extends Cubit<CartState> {
       (failure) {
         emit(CartFailure(message: failure.errMessage));
       },
-      (addToCart) {
+      (addToCart) async {
         emit(CartAddSuccess(addToCart: addToCart));
+        await getCart();
       },
     );
   }
 
   Future<void> deleteFromCart(
       {required String productId, required String productVariationId}) async {
-    emit(CartLoading());
+    // emit(CartLoading());
     final result = await cartRepo.deleteFromCart(
         productId: productId, productVariationId: productVariationId);
     result.fold(
       (failure) {
         emit(CartFailure(message: failure.errMessage));
       },
-      (deleteFromCart) {
+      (deleteFromCart) async {
         emit(CartRemoveSuccess(deleteFromCart: deleteFromCart));
-        getCart();
+       await getCart();
       },
     );
   }
-}
+
+  Future<void> incrementQuantity(
+      {required String productId,
+      required String productVariationId,
+      required int quantity}) async {
+
+    final result = await cartRepo.incrementQuantity(
+        productId: productId,
+        productVariationId: productVariationId,
+        quantity: quantity);
+    result.fold(
+      (failure) {
+        emit(CartFailure(message: failure.errMessage));
+      },
+      (updatedCart) async {
+        emit(Cartincrementsuccess(cart: updatedCart));
+        await updateCart(productId: productId,productVariationId: productVariationId,
+        quantity: quantity
+        );
+        // await getCart();
+      },
+    );
+  }
+
+  Future<void> decrementQuantity(
+      {required String productId,
+      required String productVariationId,
+      required int quantity}) async {
+        //emit(CartLoading());
+    final result = await cartRepo.decrementQuantity(
+        productId: productId,
+        productVariationId: productVariationId,
+        quantity: quantity);
+    result.fold(
+      (failure) {
+        emit(CartFailure(message: failure.errMessage));
+      },
+      (decrement) async {
+        emit(Cartdecrementsuccess(cart: decrement));
+        await updateCart(productId: productId,productVariationId: productVariationId,
+        quantity: quantity
+        );
+        // await getCart();
+      },
+    );
+  }
+
+  Future<void> updateCart(
+      {required String productId,
+      required String productVariationId,
+      required int quantity}) async {
+   //  emit(CartUpdating(updatingProductId: productId, cart: (state as CartSuccess).cart));
+      emit(CartLoading());
+    final result = await cartRepo.updateCart(
+        productId: productId,
+        productVariationId: productVariationId,
+        quantity: quantity);
+    result.fold(
+      (failure) {
+        emit(CartFailure(message: failure.errMessage));
+      },
+      (updatedCart) {
+        emit(CartSuccess(cart: updatedCart));
+
+      },
+    );
+  }
+ }

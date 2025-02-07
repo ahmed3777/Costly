@@ -6,24 +6,48 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartViewConsumer extends StatelessWidget {
-  const CartViewConsumer({super.key});
+  const CartViewConsumer({super.key, this.onCartUpdated});
+
+  final Function(bool, int)? onCartUpdated;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
+    return BlocConsumer<CartCubit, CartState>(
+      listenWhen: (previous, current) => current is CartSuccess || current is CartFailure,
+      listener: (context, state) {
+        if (state is CartSuccess && onCartUpdated != null) {
+          final cart = state.cart.payload;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
+            print("Cart updated: hasItems=${cart.items!.isNotEmpty}, totalPrice=${cart.totalPrice}");
+          });
+        }
+      },
       builder: (context, state) {
+        print("Current State: $state"); // Debugging log
+
+        //  Show Loading Indicator
         if (state is CartLoading) {
-          return const SliverFillRemaining(
-              child: Center(child: CircularProgressIndicator()));
+          return const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator()),
+          );
         }
+
+        //  Handle Failure
         if (state is CartFailure) {
-          return SliverFillRemaining(child: Center(child: Text(state.message)));
+          return SliverToBoxAdapter(
+            child: Center(child: Text(state.message)),
+          );
         }
+
+        // Handle Success
         if (state is CartSuccess) {
-          final items = state.cart.payload?.items ?? [];
+          final cart = state.cart.payload;
+          final items = cart.items ?? [];
+
           if (items.isEmpty) {
-            // Use SliverFillRemaining for empty cart state
-            return SliverFillRemaining(
+            print("Cart is empty, showing empty cart image");
+            return SliverToBoxAdapter(
               child: Center(
                 child: SizedBox(
                   width: 200.w,
@@ -32,15 +56,15 @@ class CartViewConsumer extends StatelessWidget {
                 ),
               ),
             );
+          } else {
+            print("Cart has items, showing CartItemList");
+            return CartItemList(cart: cart);
           }
-          // Use SliverList to display cart items
-          return CartItemList(
-            items: items,
-          );
         }
-        // Default state: Use SliverFillRemaining
-        return const SliverFillRemaining(
-          child: SizedBox(),
+
+        // Default Case (should not happen)
+        return const SliverToBoxAdapter(
+          child: Center(child: Text("Unexpected State")),
         );
       },
     );

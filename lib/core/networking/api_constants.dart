@@ -12,6 +12,9 @@ class ApiEndPoints {
   static const String cart = 'profile/show/my-cart';
   static const String addToCart = 'carts/add-to-cart';
   static const String removeFromCart = 'carts/delete';
+  static const String incrementQuantity = 'carts/increment-quantity';
+  static const String decrementQuantity = 'carts/decrement-quantity';
+  static const String updateCart = 'carts/update';
 }
 
 class ApiErrors {

@@ -4,13 +4,16 @@ import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Assuming you're using this package for SVG images
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../helper_functions/build_error_bar.dart'; // Assuming you're using this package for SVG images
 
 // Custom widget to represent the bottom sheet content
 class CustomShetButtom extends StatefulWidget {
-  const CustomShetButtom({super.key, required this.productId, required this.productVariationId});
-    final String productId;
-    final String productVariationId;
+  const CustomShetButtom(
+      {super.key, required this.productId, required this.productVariationId});
+  final String productId;
+  final String productVariationId;
   @override
   State<CustomShetButtom> createState() => _CustomShetButtomState();
 }
@@ -53,16 +56,18 @@ class _CustomShetButtomState extends State<CustomShetButtom> {
                   ),
               onPressed: () {
                 if (_selectedSize != null) {
-                    context.read<CartCubit>().addToCart(
-                      productId: widget.productId,
-                      productVariationId: widget.productVariationId,
-                      quantity: 1,
-                    );
-                  Navigator.popAndPushNamed(context,CartView.routeName,
-                    // arguments: {
-                    //   'selectedSize': _selectedSize, // Pass the selected size
-                    // },
-                  );
+                  context.read<CartCubit>().addToCart(
+                        productId: widget.productId,
+                        productVariationId: widget.productVariationId,
+                        quantity: 1,
+                      );
+                  Navigator.pop(context);
+                  buildErrorBar(context, 'Product added to cart successfully.');
+                  // Navigator.popAndPushNamed(context,CartView.routeName,
+                  //   // arguments: {
+                  //   //   'selectedSize': _selectedSize, // Pass the selected size
+                  //   // },
+                  // );
                 } else {
                   // Show a message if no size is selected
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -76,7 +81,8 @@ class _CustomShetButtomState extends State<CustomShetButtom> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('assets/images/cart.svg', // Replace with your image path
+                  SvgPicture.asset(
+                    'assets/images/cart.svg', // Replace with your image path
                     width: 20,
                     height: 20,
                   ),

@@ -12,7 +12,8 @@ class DeleteFromCart {
     return DeleteFromCart(
       payload: json['payload'] == null
           ? null
-          : DeleteItemFromCard.fromJson(json['payload'] as Map<String, dynamic>),
+          : DeleteItemFromCard.fromJson(
+              json['payload'] as Map<String, dynamic>),
       status: json['status'] as bool?,
       code: json['code'] as int?,
       messages: json['messages'] as dynamic,

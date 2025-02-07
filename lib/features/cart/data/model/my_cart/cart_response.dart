@@ -1,12 +1,12 @@
 import 'cart.dart';
 
 class CartResponse {
-  Cart? payload;
+  Cart payload;
   bool? status;
   int? code;
   dynamic messages;
 
-  CartResponse({this.payload, this.status, this.code, this.messages});
+  CartResponse({required this.payload, this.status, this.code, this.messages});
 
   factory CartResponse.fromJson(Map<String, dynamic> json) => CartResponse(
         payload: json['payload'] is Map<String, dynamic>
@@ -19,7 +19,7 @@ class CartResponse {
       );
 
   Map<String, dynamic> toJson() => {
-        'payload': payload?.toJson(),
+        'payload': payload.toJson(),
         'status': status,
         'code': code,
         'messages': messages,

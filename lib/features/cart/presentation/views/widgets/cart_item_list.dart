@@ -1,38 +1,53 @@
-import 'package:costly/features/cart/data/model/my_cart/item.dart';
+import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/cart/presentation/views/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartItemList extends StatefulWidget {
-  const CartItemList({super.key, required this.items});
-  final List<Item> items;
+class CartItemList extends StatelessWidget {
+  final Cart cart;
+  const CartItemList({super.key, required this.cart});
 
-  @override
-  State<CartItemList> createState() => _CartItemListState();
-}
-
-class _CartItemListState extends State<CartItemList> {
   @override
   Widget build(BuildContext context) {
+    final items = cart.items!;
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return CartItem(
-            productImage: widget.items[index].product!.mediaLinks![0].link,
-            productPrice:widget.items[index].product!.mainVariation!.priceAfterDiscount,
-            productName: widget.items[index].product!.enName,
-            onDelete: ()async{
-              // Handle delete action
-             await context.read<CartCubit>().deleteFromCart(productId: widget.items[index].product!.id, 
-              productVariationId: widget.items[index].productVariationId!);
-             
-              
+          return BlocBuilder<CartCubit, CartState>(
+            builder: (context, state) {
+            final isUpdating = state is CartLoading;
+              return CartItem(
+                productImage: items[index].product!.mediaLinks![0].link,
+                productPrice: items[index].quantity,
+                productName: items[index].product!.enName,
+                totalPrice: items[index].itemTotalPrice,
+                onDelete: () async {
+                  await context.read<CartCubit>().deleteFromCart(
+                      productId: items[index].product!.id,
+                      productVariationId: items[index].productVariationId!);
+                },
+                incrementQuantity: () async {
+                  await context.read<CartCubit>().incrementQuantity(
+                      productId: items[index].product!.id,
+                      productVariationId: items[index].productVariationId!,
+                      quantity: items[index].quantity+1
+                      
+                      ) ;
+                },
+                decrementQuantity: () async {
+                  await context.read<CartCubit>().decrementQuantity(
+                      productId: items[index].product!.id,
+                      productVariationId: items[index].productVariationId!,
+                      quantity:items[index].quantity -1 );
+                },
+                quantity: items[index].quantity,
+                 isLoading: isUpdating,
+              );
             },
-            
           );
         },
-        childCount: widget.items.length,
+        childCount: items.length,
       ),
     );
   }

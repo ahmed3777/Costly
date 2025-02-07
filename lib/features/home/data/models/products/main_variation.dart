@@ -34,7 +34,7 @@ class MainVariation {
   });
 
   factory MainVariation.fromJson(Map<String, dynamic> json) => MainVariation(
-        id: json['id'] as String ,
+        id: json['id'] as String,
         price: json['price'] as int?,
         priceAfterDiscount: json['price_after_discount'] as int,
         quantity: json['quantity'] as int?,

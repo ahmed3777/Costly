@@ -3,8 +3,8 @@ import 'package:costly/features/home/data/models/products/product.dart';
 
 class Item {
   String? id;
-  int? quantity;
-  int? itemTotalPrice;
+  int quantity;
+  int itemTotalPrice;
   dynamic length;
   dynamic chest;
   dynamic waist;
@@ -19,8 +19,8 @@ class Item {
 
   Item({
     this.id,
-    this.quantity,
-    this.itemTotalPrice,
+    required this.quantity,
+    required this.itemTotalPrice,
     this.length,
     this.chest,
     this.waist,
@@ -36,8 +36,8 @@ class Item {
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         id: json['id'] as String?,
-        quantity: json['quantity'] as int?,
-        itemTotalPrice: json['item_total_price'] as int?,
+        quantity: json['quantity'] as int,
+        itemTotalPrice: json['item_total_price'] as int,
         length: json['length'] as dynamic,
         chest: json['chest'] as dynamic,
         waist: json['waist'] as dynamic,

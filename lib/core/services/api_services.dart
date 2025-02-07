@@ -44,7 +44,7 @@ class ApiService {
       if (response.data['status'] == 200 || response.data['status'] == 201) {
         SharedPref.setSecuredString(
             SharedPrefKeys.userToken, response.data['payload']["token"]);
-        print('token from post API Services: ' + response.data['token']);
+        // print('token from post API Services: ' + response.data['token']);
       }
       return response.data;
       // Return the response if successful
@@ -86,7 +86,33 @@ class ApiService {
       }
     }
   }
-  // Method to perform a PUT request
+
+  Future<dynamic> patch(String endpoint, data) async {
+    try {
+      final response = await _dio.patch(endpoint, data: data);
+      if (response.data['status'] == 200 || response.data['status'] == 201) {
+        SharedPref.setSecuredString(
+            SharedPrefKeys.userToken, response.data['payload']["token"]);
+        // print('token from post API Services: ' + response.data['token']);
+      }
+      return response;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        // If there's a response from the server, extract the message
+        String errorMessage;
+        if (e.response!.data is Map<String, dynamic>) {
+          // Check if the response data is a map and contains a 'message' key
+          errorMessage = e.response!.data['messages'].toString();
+        } else {
+          errorMessage = 'An unknown error occurred.';
+        }
+        throw Exception(
+            errorMessage); // Throw a custom exception with the message
+      }
+    }
+  }
 
 // Centralized error handling method
 }
+
+// Method to perform a PUT request
