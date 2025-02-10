@@ -1,6 +1,10 @@
+import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
+import 'package:costly/core/widgets/custom_button.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/cart/presentation/views/widgets/cart_item_list.dart';
+import 'package:costly/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,9 +39,8 @@ class CartViewConsumer extends StatelessWidget {
 
         //  Handle Failure
         if (state is CartFailure) {
-          return SliverToBoxAdapter(
-            child: Center(child: Text(state.message)),
-          );
+          buildErrorBar(context, state.message);
+          // TODO: show error message
         }
 
         // Handle Success
@@ -48,12 +51,24 @@ class CartViewConsumer extends StatelessWidget {
           if (items.isEmpty) {
             print("Cart is empty, showing empty cart image");
             return SliverToBoxAdapter(
-              child: Center(
-                child: SizedBox(
-                  width: 200.w,
-                  height: 200.h,
-                  child: Image.asset(Assets.imagesEmptycart),
+              child: Column(
+                children: [
+                 Center(
+                  child: SizedBox(
+                    width: 200.w,
+                    height: 200.h,
+                    child: Image.asset(Assets.imagesEmptycart),
+                  ),
                 ),
+                 SizedBox(height: 100.h),
+                Center(child:  SizedBox(
+                  width: 300.w,
+
+                  child: CustomButton(onPressed: (){
+                    Navigator.pushNamed(context,HomeView.routeName);
+                  }, text: "Start Shopping", color: AppColors.secondaryColor,),
+                )),
+                ]
               ),
             );
           } else {

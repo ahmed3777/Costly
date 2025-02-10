@@ -69,7 +69,7 @@ class CustomTextFormField extends StatelessWidget {
               )),
           hintText: hintText,
           hintStyle: hintTextStyle ??
-              TextStyles.light16.copyWith(color: AppColors.white),
+          TextStyles.light16.copyWith(color: AppColors.white),
           suffixIcon: suffixIcon,
         ),
       ),

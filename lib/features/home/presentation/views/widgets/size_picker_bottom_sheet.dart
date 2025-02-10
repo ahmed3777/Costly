@@ -1,24 +1,22 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
-import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../helper_functions/build_error_bar.dart'; // Assuming you're using this package for SVG images
+import '../../../../../core/helper_functions/build_error_bar.dart'; // Assuming you're using this package for SVG images
 
 // Custom widget to represent the bottom sheet content
-class CustomShetButtom extends StatefulWidget {
-  const CustomShetButtom(
+class SizePickerBottomSheet extends StatefulWidget {
+  const SizePickerBottomSheet(
       {super.key, required this.productId, required this.productVariationId});
   final String productId;
   final String productVariationId;
   @override
-  State<CustomShetButtom> createState() => _CustomShetButtomState();
+  State<SizePickerBottomSheet> createState() => _SizePickerBottomSheetState();
 }
-
-class _CustomShetButtomState extends State<CustomShetButtom> {
+class _SizePickerBottomSheetState extends State<SizePickerBottomSheet> {
   String? _selectedSize;
   @override
   Widget build(BuildContext context) {

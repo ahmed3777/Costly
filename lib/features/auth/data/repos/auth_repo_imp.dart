@@ -35,8 +35,7 @@ class AuthRepoImp implements AuthRepo {
         'name': name,
         'phone': phoneNumber,
         'type': userType,
-        if (hasAHomeServices != null)
-          'have_a_home_visit_service': hasAHomeServices,
+        if (hasAHomeServices != null) 'have_a_home_visit_service': hasAHomeServices,
         if (businessName != null) 'business_name': businessName,
         if (serviceId != null) 'service_type_id': serviceId
       });

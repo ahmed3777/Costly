@@ -35,15 +35,23 @@ class CartRepoImp implements CartRepo {
   Future<Either<Failure, AddToCart>> addToCart(
       {required String productId,
       required String productVariationId,
-      required int quantity}) async {
+      required int quantity,
+      int? length ,
+      int? chest ,
+      int? waist ,
+      int? hip ,
+      }) async {
     try {
       final response = await apiService.post(ApiEndPoints.addToCart, {
         'product_id': productId,
         'product_variation_id': productVariationId,
-        'quantity': quantity
+        'quantity': quantity,
+        if(length != null)'length':length,
+        if(chest != null)'chest':chest,
+        if(waist != null)'waist':waist,
+        if(hip != null)'hip':hip
       });
       final addToCart = AddToCart.fromJson(response.data);
-
       return right(addToCart);
     } catch (e) {
       if (e is DioException) {

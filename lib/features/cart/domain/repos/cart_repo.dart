@@ -9,7 +9,14 @@ abstract class CartRepo {
   Future<Either<Failure, AddToCart>> addToCart(
       {required String productId,
       required String productVariationId,
-      required int quantity});
+      required int quantity,
+      int? length,
+      int? chest,
+      int? waist,
+      int? hip
+      }
+     
+      );
 
   Future<Either<Failure, DeleteFromCart>> deleteFromCart(
       {required String productId, required String productVariationId});

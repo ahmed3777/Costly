@@ -17,13 +17,9 @@ class ProductDetailsBlocBuilder extends StatefulWidget {
 class _ProductDetailsBlocBuilderState extends State<ProductDetailsBlocBuilder> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    context
-        .read<SingleproductCubit>()
-        .getSingleProduct(widget.productId, widget.productVariationId);
+    context.read<SingleproductCubit>().getSingleProduct(widget.productId, widget.productVariationId);
   }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SingleproductCubit, SingleproductState>(
