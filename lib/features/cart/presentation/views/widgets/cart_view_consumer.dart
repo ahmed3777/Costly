@@ -11,7 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartViewConsumer extends StatelessWidget {
   const CartViewConsumer({super.key, this.onCartUpdated});
-
   final Function(bool, int)? onCartUpdated;
 
   @override
@@ -29,25 +28,20 @@ class CartViewConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         print("Current State: $state"); // Debugging log
-
         //  Show Loading Indicator
         if (state is CartLoading) {
           return const SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()),
           );
         }
-
         //  Handle Failure
         if (state is CartFailure) {
           buildErrorBar(context, state.message);
-          // TODO: show error message
         }
-
         // Handle Success
         if (state is CartSuccess) {
           final cart = state.cart.payload;
           final items = cart.items ?? [];
-
           if (items.isEmpty) {
             print("Cart is empty, showing empty cart image");
             return SliverToBoxAdapter(
@@ -63,7 +57,6 @@ class CartViewConsumer extends StatelessWidget {
                  SizedBox(height: 100.h),
                 Center(child:  SizedBox(
                   width: 300.w,
-
                   child: CustomButton(onPressed: (){
                     Navigator.pushNamed(context,HomeView.routeName);
                   }, text: "Start Shopping", color: AppColors.secondaryColor,),
@@ -76,7 +69,6 @@ class CartViewConsumer extends StatelessWidget {
             return CartItemList(cart: cart);
           }
         }
-
         // Default Case (should not happen)
         return const SliverToBoxAdapter(
           child: Center(child: Text("Unexpected State")),

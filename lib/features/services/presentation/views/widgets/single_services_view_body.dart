@@ -1,4 +1,5 @@
 import 'package:costly/core/utils/app_text_styles.dart';
+import 'package:costly/core/utils/assets.dart';
 import 'package:costly/core/widgets/custom_appbar.dart';
 import 'package:costly/features/services/data/service_details/single_service.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class SingleServiceViewBody extends StatelessWidget {
       children: [
         CustomAppbar(
           backgroundColor: Colors.white,
-          imageAsset: "assets/images/costly.png",
+          imageAsset: Assets.imagesLogo,
           arrowColor: Colors.black,
         ),
         SizedBox(height: 20),

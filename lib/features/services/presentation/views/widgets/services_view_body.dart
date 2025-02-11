@@ -3,6 +3,7 @@ import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/services/presentation/views/single_service_view.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class ServicesViewBody extends StatelessWidget {
     return ListView(children: [
       CustomHomeAppBar(
         scaffoldKey: scaffoldKey,
-        centerText: 'SERVICES',
+        centerText: S.of(context).services,
       ),
       SizedBox(height: 1.h),
       ServicesItemsView(),

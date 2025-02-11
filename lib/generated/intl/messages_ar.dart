@@ -24,27 +24,83 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "أو تسجيل الدخول باستخدام حساب التواصل الاجتماعي"),
+        "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان"),
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
+        "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "allProducts": MessageLookupByLibrary.simpleMessage("الكل"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
         "businessName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
+        "cart": MessageLookupByLibrary.simpleMessage("سلة المشتريات"),
+        "category": MessageLookupByLibrary.simpleMessage("التصنيف"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "contact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
+        "deleteAddress": MessageLookupByLibrary.simpleMessage("حذف العنوان"),
+        "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
+        "discover": MessageLookupByLibrary.simpleMessage("اكتشف"),
+        "editAddress": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
         "email": MessageLookupByLibrary.simpleMessage(" البريد الإلكتروني"),
+        "filter": MessageLookupByLibrary.simpleMessage("تصنيف حسب"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "fulltName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "highestPrice": MessageLookupByLibrary.simpleMessage("الاعلى سعرا"),
+        "highestRated": MessageLookupByLibrary.simpleMessage("الاعلى تقييما"),
+        "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "lowestPrice": MessageLookupByLibrary.simpleMessage("الاقل سعرا"),
+        "mostPopular": MessageLookupByLibrary.simpleMessage("الاكثر شيوعا"),
+        "mostRecently": MessageLookupByLibrary.simpleMessage("الاحدث"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "newPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
+        "notificationsPassword":
+            MessageLookupByLibrary.simpleMessage("الاشعارات,كلمة المرور"),
+        "oldPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "personalInformation":
+            MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "products": MessageLookupByLibrary.simpleMessage(" المنتجات"),
+        "promocode": MessageLookupByLibrary.simpleMessage("كود التخفيض"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("تكرار كلمة المرور"),
+        "savePassword": MessageLookupByLibrary.simpleMessage("حفظ كلمة المرور"),
+        "search": MessageLookupByLibrary.simpleMessage("البحث"),
+        "searchHere": MessageLookupByLibrary.simpleMessage("ابحث هنا"),
+        "selectAddress": MessageLookupByLibrary.simpleMessage("اختر العنوان"),
+        "services": MessageLookupByLibrary.simpleMessage("الخدمات"),
+        "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "shippingAddress": MessageLookupByLibrary.simpleMessage("عنوان الشحن"),
+        "shoppingCart": MessageLookupByLibrary.simpleMessage("سلة المشتريات"),
         "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "sign_up_as": MessageLookupByLibrary.simpleMessage("تسجيل ك "),
         "sign_up_to_get_started":
             MessageLookupByLibrary.simpleMessage("سجل للحصول على بدء"),
         "start_shopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
+        "tax": MessageLookupByLibrary.simpleMessage("الضريبة"),
+        "total": MessageLookupByLibrary.simpleMessage("المجموع"),
+        "totalAfterDiscount":
+            MessageLookupByLibrary.simpleMessage("المجموع بعد الخصم"),
+        "totalAfterDiscountAndTax":
+            MessageLookupByLibrary.simpleMessage("المجموع بعد الخصم والضريبة"),
+        "totalAfterTax":
+            MessageLookupByLibrary.simpleMessage("المجموع بعد الضريبة"),
+        "totalPrice": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
         "vendor": MessageLookupByLibrary.simpleMessage("مورد"),
-        "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك")
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك"),
+        "youhaveSpecialPromocode":
+            MessageLookupByLibrary.simpleMessage("لديك كود خاص")
       };
 }

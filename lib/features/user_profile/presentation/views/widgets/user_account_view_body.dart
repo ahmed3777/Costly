@@ -3,6 +3,7 @@ import 'package:costly/core/services/shared_preferences_singleton.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
 import 'package:costly/features/user_profile/presentation/views/user_setting.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class UserAccountViewBody extends StatefulWidget {
@@ -68,11 +69,11 @@ class _UserAccountViewBodyState extends State<UserAccountViewBody> {
             // Handle orders
           },
           title: Text(
-            "MY Orders",
+            S.of(context).myOrders,
             style: TextStyles.regular16,
           ),
           subtitle: Text(
-            "View your orders",
+            S.of(context).viewyourOrders,
             style: TextStyles.regular11.copyWith(color: Colors.grey),
           ),
           trailing: Icon(
@@ -82,11 +83,11 @@ class _UserAccountViewBodyState extends State<UserAccountViewBody> {
         ),
         ListTile(
           title: Text(
-            "Shipping Address",
+            S.of(context).shippingAddress,
             style: TextStyles.regular16,
           ),
           subtitle: Text(
-            "1 Address",
+            S.of(context).address,
             style: TextStyles.regular11.copyWith(color: Colors.grey),
           ),
           trailing: Icon(
@@ -96,11 +97,11 @@ class _UserAccountViewBodyState extends State<UserAccountViewBody> {
         ),
         ListTile(
           title: Text(
-            "Promocode",
+            S.of(context).promocode,
             style: TextStyles.regular16,
           ),
           subtitle: Text(
-            "You have special promocode",
+            S.of(context).youhaveSpecialPromocode,
             style: TextStyles.regular11.copyWith(color: Colors.grey),
           ),
           trailing: Icon(
@@ -114,11 +115,11 @@ class _UserAccountViewBodyState extends State<UserAccountViewBody> {
             Navigator.pushNamed(context, UserSetting.routeName);
           },
           title: Text(
-            "Settings",
+            S.of(context).settings,
             style: TextStyles.regular16,
           ),
           subtitle: Text(
-            "Notifications,Password",
+            S.of(context).notificationsPassword,
             style: TextStyles.regular11.copyWith(color: Colors.grey),
           ),
           trailing: Icon(

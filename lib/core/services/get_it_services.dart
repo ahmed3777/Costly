@@ -13,7 +13,7 @@ import 'package:costly/features/auth/presentation/cubits/cubit/signupcubit/sign_
 import 'package:costly/features/home/data/repos/home_repo_imp.dart';
 import 'package:costly/features/home/domin/repos/home_repo.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
-import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
+import 'package:costly/features/product/presentation/cubit/category/category_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/user_profile/data/repos/profile_repo_imp.dart';

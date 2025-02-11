@@ -3,6 +3,7 @@ import 'package:costly/core/widgets/custom_home_app_bar.dart';
 import 'package:costly/core/widgets/custom_information_text_field.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
 import 'package:costly/features/user_profile/presentation/views/widgets/change_password_profile.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,7 +41,7 @@ class _UserSettingViewBodyState extends State<UserSettingViewBody> {
             children: [
               CustomHomeAppBar(
                 scaffoldKey: widget.scaffoldKey,
-                centerText: "SETTING",
+                centerText: S.of(context).settings,
               ),
               SizedBox(height: 15),
               CircleAvatar(
@@ -54,12 +55,12 @@ class _UserSettingViewBodyState extends State<UserSettingViewBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Personal Information",
+                        S.of(context).personalInformation,
                         style: TextStyles.regular16.copyWith(color: Colors.red),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "Name",
+                        S.of(context).name,
                         style: TextStyles.regular12,
                       ),
                       SizedBox(height: 5),
@@ -68,7 +69,7 @@ class _UserSettingViewBodyState extends State<UserSettingViewBody> {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "Email",
+                        S.of(context).email,
                         style: TextStyles.regular12,
                       ),
                       CustomInformationTextField(
@@ -76,7 +77,7 @@ class _UserSettingViewBodyState extends State<UserSettingViewBody> {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "Phone Number",
+                        S.of(context).phoneNumber,
                         style: TextStyles.regular12,
                       ),
                       CustomInformationTextField(
@@ -86,7 +87,7 @@ class _UserSettingViewBodyState extends State<UserSettingViewBody> {
                       Row(
                         children: [
                           Text(
-                            "Password",
+                            S.of(context).password,
                             style: TextStyles.regular16,
                           ),
                           Spacer(),

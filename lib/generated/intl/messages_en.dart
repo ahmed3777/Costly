@@ -24,20 +24,65 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "Or sign in with social account"),
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "addAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("Add New Address"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "allProducts": MessageLookupByLibrary.simpleMessage("All"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
         "businessName": MessageLookupByLibrary.simpleMessage("Business Name"),
+        "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "deleteAddress": MessageLookupByLibrary.simpleMessage("Delete Address"),
+        "discount": MessageLookupByLibrary.simpleMessage("Discount"),
+        "discover": MessageLookupByLibrary.simpleMessage("Discover"),
+        "editAddress": MessageLookupByLibrary.simpleMessage("Edit Address"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "fulltName": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "highestPrice": MessageLookupByLibrary.simpleMessage("Highest Price"),
+        "highestRated": MessageLookupByLibrary.simpleMessage("Highest Rated"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "login": MessageLookupByLibrary.simpleMessage("LOGIN"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "lowestPrice": MessageLookupByLibrary.simpleMessage("Lowest Price"),
+        "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
+        "mostRecently": MessageLookupByLibrary.simpleMessage("Most Recently"),
+        "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+        "notificationsPassword":
+            MessageLookupByLibrary.simpleMessage("Notifications,Password"),
+        "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+        "personalInformation":
+            MessageLookupByLibrary.simpleMessage("Personal Information"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "promocode": MessageLookupByLibrary.simpleMessage("Promocode"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("RepeatPassword"),
+        "savePassword": MessageLookupByLibrary.simpleMessage("Save Password"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "searchHere": MessageLookupByLibrary.simpleMessage("Search Here"),
+        "selectAddress": MessageLookupByLibrary.simpleMessage("Select Address"),
+        "services": MessageLookupByLibrary.simpleMessage("Services"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shippingAddress":
+            MessageLookupByLibrary.simpleMessage("Shipping Address"),
+        "shoppingCart": MessageLookupByLibrary.simpleMessage("Shopping Cart"),
         "signIn": MessageLookupByLibrary.simpleMessage(" SIGN IN"),
         "signUp": MessageLookupByLibrary.simpleMessage("SIGN UP"),
         "sign_up_as": MessageLookupByLibrary.simpleMessage("Sign Up As"),
@@ -45,7 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign Up To Get Started"),
         "start_shopping":
             MessageLookupByLibrary.simpleMessage("Start Shopping"),
+        "sublTota": MessageLookupByLibrary.simpleMessage("Sub Total"),
+        "tax": MessageLookupByLibrary.simpleMessage("Tax"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "totalAfterDiscount":
+            MessageLookupByLibrary.simpleMessage("Total After Discount"),
+        "totalAfterDiscountAndTax": MessageLookupByLibrary.simpleMessage(
+            "Total After Discount And Tax"),
+        "totalAfterTax":
+            MessageLookupByLibrary.simpleMessage("Total After Tax"),
+        "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
         "vendor": MessageLookupByLibrary.simpleMessage("Vendor"),
-        "welcome": MessageLookupByLibrary.simpleMessage("WELCOME")
+        "viewyourOrders":
+            MessageLookupByLibrary.simpleMessage("View Your Orders"),
+        "welcome": MessageLookupByLibrary.simpleMessage("WELCOME"),
+        "youhaveSpecialPromocode":
+            MessageLookupByLibrary.simpleMessage("You have Special Promocode")
       };
 }

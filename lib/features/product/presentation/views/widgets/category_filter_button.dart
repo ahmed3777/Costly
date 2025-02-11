@@ -1,30 +1,33 @@
 import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductFilterButtons extends StatefulWidget {
-  const ProductFilterButtons({super.key});
+class CategoryFilterButtons extends StatefulWidget {
+  const CategoryFilterButtons({super.key});
 
   @override
-  State<ProductFilterButtons> createState() => _ProductFilterButtonsState();
+  State<CategoryFilterButtons> createState() => _CategoryFilterButtonsState();
 }
 
-class _ProductFilterButtonsState extends State<ProductFilterButtons> {
-  // List of button labels
-  final List<String> filters = [
-    "All",
-    "Most Recently",
-    "Highest Rated",
-    "Most Popular",
-    "Lowest Price",
-    "Highest Price",
-  ];
+class _CategoryFilterButtonsState extends State<CategoryFilterButtons> {
+ 
 
   // Selected index to track which button is active
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+     // List of button labels
+  final List<String> filters = [
+    S.of(context).allProducts,
+    S.of(context).mostRecently,
+    S.of(context).highestRated,
+    S.of(context).mostPopular,
+    S.of(context).lowestPrice,
+    S.of(context).highestPrice,
+   
+  ];
     return SizedBox(
       height: 50, // Define button height
       child: SingleChildScrollView(

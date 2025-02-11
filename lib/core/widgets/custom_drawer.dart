@@ -5,11 +5,12 @@ import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
-import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/home/presentation/views/home_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:costly/features/product/presentation/views/category_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/user_profile/presentation/views/user_account_view.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -58,7 +59,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       backgroundColor: AppColors.primaryColor,
       child: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
+        children:[
           // Drawer Header
           DrawerHeader(
             decoration: BoxDecoration(
@@ -72,7 +73,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  "Welcome\n $userName",
+                  "${S.of(context).welcome} $userName",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -93,7 +94,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               height: 20,
             ),
             title: Text(
-              'Home',
+              S.of(context).home,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -110,7 +111,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               height: 20,
             ),
             title: Text(
-              'Account',
+              S.of(context).account,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -124,7 +125,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Products',
+              S.of(context).products,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -138,7 +139,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           //     color: AppColors.secondaryColor,
           //   ),
           //   title: Text(
-          //     'Products',
+          //     'Categories',
           //     style: TextStyles.regular18.copyWith(color: Colors.white),
           //   ),
           //   onTap: () {
@@ -153,7 +154,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Services',
+              S.of(context).services,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -167,7 +168,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Cart',
+              S.of(context).cart,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -181,7 +182,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Contact',
+              S.of(context).contact,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () {
@@ -192,7 +193,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ListTile(
             leading: const Icon(Icons.logout, color: AppColors.secondaryColor),
             title: Text(
-              'Logout',
+              S.of(context).logout,
               style: TextStyles.regular18.copyWith(color: Colors.white),
             ),
             onTap: () async {

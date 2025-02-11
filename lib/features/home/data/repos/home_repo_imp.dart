@@ -2,7 +2,7 @@ import 'package:costly/core/errors/failure.dart';
 import 'package:costly/core/helper_functions/helpererror.dart';
 import 'package:costly/core/networking/api_constants.dart';
 import 'package:costly/core/services/api_services.dart';
-import 'package:costly/features/category/data/models/categories_model.dart';
+import 'package:costly/features/product/data/models/categories_model.dart';
 import 'package:costly/features/home/data/models/banners.dart';
 import 'package:costly/features/home/data/models/main_response_model.dart';
 import 'package:costly/features/home/data/models/product_details/product_details.dart';

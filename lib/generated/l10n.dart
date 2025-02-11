@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Costly Live`
+  String get costlyLive {
+    return Intl.message(
+      'Costly Live',
+      name: 'costlyLive',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `WELCOME`
   String get welcome {
     return Intl.message(
@@ -120,6 +130,16 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get password {
     return Intl.message(
@@ -130,11 +150,51 @@ class S {
     );
   }
 
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `RepeatPassword`
   String get repeatPassword {
     return Intl.message(
       'RepeatPassword',
       name: 'repeatPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password`
+  String get oldPassword {
+    return Intl.message(
+      'Old Password',
+      name: 'oldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newPassword {
+    return Intl.message(
+      'New Password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Password`
+  String get savePassword {
+    return Intl.message(
+      'Save Password',
+      name: 'savePassword',
       desc: '',
       args: [],
     );
@@ -200,6 +260,86 @@ class S {
     );
   }
 
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message(
+      'Products',
+      name: 'products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services`
+  String get services {
+    return Intl.message(
+      'Services',
+      name: 'services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cart`
+  String get cart {
+    return Intl.message(
+      'Cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contact {
+    return Intl.message(
+      'Contact',
+      name: 'contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Customer`
   String get customer {
     return Intl.message(
@@ -235,6 +375,356 @@ class S {
     return Intl.message(
       'Business Name',
       name: 'businessName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shopping Cart`
+  String get shoppingCart {
+    return Intl.message(
+      'Shopping Cart',
+      name: 'shoppingCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment`
+  String get payment {
+    return Intl.message(
+      'Payment',
+      name: 'payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checkout`
+  String get checkout {
+    return Intl.message(
+      'Checkout',
+      name: 'checkout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Address`
+  String get addAddress {
+    return Intl.message(
+      'Add Address',
+      name: 'addAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add New Address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Address`
+  String get selectAddress {
+    return Intl.message(
+      'Select Address',
+      name: 'selectAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping Address`
+  String get shippingAddress {
+    return Intl.message(
+      'Shipping Address',
+      name: 'shippingAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Address`
+  String get deleteAddress {
+    return Intl.message(
+      'Delete Address',
+      name: 'deleteAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Address`
+  String get editAddress {
+    return Intl.message(
+      'Edit Address',
+      name: 'editAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sub Total`
+  String get sublTota {
+    return Intl.message(
+      'Sub Total',
+      name: 'sublTota',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tax`
+  String get tax {
+    return Intl.message(
+      'Tax',
+      name: 'tax',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount`
+  String get discount {
+    return Intl.message(
+      'Discount',
+      name: 'discount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Price`
+  String get totalPrice {
+    return Intl.message(
+      'Total Price',
+      name: 'totalPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total After Discount`
+  String get totalAfterDiscount {
+    return Intl.message(
+      'Total After Discount',
+      name: 'totalAfterDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total After Tax`
+  String get totalAfterTax {
+    return Intl.message(
+      'Total After Tax',
+      name: 'totalAfterTax',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total After Discount And Tax`
+  String get totalAfterDiscountAndTax {
+    return Intl.message(
+      'Total After Discount And Tax',
+      name: 'totalAfterDiscountAndTax',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get allProducts {
+    return Intl.message(
+      'All',
+      name: 'allProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Most Recently`
+  String get mostRecently {
+    return Intl.message(
+      'Most Recently',
+      name: 'mostRecently',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Highest Rated`
+  String get highestRated {
+    return Intl.message(
+      'Highest Rated',
+      name: 'highestRated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Most Popular`
+  String get mostPopular {
+    return Intl.message(
+      'Most Popular',
+      name: 'mostPopular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lowest Price`
+  String get lowestPrice {
+    return Intl.message(
+      'Lowest Price',
+      name: 'lowestPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Highest Price`
+  String get highestPrice {
+    return Intl.message(
+      'Highest Price',
+      name: 'highestPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover`
+  String get discover {
+    return Intl.message(
+      'Discover',
+      name: 'discover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search Here`
+  String get searchHere {
+    return Intl.message(
+      'Search Here',
+      name: 'searchHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category {
+    return Intl.message(
+      'Category',
+      name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get personalInformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Orders`
+  String get myOrders {
+    return Intl.message(
+      'My Orders',
+      name: 'myOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Your Orders`
+  String get viewyourOrders {
+    return Intl.message(
+      'View Your Orders',
+      name: 'viewyourOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promocode`
+  String get promocode {
+    return Intl.message(
+      'Promocode',
+      name: 'promocode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have Special Promocode`
+  String get youhaveSpecialPromocode {
+    return Intl.message(
+      'You have Special Promocode',
+      name: 'youhaveSpecialPromocode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications,Password`
+  String get notificationsPassword {
+    return Intl.message(
+      'Notifications,Password',
+      name: 'notificationsPassword',
       desc: '',
       args: [],
     );

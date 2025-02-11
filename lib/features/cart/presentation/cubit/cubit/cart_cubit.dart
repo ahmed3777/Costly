@@ -26,15 +26,15 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  Future<void> addToCart(
-      {required String productId,
-      required String productVariationId,
-      required int quantity,
-      int? length ,
-      int? chest ,
-      int? waist ,
-      int? hip ,
-      }) async {
+  Future<void> addToCart({
+    required String productId,
+    required String productVariationId,
+    required int quantity,
+    int? length,
+    int? chest,
+    int? waist,
+    int? hip,
+  }) async {
     emit(CartLoading());
     final result = await cartRepo.addToCart(
         productId: productId,
@@ -57,7 +57,7 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> deleteFromCart(
       {required String productId, required String productVariationId}) async {
-     emit(CartLoading());
+    emit(CartLoading());
     final result = await cartRepo.deleteFromCart(
         productId: productId, productVariationId: productVariationId);
     result.fold(
@@ -98,7 +98,6 @@ class CartCubit extends Cubit<CartState> {
       {required String productId,
       required String productVariationId,
       required int quantity}) async {
-    emit(CartLoading());
     final result = await cartRepo.decrementQuantity(
         productId: productId,
         productVariationId: productVariationId,

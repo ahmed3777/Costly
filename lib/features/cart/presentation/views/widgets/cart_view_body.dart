@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/is_arbic.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_button.dart';
@@ -39,7 +39,7 @@ class _CartViewBodyState extends State<CartViewBody> {
                 children: [
                   CustomHomeAppBar(
                     scaffoldKey: widget.scaffoldKey,
-                    centerText: isArabic() ? "سلة المشتريات" : "Shopping Cart",
+                    centerText: S.of(context).shoppingCart,
                   ),
                   SizedBox(
                     height: 12.h,
@@ -47,7 +47,9 @@ class _CartViewBodyState extends State<CartViewBody> {
                 ],
               ),
             ),
-            CartViewConsumer(onCartUpdated: updateCartState)
+            CartViewConsumer(onCartUpdated: updateCartState),
+             SliverToBoxAdapter(child: SizedBox(height: 120.h)),
+
           ],
         ),
       ),
@@ -67,15 +69,15 @@ class _CartViewBodyState extends State<CartViewBody> {
                   children: [
                     const Spacer(),
                     Text(
-                      "Sub Total: _____________ $totalPrice\$",
+                      "${S.of(context).sublTota}: _____________ $totalPrice\$",
                       style: TextStyles.regular12,
                     ),
                     Text(
-                      "Shipping: _____________ 0\$",
+                      "${S.of(context).tax}: _____________ 0\$",
                       style: TextStyles.regular12,
                     ),
                     Text(
-                      "Total: _____________ $totalPrice\$",
+                      "${S.of(context).totalPrice}: _____________ $totalPrice\$",
                       style: TextStyles.regular12,
                     ),
                     const Spacer(),

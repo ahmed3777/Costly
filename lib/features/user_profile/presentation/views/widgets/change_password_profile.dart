@@ -1,6 +1,7 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/password_field.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ChangePasswordProfile extends StatelessWidget {
@@ -28,7 +29,7 @@ class ChangePasswordProfile extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "Change Password",
+                            S.of(context).changePassword,
                             style: TextStyles.regular18,
                           ),
                           SizedBox(
@@ -37,14 +38,14 @@ class ChangePasswordProfile extends StatelessWidget {
                           PasswordField(
                             textStyle: TextStyles.regular12
                                 .copyWith(color: Colors.black),
-                            hintText: "Old Password",
+                            hintText: S.of(context).oldPassword,
                             hintTextStyle: TextStyles.regular12
                                 .copyWith(color: Colors.grey),
                           ),
                           Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "Forgot Password?",
+                              S.of(context).forgotPassword,
                               style: TextStyles.regular12
                                   .copyWith(color: Colors.red),
                             ),
@@ -55,7 +56,7 @@ class ChangePasswordProfile extends StatelessWidget {
                           PasswordField(
                               textStyle: TextStyles.regular12
                                   .copyWith(color: Colors.black),
-                              hintText: "New Password",
+                              hintText:S.of(context).newPassword,
                               hintTextStyle: TextStyles.regular12
                                   .copyWith(color: Colors.grey)),
                           SizedBox(
@@ -64,7 +65,7 @@ class ChangePasswordProfile extends StatelessWidget {
                           PasswordField(
                               textStyle: TextStyles.regular12
                                   .copyWith(color: Colors.black),
-                              hintText: "Repeat Password",
+                              hintText: S.of(context).repeatPassword,
                               hintTextStyle: TextStyles.regular12
                                   .copyWith(color: Colors.grey)),
                           SizedBox(
@@ -85,7 +86,7 @@ class ChangePasswordProfile extends StatelessWidget {
                                   ),
                               onPressed: () {},
                               child: Text(
-                                "Save Password",
+                                S.of(context).savePassword,
                                 style: TextStyles.regular14
                                     .copyWith(color: Colors.white),
                               ),
@@ -99,7 +100,7 @@ class ChangePasswordProfile extends StatelessWidget {
               });
         },
         child: Text(
-          "Change",
+          S.of(context).changePassword,
           style: TextStyles.regular14.copyWith(color: Colors.grey),
         ));
   }
