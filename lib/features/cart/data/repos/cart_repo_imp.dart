@@ -32,24 +32,24 @@ class CartRepoImp implements CartRepo {
   }
 
   @override
-  Future<Either<Failure, AddToCart>> addToCart(
-      {required String productId,
-      required String productVariationId,
-      required int quantity,
-      int? length ,
-      int? chest ,
-      int? waist ,
-      int? hip ,
-      }) async {
+  Future<Either<Failure, AddToCart>> addToCart({
+    required String productId,
+    required String productVariationId,
+    required int quantity,
+    int? length,
+    int? chest,
+    int? waist,
+    int? hip,
+  }) async {
     try {
       final response = await apiService.post(ApiEndPoints.addToCart, {
         'product_id': productId,
         'product_variation_id': productVariationId,
         'quantity': quantity,
-        if(length != null)'length':length,
-        if(chest != null)'chest':chest,
-        if(waist != null)'waist':waist,
-        if(hip != null)'hip':hip
+        if (length != null) 'length': length,
+        if (chest != null) 'chest': chest,
+        if (waist != null) 'waist': waist,
+        if (hip != null) 'hip': hip
       });
       final addToCart = AddToCart.fromJson(response.data);
       return right(addToCart);
@@ -93,10 +93,11 @@ class CartRepoImp implements CartRepo {
         'product_variation_id': productVariationId,
         'quantity': quantity
       });
-      final decrementQuantity = CartResponse.fromJson(response.data) ;
+      final decrementQuantity = CartResponse.fromJson(response.data);
       return right(decrementQuantity);
     } catch (e) {
-      return left(e is DioException ? handleError(e) : ServerFailure(e.toString()));
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
     }
   }
 
@@ -111,25 +112,30 @@ class CartRepoImp implements CartRepo {
         'product_variation_id': productVariationId,
         'quantity': quantity
       });
-      final incrementQuantity =  CartResponse.fromJson(response.data) ;
+      final incrementQuantity = CartResponse.fromJson(response.data);
       return right(incrementQuantity);
     } catch (e) {
-      return left(e is DioException ? handleError(e) : ServerFailure(e.toString()));
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, CartResponse>> updateCart({required String productId, required String productVariationId, required int quantity}) async{
+  Future<Either<Failure, CartResponse>> updateCart(
+      {required String productId,
+      required String productVariationId,
+      required int quantity}) async {
     try {
       final response = await apiService.patch(ApiEndPoints.updateCart, {
         'product_id': productId,
         'product_variation_id': productVariationId,
         'quantity': quantity
       });
-      final updateCart =  CartResponse.fromJson(response.data) ;
+      final updateCart = CartResponse.fromJson(response.data);
       return right(updateCart);
     } catch (e) {
-      return left(e is DioException ? handleError(e) : ServerFailure(e.toString()));
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
     }
   }
 }

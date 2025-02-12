@@ -66,7 +66,12 @@
     "viewyourOrders": "View Your Orders",
     "promocode": "Promocode",
     "youhaveSpecialPromocode": "You have Special Promocode",
-    "notificationsPassword": "Notifications,Password"
+    "notificationsPassword": "Notifications,Password",
+    "size": "Size",
+    "specification": "Specification",
+    "youCanAlsoLikeThis": "You can also like this",
+    "seeAll": "See All",
+    "enterVoucherCode": "Enter Voucher Code"
    
 
     

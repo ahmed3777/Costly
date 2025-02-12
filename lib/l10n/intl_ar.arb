@@ -64,5 +64,10 @@
     "personalInformation": "معلومات شخصية",
     "promocode": "كود التخفيض",
     "youhaveSpecialPromocode": "لديك كود خاص",
-    "notificationsPassword": "الاشعارات,كلمة المرور"
+    "notificationsPassword": "الاشعارات,كلمة المرور",
+    "size": "الحجم",
+    "specification": "المواصفات",
+    "youCanAlsoLikeThis": "يمكنك أيضاّ أن تعجب بهذا؟",
+    "seeAll": "المزيد",
+    "enterVoucherCode": "ادخل كود الخصم"
 }

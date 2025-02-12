@@ -9,8 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdvancedSizePicker extends StatefulWidget {
-  const AdvancedSizePicker({super.key, required this.productId, required this.productVariationId});
-  
+  const AdvancedSizePicker(
+      {super.key, required this.productId, required this.productVariationId});
+
   final String productId;
   final String productVariationId;
 
@@ -25,14 +26,25 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
   int? chest;
   int? waist;
   int? hip;
-
+ // Custom validator function for integer input
+  String? _validateInteger(String? value, String fieldName) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a value for $fieldName';
+    }
+    if (int.tryParse(value) == null) {
+      return 'Please enter a valid integer for $fieldName';
+    }
+    return null;
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Center(
         child: SizedBox(
-          height: 900.h,
-          child: Form( // Wrap the Column with a Form
+          height: 700.h,
+          child: Form(
+            // Wrap the Column with a Form
             key: _formKey,
             child: Column(
               children: [
@@ -53,10 +65,13 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                   height: 70.h,
                   child: CustomTextFormField(
                     hintText: 'Length',
-                    hintTextStyle: const TextStyle(color: Colors.black),
-                    textStyle:  TextStyle(color: Colors.black),
+                    hintTextStyle:
+                        TextStyles.regular12.copyWith(color: Colors.black),
+                    textStyle:
+                        TextStyles.regular14.copyWith(color: Colors.black),
                     keyboardType: TextInputType.number,
-                    validatorMassege: "Please enter a valid length",
+                    cursorColor: Colors.black,
+                    validator: (value) => _validateInteger(value, 'length'), // Custom validator
                     onSaved: (value) {
                       length = int.tryParse(value!);
                     },
@@ -66,24 +81,31 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                 SizedBox(
                   height: 70.h,
                   child: CustomTextFormField(
+                    cursorColor: Colors.black,
                     hintText: 'Chest',
-                    hintTextStyle: const TextStyle(color: Colors.black),
+                    hintTextStyle:
+                        TextStyles.regular12.copyWith(color: Colors.black),
+                    textStyle:
+                        TextStyles.regular14.copyWith(color: Colors.black),
                     keyboardType: TextInputType.number,
-                    validatorMassege: "Please enter a valid chest size",
+                    validator:  (value) => _validateInteger(value, 'chest'),
                     onSaved: (value) {
                       chest = int.tryParse(value!);
                     },
                   ),
                 ),
-
                 // Hip Input
                 SizedBox(
                   height: 70.h,
                   child: CustomTextFormField(
                     hintText: 'Hip',
-                    hintTextStyle: const TextStyle(color: Colors.black),
+                    hintTextStyle:
+                        TextStyles.regular12.copyWith(color: Colors.black),
+                    textStyle:
+                        TextStyles.regular14.copyWith(color: Colors.black),
+                    cursorColor: Colors.black,
                     keyboardType: TextInputType.number,
-                    validatorMassege: "Please enter a valid hip size",
+                    validator: (value) => _validateInteger(value, 'hip'),
                     onSaved: (value) {
                       hip = int.tryParse(value!);
                     },
@@ -94,9 +116,13 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                   height: 70.h,
                   child: CustomTextFormField(
                     hintText: 'Waist',
-                    hintTextStyle: const TextStyle(color: Colors.black),
+                    hintTextStyle:
+                        TextStyles.regular12.copyWith(color: Colors.black),
+                    textStyle:
+                        TextStyles.regular14.copyWith(color: Colors.black),
                     keyboardType: TextInputType.number,
-                    validatorMassege: "Please enter a valid waist size",
+                    cursorColor: Colors.black,
+                    validator: (value) => _validateInteger(value, 'waist'),
                     onSaved: (value) {
                       waist = int.tryParse(value!);
                     },
@@ -109,7 +135,6 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save(); // Save the input values
-
                         context.read<CartCubit>().addToCart(
                               productId: widget.productId,
                               productVariationId: widget.productVariationId,
@@ -120,7 +145,8 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                               hip: hip!,
                             );
                         Navigator.pop(context);
-                        buildErrorBar(context, 'Product added to cart successfully.');
+                        buildErrorBar(
+                            context, 'Product added to cart successfully.');
                       }
                     },
                     text: "Submit",

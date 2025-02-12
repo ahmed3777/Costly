@@ -16,13 +16,15 @@ class CartViewConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
-      listenWhen: (previous, current) => current is CartSuccess || current is CartFailure,
+      listenWhen: (previous, current) =>
+          current is CartSuccess || current is CartFailure,
       listener: (context, state) {
         if (state is CartSuccess && onCartUpdated != null) {
           final cart = state.cart.payload;
           WidgetsBinding.instance.addPostFrameCallback((_) {
             onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
-            print("Cart updated: hasItems=${cart.items!.isNotEmpty}, totalPrice=${cart.totalPrice}");
+            print(
+                "Cart updated: hasItems=${cart.items!.isNotEmpty}, totalPrice=${cart.totalPrice}");
           });
         }
       },
@@ -45,24 +47,27 @@ class CartViewConsumer extends StatelessWidget {
           if (items.isEmpty) {
             print("Cart is empty, showing empty cart image");
             return SliverToBoxAdapter(
-              child: Column(
-                children: [
-                 Center(
+              child: Column(children: [
+                Center(
                   child: SizedBox(
                     width: 200.w,
                     height: 200.h,
                     child: Image.asset(Assets.imagesEmptycart),
                   ),
                 ),
-                 SizedBox(height: 100.h),
-                Center(child:  SizedBox(
+                SizedBox(height: 100.h),
+                Center(
+                    child: SizedBox(
                   width: 300.w,
-                  child: CustomButton(onPressed: (){
-                    Navigator.pushNamed(context,HomeView.routeName);
-                  }, text: "Start Shopping", color: AppColors.secondaryColor,),
+                  child: CustomButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeView.routeName);
+                    },
+                    text: "Start Shopping",
+                    color: AppColors.secondaryColor,
+                  ),
                 )),
-                ]
-              ),
+              ]),
             );
           } else {
             print("Cart has items, showing CartItemList");

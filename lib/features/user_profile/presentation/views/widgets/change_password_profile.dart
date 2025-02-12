@@ -56,7 +56,7 @@ class ChangePasswordProfile extends StatelessWidget {
                           PasswordField(
                               textStyle: TextStyles.regular12
                                   .copyWith(color: Colors.black),
-                              hintText:S.of(context).newPassword,
+                              hintText: S.of(context).newPassword,
                               hintTextStyle: TextStyles.regular12
                                   .copyWith(color: Colors.grey)),
                           SizedBox(

@@ -1,6 +1,6 @@
 import 'package:costly/core/widgets/custom_gradien_card.dart';
-import 'package:costly/features/product/data/models/categories_model.dart';
-import 'package:costly/features/product/presentation/cubit/category/category_cubit.dart';
+import 'package:costly/features/category/data/models/categories_model.dart';
+import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

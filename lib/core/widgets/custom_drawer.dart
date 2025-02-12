@@ -7,7 +7,7 @@ import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:costly/features/home/presentation/views/home_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
-import 'package:costly/features/product/presentation/views/category_view.dart';
+import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/user_profile/presentation/views/user_account_view.dart';
 import 'package:costly/generated/l10n.dart';
@@ -38,7 +38,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
         await SharedPref.getString(SharedPrefKeys.userName);
     String fetchedImageUrl =
         await SharedPref.getString(SharedPrefKeys.userImageUrl);
-
     setState(() {
       userName = fetchedUserName;
       imageUrl = fetchedImageUrl;
@@ -59,7 +58,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       backgroundColor: AppColors.primaryColor,
       child: ListView(
         padding: EdgeInsets.zero,
-        children:[
+        children: [
           // Drawer Header
           DrawerHeader(
             decoration: BoxDecoration(
@@ -73,12 +72,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  "${S.of(context).welcome} $userName",
-                  style: TextStyle(
+                  "${S.of(context).welcome} \n $userName",
+                  style: TextStyles.regular20.copyWith(
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    overflow: TextOverflow.ellipsis,
                   ),
+                  // TextStyle(
+
+                  //   overflow: TextOverflow.ellipsis,
+                  //   color: Colors.white,
+                  //   fontSize: 20,
+                  //   fontWeight: FontWeight.bold,
+                  // ),
                 ),
               ],
             ),

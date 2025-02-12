@@ -8,19 +8,19 @@ class CartItem extends StatelessWidget {
   final int? totalPrice;
   final VoidCallback incrementQuantity;
   final VoidCallback decrementQuantity;
-   final VoidCallback onDelete;
-   final bool isLoading;
+  final VoidCallback onDelete;
+  final bool isLoading;
   const CartItem({
     super.key,
     required this.productImage,
     required this.productName,
     required this.productPrice,
     required this.quantity,
-     required this.onDelete,
+    required this.onDelete,
     required this.incrementQuantity,
-    required this.decrementQuantity, 
-    required this.totalPrice, 
-     this.isLoading = false,
+    required this.decrementQuantity,
+    required this.totalPrice,
+    this.isLoading = false,
   });
 
   @override
@@ -74,21 +74,21 @@ class CartItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 2.0),
                 Row(
-                  children: [ 
+                  children: [
                     isLoading
                         ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        :  IconButton(
-                      icon: const Icon(Icons.remove, size: 20.0),
-                      onPressed: () {
-                        if (quantity > 1) {
-                           decrementQuantity();
-                        }
-                      },
-                    ),
+                        : IconButton(
+                            icon: const Icon(Icons.remove , size: 20.0, ),
+                            onPressed: () {
+                              if (quantity > 1) {
+                                decrementQuantity();
+                              }
+                            },
+                          ),
                     Text(
                       "$quantity",
                       style: const TextStyle(
@@ -96,17 +96,16 @@ class CartItem extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                     isLoading
+                    isLoading
                         ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        :  IconButton(
-                      icon: const Icon(Icons.add, size: 20.0),
-                      
-                      onPressed: incrementQuantity,
-                    ),
+                        : IconButton(
+                            icon: const Icon(Icons.add, size: 20.0),
+                            onPressed: incrementQuantity,
+                          ),
                     const Spacer(),
                     IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),

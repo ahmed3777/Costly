@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "discover": MessageLookupByLibrary.simpleMessage("اكتشف"),
         "editAddress": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
         "email": MessageLookupByLibrary.simpleMessage(" البريد الإلكتروني"),
+        "enterVoucherCode":
+            MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
         "filter": MessageLookupByLibrary.simpleMessage("تصنيف حسب"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "savePassword": MessageLookupByLibrary.simpleMessage("حفظ كلمة المرور"),
         "search": MessageLookupByLibrary.simpleMessage("البحث"),
         "searchHere": MessageLookupByLibrary.simpleMessage("ابحث هنا"),
+        "seeAll": MessageLookupByLibrary.simpleMessage("المزيد"),
         "selectAddress": MessageLookupByLibrary.simpleMessage("اختر العنوان"),
         "services": MessageLookupByLibrary.simpleMessage("الخدمات"),
         "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
@@ -88,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up_as": MessageLookupByLibrary.simpleMessage("تسجيل ك "),
         "sign_up_to_get_started":
             MessageLookupByLibrary.simpleMessage("سجل للحصول على بدء"),
+        "size": MessageLookupByLibrary.simpleMessage("الحجم"),
+        "specification": MessageLookupByLibrary.simpleMessage("المواصفات"),
         "start_shopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
         "tax": MessageLookupByLibrary.simpleMessage("الضريبة"),
         "total": MessageLookupByLibrary.simpleMessage("المجموع"),
@@ -100,6 +105,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalPrice": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
         "vendor": MessageLookupByLibrary.simpleMessage("مورد"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك"),
+        "youCanAlsoLikeThis":
+            MessageLookupByLibrary.simpleMessage("يمكنك أيضاّ أن تعجب بهذا؟"),
         "youhaveSpecialPromocode":
             MessageLookupByLibrary.simpleMessage("لديك كود خاص")
       };

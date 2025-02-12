@@ -11,10 +11,10 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIcon,
       this.onSaved,
       this.obscureText = false,
-      required this.validatorMassege,
+      this.validatorMassege,
       this.hintTextStyle,
       this.cursorColor,
-      this.textStyle});
+      this.textStyle, this.validator});
 
   final String hintText;
   final TextInputType keyboardType;
@@ -22,9 +22,11 @@ class CustomTextFormField extends StatelessWidget {
   final Color? cursorColor;
   final void Function(String?)? onSaved;
   final bool obscureText;
-  final String validatorMassege;
+  final String?  validatorMassege;
   final TextStyle? hintTextStyle;
   final TextStyle? textStyle;
+  final String? Function(String?)? validator; // Add this line
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -39,10 +41,11 @@ class CustomTextFormField extends StatelessWidget {
                 color: AppColors.white, decoration: TextDecoration.none),
         obscureText: obscureText,
         onSaved: onSaved,
-        validator: (value) {
+        validator: validator ?? (value) {
           if (value == null || value.isEmpty) {
             return validatorMassege;
           }
+          
           return null;
         },
         keyboardType: keyboardType,
@@ -69,7 +72,7 @@ class CustomTextFormField extends StatelessWidget {
               )),
           hintText: hintText,
           hintStyle: hintTextStyle ??
-          TextStyles.light16.copyWith(color: AppColors.white),
+              TextStyles.light16.copyWith(color: AppColors.white),
           suffixIcon: suffixIcon,
         ),
       ),

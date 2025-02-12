@@ -6,6 +6,8 @@ import 'package:costly/features/auth/domin/repos/auth_repo.dart';
 import 'package:costly/features/cart/data/repos/cart_repo_imp.dart';
 import 'package:costly/features/cart/domain/repos/cart_repo.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
+import 'package:costly/features/category/data/repos_imp/category_repo_imp.dart';
+import 'package:costly/features/category/domain/repos/category_repo.dart';
 import 'package:costly/features/services/presentation/cubit/service_detail/service_details_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signincubit/cubit/signin_cubit.dart';
@@ -13,7 +15,7 @@ import 'package:costly/features/auth/presentation/cubits/cubit/signupcubit/sign_
 import 'package:costly/features/home/data/repos/home_repo_imp.dart';
 import 'package:costly/features/home/domin/repos/home_repo.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
-import 'package:costly/features/product/presentation/cubit/category/category_cubit.dart';
+import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/user_profile/data/repos/profile_repo_imp.dart';
@@ -45,10 +47,17 @@ void setupGetIt() {
   getIt.registerLazySingleton<HomeRepoImp>(
       () => HomeRepoImp(apiService: getIt<ApiService>()));
   getIt.registerFactory<BannerCubit>(() => BannerCubit(getIt<HomeRepo>()));
-  getIt.registerFactory<CategoryCubit>(() => CategoryCubit(getIt<HomeRepo>()));
   getIt.registerFactory<ProductCubit>(() => ProductCubit(getIt<HomeRepo>()));
   getIt.registerFactory<SingleproductCubit>(
       () => SingleproductCubit(getIt<HomeRepo>()));
+
+  ///category
+  getIt.registerLazySingleton<CategoryRepo>(() => getIt<CategoryRepoImp>());
+  getIt.registerFactory<CategoryCubit>(
+      () => CategoryCubit(getIt<CategoryRepo>()));
+
+  getIt.registerLazySingleton<CategoryRepoImp>(
+      () => CategoryRepoImp(apiService: getIt<ApiService>()));
 
   ///services
   getIt.registerFactory<ServiceDetailsCubit>(

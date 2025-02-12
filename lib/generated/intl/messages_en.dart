@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "editAddress": MessageLookupByLibrary.simpleMessage("Edit Address"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enterVoucherCode":
+            MessageLookupByLibrary.simpleMessage("Enter Voucher Code"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
@@ -77,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "savePassword": MessageLookupByLibrary.simpleMessage("Save Password"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "searchHere": MessageLookupByLibrary.simpleMessage("Search Here"),
+        "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
         "selectAddress": MessageLookupByLibrary.simpleMessage("Select Address"),
         "services": MessageLookupByLibrary.simpleMessage("Services"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -88,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up_as": MessageLookupByLibrary.simpleMessage("Sign Up As"),
         "sign_up_to_get_started":
             MessageLookupByLibrary.simpleMessage("Sign Up To Get Started"),
+        "size": MessageLookupByLibrary.simpleMessage("Size"),
+        "specification": MessageLookupByLibrary.simpleMessage("Specification"),
         "start_shopping":
             MessageLookupByLibrary.simpleMessage("Start Shopping"),
         "sublTota": MessageLookupByLibrary.simpleMessage("Sub Total"),
@@ -104,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewyourOrders":
             MessageLookupByLibrary.simpleMessage("View Your Orders"),
         "welcome": MessageLookupByLibrary.simpleMessage("WELCOME"),
+        "youCanAlsoLikeThis":
+            MessageLookupByLibrary.simpleMessage("You can also like this"),
         "youhaveSpecialPromocode":
             MessageLookupByLibrary.simpleMessage("You have Special Promocode")
       };

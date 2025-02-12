@@ -1,3 +1,4 @@
+import 'package:costly/core/widgets/custom_textfield.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
@@ -28,6 +29,7 @@ class _CartViewBodyState extends State<CartViewBody> {
       totalPrice = price;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -48,58 +50,75 @@ class _CartViewBodyState extends State<CartViewBody> {
               ),
             ),
             CartViewConsumer(onCartUpdated: updateCartState),
-             SliverToBoxAdapter(child: SizedBox(height: 120.h)),
-
+            SliverToBoxAdapter(child: SizedBox(height: 180.h)),
           ],
         ),
       ),
-      Visibility(
-        visible: isCartNotEmpty,
-        child: Positioned(
-          bottom: 40.h,
-          left: 0,
-          right: 0,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: (16.0)),
-            child: SizedBox(
-              height: 100.h,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Spacer(),
-                    Text(
-                      "${S.of(context).sublTota}: _____________ $totalPrice\$",
-                      style: TextStyles.regular12,
-                    ),
-                    Text(
-                      "${S.of(context).tax}: _____________ 0\$",
-                      style: TextStyles.regular12,
-                    ),
-                    Text(
-                      "${S.of(context).totalPrice}: _____________ $totalPrice\$",
-                      style: TextStyles.regular12,
-                    ),
-                    const Spacer(),
-                  ]),
+      Positioned(
+        bottom: 0,
+        left: 0,
+        right: 0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Visibility(
+              visible: isCartNotEmpty,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: (16.0)),
+                child: SizedBox(
+                  height: 100.h,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Text(
+                          "${S.of(context).sublTota}: _____________ $totalPrice\$",
+                          style: TextStyles.regular12,
+                        ),
+                        Text(
+                          "${S.of(context).tax}: _____________ 0\$",
+                          style: TextStyles.regular12,
+                        ),
+                        Text(
+                          "${S.of(context).totalPrice}: _____________ $totalPrice\$",
+                          style: TextStyles.regular12,
+                        ),
+                        const Spacer(),
+                      ]),
+                ),
+              ),
             ),
+          
+        
+        
+          Visibility(
+            visible: isCartNotEmpty,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: (16.0)),
+              child: CustomTextFormField(hintText: S.of(context).enterVoucherCode,
+              hintTextStyle: TextStyles.regular12.copyWith(color: Colors.grey),
+              suffixIcon:  Padding(
+                padding: const EdgeInsets.only(right: 16 ,top: 10),
+                child: Text("Apply",style: TextStyles.regular12.copyWith(color: AppColors.grey),),
+              ),
+               keyboardType: TextInputType.text,),
+            ),
+          ),  
+              SizedBox(height: 12.h),
+        Visibility(
+          visible: isCartNotEmpty,
+          child: CustomButton(
+            onPressed: () {},
+            text: "Checkout",
+            color: AppColors.primaryColor,
+            bottomLeft: 0,
+            bottomRight: 0,
           ),
+        )
+          ],
         ),
       ),
-      Visibility(
-        visible: isCartNotEmpty,
-        child: Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: CustomButton(
-              onPressed: () {},
-              text: "Checkout",
-              color: AppColors.primaryColor,
-              bottomLeft: 0,
-              bottomRight: 0,
-            )),
-      )
     ]);
   }
 }

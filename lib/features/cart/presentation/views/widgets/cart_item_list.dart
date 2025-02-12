@@ -16,7 +16,7 @@ class CartItemList extends StatelessWidget {
         (context, index) {
           return BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
-            final isUpdating = state is CartLoading;
+              final isLoading = state is CartLoading;
               return CartItem(
                 productImage: items[index].product!.mediaLinks![0].link,
                 productPrice: items[index].quantity,
@@ -31,18 +31,16 @@ class CartItemList extends StatelessWidget {
                   await context.read<CartCubit>().incrementQuantity(
                       productId: items[index].product!.id,
                       productVariationId: items[index].productVariationId!,
-                      quantity: items[index].quantity+1
-                      
-                      ) ;
+                      quantity: items[index].quantity + 1);
                 },
                 decrementQuantity: () async {
                   await context.read<CartCubit>().decrementQuantity(
                       productId: items[index].product!.id,
                       productVariationId: items[index].productVariationId!,
-                      quantity:items[index].quantity -1 );
+                      quantity: items[index].quantity - 1);
                 },
                 quantity: items[index].quantity,
-                 isLoading: isUpdating,
+                isLoading: isLoading,
               );
             },
           );

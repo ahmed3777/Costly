@@ -11,23 +11,20 @@ class CategoryFilterButtons extends StatefulWidget {
 }
 
 class _CategoryFilterButtonsState extends State<CategoryFilterButtons> {
- 
-
   // Selected index to track which button is active
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-     // List of button labels
-  final List<String> filters = [
-    S.of(context).allProducts,
-    S.of(context).mostRecently,
-    S.of(context).highestRated,
-    S.of(context).mostPopular,
-    S.of(context).lowestPrice,
-    S.of(context).highestPrice,
-   
-  ];
+    // List of button labels
+    final List<String> filters = [
+      S.of(context).allProducts,
+      S.of(context).mostRecently,
+      S.of(context).highestRated,
+      S.of(context).mostPopular,
+      S.of(context).lowestPrice,
+      S.of(context).highestPrice,
+    ];
     return SizedBox(
       height: 50, // Define button height
       child: SingleChildScrollView(

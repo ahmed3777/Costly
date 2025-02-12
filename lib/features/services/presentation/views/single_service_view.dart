@@ -43,7 +43,8 @@ class _SingleServiceViewState extends State<SingleServiceView> {
           getIt<ServiceDetailsCubit>()..getSingleService(widget.servicId ?? ''),
       child: SafeArea(
         child:
-            Scaffold(drawer: CustomDrawer(), body: SingleServiceViewbuilder()),
+            Scaffold(drawer: CustomDrawer(),
+             body: SingleServiceViewbuilder()),
       ),
     );
   }

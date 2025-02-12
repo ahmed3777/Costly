@@ -3,7 +3,7 @@ import 'package:costly/features/auth/presentation/views/signin_view.dart';
 import 'package:costly/features/auth/presentation/views/signup_view.dart';
 import 'package:costly/features/auth/presentation/views/widgets/sign_up_form_feild.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
-import 'package:costly/features/product/presentation/views/category_view.dart';
+import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:costly/features/services/presentation/views/single_service_view.dart';

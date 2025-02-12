@@ -6,7 +6,7 @@ import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
-import 'package:costly/features/product/presentation/cubit/category/category_cubit.dart';
+import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
 import 'package:costly/features/splash/presentation/views/splash_view.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
