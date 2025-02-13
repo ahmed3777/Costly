@@ -779,6 +779,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Billing address is the same as delivery address`
+  String get BillingAddressIsTheSameAsDeliveryAddress {
+    return Intl.message(
+      'Billing address is the same as delivery address',
+      name: 'BillingAddressIsTheSameAsDeliveryAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get country {
+    return Intl.message(
+      'Country',
+      name: 'country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `State`
+  String get state {
+    return Intl.message(
+      'State',
+      name: 'state',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zip Code`
+  String get zipCode {
+    return Intl.message(
+      'Zip Code',
+      name: 'zipCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address 2 (optional)`
+  String get addressLine2 {
+    return Intl.message(
+      'Address 2 (optional)',
+      name: 'addressLine2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

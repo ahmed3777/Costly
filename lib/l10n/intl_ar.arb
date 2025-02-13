@@ -69,5 +69,12 @@
     "specification": "المواصفات",
     "youCanAlsoLikeThis": "يمكنك أيضاّ أن تعجب بهذا؟",
     "seeAll": "المزيد",
-    "enterVoucherCode": "ادخل كود الخصم"
+    "enterVoucherCode": "ادخل كود الخصم",
+    "BillingAddressIsTheSameAsDeliveryAddress": "عنوان الفاتورة هو نفس عنوان التوصيل",
+    "city": "المدينة",
+    "street": "الشارع",
+    "country": "الدولة",
+    "zipCode": "الرمز البريدي",
+    "addressLine2" : "العنوان  2 (اختياري)" 
+
 }

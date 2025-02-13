@@ -1,4 +1,5 @@
 import 'package:costly/core/widgets/custom_textfield.dart';
+import 'package:costly/features/checkout/presentation/views/checkout_view.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
@@ -109,7 +110,9 @@ class _CartViewBodyState extends State<CartViewBody> {
         Visibility(
           visible: isCartNotEmpty,
           child: CustomButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, CheckoutView.routeName);
+            },
             text: "Checkout",
             color: AppColors.primaryColor,
             bottomLeft: 0,

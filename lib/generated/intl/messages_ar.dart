@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "BillingAddressIsTheSameAsDeliveryAddress":
+            MessageLookupByLibrary.simpleMessage(
+                "عنوان الفاتورة هو نفس عنوان التوصيل"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "أو تسجيل الدخول باستخدام حساب التواصل الاجتماعي"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
@@ -29,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewAddress":
             MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "addressLine2":
+            MessageLookupByLibrary.simpleMessage("العنوان  2 (اختياري)"),
         "allProducts": MessageLookupByLibrary.simpleMessage("الكل"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
@@ -39,8 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "city": MessageLookupByLibrary.simpleMessage("المدينة"),
         "contact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
+        "country": MessageLookupByLibrary.simpleMessage("الدولة"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "deleteAddress": MessageLookupByLibrary.simpleMessage("حذف العنوان"),
         "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
@@ -108,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youCanAlsoLikeThis":
             MessageLookupByLibrary.simpleMessage("يمكنك أيضاّ أن تعجب بهذا؟"),
         "youhaveSpecialPromocode":
-            MessageLookupByLibrary.simpleMessage("لديك كود خاص")
+            MessageLookupByLibrary.simpleMessage("لديك كود خاص"),
+        "zipCode": MessageLookupByLibrary.simpleMessage("الرمز البريدي")
       };
 }

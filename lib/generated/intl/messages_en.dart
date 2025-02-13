@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "BillingAddressIsTheSameAsDeliveryAddress":
+            MessageLookupByLibrary.simpleMessage(
+                "Billing address is the same as delivery address"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "Or sign in with social account"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
@@ -29,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewAddress":
             MessageLookupByLibrary.simpleMessage("Add New Address"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "addressLine2":
+            MessageLookupByLibrary.simpleMessage("Address 2 (optional)"),
         "allProducts": MessageLookupByLibrary.simpleMessage("All"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
@@ -39,8 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
+        "country": MessageLookupByLibrary.simpleMessage("Country"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "deleteAddress": MessageLookupByLibrary.simpleMessage("Delete Address"),
         "discount": MessageLookupByLibrary.simpleMessage("Discount"),
@@ -95,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "specification": MessageLookupByLibrary.simpleMessage("Specification"),
         "start_shopping":
             MessageLookupByLibrary.simpleMessage("Start Shopping"),
+        "state": MessageLookupByLibrary.simpleMessage("State"),
         "sublTota": MessageLookupByLibrary.simpleMessage("Sub Total"),
         "tax": MessageLookupByLibrary.simpleMessage("Tax"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
@@ -112,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youCanAlsoLikeThis":
             MessageLookupByLibrary.simpleMessage("You can also like this"),
         "youhaveSpecialPromocode":
-            MessageLookupByLibrary.simpleMessage("You have Special Promocode")
+            MessageLookupByLibrary.simpleMessage("You have Special Promocode"),
+        "zipCode": MessageLookupByLibrary.simpleMessage("Zip Code")
       };
 }

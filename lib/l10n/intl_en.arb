@@ -71,7 +71,13 @@
     "specification": "Specification",
     "youCanAlsoLikeThis": "You can also like this",
     "seeAll": "See All",
-    "enterVoucherCode": "Enter Voucher Code"
+    "enterVoucherCode": "Enter Voucher Code",
+    "BillingAddressIsTheSameAsDeliveryAddress": "Billing address is the same as delivery address",
+    "city": "City",
+    "country": "Country",
+    "state": "State",
+    "zipCode": "Zip Code",
+    "addressLine2": "Address 2 (optional)" 
    
 
     

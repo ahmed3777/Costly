@@ -7,11 +7,13 @@ class CustomButtonBrown extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    this.color,
+    this.color, this.borderRadius, this.mainAxisAlignment,
   });
   final VoidCallback onPressed;
   final String text;
   final Color? color;
+  final double ? borderRadius;
+  final MainAxisAlignment? mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +24,14 @@ class CustomButtonBrown extends StatelessWidget {
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                10,
+                  borderRadius ?? 10,
               ),
             ),
             backgroundColor: color ?? AppColors.brownColor,
           ),
           onPressed: onPressed,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(

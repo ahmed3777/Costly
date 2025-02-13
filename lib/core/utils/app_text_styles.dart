@@ -87,7 +87,10 @@ abstract class TextStyles {
     fontWeight: FontWeight.w300,
     fontSize: 12.sp,
   );
-
+static TextStyle light10 = TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 10.sp,
+  );
   static TextStyle light14 = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: 14.sp,
