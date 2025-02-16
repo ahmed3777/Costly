@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton(
-      {super.key, required this.image, required this.onPressed});
-
+      {super.key, required this.image, required this.onPressed, this.width, this.height});
+  final double? width;
+  final double? height;
   final String image;
   final VoidCallback onPressed;
   @override
@@ -12,8 +13,8 @@ class SocialLoginButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed, // Call the provided callback when tapped
       child: Container(
-        width: 90.w,
-        height: 50.h,
+        width: width ?? 90.w,
+        height: height ?? 50.h,
         decoration: BoxDecoration(
           color: Colors.white, // Background color
           borderRadius: BorderRadius.circular(25), // Rounded corners
@@ -29,9 +30,9 @@ class SocialLoginButton extends StatelessWidget {
         child: Center(
           child: Image.asset(
             image, // Load the image from assets
-            width: 24, // Set the width of the image
-            height: 24, // Set the height of the image
-            fit: BoxFit.contain, // Adjust how the image fits in the container
+            width: width ?? 24, // Set the width of the image
+            height:  height ??24, // Set the height of the image
+            fit: BoxFit.fill, // Adjust how the image fits in the container
           ),
         ),
       ),

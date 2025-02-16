@@ -2,6 +2,7 @@ import 'package:costly/core/errors/failure.dart';
 import 'package:costly/core/helper_functions/helpererror.dart';
 import 'package:costly/core/networking/api_constants.dart';
 import 'package:costly/core/services/api_services.dart';
+import 'package:costly/core/services/shared_preferences_singleton.dart';
 import 'package:costly/features/user_profile/data/models/profile/profile.dart';
 import 'package:costly/features/user_profile/domain/repo/profile_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -15,9 +16,11 @@ class ProfileRepoImp implements ProfileRepo {
   @override
   Future<Either<Failure, Profile>> getUserProfile() async {
     try {
-      final response = await apiService.get(ApiEndPoints.profile);
+      final response = await apiService.get(ApiEndPoints.profile,token: SharedPref.getSecuredString(SharedPrefKeys.userToken));
       final Profile profile = Profile.fromJson(response.data);
-      return right(profile);
+        SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);     
+
+         return right(profile);
     } catch (e) {
       if (e is DioException) {
         return left(handleError(e));

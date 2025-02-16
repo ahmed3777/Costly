@@ -6,9 +6,7 @@ class CheckoutStepsPageView extends StatelessWidget {
     super.key,
     required this.pageController,
   });
-
   final PageController pageController;
-
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
@@ -20,7 +18,6 @@ class CheckoutStepsPageView extends StatelessWidget {
      itemCount: getPages().length,);
   }
 }
-
 List<Widget> getPages() {
   return [
     AddressSection(),

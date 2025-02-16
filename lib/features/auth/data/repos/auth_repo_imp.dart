@@ -70,11 +70,7 @@ class AuthRepoImp implements AuthRepo {
       var userData = LoginResponse.fromJson(response);
       SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
       SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
-      SharedPref.setSecuredString(
-          SharedPrefKeys.userToken, userData.user!.token!);
-      // SharedPref.setData(SharedPrefKeys.userEmail, userData.user!.userEmail);
       // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
-      // return right(UserModel.fromJson(response));
       return right(userData);
     } catch (e) {
       if (e is DioException) {
