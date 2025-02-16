@@ -58,10 +58,10 @@ class CartViewConsumer extends StatelessWidget {
                 SizedBox(height: 100.h),
                 Center(
                     child: SizedBox(
-                  width: 300.w,
-                  child: CustomButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, HomeView.routeName);
+                        width: 300.w,
+                        child: CustomButton(
+                        onPressed: () {
+                       Navigator.pushNamed(context, HomeView.routeName);
                     },
                     text: "Start Shopping",
                     color: AppColors.secondaryColor,

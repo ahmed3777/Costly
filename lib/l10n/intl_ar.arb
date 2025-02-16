@@ -44,7 +44,7 @@
     "deleteAddress": "حذف العنوان",
     "editAddress": "تعديل العنوان",
     "subTotal": "المجموع المتوقع",
-    "tax": "الضريبة",
+    "Shipping": "الشحن",
     "discount": "الخصم",
     "totalPrice": "السعر الكلي",
     "totalAfterDiscount": "المجموع بعد الخصم",

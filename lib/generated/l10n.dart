@@ -500,11 +500,11 @@ class S {
     );
   }
 
-  /// `Tax`
-  String get tax {
+  /// `Shipping`
+  String get Shipping {
     return Intl.message(
-      'Tax',
-      name: 'tax',
+      'Shipping',
+      name: 'Shipping',
       desc: '',
       args: [],
     );

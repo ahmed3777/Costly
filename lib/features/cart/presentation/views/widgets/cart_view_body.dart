@@ -30,7 +30,6 @@ class _CartViewBodyState extends State<CartViewBody> {
       totalPrice = price;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -51,74 +50,93 @@ class _CartViewBodyState extends State<CartViewBody> {
               ),
             ),
             CartViewConsumer(onCartUpdated: updateCartState),
-            SliverToBoxAdapter(child: SizedBox(height: 180.h)),
-          ],
-        ),
-      ),
-      Positioned(
-        bottom: 0,
-        left: 0,
-        right: 0,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Visibility(
-              visible: isCartNotEmpty,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: (16.0)),
-                child: SizedBox(
-                  height: 100.h,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Spacer(),
-                        Text(
-                          "${S.of(context).sublTota}: _____________ $totalPrice\$",
-                          style: TextStyles.regular12,
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Visibility(
+                    visible: isCartNotEmpty,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: (16.0)),
+                      child: SizedBox(
+                        height: 100.h,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Total" ,
+                                style: TextStyles.regular18,
+                              ),
+                              SizedBox(height: 10.h),
+                              Row(
+                                children: [
+                                  Text(
+                                    S.of(context).sublTota,
+                                    style: TextStyles.regular13,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "LE $totalPrice",
+                                    style: TextStyles.light12,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10.h),
+                              Row(
+                                children: [
+                                  Text(
+                                    S.of(context).Shipping,
+                                    style: TextStyles.regular13,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "LE 0",
+                                    style: TextStyles.light12,
+                                  ),
+                                ],
+                              ),
+                            ]),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
+                  Visibility(
+                    visible: isCartNotEmpty,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: (16.0)),
+                      child: CustomTextFormField(
+                        borderSideColor: AppColors.grey,
+                        hintText: S.of(context).enterVoucherCode,
+                        hintTextStyle:TextStyles.light12.copyWith(color: Colors.grey),
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(right: 16, top: 10),
+                          child: Text(
+                            "Apply",
+                            style: TextStyles.light16
+                                .copyWith(color: AppColors.grey),
+                          ),
                         ),
-                        Text(
-                          "${S.of(context).tax}: _____________ 0\$",
-                          style: TextStyles.regular12,
-                        ),
-                        Text(
-                          "${S.of(context).totalPrice}: _____________ $totalPrice\$",
-                          style: TextStyles.regular12,
-                        ),
-                        const Spacer(),
-                      ]),
-                ),
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30.h),
+                  Visibility(
+                    visible: isCartNotEmpty,
+                    child: CustomButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, CheckoutView.routeName);
+                      },
+                      text: "Checkout",
+                      color: AppColors.primaryColor,
+                      bottomLeft: 0,
+                      bottomRight: 0,
+                    ),
+                  )
+                ],
               ),
             ),
-          
-        
-        
-          Visibility(
-            visible: isCartNotEmpty,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: (16.0)),
-              child: CustomTextFormField(hintText: S.of(context).enterVoucherCode,
-              hintTextStyle: TextStyles.regular12.copyWith(color: Colors.grey),
-              suffixIcon:  Padding(
-                padding: const EdgeInsets.only(right: 16 ,top: 10),
-                child: Text("Apply",style: TextStyles.regular12.copyWith(color: AppColors.grey),),
-              ),
-               keyboardType: TextInputType.text,),
-            ),
-          ),  
-              SizedBox(height: 12.h),
-        Visibility(
-          visible: isCartNotEmpty,
-          child: CustomButton(
-            onPressed: () {
-              Navigator.pushNamed(context, CheckoutView.routeName);
-            },
-            text: "Checkout",
-            color: AppColors.primaryColor,
-            bottomLeft: 0,
-            bottomRight: 0,
-          ),
-        )
           ],
         ),
       ),

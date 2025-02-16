@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Billing address is the same as delivery address"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "Or sign in with social account"),
+        "Shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
         "addNewAddress":
@@ -104,7 +105,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start Shopping"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "sublTota": MessageLookupByLibrary.simpleMessage("Sub Total"),
-        "tax": MessageLookupByLibrary.simpleMessage("Tax"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalAfterDiscount":
             MessageLookupByLibrary.simpleMessage("Total After Discount"),

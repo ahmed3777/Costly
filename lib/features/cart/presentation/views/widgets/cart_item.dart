@@ -1,3 +1,5 @@
+import 'package:costly/core/utils/app_text_styles.dart';
+import 'package:costly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CartItem extends StatelessWidget {
@@ -26,18 +28,11 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-          ),
-        ],
       ),
       child: Row(
         children: [
@@ -45,8 +40,8 @@ class CartItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
               productImage!,
-              width: 60.0,
-              height: 60.0,
+              width: 106,
+              height: 101,
               fit: BoxFit.fill,
             ),
           ),
@@ -57,21 +52,12 @@ class CartItem extends StatelessWidget {
               children: [
                 Text(
                   productName!,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyles.light13,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 4.0),
-                Text(
-                  '$totalPrice',
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
+                Text('LE$totalPrice', style: TextStyles.light12),
                 const SizedBox(height: 2.0),
                 Row(
                   children: [
@@ -82,20 +68,17 @@ class CartItem extends StatelessWidget {
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
                         : IconButton(
-                            icon: const Icon(Icons.remove , size: 20.0, ),
+                            icon: const Icon(
+                              Icons.remove,
+                              size: 12,
+                            ),
                             onPressed: () {
                               if (quantity > 1) {
                                 decrementQuantity();
                               }
                             },
                           ),
-                    Text(
-                      "$quantity",
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.grey,
-                      ),
-                    ),
+                    Text("$quantity", style: TextStyles.bold18),
                     isLoading
                         ? const SizedBox(
                             width: 20,
@@ -103,13 +86,28 @@ class CartItem extends StatelessWidget {
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
                         : IconButton(
-                            icon: const Icon(Icons.add, size: 20.0),
+                            icon: const Icon(Icons.add, size: 12),
                             onPressed: incrementQuantity,
                           ),
                     const Spacer(),
-                    IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: onDelete,
+                    Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        color:Colors.red, // Background color (change if needed)
+                        borderRadius:
+                            BorderRadius.circular(5), // Rounded corners
+                      ),
+                      child: IconButton(
+                        icon: Image.asset(Assets.imagesIconDelete,
+                          width: 20, // Adjust size as needed
+                          height: 20,
+                          fit: BoxFit.contain, // Ensures it fits well inside the button
+                        ),
+                        onPressed: onDelete,
+                        padding: EdgeInsets.zero, // Removes extra padding around the image
+                        constraints:BoxConstraints(), // Prevents unwanted stretching
+                      ),
                     ),
                   ],
                 ),

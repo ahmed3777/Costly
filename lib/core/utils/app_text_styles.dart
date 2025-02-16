@@ -19,7 +19,10 @@ abstract class TextStyles {
     fontWeight: FontWeight.normal,
     fontSize: 12.sp,
   );
-
+static TextStyle regular13 = TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 13.sp,
+  );
   static TextStyle regular14 = TextStyle(
     fontWeight: FontWeight.normal,
     fontSize: 14.sp,
@@ -92,6 +95,10 @@ abstract class TextStyles {
   static TextStyle light12 = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: 12.sp,
+  );
+   static TextStyle light13 = TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 13.sp,
   );
 static TextStyle light10 = TextStyle(
     fontWeight: FontWeight.w300,

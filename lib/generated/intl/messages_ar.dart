@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "عنوان الفاتورة هو نفس عنوان التوصيل"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "أو تسجيل الدخول باستخدام حساب التواصل الاجتماعي"),
+        "Shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان"),
         "addNewAddress":
@@ -101,7 +102,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("الحجم"),
         "specification": MessageLookupByLibrary.simpleMessage("المواصفات"),
         "start_shopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
-        "tax": MessageLookupByLibrary.simpleMessage("الضريبة"),
         "total": MessageLookupByLibrary.simpleMessage("المجموع"),
         "totalAfterDiscount":
             MessageLookupByLibrary.simpleMessage("المجموع بعد الخصم"),

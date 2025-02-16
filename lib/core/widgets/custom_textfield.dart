@@ -14,7 +14,7 @@ class CustomTextFormField extends StatelessWidget {
       this.validatorMassege,
       this.hintTextStyle,
       this.cursorColor,
-      this.textStyle, this.validator});
+      this.textStyle, this.validator, this.borderSideColor});
 
   final String hintText;
   final TextInputType keyboardType;
@@ -25,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
   final String?  validatorMassege;
   final TextStyle? hintTextStyle;
   final TextStyle? textStyle;
+  final Color? borderSideColor;
   final String? Function(String?)? validator; // Add this line
 
   @override
@@ -57,7 +58,7 @@ class CustomTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 width: 1, // Set the width of the border
-                color: AppColors.secondaryColor
+                color: borderSideColor ?? AppColors.secondaryColor
                     .withOpacity(0.5), // Set the color of the border
               )),
           border: OutlineInputBorder(
@@ -67,7 +68,7 @@ class CustomTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 width: 1, // Set the width of the border
-                color: AppColors.secondaryColor
+                color: borderSideColor ?? AppColors.secondaryColor
                     .withOpacity(0.5), // Set the color of the border
               )),
           hintText: hintText,

@@ -48,7 +48,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
     }
     return null;
   }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
