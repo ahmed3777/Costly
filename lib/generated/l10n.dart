@@ -839,6 +839,126 @@ class S {
       args: [],
     );
   }
+
+  /// `By Master Card`
+  String get byMasterCard {
+    return Intl.message(
+      'By Master Card',
+      name: 'byMasterCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By Credit Card`
+  String get byCreditCard {
+    return Intl.message(
+      'By Credit Card',
+      name: 'byCreditCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By Paypal`
+  String get byPaypal {
+    return Intl.message(
+      'By Paypal',
+      name: 'byPaypal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name on card`
+  String get nameOnCard {
+    return Intl.message(
+      'Name on card',
+      name: 'nameOnCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card Number`
+  String get cardNumber {
+    return Intl.message(
+      'Card Number',
+      name: 'cardNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiry Date`
+  String get expiryDate {
+    return Intl.message(
+      'Expiry Date',
+      name: 'expiryDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cvv`
+  String get cvv {
+    return Intl.message(
+      'Cvv',
+      name: 'cvv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get summary {
+    return Intl.message(
+      'Summary',
+      name: 'summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get change {
+    return Intl.message(
+      'Change',
+      name: 'change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get pay {
+    return Intl.message(
+      'Pay',
+      name: 'pay',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

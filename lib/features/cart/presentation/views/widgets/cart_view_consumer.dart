@@ -18,7 +18,7 @@ class CartViewConsumer extends StatelessWidget {
     return BlocConsumer<CartCubit, CartState>(
       listenWhen: (previous, current) =>
           current is CartSuccess || current is CartFailure,
-      listener: (context, state) {
+           listener: (context, state) {
         if (state is CartSuccess && onCartUpdated != null) {
           final cart = state.cart.payload;
           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -45,7 +45,6 @@ class CartViewConsumer extends StatelessWidget {
           final cart = state.cart.payload;
           final items = cart.items ?? [];
           if (items.isEmpty) {
-            print("Cart is empty, showing empty cart image");
             return SliverToBoxAdapter(
               child: Column(children: [
                 Center(

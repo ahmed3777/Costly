@@ -1,5 +1,8 @@
 import 'package:costly/features/checkout/presentation/views/widgets/address_section.dart';
+import 'package:costly/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:flutter/material.dart';
+
+import 'summery_section.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
   const CheckoutStepsPageView({
@@ -17,11 +20,11 @@ class CheckoutStepsPageView extends StatelessWidget {
      },
      itemCount: getPages().length,);
   }
-}
-List<Widget> getPages() {
+  List<Widget> getPages() {
   return [
     AddressSection(),
-    const Placeholder(),
-    const Placeholder(),
+    PaymentSection(),
+    SummerySection(pageController: pageController,),
   ];
+}
 }

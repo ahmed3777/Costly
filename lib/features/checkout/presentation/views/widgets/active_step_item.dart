@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActiveStepItem extends StatelessWidget {
-  const ActiveStepItem({super.key, required this.title});
-  final String title;
+  const ActiveStepItem({super.key,  this.title});
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +37,7 @@ class ActiveStepItem extends StatelessWidget {
         ),
         
          SizedBox(height: 5.h),
-         Text(title,style: TextStyles.regular12,),
+         Text(title ?? "",style: TextStyles.regular12,),
     ]);
  
   }

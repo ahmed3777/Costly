@@ -1,3 +1,4 @@
+import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_check_box.dart';
 import 'package:costly/core/widgets/custom_textfield.dart';
@@ -10,56 +11,85 @@ class AddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: (16),vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
-          SizedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CustomCheckBox(isChecked: true, onChecked: (value) {}), 
-                 SizedBox(width: 5.w,),
-                Expanded(child: Text (S.of(context).BillingAddressIsTheSameAsDeliveryAddress, style:TextStyles.regular14, overflow: TextOverflow.ellipsis, maxLines: 2,)),
-              ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: (16),vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children:[
+            SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomCheckBox(isChecked: true, onChecked: (value) {
+                    
+                  },isCheckedColor: Colors.red), 
+                  SizedBox(width: 5.w,),
+                  Expanded(child: Text (S.of(context).BillingAddressIsTheSameAsDeliveryAddress, 
+                  style:TextStyles.regular14, overflow: TextOverflow.ellipsis, maxLines: 2,)),
+                ],
+              ),
             ),
-          ),
-              SizedBox(height: 20.h,),
-              Form (child: 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                   Text(S.of(context).address, style: TextStyles.light12,),
-                   SizedBox(height: 2.h),
-                   CustomTextFormField(hintText: S.of(context).address,
-                   hintTextStyle: TextStyles.light10.copyWith(color: Colors.black)
-                    ,keyboardType: TextInputType.streetAddress,),
-                   SizedBox(height: 10.h),
-                   CustomTextFormField(hintText: S.of(context).addressLine2,
-                   hintTextStyle: TextStyles.light10.copyWith(color: Colors.black)
-                   , keyboardType: TextInputType.streetAddress,),
-                   SizedBox(height: 10.h),
-                   CustomTextFormField(hintText: S.of(context).city, 
-                   hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
-                   keyboardType: TextInputType.streetAddress,),
-                   SizedBox(height: 10.h),
-                   Row(
-                    children: [
-                      Expanded(child: CustomTextFormField(hintText: S.of(context).state,
-                       hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
-                       keyboardType: TextInputType.streetAddress,)),
-                      SizedBox(width: 10.w,),
-                      Expanded(child: CustomTextFormField(hintText: S.of(context).country, 
+                SizedBox(height: 20.h,),
+                Form (
+                  child: 
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Text(S.of(context).address, style: TextStyles.light12,),
+                      SizedBox(height: 2.h),
+                      CustomTextFormField(hintText: "1234 Main St",
+                     hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
+                     textStyle:  TextStyles.light10.copyWith(color: Colors.black),
+                     borderSideColor: AppColors.grey,
+                     keyboardType: TextInputType.streetAddress,),
+                      SizedBox(height: 10.h),
+                      Text(S.of(context).addressLine2, style: TextStyles.light12,),
+                      SizedBox(height: 2.h),
+                      CustomTextFormField(hintText:"1234 Main St",
+                      borderSideColor: AppColors.grey,
+                      textStyle:  TextStyles.light10.copyWith(color: Colors.black),
                       hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
-                      keyboardType: TextInputType.streetAddress,)),
-                    ],
-                   ),
-      
-              ]),
-                
-              )
-        ],
+                      keyboardType: TextInputType.streetAddress,),
+                      SizedBox(height: 10.h),
+                      Text(S.of(context).city, style: TextStyles.light12,),
+                      SizedBox(height: 2.h), 
+                      CustomTextFormField(hintText: "New York", 
+                     borderSideColor: AppColors.grey,
+                     textStyle:  TextStyles.light10.copyWith(color: Colors.black),
+                     hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
+                     keyboardType: TextInputType.streetAddress,),
+                      SizedBox(height: 10.h),
+                      Row(
+                      children: [
+                        Expanded(child: Text(S.of(context).state, style: TextStyles.light12,)),
+                        SizedBox(width: 10.w,),
+                        Expanded(child: Text(S.of(context).country, style: TextStyles.light12,)),
+                      ],
+                      ),
+                     Row(
+                      children: [
+                       // Text(S.of(context).state, style: TextStyles.light12,),
+                        Expanded(child: CustomTextFormField(hintText: "1234 Main St",
+                         hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
+                         textStyle:  TextStyles.light10.copyWith(color: Colors.black),
+                         borderSideColor: AppColors.grey,
+                         keyboardType: TextInputType.streetAddress,)
+                         ),
+                        SizedBox(width: 10.w,),
+                       // Text(S.of(context).country, style: TextStyles.light12,),
+                        Expanded(child: CustomTextFormField(hintText: "Egypt", 
+                        borderSideColor: AppColors.grey,
+                        textStyle:  TextStyles.light10.copyWith(color: Colors.black),
+                        hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
+                        keyboardType: TextInputType.streetAddress,)),
+                        ],
+                      ),
+                ]),
+                  
+                )
+          ],
+        ),
       ),
     );
   }

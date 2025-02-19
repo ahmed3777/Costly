@@ -8,7 +8,6 @@ class CheckoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   return SafeArea(
         child: Scaffold(
       key: scaffoldKey,

@@ -74,6 +74,10 @@ class Assets {
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
 
+  /// Assets for imagesMastercard
+  /// assets/images/mastercard.png
+  static const String imagesMastercard = "assets/images/mastercard.png";
+
   /// Assets for imagesNotification
   /// assets/images/notification.svg
   static const String imagesNotification = "assets/images/notification.svg";

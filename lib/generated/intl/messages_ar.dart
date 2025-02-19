@@ -39,9 +39,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
+        "back": MessageLookupByLibrary.simpleMessage("السابق"),
         "businessName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
+        "byCreditCard":
+            MessageLookupByLibrary.simpleMessage("بواسطة بطاقة الائتمان"),
+        "byMasterCard":
+            MessageLookupByLibrary.simpleMessage("بواسطة ماستركارد"),
+        "byPaypal": MessageLookupByLibrary.simpleMessage("بواسطة Paypal"),
+        "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "cart": MessageLookupByLibrary.simpleMessage("سلة المشتريات"),
         "category": MessageLookupByLibrary.simpleMessage("التصنيف"),
+        "change": MessageLookupByLibrary.simpleMessage("تغيير"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
@@ -50,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
         "country": MessageLookupByLibrary.simpleMessage("الدولة"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
+        "cvv": MessageLookupByLibrary.simpleMessage("رمز CVV"),
         "deleteAddress": MessageLookupByLibrary.simpleMessage("حذف العنوان"),
         "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
         "discover": MessageLookupByLibrary.simpleMessage("اكتشف"),
@@ -57,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage(" البريد الإلكتروني"),
         "enterVoucherCode":
             MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
+        "expiryDate": MessageLookupByLibrary.simpleMessage("تاريخ انتهاء "),
         "filter": MessageLookupByLibrary.simpleMessage("تصنيف حسب"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -70,13 +80,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "mostPopular": MessageLookupByLibrary.simpleMessage("الاكثر شيوعا"),
         "mostRecently": MessageLookupByLibrary.simpleMessage("الاحدث"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "nameOnCard": MessageLookupByLibrary.simpleMessage("الاسم على البطاقة"),
         "newPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "notificationsPassword":
             MessageLookupByLibrary.simpleMessage("الاشعارات,كلمة المرور"),
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "pay": MessageLookupByLibrary.simpleMessage("الدفع"),
         "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
@@ -102,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("الحجم"),
         "specification": MessageLookupByLibrary.simpleMessage("المواصفات"),
         "start_shopping": MessageLookupByLibrary.simpleMessage("ابدأ التسوق"),
+        "summary": MessageLookupByLibrary.simpleMessage("الملخص"),
         "total": MessageLookupByLibrary.simpleMessage("المجموع"),
         "totalAfterDiscount":
             MessageLookupByLibrary.simpleMessage("المجموع بعد الخصم"),

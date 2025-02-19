@@ -77,7 +77,23 @@
     "country": "Country",
     "state": "State",
     "zipCode": "Zip Code",
-    "addressLine2": "Address 2 (optional)" 
+    "addressLine2": "Address 2 (optional)",
+    "byMasterCard" : "By Master Card",
+    "byCreditCard": "By Credit Card",
+    "byPaypal":"By Paypal",
+    "nameOnCard": "Name on card",
+    "cardNumber" :"Card Number",
+    "expiryDate" :"Expiry Date",
+    "cvv":"Cvv", 
+    "summary": "Summary",
+    "change": "Change",
+    "back": "Back",
+    "next": "Next",
+    "pay": "Pay"
+    
+
+
+
    
 
     

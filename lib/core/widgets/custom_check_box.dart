@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 class CustomCheckBox extends StatelessWidget {
   const CustomCheckBox(
-      {super.key, required this.isChecked, required this.onChecked});
+      {super.key, required this.isChecked, required this.onChecked, this.isCheckedColor});
   final bool isChecked;
   final ValueChanged<bool> onChecked;
+  final Color? isCheckedColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +18,7 @@ class CustomCheckBox extends StatelessWidget {
         height: 24,
         duration: const Duration(milliseconds: 100),
         decoration: ShapeDecoration(
-          color: isChecked ? AppColors.primaryColor : Colors.white,
+          color:  isChecked ? isCheckedColor ?? AppColors.primaryColor : Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 1.50,

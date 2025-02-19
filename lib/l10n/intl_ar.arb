@@ -75,6 +75,20 @@
     "street": "الشارع",
     "country": "الدولة",
     "zipCode": "الرمز البريدي",
-    "addressLine2" : "العنوان  2 (اختياري)" 
+    "addressLine2" : "العنوان  2 (اختياري)" ,
+    "byMasterCard" : "بواسطة ماستركارد",
+    "byCreditCard": "بواسطة بطاقة الائتمان",
+    "byPaypal":"بواسطة Paypal",
+    "nameOnCard": "الاسم على البطاقة",
+    "cardNumber" :"رقم البطاقة",
+    "expiryDate" :"تاريخ انتهاء ",
+    "cvv":"رمز CVV",
+    "summary": "الملخص",
+    "change": "تغيير",
+    "back": "السابق",
+    "next": "التالي",
+    "pay": "الدفع"
+
+
 
 }

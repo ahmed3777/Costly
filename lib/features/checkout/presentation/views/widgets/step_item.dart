@@ -13,7 +13,7 @@ class StepItem extends StatelessWidget {
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 300),
       crossFadeState: isActive ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-      firstChild: ActiveStepItem(title: text,),
+      firstChild: ActiveStepItem(title: text, ),
       secondChild: InactiveStepItem(title: text,),
     );
   }

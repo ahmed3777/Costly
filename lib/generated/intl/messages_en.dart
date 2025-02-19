@@ -39,9 +39,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "businessName": MessageLookupByLibrary.simpleMessage("Business Name"),
+        "byCreditCard": MessageLookupByLibrary.simpleMessage("By Credit Card"),
+        "byMasterCard": MessageLookupByLibrary.simpleMessage("By Master Card"),
+        "byPaypal": MessageLookupByLibrary.simpleMessage("By Paypal"),
+        "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
@@ -50,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "costlyLive": MessageLookupByLibrary.simpleMessage("Costly Live"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "cvv": MessageLookupByLibrary.simpleMessage("Cvv"),
         "deleteAddress": MessageLookupByLibrary.simpleMessage("Delete Address"),
         "discount": MessageLookupByLibrary.simpleMessage("Discount"),
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
@@ -57,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterVoucherCode":
             MessageLookupByLibrary.simpleMessage("Enter Voucher Code"),
+        "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
@@ -71,11 +79,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "mostRecently": MessageLookupByLibrary.simpleMessage("Most Recently"),
         "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nameOnCard": MessageLookupByLibrary.simpleMessage("Name on card"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "notificationsPassword":
             MessageLookupByLibrary.simpleMessage("Notifications,Password"),
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
@@ -105,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start Shopping"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "sublTota": MessageLookupByLibrary.simpleMessage("Sub Total"),
+        "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalAfterDiscount":
             MessageLookupByLibrary.simpleMessage("Total After Discount"),
