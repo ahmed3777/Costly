@@ -36,7 +36,7 @@ class _CategoryViewBodyState extends State<CategoryViewBody> {
           ],
         ),
       ),
-      VerticalGraidelOfProductCard(),
+          VerticalGraidelOfProductCard(),
     ]);
   }
 }

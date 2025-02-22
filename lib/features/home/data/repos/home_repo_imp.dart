@@ -81,4 +81,19 @@ class HomeRepoImp implements HomeRepo {
       }
     }
   }
+  
+  @override
+  Future<Either<Failure, MainProductsResponse>> getProductsByCategory({required String categoryId}) async {
+       try {
+            final response = await apiService.get("products?categories[]=$categoryId",);
+            final categories = MainProductsResponse.fromJson(response.data);
+            return right(categories);
+          } catch (e) {
+             if (e is DioException) {
+            return left(handleError(e));
+            } else {
+              return left(ServerFailure(e.toString()));
+            }     
+      }
+  }
 }

@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressSection extends StatelessWidget {
   const AddressSection({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,7 +21,6 @@ class AddressSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CustomCheckBox(isChecked: true, onChecked: (value) {
-                    
                   },isCheckedColor: Colors.red), 
                   SizedBox(width: 5.w,),
                   Expanded(child: Text (S.of(context).BillingAddressIsTheSameAsDeliveryAddress, 

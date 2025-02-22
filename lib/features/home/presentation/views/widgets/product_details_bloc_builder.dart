@@ -18,9 +18,7 @@ class _ProductDetailsBlocBuilderState extends State<ProductDetailsBlocBuilder> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<SingleproductCubit>()
-        .getSingleProduct(widget.productId, widget.productVariationId);
+    context .read<SingleproductCubit>().getSingleProduct(widget.productId, widget.productVariationId);
   }
 
   @override

@@ -24,7 +24,7 @@ class Product {
   dynamic colorId;
   dynamic categorizationId;
   dynamic classificationId;
-  String? creatorId;
+  String creatorId;
   dynamic deletedAt;
   String? createdAt;
   String? updatedAt;
@@ -63,7 +63,7 @@ class Product {
     this.colorId,
     this.categorizationId,
     this.classificationId,
-    this.creatorId,
+    required this.creatorId,
     this.deletedAt,
     this.createdAt,
     this.updatedAt,
@@ -103,7 +103,7 @@ class Product {
         colorId: json['color_id'] as dynamic,
         categorizationId: json['categorization_id'] as dynamic,
         classificationId: json['classification_id'] as dynamic,
-        creatorId: json['creator_id'] as String?,
+        creatorId: json['creator_id'] as String,
         deletedAt: json['deleted_at'] as dynamic,
         createdAt: json['created_at'] as String?,
         updatedAt: json['updated_at'] as String?,

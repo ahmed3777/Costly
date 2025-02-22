@@ -16,3 +16,8 @@ final class ProductFailure extends ProductState {
   final String errMessage;
   ProductFailure(this.errMessage);
 }
+
+final class ProductsByCategorySuccess extends ProductState {
+  final MainProductsResponse products;
+  ProductsByCategorySuccess(this.products);
+}

@@ -1,6 +1,6 @@
+import 'package:costly/features/home/data/models/products/media_link.dart';
 import 'package:costly/features/home/data/models/products/variation.dart';
 import 'package:costly/features/user_profile/data/models/favorites/favorites/main_variation.dart';
-import 'package:costly/features/user_profile/data/models/favorites/favorites/media_link.dart';
 
 class RelatedProduct {
   String id;

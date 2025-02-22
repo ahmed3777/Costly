@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:costly/core/helper_functions/is_arbic.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
@@ -48,10 +49,35 @@ class ProductDetailsViewBody extends StatelessWidget {
               SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * .3,
-                  child: Image.network(
-                    productDetails.payload!.product!.mainMediaUrl,
-                    fit: BoxFit.cover,
-                  )),
+                  child:productDetails.payload!.product!.mediaLinks != null &&
+                        productDetails.payload!.product!.mediaLinks!.isNotEmpty
+                    ? CarouselSlider(
+                        options: CarouselOptions(
+                          height: MediaQuery.of(context).size.height * .3,
+                          autoPlay: false,
+                          viewportFraction: 1.0,
+                          enableInfiniteScroll: true,
+                        ),
+                        items: productDetails.payload!.product!.mediaLinks!
+                            .map((mediaLink) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  mediaLink.link ??
+                                      'https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg',
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      )
+                    : Center(
+                        child: Text('No images available'),
+                      ),
+              ),
               SizedBox(
                 height: 10.h,
               ),

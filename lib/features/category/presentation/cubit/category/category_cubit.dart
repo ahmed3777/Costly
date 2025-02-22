@@ -1,4 +1,3 @@
-import 'package:costly/features/category/data/models/single_category/single_category.dart';
 import 'package:costly/features/category/domain/repos/category_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:costly/features/category/data/models/categories_model.dart';
@@ -21,16 +20,4 @@ class CategoryCubit extends Cubit<CategoryState> {
     );
   }
 
-  Future<void> getSingleCategory({required String categoryId}) async {
-    emit(CategoryLoading());
-    final result = await categoryRepo.getSingleCategory(categoryId: categoryId);
-    result.fold(
-      (failure) {
-        emit(CategoryFailure(failure.errMessage));
-      },
-      (singleCategory) {
-        emit(SingleCategorySuccess(singleCategory));
-      },
-    );
-  }
 }

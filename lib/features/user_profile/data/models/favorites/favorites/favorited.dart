@@ -1,5 +1,6 @@
+import 'package:costly/features/home/data/models/products/media_link.dart';
+
 import 'main_variation.dart';
-import 'media_link.dart';
 
 class Favorited {
   String? id;

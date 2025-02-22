@@ -1,12 +1,13 @@
-import 'package:costly/core/utils/assets.dart';
-import 'package:costly/core/widgets/add_to_cart_button.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:costly/core/utils/app_text_styles.dart';
+import 'package:costly/features/home/data/models/products/media_link.dart';
 import 'package:costly/features/home/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/app_text_styles.dart';
+import 'add_to_cart_button.dart';
 
 class ProductCard extends StatelessWidget {
-  final String? imageUrl;
+  final List<MediaLink>? mediaLinks;
   final String title;
   final int? salePrice;
   final int? originalPrice;
@@ -15,7 +16,7 @@ class ProductCard extends StatelessWidget {
 
   const ProductCard({
     super.key,
-    required this.imageUrl,
+    required this.mediaLinks,
     required this.title,
     required this.salePrice,
     required this.productId,
@@ -63,15 +64,31 @@ class ProductCard extends StatelessWidget {
                 width: cardWidth,
                 height: imageHeight,
                 decoration: BoxDecoration(
-                  color: Color(
-                      0xFFC4C4C4), // Default background if image loading fails
+                  color: Color(0xFFC4C4C4), // Default background if image loading fails
                   borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        imageUrl ?? Assets.imagesBag), // Fallback URL if empty
-                    fit: BoxFit.cover,
-                  ),
                 ),
+                child: mediaLinks != null && mediaLinks!.isNotEmpty
+                    ? CarouselSlider(
+                        options: CarouselOptions(
+                          height: imageHeight,
+                          autoPlay: false,
+                          enableInfiniteScroll: false,
+                          viewportFraction: 1.0,
+                        ),
+                        items: mediaLinks!.map((mediaLink) {
+                          return Container(
+                            width: cardWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                image: NetworkImage( mediaLink.link ?? 'https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      )
+                    : Center(child: Text('No images available')),
               ),
             ),
 

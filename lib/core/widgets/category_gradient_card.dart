@@ -1,6 +1,7 @@
 import 'package:costly/core/widgets/custom_gradien_card.dart';
 import 'package:costly/features/category/data/models/categories_model.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
+import 'package:costly/features/category/presentation/views/products_by_category_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,19 +26,23 @@ class CategoryGradientCard extends StatelessWidget {
           return SizedBox(
             height: 120.h,
             child: ListView.builder(
-              itemBuilder: (context, index) => GradientCard(
-                imageUrl: categories[index].mainMediaUrl ?? "",
-                text: categories[index].enName ?? "",
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, ProductsByCategoryView.routeName,
+                      arguments: {'categoryId': categories[index].id});
+                },
+                child: GradientCard(
+                  imageUrl: categories[index].mainMediaUrl ?? "",
+                  text: categories[index].enName ?? "",
+                ),
               ),
               itemCount: categories.length,
               scrollDirection: Axis.horizontal,
             ),
           );
         }
-        return GradientCard(
-            text: "No Data",
-            imageUrl:
-                "https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg");
+        return
+            const Center(child: Text("No categories available"));
       },
     );
   }

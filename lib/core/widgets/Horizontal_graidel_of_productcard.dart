@@ -1,5 +1,4 @@
 import 'package:costly/core/helper_functions/is_arbic.dart';
-import 'package:costly/core/utils/assets.dart';
 import 'package:costly/core/widgets/product_card.dart';
 import 'package:costly/features/home/data/models/product_details/related_product.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +23,10 @@ class HorizontalListOfProductCard extends StatelessWidget {
           return ProductCard(
             productId: relatedProduct[index].id,
             productVariationId: relatedProduct[index].mainVariation?.id ?? '',
-            imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
-                ? relatedProduct[index].mediaLinks![0].link
-                : Assets.imagesBag,
+            mediaLinks: relatedProduct[index].mediaLinks ,
+            // imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
+            //     ? relatedProduct[index].mediaLinks![0].link
+            //     : Assets.imagesBag,
             // Replace with an actual fallback image URL
             title: title,
             salePrice:

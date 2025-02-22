@@ -17,4 +17,9 @@ abstract class HomeRepo {
   });
   Future<Either<Failure, ProductDetails>> getSingleProduct(
       String productId, String productVariationId);
+
+  Future<Either<Failure,MainProductsResponse >> getProductsByCategory( {required String categoryId});
+
+
 }
+

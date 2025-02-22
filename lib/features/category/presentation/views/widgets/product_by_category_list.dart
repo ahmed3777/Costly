@@ -5,12 +5,13 @@ import 'package:costly/features/home/presentation/cubits/product/product_cubit.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class VerticalGraidelOfProductCard extends StatelessWidget {
-  const VerticalGraidelOfProductCard({super.key});
+class ProductByCategoryList extends StatelessWidget {
+  const ProductByCategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
+    return BlocBuilder<ProductCubit, ProductState>
+    (builder: (context, state) {
       if (state is ProductLoading) {
         return const SliverToBoxAdapter(
           child: Center(child: CircularProgressIndicator()),
@@ -21,7 +22,7 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
           child: Center(child: Text(state.errMessage)),
         );
       }
-      if (state is ProductSuccess) {
+      if (state is ProductsByCategorySuccess) {
         List<Product>? product = state.products.product;
         // Handle case when the products list is null or empty
         if (product == null || product.isEmpty) {
@@ -44,7 +45,8 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
                   productId: product[index].id,
                   productVariationId: product[index].mainVariation!.id,
                   mediaLinks: product[index].mediaLinks,
-                  title: isArabic()? product[index].arName
+                      title: isArabic()
+                      ? product[index].arName
                       : product[index].enName,
                   salePrice: product[index].mainVariation!.priceAfterDiscount,
                   originalPrice: product[index].mainVariation!.price,

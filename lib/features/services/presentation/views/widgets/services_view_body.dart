@@ -15,7 +15,8 @@ class ServicesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
+    return
+     ListView(children: [
       CustomHomeAppBar(
         scaffoldKey: scaffoldKey,
         centerText: S.of(context).services,

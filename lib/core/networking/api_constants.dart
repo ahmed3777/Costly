@@ -15,6 +15,7 @@ class ApiEndPoints {
   static const String incrementQuantity = 'carts/increment-quantity';
   static const String decrementQuantity = 'carts/decrement-quantity';
   static const String updateCart = 'carts/update';
+  static const String checkout = 'carts/checkout';
 }
 
 class ApiErrors {

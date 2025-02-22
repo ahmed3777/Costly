@@ -23,8 +23,7 @@ class CartViewConsumer extends StatelessWidget {
           final cart = state.cart.payload;
           WidgetsBinding.instance.addPostFrameCallback((_) {
             onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
-            print(
-                "Cart updated: hasItems=${cart.items!.isNotEmpty}, totalPrice=${cart.totalPrice}");
+            print("Cart updated: hasItems=${cart.items!.isNotEmpty},totalPrice=${cart.totalPrice}");
           });
         }
       },

@@ -51,6 +51,8 @@ void setupGetIt() {
   getIt.registerFactory<SingleproductCubit>(
       () => SingleproductCubit(getIt<HomeRepo>()));
 
+
+
   ///category
   getIt.registerLazySingleton<CategoryRepo>(() => getIt<CategoryRepoImp>());
   getIt.registerFactory<CategoryCubit>(

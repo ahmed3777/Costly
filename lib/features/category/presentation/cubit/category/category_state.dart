@@ -11,10 +11,6 @@ final class CategorySuccess extends CategoryState {
   CategorySuccess(this.category);
 }
 
-final class SingleCategorySuccess extends CategoryState {
-  final SingleCategory singleCategory;
-  SingleCategorySuccess(this.singleCategory);
-}
 
 final class CategoryFailure extends CategoryState {
   final String message;
