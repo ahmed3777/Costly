@@ -1,5 +1,6 @@
-import 'package:costly/features/home/presentation/cubits/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/home/presentation/views/widgets/product_details_view_body.dart';
+import 'package:costly/features/products/presentation/cubit/product/single_product/singleproduct_cubit.dart';
+import 'package:costly/features/products/presentation/cubit/product/single_product/singleproduct_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

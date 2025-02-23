@@ -1,7 +1,7 @@
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/widgets/custom_drawer.dart';
-import 'package:costly/features/home/presentation/cubits/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/home/presentation/views/widgets/product_details_bloc_builder.dart';
+import 'package:costly/features/products/presentation/cubit/product/single_product/singleproduct_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
