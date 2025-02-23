@@ -8,6 +8,10 @@ import 'package:costly/features/cart/domain/repos/cart_repo.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/category/data/repos_imp/category_repo_imp.dart';
 import 'package:costly/features/category/domain/repos/category_repo.dart';
+import 'package:costly/features/products/data/repos/products_repo_imp.dart';
+import 'package:costly/features/products/domain/products_repo.dart';
+import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
+import 'package:costly/features/products/presentation/cubit/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/service_detail/service_details_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signincubit/cubit/signin_cubit.dart';
@@ -16,8 +20,6 @@ import 'package:costly/features/home/data/repos/home_repo_imp.dart';
 import 'package:costly/features/home/domin/repos/home_repo.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
-import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
-import 'package:costly/features/home/presentation/cubits/product/single_product/singleproduct_cubit.dart';
 import 'package:costly/features/user_profile/data/repos/profile_repo_imp.dart';
 import 'package:costly/features/user_profile/domain/repo/profile_repo.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
@@ -47,9 +49,17 @@ void setupGetIt() {
   getIt.registerLazySingleton<HomeRepoImp>(
       () => HomeRepoImp(apiService: getIt<ApiService>()));
   getIt.registerFactory<BannerCubit>(() => BannerCubit(getIt<HomeRepo>()));
-  getIt.registerFactory<ProductCubit>(() => ProductCubit(getIt<HomeRepo>()));
+
+  ///products
+  getIt.registerLazySingleton<ProductsRepo>(() => getIt<ProductsRepoImp>());
+  getIt.registerLazySingleton<ProductsRepoImp>(
+        () => ProductsRepoImp(
+        apiService: getIt<ApiService>(),
+       ),
+  );
+  getIt.registerFactory<ProductCubit>(() => ProductCubit(getIt<ProductsRepo>()));
   getIt.registerFactory<SingleproductCubit>(
-      () => SingleproductCubit(getIt<HomeRepo>()));
+      () => SingleproductCubit(getIt<ProductsRepo>()));
 
 
 

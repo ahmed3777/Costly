@@ -5,7 +5,7 @@ import 'package:costly/features/auth/presentation/views/widgets/sign_up_form_fei
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/category/data/models/single_category/single_category.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
-import 'package:costly/features/category/presentation/views/products_by_category_view.dart';
+import 'package:costly/features/products/presentation/views/products_by_category_view.dart';
 import 'package:costly/features/checkout/presentation/views/checkout_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
@@ -16,7 +16,7 @@ import 'package:costly/features/user_profile/presentation/views/user_setting.dar
 import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/views/home_view.dart';
-import '../../features/home/presentation/views/product_details_view.dart';
+import '../../features/products/presentation/views/product_details_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {

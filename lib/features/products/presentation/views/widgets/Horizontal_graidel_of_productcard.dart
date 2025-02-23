@@ -1,6 +1,6 @@
 import 'package:costly/core/helper_functions/is_arbic.dart';
-import 'package:costly/core/widgets/product_card.dart';
-import 'package:costly/features/home/data/models/product_details/related_product.dart';
+import 'package:costly/features/products/presentation/views/widgets/product_card.dart';
+import 'package:costly/features/products/data/models/product_details/related_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

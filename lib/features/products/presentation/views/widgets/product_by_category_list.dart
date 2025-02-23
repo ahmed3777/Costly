@@ -1,7 +1,8 @@
 import 'package:costly/core/helper_functions/is_arbic.dart';
-import 'package:costly/core/widgets/product_card.dart';
-import 'package:costly/features/home/data/models/products/product.dart';
-import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
+import 'package:costly/features/products/data/models/products/product.dart';
+import 'package:costly/features/products/presentation/views/widgets/product_card.dart';
+import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
+import 'package:costly/features/products/presentation/cubit/product/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

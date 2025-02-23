@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
-import 'package:costly/features/home/data/models/products/media_link.dart';
-import 'package:costly/features/home/presentation/views/product_details_view.dart';
+import 'package:costly/features/products/data/models/products/media_link.dart';
+import 'package:costly/features/products/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 
-import 'add_to_cart_button.dart';
+import '../../../../../core/widgets/add_to_cart_button.dart';
 
 class ProductCard extends StatelessWidget {
   final List<MediaLink>? mediaLinks;

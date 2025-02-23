@@ -1,5 +1,5 @@
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
-import 'package:costly/features/category/presentation/views/widgets/product_by_category_list.dart';
+import 'package:costly/features/products/presentation/views/widgets/product_by_category_list.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,13 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:costly/features/home/data/models/products/main_products_response.dart';
-import 'package:costly/features/home/domin/repos/home_repo.dart';
-import 'package:meta/meta.dart';
+import 'package:costly/features/products/domain/products_repo.dart';
+import 'package:costly/features/products/presentation/cubit/product/product_state.dart';
 
-part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
-  ProductCubit(this.homeRepo) : super(ProductInitial());
-  final HomeRepo homeRepo;
+  ProductCubit(this.productsRepo) : super(ProductInitial());
+  final ProductsRepo productsRepo;
 
   Future<void> getProducts({
     bool? mostPopular,
@@ -17,7 +15,7 @@ class ProductCubit extends Cubit<ProductState> {
     bool? priceHigh,
   }) async {
     emit(ProductLoading());
-    final result = await homeRepo.getProducts(
+    final result = await productsRepo.getProducts(
       mostPopular: mostPopular,
       mostRecently: mostRecently,
       highestRated: highestRated,
@@ -36,7 +34,7 @@ class ProductCubit extends Cubit<ProductState> {
 
     Future <void> getProductsByCategory({required String categoryId}) async {
     emit(ProductLoading());
-    final result = await homeRepo.getProductsByCategory(categoryId: categoryId);
+    final result = await productsRepo.getProductsByCategory(categoryId: categoryId);
     result.fold(
       (failure) {
         emit(ProductFailure(failure.errMessage));

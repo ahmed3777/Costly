@@ -1,7 +1,7 @@
-import 'package:costly/features/home/data/models/products/product.dart';
 
 import 'links.dart';
 import 'meta.dart';
+import 'product.dart';
 
 class MainProductsResponse {
   List<Product>? product;

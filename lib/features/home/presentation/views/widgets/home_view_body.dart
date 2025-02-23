@@ -1,10 +1,10 @@
 import 'package:costly/core/helper_functions/is_arbic.dart';
 import 'package:costly/core/widgets/category_gradient_card.dart';
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
-import 'package:costly/core/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/core/widgets/row_text_space_between.dart';
 import 'package:costly/core/widgets/services_gradien_card.dart';
 import 'package:costly/features/home/presentation/views/widgets/featured_carousel.dart';
+import 'package:costly/features/products/presentation/views/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

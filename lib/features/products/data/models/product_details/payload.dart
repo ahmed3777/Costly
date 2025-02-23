@@ -1,7 +1,6 @@
-import 'package:costly/features/home/data/models/product_details/child.dart';
-import 'package:costly/features/home/data/models/product_details/related_product.dart';
-import 'package:costly/features/home/data/models/products/product.dart';
-
+import 'package:costly/features/products/data/models/product_details/child.dart';
+import 'package:costly/features/products/data/models/product_details/related_product.dart';
+import '../products/product.dart';
 import 'selected_variation.dart';
 
 class Payload {

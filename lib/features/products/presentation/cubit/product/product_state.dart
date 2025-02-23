@@ -1,6 +1,8 @@
-part of 'product_cubit.dart';
 
-@immutable
+
+
+import 'package:costly/features/products/data/models/products/main_products_response.dart';
+
 sealed class ProductState {}
 
 final class ProductInitial extends ProductState {}

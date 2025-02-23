@@ -1,4 +1,4 @@
-import 'package:costly/features/home/presentation/cubits/product/product_cubit.dart';
+import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

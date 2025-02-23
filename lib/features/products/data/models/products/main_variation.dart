@@ -1,4 +1,4 @@
-import 'package:costly/features/home/data/models/product_details/color.dart';
+import 'package:costly/features/products/data/models/product_details/color.dart';
 
 class MainVariation {
   String id;

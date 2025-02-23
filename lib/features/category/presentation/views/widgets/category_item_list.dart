@@ -56,8 +56,7 @@ class CategoryItemsList extends StatelessWidget {
                       itemCount: state.category.length,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true, // Allow ListView to wrap content
-                      physics:
-                          const NeverScrollableScrollPhysics(), // Disable ListView's scrolling
+                      physics:const NeverScrollableScrollPhysics(), // Disable ListView's scrolling
                     ),
                   ],
                 ),

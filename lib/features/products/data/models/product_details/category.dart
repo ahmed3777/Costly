@@ -1,4 +1,5 @@
-import 'pivot.dart';
+
+import 'package:costly/features/products/data/models/product_details/pivot.dart';
 
 class Category {
   String? id;

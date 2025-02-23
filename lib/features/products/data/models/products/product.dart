@@ -1,6 +1,7 @@
-import 'package:costly/features/home/data/models/products/main_variation.dart';
-import 'package:costly/features/home/data/models/products/media_link.dart';
-import 'package:costly/features/home/data/models/products/variation.dart';
+import 'package:costly/features/products/data/models/products/media_link.dart';
+
+import 'main_variation.dart';
+import 'variation.dart';
 
 class Product {
   String id;

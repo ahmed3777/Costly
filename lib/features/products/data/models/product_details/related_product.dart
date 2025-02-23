@@ -1,5 +1,5 @@
-import 'package:costly/features/home/data/models/products/media_link.dart';
-import 'package:costly/features/home/data/models/products/variation.dart';
+import 'package:costly/features/products/data/models/products/media_link.dart';
+import 'package:costly/features/products/data/models/products/variation.dart';
 import 'package:costly/features/user_profile/data/models/favorites/favorites/main_variation.dart';
 
 class RelatedProduct {

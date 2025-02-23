@@ -1,6 +1,6 @@
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
-import 'package:costly/core/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/features/category/presentation/views/widgets/category_filter_button.dart';
+import 'package:costly/features/products/presentation/views/widgets/vertical_gradel_of_product_card.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
