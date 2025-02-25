@@ -8,6 +8,8 @@ import 'package:costly/features/cart/domain/repos/cart_repo.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/category/data/repos_imp/category_repo_imp.dart';
 import 'package:costly/features/category/domain/repos/category_repo.dart';
+import 'package:costly/features/home/presentation/cubits/cities/cities_cubit.dart';
+import 'package:costly/features/home/presentation/cubits/countries/countries_cubit.dart';
 import 'package:costly/features/products/data/repos/products_repo_imp.dart';
 import 'package:costly/features/products/domain/products_repo.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -49,19 +51,20 @@ void setupGetIt() {
   getIt.registerLazySingleton<HomeRepoImp>(
       () => HomeRepoImp(apiService: getIt<ApiService>()));
   getIt.registerFactory<BannerCubit>(() => BannerCubit(getIt<HomeRepo>()));
+  getIt.registerFactory<CountriesCubit>(() => CountriesCubit(getIt<HomeRepo>()));
+  getIt.registerFactory<CitiesCubit>(() => CitiesCubit(getIt<HomeRepo>()));
 
   ///products
   getIt.registerLazySingleton<ProductsRepo>(() => getIt<ProductsRepoImp>());
   getIt.registerLazySingleton<ProductsRepoImp>(
-        () => ProductsRepoImp(
-        apiService: getIt<ApiService>(),
-       ),
+    () => ProductsRepoImp(
+      apiService: getIt<ApiService>(),
+    ),
   );
-  getIt.registerFactory<ProductCubit>(() => ProductCubit(getIt<ProductsRepo>()));
+  getIt
+      .registerFactory<ProductCubit>(() => ProductCubit(getIt<ProductsRepo>()));
   getIt.registerFactory<SingleproductCubit>(
       () => SingleproductCubit(getIt<ProductsRepo>()));
-
-
 
   ///category
   getIt.registerLazySingleton<CategoryRepo>(() => getIt<CategoryRepoImp>());

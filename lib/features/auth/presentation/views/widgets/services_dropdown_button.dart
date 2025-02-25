@@ -1,3 +1,4 @@
+import 'package:costly/core/helper_functions/is_arbic.dart';
 import 'package:costly/features/services/data/service_type/service_type/all_services.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _ServicesDropdownButtonState extends State<ServicesDropdownButton> {
             items: services.map((service) {
               return DropdownMenuItem<String>(
                 value: service.id,
-                child: Text(service.enName),
+                child: Text(isArabic() ? service.arName : service.enName),
               );
             }).toList(),
             onChanged: (value) {

@@ -41,8 +41,7 @@ class CategoryGradientCard extends StatelessWidget {
             ),
           );
         }
-        return
-            const Center(child: Text("No categories available"));
+        return const Center(child: Text("No categories available"));
       },
     );
   }

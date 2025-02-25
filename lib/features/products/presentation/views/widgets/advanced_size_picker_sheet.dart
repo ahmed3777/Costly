@@ -26,7 +26,7 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
   int? chest;
   int? waist;
   int? hip;
- // Custom validator function for integer input
+  // Custom validator function for integer input
   String? _validateInteger(String? value, String fieldName) {
     if (value == null || value.isEmpty) {
       return 'Please enter a value for $fieldName';
@@ -36,6 +36,7 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
     }
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,7 +72,8 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                         TextStyles.regular14.copyWith(color: Colors.black),
                     keyboardType: TextInputType.number,
                     cursorColor: Colors.black,
-                    validator: (value) => _validateInteger(value, 'length'), // Custom validator
+                    validator: (value) =>
+                        _validateInteger(value, 'length'), // Custom validator
                     onSaved: (value) {
                       length = int.tryParse(value!);
                     },
@@ -88,7 +90,7 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                     textStyle:
                         TextStyles.regular14.copyWith(color: Colors.black),
                     keyboardType: TextInputType.number,
-                    validator:  (value) => _validateInteger(value, 'chest'),
+                    validator: (value) => _validateInteger(value, 'chest'),
                     onSaved: (value) {
                       chest = int.tryParse(value!);
                     },

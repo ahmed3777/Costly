@@ -13,18 +13,22 @@ class CheckoutStepsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-     physics: const NeverScrollableScrollPhysics(),
-     controller: pageController,
-     itemBuilder: (context, index) {
-       return getPages()[index];
-     },
-     itemCount: getPages().length,);
+      physics: const NeverScrollableScrollPhysics(),
+      controller: pageController,
+      itemBuilder: (context, index) {
+        return getPages()[index];
+      },
+      itemCount: getPages().length,
+    );
   }
+
   List<Widget> getPages() {
-  return [
-    AddressSection(),
-    PaymentSection(),
-    SummerySection(pageController: pageController,),
-  ];
-}
+    return [
+      AddressSection(),
+      PaymentSection(),
+      SummerySection(
+        pageController: pageController,
+      ),
+    ];
+  }
 }

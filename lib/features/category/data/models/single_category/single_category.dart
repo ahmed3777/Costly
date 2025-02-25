@@ -1,6 +1,5 @@
 import 'package:costly/features/category/data/models/categories_model.dart';
 
-
 class SingleCategory {
   CategoriesModel? categoriesModel;
   bool? status;
@@ -19,6 +18,4 @@ class SingleCategory {
       messages: json['messages'] as dynamic,
     );
   }
-
- 
 }

@@ -64,7 +64,8 @@ class ProductCard extends StatelessWidget {
                 width: cardWidth,
                 height: imageHeight,
                 decoration: BoxDecoration(
-                  color: Color(0xFFC4C4C4), // Default background if image loading fails
+                  color: Color(
+                      0xFFC4C4C4), // Default background if image loading fails
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: mediaLinks != null && mediaLinks!.isNotEmpty
@@ -81,7 +82,8 @@ class ProductCard extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                image: NetworkImage( mediaLink.link ?? 'https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg'),
+                                image: NetworkImage(mediaLink.link ??
+                                    'https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg'),
                                 fit: BoxFit.cover,
                               ),
                             ),

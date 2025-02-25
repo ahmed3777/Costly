@@ -16,6 +16,9 @@ class ApiEndPoints {
   static const String decrementQuantity = 'carts/decrement-quantity';
   static const String updateCart = 'carts/update';
   static const String checkout = 'carts/checkout';
+  static const String countries = 'countries';
+    static const String cities = 'cities';
+
 }
 
 class ApiErrors {

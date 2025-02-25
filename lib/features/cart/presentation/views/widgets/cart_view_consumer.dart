@@ -18,12 +18,13 @@ class CartViewConsumer extends StatelessWidget {
     return BlocConsumer<CartCubit, CartState>(
       listenWhen: (previous, current) =>
           current is CartSuccess || current is CartFailure,
-           listener: (context, state) {
+      listener: (context, state) {
         if (state is CartSuccess && onCartUpdated != null) {
           final cart = state.cart.payload;
           WidgetsBinding.instance.addPostFrameCallback((_) {
             onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
-            print("Cart updated: hasItems=${cart.items!.isNotEmpty},totalPrice=${cart.totalPrice}");
+            print(
+                "Cart updated: hasItems=${cart.items!.isNotEmpty},totalPrice=${cart.totalPrice}");
           });
         }
       },
@@ -56,10 +57,10 @@ class CartViewConsumer extends StatelessWidget {
                 SizedBox(height: 100.h),
                 Center(
                     child: SizedBox(
-                        width: 300.w,
-                        child: CustomButton(
-                        onPressed: () {
-                       Navigator.pushNamed(context, HomeView.routeName);
+                  width: 300.w,
+                  child: CustomButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeView.routeName);
                     },
                     text: "Start Shopping",
                     color: AppColors.secondaryColor,

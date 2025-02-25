@@ -4,8 +4,7 @@ import 'package:dartz/dartz.dart';
 
 import '../data/models/products/main_products_response.dart';
 
-abstract class ProductsRepo{
-
+abstract class ProductsRepo {
   Future<Either<Failure, MainProductsResponse>> getProducts({
     bool? mostPopular,
     bool? mostRecently,
@@ -16,5 +15,6 @@ abstract class ProductsRepo{
   Future<Either<Failure, ProductDetails>> getSingleProduct(
       String productId, String productVariationId);
 
-  Future<Either<Failure,MainProductsResponse >> getProductsByCategory( {required String categoryId});
+  Future<Either<Failure, MainProductsResponse>> getProductsByCategory(
+      {required String categoryId});
 }

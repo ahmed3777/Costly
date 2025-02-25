@@ -94,19 +94,24 @@ class CartItem extends StatelessWidget {
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color:Colors.red, // Background color (change if needed)
+                        color:
+                            Colors.red, // Background color (change if needed)
                         borderRadius:
                             BorderRadius.circular(5), // Rounded corners
                       ),
                       child: IconButton(
-                        icon: Image.asset(Assets.imagesIconDelete,
+                        icon: Image.asset(
+                          Assets.imagesIconDelete,
                           width: 20, // Adjust size as needed
                           height: 20,
-                          fit: BoxFit.contain, // Ensures it fits well inside the button
+                          fit: BoxFit
+                              .contain, // Ensures it fits well inside the button
                         ),
                         onPressed: onDelete,
-                        padding: EdgeInsets.zero, // Removes extra padding around the image
-                        constraints:BoxConstraints(), // Prevents unwanted stretching
+                        padding: EdgeInsets
+                            .zero, // Removes extra padding around the image
+                        constraints:
+                            BoxConstraints(), // Prevents unwanted stretching
                       ),
                     ),
                   ],

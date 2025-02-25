@@ -14,7 +14,9 @@ class CustomTextFormField extends StatelessWidget {
       this.validatorMassege,
       this.hintTextStyle,
       this.cursorColor,
-      this.textStyle, this.validator, this.borderSideColor});
+      this.textStyle,
+      this.validator,
+      this.borderSideColor});
 
   final String hintText;
   final TextInputType keyboardType;
@@ -22,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? cursorColor;
   final void Function(String?)? onSaved;
   final bool obscureText;
-  final String?  validatorMassege;
+  final String? validatorMassege;
   final TextStyle? hintTextStyle;
   final TextStyle? textStyle;
   final Color? borderSideColor;
@@ -42,13 +44,14 @@ class CustomTextFormField extends StatelessWidget {
                 color: AppColors.white, decoration: TextDecoration.none),
         obscureText: obscureText,
         onSaved: onSaved,
-        validator: validator ?? (value) {
-          if (value == null || value.isEmpty) {
-            return validatorMassege;
-          }
-          
-          return null;
-        },
+        validator: validator ??
+            (value) {
+              if (value == null || value.isEmpty) {
+                return validatorMassege;
+              }
+
+              return null;
+            },
         keyboardType: keyboardType,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -58,8 +61,9 @@ class CustomTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 width: 1, // Set the width of the border
-                color: borderSideColor ?? AppColors.secondaryColor
-                    .withOpacity(0.5), // Set the color of the border
+                color: borderSideColor ??
+                    AppColors.secondaryColor
+                        .withOpacity(0.5), // Set the color of the border
               )),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -68,8 +72,9 @@ class CustomTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 width: 1, // Set the width of the border
-                color: borderSideColor ?? AppColors.secondaryColor
-                    .withOpacity(0.5), // Set the color of the border
+                color: borderSideColor ??
+                    AppColors.secondaryColor
+                        .withOpacity(0.5), // Set the color of the border
               )),
           hintText: hintText,
           hintStyle: hintTextStyle ??

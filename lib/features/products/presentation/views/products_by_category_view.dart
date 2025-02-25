@@ -15,7 +15,8 @@ class ProductsByCategoryView extends StatelessWidget {
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return BlocProvider(
-      create: (context) => getIt<ProductCubit>()..getProductsByCategory(categoryId: categoryId),
+      create: (context) =>
+          getIt<ProductCubit>()..getProductsByCategory(categoryId: categoryId),
       child: Scaffold(
         key: scaffoldKey,
         drawer: CustomDrawer(),

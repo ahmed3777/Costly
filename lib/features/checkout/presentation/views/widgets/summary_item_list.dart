@@ -11,33 +11,31 @@ class SummaryItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
-       if (state is CartLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is CartSuccess) {
-          final cart = state.cart.payload;
-          final items = cart.items ?? [];
+    return BlocBuilder<CartCubit, CartState>(builder: (context, state) {
+      if (state is CartLoading) {
+        return const Center(child: CircularProgressIndicator());
+      } else if (state is CartSuccess) {
+        final cart = state.cart.payload;
+        final items = cart.items ?? [];
         return SizedBox(
-            height: 154, // Adjust the height dynamically
-            child: ListView.builder(
-              itemCount: items.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final item = items[index];
-                return SummeryItem(
-                  name: item.product!.enName,
-                  price: item.itemTotalPrice.toString(),
-                  imageUrl: item.product!.mediaLinks![0].link,
-                );
-              },
-            ),
-          );
-        } else if (state is CartFailure) {
-          buildErrorBar(context, state.message);
-        }
-        return Container();
-          }
-         );
-         }
+          height: 154, // Adjust the height dynamically
+          child: ListView.builder(
+            itemCount: items.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              final item = items[index];
+              return SummeryItem(
+                name: item.product!.enName,
+                price: item.itemTotalPrice.toString(),
+                imageUrl: item.product!.mediaLinks![0].link,
+              );
+            },
+          ),
+        );
+      } else if (state is CartFailure) {
+        buildErrorBar(context, state.message);
+      }
+      return Container();
+    });
   }
+}

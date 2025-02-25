@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerticalGraidelOfProductCard extends StatelessWidget {
-  const VerticalGraidelOfProductCard({super.key});
-
+  const VerticalGraidelOfProductCard({super.key, this.lenghtOftheList});
+  final int? lenghtOftheList;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
@@ -37,7 +37,7 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
               mainAxisSpacing: 0.4,
               crossAxisSpacing: 0.4,
             ),
-            itemCount: product.length,
+            itemCount: lenghtOftheList ?? product.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: (8.0)),
@@ -45,7 +45,8 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
                   productId: product[index].id,
                   productVariationId: product[index].mainVariation!.id,
                   mediaLinks: product[index].mediaLinks,
-                  title: isArabic()? product[index].arName
+                  title: isArabic()
+                      ? product[index].arName
                       : product[index].enName,
                   salePrice: product[index].mainVariation!.priceAfterDiscount,
                   originalPrice: product[index].mainVariation!.price,

@@ -22,9 +22,7 @@ class SignInViewBodyConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomProgressHUD(
-              isLoading: state is SigninLoading,
-              child: SignInViewBody()
-             );
+            isLoading: state is SigninLoading, child: SignInViewBody());
       },
     );
   }

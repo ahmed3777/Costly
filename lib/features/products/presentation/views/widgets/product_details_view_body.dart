@@ -47,9 +47,9 @@ class ProductDetailsViewBody extends StatelessWidget {
                 height: 20.h,
               ),
               SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .3,
-                  child:productDetails.payload!.product!.mediaLinks != null &&
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .3,
+                child: productDetails.payload!.product!.mediaLinks != null &&
                         productDetails.payload!.product!.mediaLinks!.isNotEmpty
                     ? CarouselSlider(
                         options: CarouselOptions(

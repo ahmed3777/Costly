@@ -7,12 +7,13 @@ class PaymentMethodSelected extends StatefulWidget {
   @override
   State<PaymentMethodSelected> createState() => _PaymentMethodSelectedState();
 }
-  String _selectedPayment = "paypal"; // Default selected option
+
+String _selectedPayment = "paypal"; // Default selected option
 
 class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
   @override
   Widget build(BuildContext context) {
-   return  Column(
+    return Column(
       children: [
         buildRadioButton("By Master Card", "mastercard"),
         const SizedBox(height: 10),
@@ -45,16 +46,15 @@ class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
               ),
             ),
             child: isSelected
-                ? Icon(Icons.check, color: Colors.white, size: 20) // White check for selected
+                ? Icon(Icons.check,
+                    color: Colors.white, size: 20) // White check for selected
                 : null, // Empty for unselected
           ),
           const SizedBox(width: 10), // Space between radio button and text
           Text(
             title,
             style: TextStyles.regular14,
-      
-            ),
-        
+          ),
         ],
       ),
     );

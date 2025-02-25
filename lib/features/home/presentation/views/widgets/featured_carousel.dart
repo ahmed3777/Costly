@@ -58,7 +58,8 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
                           viewportFraction: 1,
                           onPageChanged: (index, reason) {
                             setState(() {
-                              currentPos =index; // Update the current position of the carousel
+                              currentPos =
+                                  index; // Update the current position of the carousel
                             });
                           },
                         ),

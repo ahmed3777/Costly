@@ -15,6 +15,7 @@ import 'package:costly/features/user_profile/presentation/views/user_account_vie
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
@@ -33,9 +34,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
   }
 
   void _loadUserData() async {
-    String fetchedUserName = await SharedPref.getString(SharedPrefKeys.userName);
-    String fetchedImageUrl = await SharedPref.getString(SharedPrefKeys.userImageUrl);
-    
+    String fetchedUserName =
+        await SharedPref.getString(SharedPrefKeys.userName);
+    String fetchedImageUrl =
+        await SharedPref.getString(SharedPrefKeys.userImageUrl);
+
     setState(() {
       userName = fetchedUserName;
       imageUrl = fetchedImageUrl;
@@ -43,11 +46,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
   }
 
   ImageProvider? _getBackgroundImage() {
-    if (imageUrl.isNotEmpty && (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
+    if (imageUrl.isNotEmpty &&
+        (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
       return NetworkImage(imageUrl);
     }
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -58,7 +63,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric( horizontal: 8.0, vertical: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 40),
             color: AppColors.primaryColor,
             child: Row(
               children: [
@@ -92,17 +97,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 buildDrawerItem(
                   iconPath: Assets.imagesProfile,
                   title: S.of(context).account,
-                  onTap: () => Navigator.pushNamed(context, UserAccountView.routeName),
+                  onTap: () =>
+                      Navigator.pushNamed(context, UserAccountView.routeName),
                 ),
                 buildDrawerItem(
                   icon: Icons.table_chart_outlined,
                   title: S.of(context).products,
-                  onTap: () => Navigator.pushNamed(context, CategoryView.routeName),
+                  onTap: () =>
+                      Navigator.pushNamed(context, CategoryView.routeName),
                 ),
                 buildDrawerItem(
                   icon: Icons.wallet,
                   title: S.of(context).services,
-                  onTap: () => Navigator.pushNamed(context, ServicesView.routeName),
+                  onTap: () =>
+                      Navigator.pushNamed(context, ServicesView.routeName),
                 ),
                 buildDrawerItem(
                   icon: Icons.shopping_basket_outlined,
@@ -121,55 +129,62 @@ class _CustomDrawerState extends State<CustomDrawer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-           SocialLoginButton(
-              width: 30.w,
-              height: 30.h,
-              image: Assets.imagesFacebook,
-              onPressed: () {},
-           ),
-           SizedBox(width: 10.w,),
-
-           SocialLoginButton(
-             width: 30.w,
-              height: 30.h,
-              image: Assets.imagesSnapchat,
-              onPressed: () {},
-           ),
-           SizedBox(width: 10.w,),
-           SocialLoginButton(
-             width: 30.w,
-              height: 30.h,
-              image: Assets.imagesInstagram,
-              onPressed: () {},
-           ),
-            SizedBox(width: 10.w,),
-
-            SocialLoginButton(
-               width: 30.w,
-              height: 30.h,
-              image: Assets.imagesTwitter,
-              onPressed: () {},
-                       ),
-            SizedBox(width: 10.w,),
-            SocialLoginButton(
-               width: 30.w,
-              height: 30.h,
-              image: Assets.imagesLinkedin,
-              onPressed: () {},
-                       ),
-          ],
+              SocialLoginButton(
+                width: 30.w,
+                height: 30.h,
+                image: Assets.imagesFacebook,
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SocialLoginButton(
+                width: 30.w,
+                height: 30.h,
+                image: Assets.imagesSnapchat,
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SocialLoginButton(
+                width: 30.w,
+                height: 30.h,
+                image: Assets.imagesInstagram,
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SocialLoginButton(
+                width: 30.w,
+                height: 30.h,
+                image: Assets.imagesTwitter,
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              SocialLoginButton(
+                width: 30.w,
+                height: 30.h,
+                image: Assets.imagesLinkedin,
+                onPressed: () {},
+              ),
+            ],
           ),
           // Logout Button at the Bottom
-          SizedBox(height: 30.h,),
+          SizedBox(
+            height: 30.h,
+          ),
           Container(
             width: double.infinity,
             height: 80,
             decoration: const BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(20),
-              )
-            ),
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(20),
+                )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -177,20 +192,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 TextButton(
                   child: Text(
                     S.of(context).logout,
-                    style: TextStyles.bold20.copyWith(color: AppColors.primaryColor),
+                    style: TextStyles.bold20
+                        .copyWith(color: AppColors.primaryColor),
                   ),
                   onPressed: () async {
                     await getIt<AuthRepoImp>().logout();
-                    Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+                    Navigator.pushReplacementNamed(
+                        context, OnBoardingView.routeName);
                   },
                 ),
               ],
             ),
-          
-       
-                    )],
+          )
+        ],
       ),
     );
   }
-    
 }

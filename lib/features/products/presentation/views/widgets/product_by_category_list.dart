@@ -11,8 +11,7 @@ class ProductByCategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>
-    (builder: (context, state) {
+    return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
       if (state is ProductLoading) {
         return const SliverToBoxAdapter(
           child: Center(child: CircularProgressIndicator()),
@@ -46,7 +45,7 @@ class ProductByCategoryList extends StatelessWidget {
                   productId: product[index].id,
                   productVariationId: product[index].mainVariation!.id,
                   mediaLinks: product[index].mediaLinks,
-                      title: isArabic()
+                  title: isArabic()
                       ? product[index].arName
                       : product[index].enName,
                   salePrice: product[index].mainVariation!.priceAfterDiscount,

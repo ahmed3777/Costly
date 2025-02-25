@@ -11,7 +11,6 @@ final class CategorySuccess extends CategoryState {
   CategorySuccess(this.category);
 }
 
-
 final class CategoryFailure extends CategoryState {
   final String message;
   CategoryFailure(this.message);

@@ -62,7 +62,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ],
           ),
         ),
-        VerticalGraidelOfProductCard(),
+        VerticalGraidelOfProductCard(
+          lenghtOftheList: 7,
+        ),
         SliverToBoxAdapter(
           child: Column(
             children: [

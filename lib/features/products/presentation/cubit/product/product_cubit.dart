@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:costly/features/products/domain/products_repo.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_state.dart';
 
-
 class ProductCubit extends Cubit<ProductState> {
   ProductCubit(this.productsRepo) : super(ProductInitial());
   final ProductsRepo productsRepo;
@@ -32,9 +31,10 @@ class ProductCubit extends Cubit<ProductState> {
     );
   }
 
-    Future <void> getProductsByCategory({required String categoryId}) async {
+  Future<void> getProductsByCategory({required String categoryId}) async {
     emit(ProductLoading());
-    final result = await productsRepo.getProductsByCategory(categoryId: categoryId);
+    final result =
+        await productsRepo.getProductsByCategory(categoryId: categoryId);
     result.fold(
       (failure) {
         emit(ProductFailure(failure.errMessage));

@@ -30,6 +30,7 @@ class _CartViewBodyState extends State<CartViewBody> {
       totalPrice = price;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -65,7 +66,7 @@ class _CartViewBodyState extends State<CartViewBody> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Total" ,
+                                "Total",
                                 style: TextStyles.regular18,
                               ),
                               SizedBox(height: 10.h),
@@ -108,7 +109,8 @@ class _CartViewBodyState extends State<CartViewBody> {
                       child: CustomTextFormField(
                         borderSideColor: AppColors.grey,
                         hintText: S.of(context).enterVoucherCode,
-                        hintTextStyle:TextStyles.light12.copyWith(color: Colors.grey),
+                        hintTextStyle:
+                            TextStyles.light12.copyWith(color: Colors.grey),
                         suffixIcon: Padding(
                           padding: const EdgeInsets.only(right: 16, top: 10),
                           child: Text(

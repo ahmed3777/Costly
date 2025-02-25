@@ -19,7 +19,8 @@ class CategoryRepoImp implements CategoryRepo {
       getCategories() async {
     try {
       final response = await apiService.get(ApiEndPoints.categories);
-      final categories = MainResponseModel<CategoriesModel>.fromJson(response.data,
+      final categories = MainResponseModel<CategoriesModel>.fromJson(
+        response.data,
         (json) => CategoriesModel.fromJson(json),
       );
       return right(categories);
@@ -31,6 +32,4 @@ class CategoryRepoImp implements CategoryRepo {
       }
     }
   }
-
- 
 }

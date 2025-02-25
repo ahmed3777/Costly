@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 
 import '../models/products/main_products_response.dart';
 
-class ProductsRepoImp implements ProductsRepo{
+class ProductsRepoImp implements ProductsRepo {
   final ApiService apiService;
 
   ProductsRepoImp({required this.apiService});
@@ -65,9 +65,12 @@ class ProductsRepoImp implements ProductsRepo{
   }
 
   @override
-  Future<Either<Failure, MainProductsResponse>> getProductsByCategory({required String categoryId}) async {
+  Future<Either<Failure, MainProductsResponse>> getProductsByCategory(
+      {required String categoryId}) async {
     try {
-      final response = await apiService.get("products?categories[]=$categoryId",);
+      final response = await apiService.get(
+        "products?categories[]=$categoryId",
+      );
       final categories = MainProductsResponse.fromJson(response.data);
       return right(categories);
     } catch (e) {
@@ -78,5 +81,4 @@ class ProductsRepoImp implements ProductsRepo{
       }
     }
   }
-  
 }

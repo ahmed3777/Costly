@@ -1,6 +1,4 @@
-
 import 'package:costly/features/products/data/models/product_details/product_details.dart';
-
 
 sealed class SingleproductState {}
 

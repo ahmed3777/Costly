@@ -3,7 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton(
-      {super.key, required this.image, required this.onPressed, this.width, this.height});
+      {super.key,
+      required this.image,
+      required this.onPressed,
+      this.width,
+      this.height});
   final double? width;
   final double? height;
   final String image;
@@ -31,7 +35,7 @@ class SocialLoginButton extends StatelessWidget {
           child: Image.asset(
             image, // Load the image from assets
             width: width ?? 24, // Set the width of the image
-            height:  height ??24, // Set the height of the image
+            height: height ?? 24, // Set the height of the image
             fit: BoxFit.fill, // Adjust how the image fits in the container
           ),
         ),

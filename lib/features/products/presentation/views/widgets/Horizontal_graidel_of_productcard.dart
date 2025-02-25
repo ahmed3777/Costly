@@ -23,7 +23,7 @@ class HorizontalListOfProductCard extends StatelessWidget {
           return ProductCard(
             productId: relatedProduct[index].id,
             productVariationId: relatedProduct[index].mainVariation?.id ?? '',
-            mediaLinks: relatedProduct[index].mediaLinks ,
+            mediaLinks: relatedProduct[index].mediaLinks,
             // imageUrl: relatedProduct[index].mediaLinks?.isNotEmpty == true
             //     ? relatedProduct[index].mediaLinks![0].link
             //     : Assets.imagesBag,

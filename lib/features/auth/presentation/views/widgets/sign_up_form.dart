@@ -14,7 +14,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key, required this.userType});
   final String userType;
-
   @override
   State<SignUpForm> createState() => _SignUpFormState();
 }
@@ -106,13 +105,11 @@ class _SignUpFormState extends State<SignUpForm> {
                           text: 'Have A Home visit service',
                         ),
                         SizedBox(height: 5.h),
-                        // TODO: Add services view
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: ServicesDropdownButton(
                               onServiceSelected: (serviceId) {
                                 selectedServiceId = serviceId;
-                                print("service id $serviceId");
                               },
                             )),
                       ],

@@ -16,11 +16,12 @@ class ProfileRepoImp implements ProfileRepo {
   @override
   Future<Either<Failure, Profile>> getUserProfile() async {
     try {
-      final response = await apiService.get(ApiEndPoints.profile,token: SharedPref.getSecuredString(SharedPrefKeys.userToken));
+      final response = await apiService.get(ApiEndPoints.profile,
+          token: SharedPref.getSecuredString(SharedPrefKeys.userToken));
       final Profile profile = Profile.fromJson(response.data);
-        SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);     
+      SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);
 
-         return right(profile);
+      return right(profile);
     } catch (e) {
       if (e is DioException) {
         return left(handleError(e));

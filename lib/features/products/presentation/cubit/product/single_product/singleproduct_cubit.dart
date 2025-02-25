@@ -3,10 +3,9 @@ import 'package:costly/features/products/domain/products_repo.dart';
 
 import 'singleproduct_state.dart';
 
-
 class SingleproductCubit extends Cubit<SingleproductState> {
   SingleproductCubit(this.productsRepo) : super(SingleproductInitial());
-  final  ProductsRepo productsRepo;
+  final ProductsRepo productsRepo;
 
   Future<void> getSingleProduct(
       String productId, String productVariationId) async {

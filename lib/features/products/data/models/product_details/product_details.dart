@@ -1,4 +1,3 @@
-
 import 'package:costly/features/products/data/models/product_details/payload.dart';
 
 class ProductDetails {

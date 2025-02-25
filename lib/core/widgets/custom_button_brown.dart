@@ -7,12 +7,14 @@ class CustomButtonBrown extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    this.color, this.borderRadius, this.mainAxisAlignment,
+    this.color,
+    this.borderRadius,
+    this.mainAxisAlignment,
   });
   final VoidCallback onPressed;
   final String text;
   final Color? color;
-  final double ? borderRadius;
+  final double? borderRadius;
   final MainAxisAlignment? mainAxisAlignment;
 
   @override
@@ -24,7 +26,7 @@ class CustomButtonBrown extends StatelessWidget {
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                  borderRadius ?? 10,
+                borderRadius ?? 10,
               ),
             ),
             backgroundColor: color ?? AppColors.brownColor,

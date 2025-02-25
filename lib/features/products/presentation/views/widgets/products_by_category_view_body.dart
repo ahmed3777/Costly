@@ -5,35 +5,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductsByCategoryViewBody extends StatefulWidget {
-  const ProductsByCategoryViewBody({super.key, required this.scaffoldKey, required this.categoryId});
+  const ProductsByCategoryViewBody(
+      {super.key, required this.scaffoldKey, required this.categoryId});
   final GlobalKey<ScaffoldState> scaffoldKey;
   final String categoryId;
   @override
-  State<ProductsByCategoryViewBody> createState() => _ProductsByCategoryViewBodyState();
+  State<ProductsByCategoryViewBody> createState() =>
+      _ProductsByCategoryViewBodyState();
 }
-class _ProductsByCategoryViewBodyState extends State<ProductsByCategoryViewBody> {
+
+class _ProductsByCategoryViewBodyState
+    extends State<ProductsByCategoryViewBody> {
   @override
   Widget build(BuildContext context) {
     // initState() {
     //   super.initState();
     //   context.read<ProductCubit>().getProductsByCategory(categoryId:widget.categoryId);
     //   }
-   return CustomScrollView(
-     slivers: [
-       SliverToBoxAdapter(
+    return CustomScrollView(slivers: [
+      SliverToBoxAdapter(
         child: Column(
           children: [
             CustomHomeAppBar(
               scaffoldKey: widget.scaffoldKey,
               centerText: S.of(context).discover,
-                visible: false,
+              visible: false,
             ),
             SizedBox(height: 4.h),
-
           ],
         ),
       ),
-         ProductByCategoryList(),
+      ProductByCategoryList(),
     ]);
   }
 }
