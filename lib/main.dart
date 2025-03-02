@@ -29,7 +29,6 @@ void main() async {
   );
 
   setupGetIt();
-
   runApp(const MyApp());
 }
 

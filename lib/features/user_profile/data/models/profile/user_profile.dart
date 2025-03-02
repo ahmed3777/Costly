@@ -21,16 +21,16 @@ class UserProfile {
   String? serviceTypeId;
   int? hasDefaultPaymentAddress;
   int? hasSavedAShippingAddress;
-  dynamic billingAddressOne;
-  dynamic billingAddressTwo;
-  dynamic billingPostalCode;
-  dynamic billingCountryId;
-  dynamic billingCityId;
-  dynamic shippingAddressOne;
-  dynamic shippingAddressTwo;
-  dynamic shippingPostalCode;
-  dynamic shippingCountryId;
-  dynamic shippingCityId;
+  String? billingAddressOne;
+  String? billingAddressTwo;
+  String? billingPostalCode;
+  String? billingCountryId;
+  String? billingCityId;
+  String? shippingAddressOne;
+  String? shippingAddressTwo;
+  String? shippingPostalCode;
+  String? shippingCountryId;
+  String? shippingCityId;
   String logoUrl;
 
   UserProfile({

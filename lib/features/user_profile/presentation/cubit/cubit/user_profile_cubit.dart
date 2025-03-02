@@ -1,11 +1,10 @@
 import 'package:costly/features/user_profile/data/models/profile/user_profile.dart';
-import 'package:costly/features/user_profile/domain/repo/profile_repo.dart';
+import 'package:costly/features/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 part 'user_profile_state.dart';
 
 class UserProfileCubit extends Cubit<UserProfileState> {
-  final ProfileRepo profileRepo;
+  final UserProfileRepo profileRepo;
   UserProfileCubit(this.profileRepo) : super(UserProfileInitial());
 
   Future<void> getUserProfile() async {
@@ -17,6 +16,7 @@ class UserProfileCubit extends Cubit<UserProfileState> {
       },
       (profile) {
         emit(UserProfileSuccess(profile: profile.payload));
+        
       },
     );
   }

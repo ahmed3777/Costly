@@ -3,6 +3,7 @@ import 'package:costly/core/helper_functions/is_arbic.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/features/home/data/models/city/city.dart';
 import 'package:costly/features/home/presentation/cubits/cities/cities_cubit.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 class CityDropdown extends StatefulWidget {
@@ -23,6 +24,7 @@ class _CityDropdownState extends State<CityDropdown> {
   @override
   void initState() {
     super.initState();
+    selectedItem = widget.selectedCityId; // Preselect city if available
     fetchCities(); // Initial call
   }
 
@@ -37,8 +39,10 @@ class _CityDropdownState extends State<CityDropdown> {
     }
   }
 
-  void fetchCities() {
-    context.read<CitiesCubit>().getCities(widget.countryID);
+   void fetchCities() {
+    if (widget.countryID != null) {
+      context.read<CitiesCubit>().getCities(widget.countryID);
+    }
   }
 
   @override
@@ -46,7 +50,7 @@ class _CityDropdownState extends State<CityDropdown> {
     return BlocConsumer<CitiesCubit, CitiesState>(
       listener: (context, state) {
         if (state is CitiesFailure) {
-                 return buildErrorBar(context, state.message);
+          return buildErrorBar(context, state.message);
         }
       },
       builder: (context, state) {
@@ -67,11 +71,20 @@ class _CityDropdownState extends State<CityDropdown> {
         }
         if (state is CitiesSuccess) {
           cityList = state.cities;
+
+           if (selectedItem == null && widget.selectedCityId != null) {
+            bool exists = cityList.any((city) => city.id == widget.selectedCityId);
+            if (exists) {
+             
+                selectedItem = widget.selectedCityId;
+            
+            }
+          }
           return DropdownButton<String>(
             borderRadius: BorderRadius.circular(10),
             value: selectedItem,
             hint: Text(
-              'Select City',
+              S.of(context).city,
               style: TextStyles.light10.copyWith(color: Colors.black),
             ),
             items: cityList.map((city) {

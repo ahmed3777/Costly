@@ -34,25 +34,19 @@ class _CustomDrawerState extends State<CustomDrawer> {
   }
 
   void _loadUserData() async {
-    String fetchedUserName =
-        await SharedPref.getString(SharedPrefKeys.userName);
-    String fetchedImageUrl =
-        await SharedPref.getString(SharedPrefKeys.userImageUrl);
-
+    String fetchedUserName = await SharedPref.getString(SharedPrefKeys.userName);
+    String fetchedImageUrl = await SharedPref.getString(SharedPrefKeys.userImageUrl);
     setState(() {
       userName = fetchedUserName;
       imageUrl = fetchedImageUrl;
     });
   }
-
   ImageProvider? _getBackgroundImage() {
-    if (imageUrl.isNotEmpty &&
-        (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
+    if (imageUrl.isNotEmpty && (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
       return NetworkImage(imageUrl);
     }
     return null;
   }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -70,6 +64,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 CircleAvatar(
                   radius: 30.0,
                   backgroundImage: _getBackgroundImage(),
+                  
                 ),
                 const SizedBox(width: 10),
                 Expanded(

@@ -70,6 +70,7 @@ class AuthRepoImp implements AuthRepo {
       var userData = LoginResponse.fromJson(response);
       SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
       SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
+      SharedPref.setSecuredString(SharedPrefKeys.userToken , userData.user!.token!);
       // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
       return right(userData);
     } catch (e) {
@@ -164,6 +165,8 @@ class AuthRepoImp implements AuthRepo {
       if (signupRequestToApi != null && signupRequestToApi != null) {
         print("Payload: $signupRequestToApi");
         var req = UserData.fromJson(signupRequestToApi);
+        SharedPref.setSecuredString(SharedPrefKeys.userToken, req.token!);
+
         return right(req); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));

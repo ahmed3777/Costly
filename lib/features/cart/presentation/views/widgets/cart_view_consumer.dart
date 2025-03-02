@@ -21,10 +21,19 @@ class CartViewConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is CartSuccess && onCartUpdated != null) {
           final cart = state.cart.payload;
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
-            print(
-                "Cart updated: hasItems=${cart.items!.isNotEmpty},totalPrice=${cart.totalPrice}");
+          if (cart != null && cart.items != null && cart.totalPrice != null) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
+              print(
+                  "Cart updated: hasItems=${cart.items!
+                      .isNotEmpty},totalPrice=${cart.totalPrice}");
+            });
+          }
+        }
+    //  Handle Failure
+        if (state is CartFailure) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+            buildErrorBar(context, state.message); // ✅ Now runs *after* the frame is built
           });
         }
       },
@@ -36,11 +45,7 @@ class CartViewConsumer extends StatelessWidget {
             child: Center(child: CircularProgressIndicator()),
           );
         }
-        //  Handle Failure
-        if (state is CartFailure) {
-          buildErrorBar(context, state.message);
-        }
-        // Handle Success
+              // Handle Success
         if (state is CartSuccess) {
           final cart = state.cart.payload;
           final items = cart.items ?? [];

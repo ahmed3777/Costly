@@ -22,8 +22,8 @@ import 'package:costly/features/home/data/repos/home_repo_imp.dart';
 import 'package:costly/features/home/domin/repos/home_repo.dart';
 import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.dart';
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
-import 'package:costly/features/user_profile/data/repos/profile_repo_imp.dart';
-import 'package:costly/features/user_profile/domain/repo/profile_repo.dart';
+import 'package:costly/features/user_profile/data/repos/user_profile_repo_imp.dart';
+import 'package:costly/features/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -79,12 +79,12 @@ void setupGetIt() {
       () => ServiceDetailsCubit(getIt<AuthRepo>()));
 
   ///profile
-  getIt.registerLazySingleton<ProfileRepo>(() => getIt<ProfileRepoImp>());
-  getIt.registerLazySingleton<ProfileRepoImp>(
-    () => ProfileRepoImp(apiService: getIt<ApiService>()),
+  getIt.registerLazySingleton<UserProfileRepo>(() => getIt<UserProfileRepoImp>());
+  getIt.registerLazySingleton<UserProfileRepoImp>(
+    () => UserProfileRepoImp(apiService: getIt<ApiService>()),
   );
-  getIt.registerFactory<UserProfileCubit>(
-      () => UserProfileCubit(getIt<ProfileRepo>()));
+  getIt.registerLazySingleton<UserProfileCubit>(
+      () => UserProfileCubit(getIt<UserProfileRepo>()));
 
   ///cart
   getIt.registerLazySingleton<CartRepo>(() => getIt<CartRepoImp>());

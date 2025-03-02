@@ -48,4 +48,11 @@ class SharedPrefKeys {
   static const String userPhoneNumber = 'phoneNumber';
   static const String userImageUrl = 'imageUrl';
   static const String userEmail = 'email';
+  static const String billingAddressOne = 'billingAddressOne';
+  static const String billingAddressTwo = 'billingAddressTwo';
+  static const String billingPostalCode = 'billingPostalCode';
+  static const String billingCountryId = 'billingCountryId';
+  static const String billingCityId = 'billingCityId';
+ 
+
 }

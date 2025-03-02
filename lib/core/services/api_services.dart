@@ -31,46 +31,55 @@ class ApiService {
   }
 
 // Method to perform a POST request
-  Future<dynamic> post(
-    String endpoint,
-    data,
-  ) async {
+  Future<dynamic> post(String endpoint,data, {String? token}) async {
     try {
       // Perform the POST request
-      final response = await _dio.post(
-        endpoint,
-        data: data,
-      );
-      if (response.data['status'] == 200 || response.data['status'] == 201) {
-        SharedPref.setSecuredString(
-            SharedPrefKeys.userToken, response.data['payload']["token"]);
-        // print('token from post API Services: ' + response.data['token']);
+      final headers = <String, String>{};
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
       }
-      return response.data;
+      final response = await _dio.post(endpoint,data: data,
+        options: Options(headers: headers),
+      );
+
+        final responseData = response.data as Map<String, dynamic>;
+
+        if (responseData['status'] == 200 || responseData['status'] == 201) {
+         final token = responseData['payload']["token"];
+          if (token != null) {
+          await SharedPref.setSecuredString(SharedPrefKeys.userToken, token);
+        }
+      }
+      return responseData;
       // Return the response if successful
     } on DioException catch (e) {
-      if (e.response != null) {
+          if (e.response != null) {
         // If there's a response from the server, extract the message
-        String errorMessage;
-        if (e.response!.data is Map<String, dynamic>) {
+            String errorMessage;
+              if (e.response!.data is Map<String, dynamic>) {
           // Check if the response data is a map and contains a 'message' key
-          errorMessage = e.response!.data['messages'].toString();
-        } else {
+              errorMessage = e.response!.data['messages'].toString();
+           } else {
           errorMessage = 'An unknown error occurred.';
-        }
-        throw Exception(
+          }
+            throw Exception(
             errorMessage); // Throw a custom exception with the message
-      } else {
+       } else {
         // If there's no response, throw a general error message
-        throw Exception("Error from the API service: ${e.message}");
+         throw Exception("Error from the API service: ${e.message}");
       }
     }
   }
 
-  Future<dynamic> delete(String endpoint, data) async {
+  Future<dynamic> delete(String endpoint, data , {String? token}) async {
     try {
-      final response = await _dio.delete(endpoint, data: data);
-      return response.data;
+         final headers = <String, String>{};
+           if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
+      }
+      final response = await _dio.delete(endpoint, data: data,
+        options: Options(headers: headers),);
+       return response.data;
     } on DioException catch (e) {
       if (e.response != null) {
         // If there's a response from the server, extract the message
@@ -81,8 +90,7 @@ class ApiService {
         } else {
           errorMessage = 'An unknown error occurred.';
         }
-        throw Exception(
-            errorMessage); // Throw a custom exception with the message
+        throw Exception(errorMessage); // Throw a custom exception with the message
       }
     }
   }
