@@ -6,8 +6,7 @@ class SpaceBetweenTextRow extends StatelessWidget {
   final String rightText;
 
   const SpaceBetweenTextRow(
-      {Key? key, required this.leftText, required this.rightText})
-      : super(key: key);
+      {super.key, required this.leftText, required this.rightText});
   @override
   Widget build(BuildContext context) {
     return Padding(

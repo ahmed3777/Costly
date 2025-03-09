@@ -15,36 +15,49 @@ class ServerFailure extends Failure {
         return ServerFailure('Connection timeout with ApiServer');
 
       case DioExceptionType.sendTimeout:
-        return ServerFailure('Send timeout with ApiServer');
+        return ServerFailure('Request timeout. Please try again.');
 
       case DioExceptionType.receiveTimeout:
-        return ServerFailure('Receive timeout with ApiServer');
+        return ServerFailure('Server is taking too long to respond.');
 
+      case DioExceptionType.cancel:
+      return  ServerFailure('Request was canceled.');
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode, dioError.response!.data);
-      case DioExceptionType.cancel:
-        return ServerFailure('Request to ApiServer was canceld');
-      case DioExceptionType.unknown:
-        if (dioError.message!.contains('SocketException')) {
-          return ServerFailure('No Internet Connection');
+            dioError.response!.statusCode, 
+            dioError.response!.data);
+     
+       case DioExceptionType.unknown:
+        if (dioError.message != null &&
+            dioError.message!.contains('SocketException')) {
+          return ServerFailure('No internet connection.');
         }
         return ServerFailure('Unexpected Error, Please try again!');
       default:
-        return ServerFailure('Opps There was an Error, Please try again');
+        return ServerFailure('Something went wrong. Please try again.');
     }
   }
+    /// Extracts meaningful messages from API responses
+
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['message']);
+      return ServerFailure(response?['messages'] ?? 'Authentication error.');
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server error, Please try later');
     } else if (statusCode == 422) {
-      return ServerFailure('The mobile number alrady  exist ');
+      return ServerFailure(response?['messages'] ?? 'Validation error occurred.');
     } else {
-      return ServerFailure('Opps There was an Error, Please try again');
+      return ServerFailure('Unexpected error occurred.');
     }
   }
+}
+/// Custom exception for API errors
+class ApiException implements Exception {
+  final String message;
+  ApiException(this.message);
+
+  @override
+  String toString() => message;
 }

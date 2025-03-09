@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:costly/features/auth/data/models/signup_models/signup_response/user_data.dart';
 import 'package:costly/features/auth/domin/repos/auth_repo.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 part 'sign_up_state.dart';
 

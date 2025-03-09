@@ -9,6 +9,7 @@ class CountriesCubit extends Cubit<CountriesState> {
   final HomeRepo homeRepo;
 
   Future<void> getCountries() async {
+    emit(CountriesLoading());
     final result = await homeRepo.getCountries();
     result.fold((failure) {
       emit(CountriesFailure(errMessage: failure.errMessage));

@@ -11,15 +11,15 @@ class CartItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = cart.items!;
+    
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return BlocBuilder<CartCubit, CartState>(
+          return   BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
-              final isLoading = state is CartLoading;
+            final isUpdating = state is CartLoading;
               return CartItem(
                 productImage: items[index].product!.mediaLinks![0].link,
-                productPrice: items[index].quantity,
                 productName: items[index].product!.enName,
                 totalPrice: items[index].itemTotalPrice,
                 onDelete: () async {
@@ -31,18 +31,19 @@ class CartItemList extends StatelessWidget {
                   await context.read<CartCubit>().incrementQuantity(
                       productId: items[index].product!.id,
                       productVariationId: items[index].productVariationId!,
-                      quantity: items[index].quantity + 1);
+
+                      ) ;
                 },
                 decrementQuantity: () async {
                   await context.read<CartCubit>().decrementQuantity(
                       productId: items[index].product!.id,
                       productVariationId: items[index].productVariationId!,
-                      quantity: items[index].quantity - 1);
-                },
+                      );},
                 quantity: items[index].quantity,
-                isLoading: isLoading,
+                 isLoading: isUpdating,
               );
             },
+
           );
         },
         childCount: items.length,

@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "BillingAddressIsTheSameAsDeliveryAddress":
             MessageLookupByLibrary.simpleMessage(
                 "عنوان الفاتورة هو نفس عنوان التوصيل"),
+        "LE": MessageLookupByLibrary.simpleMessage("جنيه"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "أو تسجيل الدخول باستخدام حساب التواصل الاجتماعي"),
         "Shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
+        "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
         "back": MessageLookupByLibrary.simpleMessage("السابق"),
         "businessName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
         "byCreditCard":
@@ -67,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterVoucherCode":
             MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
         "expiryDate": MessageLookupByLibrary.simpleMessage("تاريخ انتهاء "),
+        "fakeAddress": MessageLookupByLibrary.simpleMessage("188 مصر الجديده"),
         "filter": MessageLookupByLibrary.simpleMessage("تصنيف حسب"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -94,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "postalCode": MessageLookupByLibrary.simpleMessage("الرمز البريدي"),
         "products": MessageLookupByLibrary.simpleMessage(" المنتجات"),
         "promocode": MessageLookupByLibrary.simpleMessage("كود التخفيض"),
         "repeatPassword":
@@ -124,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalAfterTax":
             MessageLookupByLibrary.simpleMessage("المجموع بعد الضريبة"),
         "totalPrice": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
+        "unexpectedState": MessageLookupByLibrary.simpleMessage(" حدث خطأ ما "),
         "vendor": MessageLookupByLibrary.simpleMessage("مورد"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك"),
         "youCanAlsoLikeThis":

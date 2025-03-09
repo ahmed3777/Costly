@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class CartItem extends StatelessWidget {
   final String? productImage;
   final String? productName;
-  final int? productPrice;
   final int quantity;
   final int? totalPrice;
   final VoidCallback incrementQuantity;
@@ -16,7 +15,6 @@ class CartItem extends StatelessWidget {
     super.key,
     required this.productImage,
     required this.productName,
-    required this.productPrice,
     required this.quantity,
     required this.onDelete,
     required this.incrementQuantity,

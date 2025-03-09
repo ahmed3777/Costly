@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "BillingAddressIsTheSameAsDeliveryAddress":
             MessageLookupByLibrary.simpleMessage(
                 "Billing address is the same as delivery address"),
+        "LE": MessageLookupByLibrary.simpleMessage("LE"),
         "Or_signin_with_social_account": MessageLookupByLibrary.simpleMessage(
             "Or sign in with social account"),
         "Shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
+        "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "businessName": MessageLookupByLibrary.simpleMessage("Business Name"),
         "byCreditCard": MessageLookupByLibrary.simpleMessage("By Credit Card"),
@@ -65,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterVoucherCode":
             MessageLookupByLibrary.simpleMessage("Enter Voucher Code"),
         "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
+        "fakeAddress": MessageLookupByLibrary.simpleMessage("188 Helioplis"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
@@ -91,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
         "promocode": MessageLookupByLibrary.simpleMessage("Promocode"),
         "repeatPassword":
@@ -125,6 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalAfterTax":
             MessageLookupByLibrary.simpleMessage("Total After Tax"),
         "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
+        "unexpectedState":
+            MessageLookupByLibrary.simpleMessage("Unexpected State"),
         "vendor": MessageLookupByLibrary.simpleMessage("Vendor"),
         "viewyourOrders":
             MessageLookupByLibrary.simpleMessage("View Your Orders"),

@@ -27,16 +27,16 @@ class SharedPref {
   static setData(String key, value) async {
     debugPrint("SharedPrefHelper : setData with key : $key and value : $value");
     switch (value.runtimeType) {
-      case String:
+      case const (String):
         await _instance.setString(key, value);
         break;
-      case int:
+      case const (int):
         await _instance.setInt(key, value);
         break;
-      case bool:
+      case const (bool):
         await _instance.setBool(key, value);
         break;
-      case double:
+      case const (double):
         await _instance.setDouble(key, value);
         break;
       default:

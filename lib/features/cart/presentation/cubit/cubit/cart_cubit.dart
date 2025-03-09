@@ -3,7 +3,6 @@ import 'package:costly/features/cart/data/model/delete_from_cart/delete_from_car
 import 'package:costly/features/cart/data/model/my_cart/cart_response.dart';
 import 'package:costly/features/cart/domain/repos/cart_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'cart_state.dart';
 
@@ -70,26 +69,27 @@ class CartCubit extends Cubit<CartState> {
       },
     );
   }
-
   Future<void> incrementQuantity(
       {required String productId,
-      required String productVariationId,
-      required int quantity}) async {
+       required String productVariationId,
+       }) async {
+
     final result = await cartRepo.incrementQuantity(
         productId: productId,
         productVariationId: productVariationId,
-        quantity: quantity);
+        quantity: 1);
     result.fold(
       (failure) {
         emit(CartFailure(message: failure.errMessage));
       },
       (updatedCart) async {
         emit(Cartincrementsuccess(cart: updatedCart));
-        await updateCart(
-            productId: productId,
-            productVariationId: productVariationId,
-            quantity: quantity);
-        // await getCart();
+                await getCart();
+
+            // await updateCart(
+            // productId: productId,
+            //  productVariationId: productVariationId,
+            //  quantity: );
       },
     );
   }
@@ -97,32 +97,34 @@ class CartCubit extends Cubit<CartState> {
   Future<void> decrementQuantity(
       {required String productId,
       required String productVariationId,
-      required int quantity}) async {
+      }) async {
     final result = await cartRepo.decrementQuantity(
         productId: productId,
         productVariationId: productVariationId,
-        quantity: quantity);
+        quantity: 1);
     result.fold(
       (failure) {
         emit(CartFailure(message: failure.errMessage));
       },
       (decrement) async {
         emit(Cartdecrementsuccess(cart: decrement));
-        await updateCart(
-            productId: productId,
-            productVariationId: productVariationId,
-            quantity: quantity);
-        // await getCart();
+                await getCart();
+    
+      //    await updateCart(
+      //       productId: productId,
+      //       productVariationId: productVariationId,
+      //       quantity: quantity);
+      // },
       },
     );
   }
+
 
   Future<void> updateCart(
       {required String productId,
       required String productVariationId,
       required int quantity}) async {
-    //  emit(CartUpdating(updatingProductId: productId, cart: (state as CartSuccess).cart));
-    emit(CartLoading());
+    // emit(CartUpdating(updatingProductId: productId, cart: (state as CartSuccess).cart));
     final result = await cartRepo.updateCart(
         productId: productId,
         productVariationId: productVariationId,
@@ -132,7 +134,7 @@ class CartCubit extends Cubit<CartState> {
         emit(CartFailure(message: failure.errMessage));
       },
       (updatedCart) {
-        emit(CartSuccess(cart: updatedCart));
+        emit(CartUpdateSuccess(cart: updatedCart));
       },
     );
   }

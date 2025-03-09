@@ -1,6 +1,5 @@
 part of 'cart_cubit.dart';
 
-@immutable
 sealed class CartState {}
 
 final class CartInitial extends CartState {}
@@ -43,6 +42,11 @@ final class Cartdecrementsuccess extends CartState {
   final CartResponse cart;
 
   Cartdecrementsuccess({required this.cart});
+}
+final class CartUpdateSuccess extends CartState {
+  final CartResponse cart;
+
+  CartUpdateSuccess({required this.cart});
 }
 
 final class CartUpdating extends CartState {

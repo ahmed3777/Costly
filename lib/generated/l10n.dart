@@ -959,6 +959,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Postal Code`
+  String get postalCode {
+    return Intl.message(
+      'Postal Code',
+      name: 'postalCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LE`
+  String get LE {
+    return Intl.message(
+      'LE',
+      name: 'LE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected State`
+  String get unexpectedState {
+    return Intl.message(
+      'Unexpected State',
+      name: 'unexpectedState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `188 Helioplis`
+  String get fakeAddress {
+    return Intl.message(
+      '188 Helioplis',
+      name: 'fakeAddress',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

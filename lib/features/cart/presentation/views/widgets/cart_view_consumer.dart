@@ -5,6 +5,7 @@ import 'package:costly/core/widgets/custom_button.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/cart/presentation/views/widgets/cart_item_list.dart';
 import 'package:costly/features/home/presentation/views/home_view.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,12 +22,9 @@ class CartViewConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is CartSuccess && onCartUpdated != null) {
           final cart = state.cart.payload;
-          if (cart != null && cart.items != null && cart.totalPrice != null) {
+          if ( cart.items != null && cart.totalPrice != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               onCartUpdated!(cart.items!.isNotEmpty, cart.totalPrice!);
-              print(
-                  "Cart updated: hasItems=${cart.items!
-                      .isNotEmpty},totalPrice=${cart.totalPrice}");
             });
           }
         }
@@ -38,8 +36,7 @@ class CartViewConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print("Current State: $state"); // Debugging log
-        //  Show Loading Indicator
+       //  Show Loading Indicator
         if (state is CartLoading) {
           return const SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()),
@@ -67,20 +64,19 @@ class CartViewConsumer extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, HomeView.routeName);
                     },
-                    text: "Start Shopping",
+                    text: S.of(context).start_shopping,
                     color: AppColors.secondaryColor,
                   ),
                 )),
               ]),
             );
           } else {
-            print("Cart has items, showing CartItemList");
             return CartItemList(cart: cart);
           }
         }
         // Default Case (should not happen)
-        return const SliverToBoxAdapter(
-          child: Center(child: Text("Unexpected State")),
+        return  SliverToBoxAdapter(
+          child: Center(child: Text(S.of(context).unexpectedState)),
         );
       },
     );

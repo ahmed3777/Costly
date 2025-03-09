@@ -89,7 +89,13 @@
     "change": "Change",
     "back": "Back",
     "next": "Next",
-    "pay": "Pay"
+    "pay": "Pay",
+    "postalCode": "Postal Code",
+    "LE": "LE",
+    "apply": "Apply",
+    "unexpectedState": "Unexpected State",
+    "fakeAddress" : "188 Helioplis"
+
     
 
 
