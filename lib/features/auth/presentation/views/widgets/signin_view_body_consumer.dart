@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/widgets/custom_progress_hub.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signincubit/cubit/signin_cubit.dart';
 import 'package:costly/features/auth/presentation/views/widgets/sign_in_view_body.dart';
@@ -17,7 +17,7 @@ class SignInViewBodyConsumer extends StatelessWidget {
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         }
         if (state is SigninFailure) {
-          buildErrorBar(context, state.message);
+          showErrorBar(context, state.message);
         }
       },
       builder: (context, state) {

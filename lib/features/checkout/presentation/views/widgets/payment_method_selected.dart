@@ -8,23 +8,23 @@ class PaymentMethodSelected extends StatefulWidget {
   State<PaymentMethodSelected> createState() => _PaymentMethodSelectedState();
 }
 
-String _selectedPayment = "paypal"; // Default selected option
+String _selectedPayment = "cash"; // Default selected option
 
 class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildRadioButton("By Master Card", "mastercard"),
+         paymentMethod("By Credit Card", "creditcard"),
         const SizedBox(height: 10),
-        buildRadioButton("By Credit Card", "creditcard"),
+        paymentMethod("By Cash", "cash"),
         const SizedBox(height: 10),
-        buildRadioButton("By PayPal", "paypal"), // Default selected
+        paymentMethod("By PayPal", "paypal"), // Default selected
       ],
     );
   }
 
-  Widget buildRadioButton(String title, String value) {
+  Widget paymentMethod(String title, String value) {
     bool isSelected = _selectedPayment == value;
     return GestureDetector(
       onTap: () {

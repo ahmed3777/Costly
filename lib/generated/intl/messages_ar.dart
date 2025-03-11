@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
         "back": MessageLookupByLibrary.simpleMessage("السابق"),
+        "bag": MessageLookupByLibrary.simpleMessage("الحقيبة"),
         "businessName": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
         "byCreditCard":
             MessageLookupByLibrary.simpleMessage("بواسطة بطاقة الائتمان"),
@@ -99,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "postalCode": MessageLookupByLibrary.simpleMessage("الرمز البريدي"),
         "products": MessageLookupByLibrary.simpleMessage(" المنتجات"),
+        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "promocode": MessageLookupByLibrary.simpleMessage("كود التخفيض"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("تكرار كلمة المرور"),

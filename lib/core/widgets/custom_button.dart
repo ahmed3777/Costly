@@ -8,18 +8,18 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
     this.color,
-    this.topLeft,
-    this.topRight,
-    this.bottomLeft,
-    this.bottomRight,
+    this.topLeftcircular,
+    this.topRightcircular,
+    this.bottomLeftcircular,
+    this.bottomRightcircular,
   });
   final VoidCallback onPressed;
   final String text;
   final Color? color;
-  final double? topLeft;
-  final double? topRight;
-  final double? bottomLeft;
-  final double? bottomRight;
+  final double? topLeftcircular;
+  final double? topRightcircular;
+  final double? bottomLeftcircular;
+  final double? bottomRightcircular;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,10 @@ class CustomButton extends StatelessWidget {
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(topLeft ?? 50),
-                topRight: Radius.circular(topRight ?? 50),
-                bottomLeft: Radius.circular(bottomLeft ?? 50),
-                bottomRight: Radius.circular(bottomRight ?? 50),
+                topLeft: Radius.circular(topLeftcircular ?? 50),
+                topRight: Radius.circular(topRightcircular ?? 50),
+                bottomLeft: Radius.circular(bottomLeftcircular ?? 50),
+                bottomRight: Radius.circular(bottomRightcircular ?? 50),
               ),
             ),
             backgroundColor: color ?? AppColors.secondaryColor,

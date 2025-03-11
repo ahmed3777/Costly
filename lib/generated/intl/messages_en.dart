@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("Costly"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bag": MessageLookupByLibrary.simpleMessage("Bag"),
         "businessName": MessageLookupByLibrary.simpleMessage("Business Name"),
         "byCreditCard": MessageLookupByLibrary.simpleMessage("By Credit Card"),
         "byMasterCard": MessageLookupByLibrary.simpleMessage("By Master Card"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promocode": MessageLookupByLibrary.simpleMessage("Promocode"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("RepeatPassword"),

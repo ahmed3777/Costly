@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/helper_functions/is_arbic.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/features/home/data/models/city/city.dart';
@@ -55,7 +55,7 @@ class _CityDropdownState extends State<CityDropdown> {
     return BlocConsumer<CitiesCubit, CitiesState>(
       listener: (context, state) {
         if (state is CitiesFailure) {
-          return buildErrorBar(context, state.message);
+          return showErrorBar(context, state.message);
         }
       },
       builder: (context, state) {

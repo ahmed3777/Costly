@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_progress_hub.dart';
@@ -22,7 +22,7 @@ class SignUpFormBodyBlocBuilder extends StatelessWidget {
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         }
         if (state is SignUpFailure) {
-          buildErrorBar(context, state.errMessage.split(',')[0]);
+          showErrorBar(context, state.errMessage.split(',')[0]);
         }
       },
       builder: (context, state) {

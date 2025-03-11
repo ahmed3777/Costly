@@ -1,5 +1,6 @@
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/widgets/custom_drawer.dart';
+import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:costly/features/home/presentation/cubits/cities/cities_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/countries/countries_cubit.dart';
@@ -7,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckoutView extends StatelessWidget {
-  const CheckoutView({super.key});
+  const CheckoutView({super.key, required this.cart});
   static const routeName = 'checkout';
+    final Cart cart;
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();

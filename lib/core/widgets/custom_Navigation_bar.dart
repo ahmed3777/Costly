@@ -2,13 +2,14 @@ import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'custom_bottom_nav_item.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key, required this.scaffoldKey});
-  final GlobalKey<ScaffoldState>
-      scaffoldKey; // Accept scaffoldKey as a parameter
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
   @override
   State<CustomNavigationBar> createState() => _CustomNavigationBarState();
 }
@@ -16,120 +17,53 @@ class CustomNavigationBar extends StatefulWidget {
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
   int _selectedIndex = 1;
 
-  // Method to handle bottom navigation item selection
+  // Handle bottom navigation tap
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex =
-          index; // Update the selected index when an item is tapped
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // Define _widgetOptions inside build method to access widget.scaffoldKey correctly
     final List<Widget> widgetOptions = <Widget>[
-      // const Center(child: Text('Bag Screen')),
       CartView(),
-      HomeViewBody(
-          scaffoldKey: widget.scaffoldKey), // Pass scaffoldKey to HomeViewBody
+      HomeViewBody(scaffoldKey: widget.scaffoldKey),
       const Center(child: Text('Profile Screen')),
     ];
 
     return Scaffold(
-      body: widgetOptions[
-          _selectedIndex], // Show the corresponding widget based on selected index
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(10),
-            topLeft: Radius.circular(10),
-          ),
-        ),
+      body: widgetOptions[_selectedIndex],
+      bottomNavigationBar: SizedBox(
+        height:  MediaQuery.of(context).size.height * 0.1, // ~9% of screen height 
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0),
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
           ),
           child: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  Assets.imagesBag,
-                  colorFilter:
-                      const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
-                  width: 20,
-                  height: 20,
-                ),
-                activeIcon: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.secondaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: const EdgeInsets.all(8.0), // Padding for icon
-                  child: SvgPicture.asset(
-                    Assets.imagesBag,
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                    width: 30,
-                    height: 30,
-                  ),
-                ),
-                label: 'Bag',
+            items: [
+              CustomBottomNavItem(
+                icon: Assets.imagesBag,
+                label: S.of(context).bag,
+                isSelected: _selectedIndex == 0,
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  Assets.imagesHome,
-                  colorFilter:
-                      const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
-                  width: 20,
-                  height: 20,
-                ),
-                activeIcon: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.secondaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    Assets.imagesHome,
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                    width: 30,
-                    height: 30,
-                  ),
-                ),
-                label: 'Home',
+              CustomBottomNavItem(
+                icon: Assets.imagesHome,
+                label: S.of(context).home,
+                isSelected: _selectedIndex == 1,
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  Assets.imagesProfile,
-                  colorFilter:
-                      const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
-                  width: 20,
-                  height: 20,
-                ),
-                activeIcon: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.secondaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    Assets.imagesProfile,
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                    width: 30,
-                    height: 30,
-                  ),
-                ),
-                label: 'Profile',
+              CustomBottomNavItem(
+                icon: Assets.imagesProfile,
+                label: S.of(context).profile,
+                isSelected: _selectedIndex == 2,
               ),
             ],
-            currentIndex: _selectedIndex, // Set the currently selected item
+            currentIndex: _selectedIndex,
             selectedItemColor: AppColors.secondaryColor,
-            unselectedItemColor: const Color.fromARGB(255, 69, 70, 70),
-            showSelectedLabels: false, // Hide labels for a cleaner look
-            onTap: _onItemTapped, // Update selected index on tap
+            unselectedItemColor:AppColors.darkPrimaryColor,
+            showSelectedLabels: false,
+            onTap: _onItemTapped,
           ),
         ),
       ),

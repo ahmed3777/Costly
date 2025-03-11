@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/helper_functions/build_error_bar.dart'; // Assuming you're using this package for SVG images
+import '../../../../../core/helper_functions/show_error_bar.dart'; // Assuming you're using this package for SVG images
 
 // Custom widget to represent the bottom sheet content
 class SizePickerBottomSheet extends StatefulWidget {
@@ -61,7 +61,7 @@ class _SizePickerBottomSheetState extends State<SizePickerBottomSheet> {
                         quantity: 1,
                       );
                   Navigator.pop(context);
-                  buildErrorBar(context, 'Product added to cart successfully.');
+                  showErrorBar(context, 'Product added to cart successfully.');
                   // Navigator.popAndPushNamed(context,CartView.routeName,
                   //   // arguments: {
                   //   //   'selectedSize': _selectedSize, // Pass the selected size

@@ -2,6 +2,7 @@ import 'package:costly/features/auth/presentation/views/forget_password_view.dar
 import 'package:costly/features/auth/presentation/views/signin_view.dart';
 import 'package:costly/features/auth/presentation/views/signup_view.dart';
 import 'package:costly/features/auth/presentation/views/widgets/sign_up_form_feild.dart';
+import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/products/presentation/views/products_by_category_view.dart';
@@ -98,7 +99,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
               ));
 
     case CheckoutView.routeName:
-      return MaterialPageRoute(builder: (context) => const CheckoutView());
+      return MaterialPageRoute(builder: (context) =>  CheckoutView(
+          cart: settings.arguments as Cart,
+      ));
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

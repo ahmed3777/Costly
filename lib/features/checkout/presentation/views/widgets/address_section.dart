@@ -11,7 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressSection extends StatefulWidget {
-  const AddressSection({super.key});
+  const AddressSection({super.key, required this.onAddressChanged});
+
+  final Function(String) onAddressChanged;
 
   @override
   State<AddressSection> createState() => _AddressSectionState();
@@ -20,8 +22,8 @@ class AddressSection extends StatefulWidget {
 class _AddressSectionState extends State<AddressSection> {
   String? selectedCountryId;
   String? selectedCityId;
-  String? addressController;
-  String? address2Controller;
+  String? address;
+  String? address2;
   String? postalCodeController;
 @override
   void initState() {
@@ -33,11 +35,12 @@ class _AddressSectionState extends State<AddressSection> {
   }
   void setUserData(UserProfileSuccess state) {
     setState(() {
-      addressController = state.profile.billingAddressOne;
-      address2Controller = state.profile.billingAddressTwo;
+      address = state.profile.billingAddressOne;
+      address2 = state.profile.billingAddressTwo;
       postalCodeController = state.profile.billingPostalCode;
       selectedCountryId = state.profile.billingCountryId;
       selectedCityId = state.profile.billingCityId;
+      widget.onAddressChanged(address ?? '');
     });
   }
   void onCountrySelected(String? countryId) {
@@ -91,11 +94,11 @@ class _AddressSectionState extends State<AddressSection> {
                       Text(S.of(context).address, style: TextStyles.light12),
                       SizedBox(height: 2.h),
                       CustomTextFormField(
-                        hintText: addressController ?? S.of(context).fakeAddress,
+                        hintText: address ?? S.of(context).fakeAddress,
                         hintTextStyle:TextStyles.light10.copyWith(color: Colors.black),
                         textStyle:TextStyles.light10.copyWith(color: Colors.black),
                         onSaved: (value) {
-                          addressController = value;
+                          address = value;
                         },
                         borderSideColor: AppColors.grey,
                         keyboardType: TextInputType.streetAddress,
@@ -105,12 +108,12 @@ class _AddressSectionState extends State<AddressSection> {
                           style: TextStyles.light12),
                       SizedBox(height: 2.h),
                       CustomTextFormField(
-                        hintText: address2Controller ?? S.of(context).fakeAddress,
+                        hintText: address2 ?? S.of(context).fakeAddress,
                         borderSideColor: AppColors.grey,
                         textStyle:TextStyles.light10.copyWith(color: Colors.black),
                         hintTextStyle:TextStyles.light10.copyWith(color: Colors.black),
                         onSaved: (value) {
-                          address2Controller = value;
+                          address2 = value;
                         },
                         keyboardType: TextInputType.streetAddress,
                       ),

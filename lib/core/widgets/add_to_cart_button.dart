@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
@@ -35,10 +35,10 @@ class _AddToCartButtonState extends State<AddToCartButton> {
           );
 
       // Show success message
-      buildErrorBar(context, 'Product added to cart successfully.');
+      showErrorBar(context, 'Product added to cart successfully.');
     } catch (e) {
       // Show error message
-      buildErrorBar(context, 'Failed to add product to cart.');
+      showErrorBar(context, 'Failed to add product to cart.');
     } finally {
       setState(() => isLoading = false); // Stop loading
     }

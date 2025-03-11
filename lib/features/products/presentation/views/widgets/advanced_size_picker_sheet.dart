@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/core/widgets/custom_button.dart';
@@ -147,7 +147,7 @@ class _AdvancedSizePickerState extends State<AdvancedSizePicker> {
                               hip: hip!,
                             );
                         Navigator.pop(context);
-                        buildErrorBar(
+                        showErrorBar(
                             context, 'Product added to cart successfully.');
                       }
                     },

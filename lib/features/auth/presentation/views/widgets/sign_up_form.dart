@@ -1,4 +1,4 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/core/widgets/custom_appbar.dart';
 import 'package:costly/core/widgets/custom_button.dart';
 import 'package:costly/core/widgets/custom_chek_box_widget.dart';
@@ -122,7 +122,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               if (password != rePassword) {
-                                buildErrorBar(
+                                showErrorBar(
                                     context, 'Passwords do not match');
                               } else {
                                 businessName = (widget.userType == 'provider' ||

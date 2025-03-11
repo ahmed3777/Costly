@@ -3,8 +3,9 @@ import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key, required this.currentPageIndex});
+  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController});
   final int currentPageIndex;
+  final PageController pageController ;
   @override
   Widget build(BuildContext context) {
     List<String> getSteps() {
@@ -19,13 +20,19 @@ class CheckoutSteps extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          getSteps().length,
+        children: List.generate(getSteps().length,
           (index) {
-            return StepItem(
-              text: getSteps()[index],
-              index: index,
-              isActive: index <= currentPageIndex,
+            return GestureDetector(
+              onTap: () {
+                pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut);
+              },
+              child: StepItem(
+                text: getSteps()[index],
+                index: index,
+                isActive: index <= currentPageIndex,
+              ),
             );
           },
         ),

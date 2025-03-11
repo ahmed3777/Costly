@@ -92,7 +92,9 @@
     "LE": "جنيه",
     "apply": "تطبيق",
     "unexpectedState" : " حدث خطأ ما ",
-    "fakeAddress": "188 مصر الجديده"
+    "fakeAddress": "188 مصر الجديده",
+    "profile": "الملف الشخصي",
+    "bag": "الحقيبة"
 
 
 

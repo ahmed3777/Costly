@@ -1,7 +1,8 @@
-import 'package:costly/core/helper_functions/build_error_bar.dart';
+import 'package:costly/core/helper_functions/show_error_bar.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'summery_item.dart';
 
 class SummaryItemList extends StatelessWidget {
@@ -18,7 +19,7 @@ class SummaryItemList extends StatelessWidget {
         final cart = state.cart.payload;
         final items = cart.items ?? [];
         return SizedBox(
-          height: 154, // Adjust the height dynamically
+          height: 154.h, // Adjust the height dynamically
           child: ListView.builder(
             itemCount: items.length,
             scrollDirection: Axis.horizontal,
@@ -33,7 +34,7 @@ class SummaryItemList extends StatelessWidget {
           ),
         );
       } else if (state is CartFailure) {
-        buildErrorBar(context, state.message);
+        showErrorBar(context, state.message);
       }
       return Container();
     });
