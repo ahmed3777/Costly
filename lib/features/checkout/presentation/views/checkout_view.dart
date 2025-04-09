@@ -26,7 +26,7 @@ class CheckoutView extends StatelessWidget {
           child: Scaffold(
         key: scaffoldKey,
         drawer: CustomDrawer(),
-        body: CheckoutViewBody(scaffoldKey: scaffoldKey),
+        body: CheckoutViewBody(scaffoldKey: scaffoldKey, cart: cart),
       )),
     );
   }

@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentSection extends StatelessWidget {
   const PaymentSection({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,7 +28,8 @@ class PaymentSection extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     CustomTextFormField(
-                      hintText: "Hend Ali Gafar",
+                      //TODO: add name
+                      hintText:"Hend Ali Gafar",
                       hintTextStyle:
                           TextStyles.light10.copyWith(color: Colors.black),
                       textStyle:

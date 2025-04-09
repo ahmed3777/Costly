@@ -48,6 +48,12 @@ final class CartUpdateSuccess extends CartState {
 
   CartUpdateSuccess({required this.cart});
 }
+class CartLoadingItem extends CartState {
+  final String productId;
+  final String productVariationId;
+
+  CartLoadingItem({required this.productId, required this.productVariationId});
+}
 
 final class CartUpdating extends CartState {
   final String updatingProductId;

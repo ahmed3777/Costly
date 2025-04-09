@@ -5,14 +5,14 @@ class Cart {
   int? totalPrice;
   String? customerId;
   String? createdAt;
-  List<Item>? items;
+  List<Item> items;
 
   Cart({
     this.id,
     this.totalPrice,
     this.customerId,
     this.createdAt,
-    this.items,
+    required this.items,
   });
 
   factory Cart.fromJson(Map<String, dynamic> json) => Cart(
@@ -21,7 +21,7 @@ class Cart {
         customerId: json['customer_id'] as String?,
         createdAt: json['created_at'] as String?,
         items: (json['items'] as List<dynamic>?)
-            ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
+            !.map((e) => Item.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
   factory Cart.fromJsonList(List<dynamic>? jsonList) {

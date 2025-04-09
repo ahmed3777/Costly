@@ -7,42 +7,55 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CartItemList extends StatelessWidget {
   final Cart cart;
   const CartItemList({super.key, required this.cart});
-
   @override
   Widget build(BuildContext context) {
     final cartItems = cart.items ?? [];
-    return ListView.builder(
-      shrinkWrap: true, // ✅ Ensures it doesn't take full height
-      physics: NeverScrollableScrollPhysics(), // ✅ Prevents scrolling conflicts
-      itemCount: cartItems.length,
-      itemBuilder: (context, index) {
-        return BlocBuilder<CartCubit, CartState>(
-          builder: (context, state) {
-            final isUpdating = state is CartLoading;
+     return BlocConsumer<CartCubit, CartState>(
+      listener: (context, state) {
+        if (state is CartFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+      },
+      builder: (context, state) {
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: cartItems.length,
+          itemBuilder: (context, index) {
+            final item = cartItems[index];
             return CartItem(
-              productImage: cartItems[index].product!.mediaLinks![0].link,
-              productName: cartItems[index].product!.enName,
-              totalPrice: cartItems[index].itemTotalPrice,
+              productImage: item.product?.mediaLinks?.isNotEmpty == true
+                  ? item.product!.mediaLinks![0].link
+                  : 'placeholder_image_url',
+              productName: item.product?.enName ?? 'Unknown Product',
+              totalPrice: item.itemTotalPrice,
+              quantity: item.quantity,
               onDelete: () async {
-                await context.read<CartCubit>().deleteFromCart(
-                  productId: cartItems[index].product!.id,
-                  productVariationId: cartItems[index].productVariationId!,
-                );
+                if (item.product?.id != null && item.productVariationId != null) {
+                  await context.read<CartCubit>().deleteFromCart(
+                    productId: item.product!.id,
+                    productVariationId: item.productVariationId!,
+                  );
+                }
               },
               incrementQuantity: () async {
-                await context.read<CartCubit>().incrementQuantity(
-                  productId: cartItems[index].product!.id,
-                  productVariationId: cartItems[index].productVariationId!,
-                );
+                if (item.product?.id != null && item.productVariationId != null) {
+                  await context.read<CartCubit>().incrementQuantity(
+                    productId: item.product!.id,
+                    productVariationId: item.productVariationId!,
+                  );
+                }
               },
               decrementQuantity: () async {
-                await context.read<CartCubit>().decrementQuantity(
-                  productId: cartItems[index].product!.id,
-                  productVariationId: cartItems[index].productVariationId!,
-                );
+                if (item.product?.id != null && item.productVariationId != null) {
+                  await context.read<CartCubit>().decrementQuantity(
+                    productId: item.product!.id,
+                    productVariationId: item.productVariationId!,
+                  );
+                }
               },
-              quantity: cartItems[index].quantity,
-              isLoading: isUpdating,
             );
           },
         );

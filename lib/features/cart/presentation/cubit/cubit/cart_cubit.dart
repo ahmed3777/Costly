@@ -10,7 +10,6 @@ class CartCubit extends Cubit<CartState> {
   final CartRepo cartRepo;
 
   CartCubit(this.cartRepo) : super(CartInitial());
-
   Future<void> getCart() async {
     emit(CartLoading());
     final result = await cartRepo.getCart();
@@ -19,12 +18,11 @@ class CartCubit extends Cubit<CartState> {
         emit(CartFailure(message: failure.errMessage));
       },
       (cart) {
-        print("Cart Success: ${cart.payload.items!.isEmpty}"); // Log empty cart
+      print("Cart Loaded: ${cart.payload.items?.length ?? 0} items");
         emit(CartSuccess(cart: cart));
       },
     );
   }
-
   Future<void> addToCart({
     required String productId,
     required String productVariationId,
@@ -53,7 +51,6 @@ class CartCubit extends Cubit<CartState> {
       },
     );
   }
-
   Future<void> deleteFromCart(
       {required String productId, required String productVariationId}) async {
     emit(CartLoading());
@@ -69,73 +66,63 @@ class CartCubit extends Cubit<CartState> {
       },
     );
   }
-  Future<void> incrementQuantity(
-      {required String productId,
-       required String productVariationId,
-       }) async {
-
+  Future<void> incrementQuantity (
+    {
+    required String productId,
+    required String productVariationId,
+  }) async {
     final result = await cartRepo.incrementQuantity(
-        productId: productId,
-        productVariationId: productVariationId,
-        quantity: 1);
+      productId: productId,
+      productVariationId: productVariationId,
+      quantity: 1, 
+    );
     result.fold(
       (failure) {
-        emit(CartFailure(message: failure.errMessage));
+        emit(CartFailure(message: failure.errMessage)); // Handle API failure
       },
-      (updatedCart) async {
-        emit(Cartincrementsuccess(cart: updatedCart));
-                await getCart();
-
-            // await updateCart(
-            // productId: productId,
-            //  productVariationId: productVariationId,
-            //  quantity: );
-      },
+      (cart) async {
+          await getCart();
+        },
     );
-  }
-
-  Future<void> decrementQuantity(
-      {required String productId,
-      required String productVariationId,
-      }) async {
-    final result = await cartRepo.decrementQuantity(
+}
+  Future<void> decrementQuantity({
+    required String productId,
+    required String productVariationId,
+  }) async {
+       final result = await cartRepo.decrementQuantity(
         productId: productId,
         productVariationId: productVariationId,
-        quantity: 1);
-    result.fold(
-      (failure) {
-        emit(CartFailure(message: failure.errMessage));
-      },
-      (decrement) async {
-        emit(Cartdecrementsuccess(cart: decrement));
-                await getCart();
-    
-      //    await updateCart(
-      //       productId: productId,
-      //       productVariationId: productVariationId,
-      //       quantity: quantity);
-      // },
-      },
-    );
+        quantity: 1,
+      );
+      result.fold(
+        (failure) {
+          emit(CartFailure(message: failure.errMessage));
+        },
+        (cart) async {
+          await getCart();
+        },
+      );
+
   }
 
-
-  Future<void> updateCart(
-      {required String productId,
-      required String productVariationId,
-      required int quantity}) async {
-    // emit(CartUpdating(updatingProductId: productId, cart: (state as CartSuccess).cart));
+  Future<void> updateCartItem({
+  required String productId,
+  required String productVariationId,
+  required int quantity,
+}) async {
     final result = await cartRepo.updateCart(
-        productId: productId,
-        productVariationId: productVariationId,
-        quantity: quantity);
-    result.fold(
-      (failure) {
-        emit(CartFailure(message: failure.errMessage));
-      },
-      (updatedCart) {
-        emit(CartUpdateSuccess(cart: updatedCart));
-      },
-    );
-  }
+    productId: productId,
+    productVariationId: productVariationId,
+    quantity: quantity,
+  );
+  result.fold(
+    (failure) {
+      emit(CartFailure(message: failure.errMessage));
+    },
+    (updatedCart) {
+      emit(CartSuccess(cart: updatedCart)); // ✅ Use API response to update state
+    },
+  );
+}
+
 }

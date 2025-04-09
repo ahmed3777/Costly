@@ -1,4 +1,5 @@
 import 'package:costly/core/widgets/custom_home_app_bar.dart';
+import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/checkout/presentation/views/widgets/checkout_steps_pageview.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,9 @@ import 'checkout_steps.dart';
 import 'moving_button_bettween_pageview.dart';
 
 class CheckoutViewBody extends StatefulWidget {
-  const CheckoutViewBody({super.key, required this.scaffoldKey});
+  const CheckoutViewBody({super.key, required this.scaffoldKey, required this.cart});
   final GlobalKey<ScaffoldState> scaffoldKey;
+  final Cart cart;
   @override
   State<CheckoutViewBody> createState() => _CheckoutViewBodyState();
 }
@@ -44,7 +46,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         SizedBox(height: 6.h),
         CheckoutSteps(currentPageIndex: currentPageIndex,pageController: pageController),
         Expanded(child: CheckoutStepsPageView(pageController: pageController)),
-        MovingButtonBettweenPageView(pageController: pageController, currentPageIndex: currentPageIndex),
+        MovingButtonBettweenPageView(pageController: pageController,
+         currentPageIndex: currentPageIndex,
+         cart: widget.cart,),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,10 @@ class CartTotalAndVoucher extends StatelessWidget {
                           S.of(context).sublTota,
                           style: TextStyles.regular13,
                         ),
-                        Spacer(),
+                        Container(width: 200,
+                          height: 1,
+                          decoration: BoxDecoration(color:AppColors.grey),
+                          ),
                         Text(
                           "$totalPrice ${S.of(context).LE}",
                           style: TextStyles.light12,
@@ -48,7 +52,10 @@ class CartTotalAndVoucher extends StatelessWidget {
                           S.of(context).Shipping,
                           style: TextStyles.regular13,
                         ),
-                        Spacer(),
+                          Container(width: 200,
+                          height: 1,
+                          decoration: BoxDecoration(color:AppColors.grey),
+                          ),
                         Text(
                           S.of(context).LE,
                           style: TextStyles.light12,

@@ -10,7 +10,6 @@ class CartItem extends StatelessWidget {
   final VoidCallback incrementQuantity;
   final VoidCallback decrementQuantity;
   final VoidCallback onDelete;
-  final bool isLoading;
   const CartItem({
     super.key,
     required this.productImage,
@@ -20,7 +19,6 @@ class CartItem extends StatelessWidget {
     required this.incrementQuantity,
     required this.decrementQuantity,
     required this.totalPrice,
-    this.isLoading = false,
   });
 
   @override
@@ -59,13 +57,7 @@ class CartItem extends StatelessWidget {
                 const SizedBox(height: 2.0),
                 Row(
                   children: [
-                    isLoading
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : IconButton(
+                  IconButton(
                             icon: const Icon(
                               Icons.remove,
                               size: 12,
@@ -77,13 +69,7 @@ class CartItem extends StatelessWidget {
                             },
                           ),
                     Text("$quantity", style: TextStyles.bold18),
-                    isLoading
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : IconButton(
+                    IconButton(
                             icon: const Icon(Icons.add, size: 12),
                             onPressed: incrementQuantity,
                           ),
@@ -92,10 +78,8 @@ class CartItem extends StatelessWidget {
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color:
-                            Colors.red, // Background color (change if needed)
-                        borderRadius:
-                            BorderRadius.circular(5), // Rounded corners
+                        color:Colors.red, // Background color (change if needed)
+                        borderRadius:BorderRadius.circular(5), // Rounded corners
                       ),
                       child: IconButton(
                         icon: Image.asset(
@@ -106,10 +90,8 @@ class CartItem extends StatelessWidget {
                               .contain, // Ensures it fits well inside the button
                         ),
                         onPressed: onDelete,
-                        padding: EdgeInsets
-                            .zero, // Removes extra padding around the image
-                        constraints:
-                            BoxConstraints(), // Prevents unwanted stretching
+                        padding:EdgeInsets.zero, // Removes extra padding around the image
+                        constraints:BoxConstraints(), // Prevents unwanted stretching
                       ),
                     ),
                   ],

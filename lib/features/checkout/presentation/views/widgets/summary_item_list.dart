@@ -9,7 +9,7 @@ class SummaryItemList extends StatelessWidget {
   const SummaryItemList({
     super.key,
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(builder: (context, state) {

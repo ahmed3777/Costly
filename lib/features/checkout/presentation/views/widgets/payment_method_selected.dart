@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 
 class PaymentMethodSelected extends StatefulWidget {
   const PaymentMethodSelected({super.key});
-
+  
   @override
   State<PaymentMethodSelected> createState() => _PaymentMethodSelectedState();
 }
 
-String _selectedPayment = "cash"; // Default selected option
+String _selectedPayment = "paypal"; // Default selected option
 
 class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-         paymentMethod("By Credit Card", "creditcard"),
+        paymentMethod("By Credit Card", "creditcard"),
         const SizedBox(height: 10),
         paymentMethod("By Cash", "cash"),
         const SizedBox(height: 10),
@@ -51,9 +51,7 @@ class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
                 : null, // Empty for unselected
           ),
           const SizedBox(width: 10), // Space between radio button and text
-          Text(
-            title,
-            style: TextStyles.regular14,
+          Text(title,style: TextStyles.regular14,
           ),
         ],
       ),

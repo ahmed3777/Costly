@@ -29,7 +29,7 @@ if (flutterVersionName == null) {
 android {
     namespace = "com.example.costly"
 //    compileSdk = flutter.compileSdkVersion
-    compileSdk 34
+    compileSdk 35
 //    ndkVersion = flutter.ndkVersion
     ndkVersion "25.1.8937393"
     compileOptions {
@@ -69,8 +69,8 @@ flutter {
     source = "../.."
 }
 dependencies {
-    implementation 'com.google.firebase:firebase-auth:21.0.1' // Firebase Auth dependency
-    implementation 'com.google.android.gms:play-services-auth:20.0.1' // Google Sign-In dependency
+    implementation 'com.google.firebase:firebase-auth:23.2.0' // Firebase Auth dependency
+    implementation 'com.google.android.gms:play-services-auth:21.3.0' // Google Sign-In dependency
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'  // Facebook Sign-In dependency
     
 }
