@@ -3,9 +3,12 @@ import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController});
+  const CheckoutSteps(
+      {super.key,
+      required this.currentPageIndex,
+      required this.pageController});
   final int currentPageIndex;
-  final PageController pageController ;
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     List<String> getSteps() {
@@ -20,7 +23,8 @@ class CheckoutSteps extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(getSteps().length,
+        children: List.generate(
+          getSteps().length,
           (index) {
             return GestureDetector(
               onTap: () {

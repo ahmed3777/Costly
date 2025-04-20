@@ -35,7 +35,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return Scaffold(
       body: widgetOptions[_selectedIndex],
       bottomNavigationBar: SizedBox(
-        height:  MediaQuery.of(context).size.height * 0.1, // ~9% of screen height 
+        height:
+            MediaQuery.of(context).size.height * 0.1, // ~9% of screen height
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(10),
@@ -61,7 +62,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             ],
             currentIndex: _selectedIndex,
             selectedItemColor: AppColors.secondaryColor,
-            unselectedItemColor:AppColors.darkPrimaryColor,
+            unselectedItemColor: AppColors.darkPrimaryColor,
             showSelectedLabels: false,
             onTap: _onItemTapped,
           ),

@@ -7,6 +7,7 @@ import 'package:costly/core/utils/assets.dart';
 import 'package:costly/core/widgets/custom_drawer_item.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:costly/features/auth/presentation/views/widgets/social_login_button.dart';
+import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/home/presentation/views/home_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
@@ -34,19 +35,24 @@ class _CustomDrawerState extends State<CustomDrawer> {
   }
 
   void _loadUserData() async {
-    String fetchedUserName = await SharedPref.getString(SharedPrefKeys.userName);
-    String fetchedImageUrl = await SharedPref.getString(SharedPrefKeys.userImageUrl);
+    String fetchedUserName =
+        await SharedPref.getString(SharedPrefKeys.userName);
+    String fetchedImageUrl =
+        await SharedPref.getString(SharedPrefKeys.userImageUrl);
     setState(() {
       userName = fetchedUserName;
       imageUrl = fetchedImageUrl;
     });
   }
+
   ImageProvider? _getBackgroundImage() {
-    if (imageUrl.isNotEmpty && (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
+    if (imageUrl.isNotEmpty &&
+        (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
       return NetworkImage(imageUrl);
     }
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -64,7 +70,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 CircleAvatar(
                   radius: 30.0,
                   backgroundImage: _getBackgroundImage(),
-                  
                 ),
                 const SizedBox(width: 10),
                 Expanded(
@@ -110,7 +115,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 buildDrawerItem(
                   icon: Icons.shopping_basket_outlined,
                   title: S.of(context).cart,
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => Navigator.pushNamed(context, CartView.routeName),
                 ),
                 buildDrawerItem(
                   icon: Icons.mail_outline,

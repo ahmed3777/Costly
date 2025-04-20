@@ -11,6 +11,7 @@ class CartViewBody extends StatefulWidget {
   @override
   State<CartViewBody> createState() => _CartViewBodyState();
 }
+
 class _CartViewBodyState extends State<CartViewBody> {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,6 @@ class _CartViewBodyState extends State<CartViewBody> {
       slivers: [
         SliverHomeAppBar(widget: widget),
         const CartViewConsumer(),
-       // CartTotalAndVoucher(),
       ],
     );
   }

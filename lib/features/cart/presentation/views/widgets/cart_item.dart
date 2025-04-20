@@ -57,29 +57,31 @@ class CartItem extends StatelessWidget {
                 const SizedBox(height: 2.0),
                 Row(
                   children: [
-                  IconButton(
-                            icon: const Icon(
-                              Icons.remove,
-                              size: 12,
-                            ),
-                            onPressed: () {
-                              if (quantity > 1) {
-                                decrementQuantity();
-                              }
-                            },
-                          ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.remove,
+                        size: 12,
+                      ),
+                      onPressed: () {
+                        if (quantity > 1) {
+                          decrementQuantity();
+                        }
+                      },
+                    ),
                     Text("$quantity", style: TextStyles.bold18),
                     IconButton(
-                            icon: const Icon(Icons.add, size: 12),
-                            onPressed: incrementQuantity,
-                          ),
+                      icon: const Icon(Icons.add, size: 12),
+                      onPressed: incrementQuantity,
+                    ),
                     const Spacer(),
                     Container(
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color:Colors.red, // Background color (change if needed)
-                        borderRadius:BorderRadius.circular(5), // Rounded corners
+                        color:
+                            Colors.red, // Background color (change if needed)
+                        borderRadius:
+                            BorderRadius.circular(5), // Rounded corners
                       ),
                       child: IconButton(
                         icon: Image.asset(
@@ -90,8 +92,10 @@ class CartItem extends StatelessWidget {
                               .contain, // Ensures it fits well inside the button
                         ),
                         onPressed: onDelete,
-                        padding:EdgeInsets.zero, // Removes extra padding around the image
-                        constraints:BoxConstraints(), // Prevents unwanted stretching
+                        padding: EdgeInsets
+                            .zero, // Removes extra padding around the image
+                        constraints:
+                            BoxConstraints(), // Prevents unwanted stretching
                       ),
                     ),
                   ],

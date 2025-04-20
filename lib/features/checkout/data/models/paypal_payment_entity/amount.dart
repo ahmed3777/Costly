@@ -12,7 +12,7 @@ class Amount {
   factory Amount.fromEntity(Cart entity) {
     return Amount(
       total: entity.totalPrice.toString(),
-      currency:"USD ",
+      currency: "USD ",
       details: DetailsEntity.fromEntity(entity),
     );
   }

@@ -2,7 +2,6 @@ import 'package:costly/features/auth/data/models/signup_models/signup_response/u
 import 'package:costly/features/auth/domin/repos/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {

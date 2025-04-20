@@ -6,9 +6,9 @@ part 'cities_state.dart';
 
 class CitiesCubit extends Cubit<CitiesState> {
   CitiesCubit(this.homeRepo) : super(CitiesInitial());
-  final HomeRepo homeRepo ;
+  final HomeRepo homeRepo;
 
-  Future<void> getCities( String? countryId) async {
+  Future<void> getCities(String? countryId) async {
     emit(CitiesLoading());
     final result = await homeRepo.getCity(countryId);
     result.fold((failure) {
@@ -18,6 +18,7 @@ class CitiesCubit extends Cubit<CitiesState> {
     });
   }
 }
+
 ///more important code is here
 
 // class HomeRepoImp implements HomeRepo {

@@ -43,11 +43,13 @@ final class Cartdecrementsuccess extends CartState {
 
   Cartdecrementsuccess({required this.cart});
 }
+
 final class CartUpdateSuccess extends CartState {
   final CartResponse cart;
 
   CartUpdateSuccess({required this.cart});
 }
+
 class CartLoadingItem extends CartState {
   final String productId;
   final String productVariationId;

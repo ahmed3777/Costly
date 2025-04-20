@@ -1,4 +1,3 @@
-
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:costly/core/widgets/custom_textfield.dart';
@@ -16,14 +15,12 @@ class VoucherFormField extends StatelessWidget {
       child: CustomTextFormField(
         borderSideColor: AppColors.grey,
         hintText: S.of(context).enterVoucherCode,
-        hintTextStyle:
-            TextStyles.light12.copyWith(color: Colors.grey),
+        hintTextStyle: TextStyles.light12.copyWith(color: Colors.grey),
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 16, top: 10),
           child: Text(
             S.of(context).apply,
-            style: TextStyles.light16
-                .copyWith(color: AppColors.grey),
+            style: TextStyles.light16.copyWith(color: AppColors.grey),
           ),
         ),
         keyboardType: TextInputType.text,

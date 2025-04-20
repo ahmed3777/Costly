@@ -18,7 +18,7 @@ class SingleServiceViewBody extends StatelessWidget {
       children: [
         CustomAppbar(
           backgroundColor: Colors.white,
-          imageAsset: Assets.imagesLogo,
+          imageAsset: Assets.imagesCostly,
           arrowColor: Colors.black,
         ),
         SizedBox(height: 20),

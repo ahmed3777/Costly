@@ -8,7 +8,8 @@ import 'checkout_steps.dart';
 import 'moving_button_bettween_pageview.dart';
 
 class CheckoutViewBody extends StatefulWidget {
-  const CheckoutViewBody({super.key, required this.scaffoldKey, required this.cart});
+  const CheckoutViewBody(
+      {super.key, required this.scaffoldKey, required this.cart});
   final GlobalKey<ScaffoldState> scaffoldKey;
   final Cart cart;
   @override
@@ -17,6 +18,8 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  String paymentMethod = "paypal"; // ← هنا نخزنها
+
   @override
   void initState() {
     super.initState();
@@ -44,13 +47,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           centerText: S.of(context).checkout,
         ),
         SizedBox(height: 6.h),
-        CheckoutSteps(currentPageIndex: currentPageIndex,pageController: pageController),
-        Expanded(child: CheckoutStepsPageView(pageController: pageController)),
-        MovingButtonBettweenPageView(pageController: pageController,
-         currentPageIndex: currentPageIndex,
-         cart: widget.cart,),
+        CheckoutSteps(
+            currentPageIndex: currentPageIndex, pageController: pageController),
+        Expanded(
+            child: CheckoutStepsPageView(
+          pageController: pageController,
+          onPaymentMethodChanged: (value) {
+            setState(() {
+              paymentMethod = value;
+            });
+          },
+        )),
+        MovingButtonBettweenPageView(
+          pageController: pageController,
+          currentPageIndex: currentPageIndex,
+          cart: widget.cart,
+          paymentMethod: paymentMethod,
+        ),
       ],
     );
   }
- 
 }

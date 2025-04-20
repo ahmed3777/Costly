@@ -9,7 +9,7 @@ class SummaryItemList extends StatelessWidget {
   const SummaryItemList({
     super.key,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(builder: (context, state) {
@@ -17,7 +17,7 @@ class SummaryItemList extends StatelessWidget {
         return const Center(child: CircularProgressIndicator());
       } else if (state is CartSuccess) {
         final cart = state.cart.payload;
-        final items = cart.items ?? [];
+        final items = cart.items;
         return SizedBox(
           height: 154.h, // Adjust the height dynamically
           child: ListView.builder(

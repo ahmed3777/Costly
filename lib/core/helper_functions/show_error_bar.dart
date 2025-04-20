@@ -5,8 +5,7 @@ void showErrorBar(BuildContext context, String message) {
     SnackBar(
       content: Text(message),
       behavior: SnackBarBehavior.floating,
-      duration: const Duration(seconds: 1), // Adjust the duration as needed
+      duration: const Duration(seconds: 2), // Adjust the duration as needed
     ),
-    
   );
 }

@@ -2,8 +2,9 @@ import 'package:costly/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMethodSelected extends StatefulWidget {
-  const PaymentMethodSelected({super.key});
-  
+  const PaymentMethodSelected({super.key, required this.onChanged});
+  final Function(String) onChanged; // New callback
+
   @override
   State<PaymentMethodSelected> createState() => _PaymentMethodSelectedState();
 }
@@ -31,6 +32,7 @@ class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
         setState(() {
           _selectedPayment = value;
         });
+        widget.onChanged(_selectedPayment); // Notify parent
       },
       child: Row(
         children: [
@@ -51,7 +53,9 @@ class _PaymentMethodSelectedState extends State<PaymentMethodSelected> {
                 : null, // Empty for unselected
           ),
           const SizedBox(width: 10), // Space between radio button and text
-          Text(title,style: TextStyles.regular14,
+          Text(
+            title,
+            style: TextStyles.regular14,
           ),
         ],
       ),

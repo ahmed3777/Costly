@@ -1,5 +1,7 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
+import 'package:costly/features/notifications/presentation/views/notifications_view.dart'
+    show NotificationsView;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,7 +21,9 @@ class NotificationWidget extends StatelessWidget {
             child: Visibility(
               visible: visible ?? false,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Navigator.pushNamed(context, FilterView.routeName);
+                },
                 icon: SvgPicture.asset(
                   Assets.imagesFiltericon,
                   width: 24,
@@ -29,7 +33,9 @@ class NotificationWidget extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, NotificationsView.routeName);
+            },
             icon: Badge.count(
               count: 2,
               backgroundColor: AppColors.goald,

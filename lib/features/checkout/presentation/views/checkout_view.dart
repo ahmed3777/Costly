@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key, required this.cart});
   static const routeName = 'checkout';
-    final Cart cart;
+  final Cart cart;
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -19,7 +19,7 @@ class CheckoutView extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<CountriesCubit>()..getCountries(),
         ),
-          BlocProvider(create: (context) => getIt<CitiesCubit>()),
+        BlocProvider(create: (context) => getIt<CitiesCubit>()),
         //  ),
       ],
       child: SafeArea(

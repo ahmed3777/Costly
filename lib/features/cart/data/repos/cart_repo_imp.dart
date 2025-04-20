@@ -15,15 +15,15 @@ class CartRepoImp implements CartRepo {
 
   CartRepoImp({required this.apiService});
 
-   Future<String?> getToken() async {
+  Future<String?> getToken() async {
     return await SharedPref.getSecuredString(SharedPrefKeys.userToken);
   }
 
   @override
-  Future<Either<Failure, CartResponse>> getCart( ) async {
+  Future<Either<Failure, CartResponse>> getCart() async {
     try {
-        final token =await getToken();
-      final response = await apiService.get(ApiEndPoints.cart,token:token);
+      final token = await getToken();
+      final response = await apiService.get(ApiEndPoints.cart, token: token);
       final cart = CartResponse.fromJson(response.data);
       if (cart.code != 200 && cart.code != 201) {
         return left(ServerFailure(cart.messages ?? "Unknown error occurred."));
@@ -49,16 +49,19 @@ class CartRepoImp implements CartRepo {
     int? hip,
   }) async {
     try {
-        final token =await getToken();
-      final response = await apiService.post(ApiEndPoints.addToCart, {
-        'product_id': productId,
-        'product_variation_id': productVariationId,
-        'quantity': quantity,
-        if (length != null) 'length': length,
-        if (chest != null) 'chest': chest,
-        if (waist != null) 'waist': waist,
-        if (hip != null) 'hip': hip
-      },token:token);
+      final token = await getToken();
+      final response = await apiService.post(
+          ApiEndPoints.addToCart,
+          {
+            'product_id': productId,
+            'product_variation_id': productVariationId,
+            'quantity': quantity,
+            if (length != null) 'length': length,
+            if (chest != null) 'chest': chest,
+            if (waist != null) 'waist': waist,
+            if (hip != null) 'hip': hip
+          },
+          token: token);
       final addToCart = AddToCart.fromJson(response);
       return right(addToCart);
     } catch (e) {
@@ -74,12 +77,15 @@ class CartRepoImp implements CartRepo {
   Future<Either<Failure, DeleteFromCart>> deleteFromCart(
       {required String productId, required String productVariationId}) async {
     try {
-        final token =await getToken();
+      final token = await getToken();
 
-      final response = await apiService.delete(ApiEndPoints.removeFromCart, {
-        'product_id': productId,
-        'product_variation_id': productVariationId,
-      },token:token);
+      final response = await apiService.delete(
+          ApiEndPoints.removeFromCart,
+          {
+            'product_id': productId,
+            'product_variation_id': productVariationId,
+          },
+          token: token);
       print("response: $response");
       final removeFromCart = DeleteFromCart.fromJson(response);
       return right(removeFromCart);
@@ -97,18 +103,23 @@ class CartRepoImp implements CartRepo {
       {required String productId,
       required String productVariationId,
       required int quantity}) async {
-     try {
-        final token =await getToken();
-      final response = await apiService.patch(ApiEndPoints.decrementQuantity, {
-        'product_id': productId,
-        'product_variation_id': productVariationId,
-        'quantity': quantity}, token: token);
-       final decrementQuantity = CartResponse.fromJson(response);
-       return right(decrementQuantity);
-      } catch (e) {
-          return left( e is DioException ? handleError(e) : ServerFailure(e.toString()));
-      }
-   }
+    try {
+      final token = await getToken();
+      final response = await apiService.patch(
+          ApiEndPoints.decrementQuantity,
+          {
+            'product_id': productId,
+            'product_variation_id': productVariationId,
+            'quantity': quantity
+          },
+          token: token);
+      final decrementQuantity = CartResponse.fromJson(response);
+      return right(decrementQuantity);
+    } catch (e) {
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
+    }
+  }
 
   @override
   Future<Either<Failure, CartResponse>> incrementQuantity(
@@ -116,16 +127,20 @@ class CartRepoImp implements CartRepo {
       required String productVariationId,
       required int quantity}) async {
     try {
-        final token =await getToken();
-      final response = await apiService.patch(ApiEndPoints.incrementQuantity, {
-        'product_id': productId,
-        'product_variation_id': productVariationId,
-        'quantity': quantity
-      },token: token);
+      final token = await getToken();
+      final response = await apiService.patch(
+          ApiEndPoints.incrementQuantity,
+          {
+            'product_id': productId,
+            'product_variation_id': productVariationId,
+            'quantity': quantity
+          },
+          token: token);
       final incrementQuantity = CartResponse.fromJson(response);
       return right(incrementQuantity);
     } catch (e) {
-      return left( e is DioException ? handleError(e) : ServerFailure(e.toString()));
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
     }
   }
 
@@ -135,16 +150,20 @@ class CartRepoImp implements CartRepo {
       required String productVariationId,
       required int quantity}) async {
     try {
-        final token =await getToken();
-      final response = await apiService.patch(ApiEndPoints.updateCart, {
-        'product_id': productId,
-        'product_variation_id': productVariationId,
-        'quantity': quantity
-      },token: token);
+      final token = await getToken();
+      final response = await apiService.patch(
+          ApiEndPoints.updateCart,
+          {
+            'product_id': productId,
+            'product_variation_id': productVariationId,
+            'quantity': quantity
+          },
+          token: token);
       final updateCart = CartResponse.fromJson(response);
       return right(updateCart);
     } catch (e) {
-      return left(e is DioException ? handleError(e) : ServerFailure(e.toString()));
+      return left(
+          e is DioException ? handleError(e) : ServerFailure(e.toString()));
     }
   }
 }

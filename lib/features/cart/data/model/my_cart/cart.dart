@@ -20,8 +20,8 @@ class Cart {
         totalPrice: json['total_price'] as int?,
         customerId: json['customer_id'] as String?,
         createdAt: json['created_at'] as String?,
-        items: (json['items'] as List<dynamic>?)
-            !.map((e) => Item.fromJson(e as Map<String, dynamic>))
+        items: (json['items'] as List<dynamic>?)!
+            .map((e) => Item.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
   factory Cart.fromJsonList(List<dynamic>? jsonList) {
@@ -41,6 +41,6 @@ class Cart {
         'total_price': totalPrice,
         'customer_id': customerId,
         'created_at': createdAt,
-        'items': items?.map((e) => e.toJson()).toList(),
+        'items': items.map((e) => e.toJson()).toList(),
       };
 }

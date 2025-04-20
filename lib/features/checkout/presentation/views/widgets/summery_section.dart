@@ -10,7 +10,8 @@ import 'summary_item_list.dart';
 class SummerySection extends StatefulWidget {
   const SummerySection({super.key, required this.pageController, this.address});
   final PageController pageController;
-  final  String? address;
+  final String? address;
+
   @override
   State<SummerySection> createState() => _SummerySectionState();
 }
@@ -76,7 +77,7 @@ class _SummerySectionState extends State<SummerySection> {
                     width: MediaQuery.of(context).size.width / 2,
                     child: Text(
                       widget.address ??
-                      "12, Bay brook, Sharps Rd, Keilor East, Melbourne, Australia",
+                          "12, Bay brook, Sharps Rd, Keilor East, Melbourne, Australia",
                       style: TextStyles.light12,
                     )),
                 SizedBox(

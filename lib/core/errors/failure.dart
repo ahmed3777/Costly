@@ -21,13 +21,12 @@ class ServerFailure extends Failure {
         return ServerFailure('Server is taking too long to respond.');
 
       case DioExceptionType.cancel:
-      return  ServerFailure('Request was canceled.');
+        return ServerFailure('Request was canceled.');
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode, 
-            dioError.response!.data);
-     
-       case DioExceptionType.unknown:
+            dioError.response!.statusCode, dioError.response!.data);
+
+      case DioExceptionType.unknown:
         if (dioError.message != null &&
             dioError.message!.contains('SocketException')) {
           return ServerFailure('No internet connection.');
@@ -37,7 +36,8 @@ class ServerFailure extends Failure {
         return ServerFailure('Something went wrong. Please try again.');
     }
   }
-    /// Extracts meaningful messages from API responses
+
+  /// Extracts meaningful messages from API responses
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
@@ -47,12 +47,14 @@ class ServerFailure extends Failure {
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server error, Please try later');
     } else if (statusCode == 422) {
-      return ServerFailure(response?['messages'] ?? 'Validation error occurred.');
+      return ServerFailure(
+          response?['messages'] ?? 'Validation error occurred.');
     } else {
       return ServerFailure('Unexpected error occurred.');
     }
   }
 }
+
 /// Custom exception for API errors
 class ApiException implements Exception {
   final String message;

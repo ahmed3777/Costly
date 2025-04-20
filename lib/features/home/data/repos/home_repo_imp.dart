@@ -52,12 +52,12 @@ class HomeRepoImp implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, MainResponseModel<City>>> getCity( String? countryId ) async {
-      String getCityByCountryId =
-      (countryId==null || countryId.isEmpty)
-      ?ApiEndPoints.cities 
-      : "${ApiEndPoints.countries}/$countryId/${ApiEndPoints.cities}";
-  try {
+  Future<Either<Failure, MainResponseModel<City>>> getCity(
+      String? countryId) async {
+    String getCityByCountryId = (countryId == null || countryId.isEmpty)
+        ? ApiEndPoints.cities
+        : "${ApiEndPoints.countries}/$countryId/${ApiEndPoints.cities}";
+    try {
       final response = await apiService.get(getCityByCountryId);
 
       final cities = MainResponseModel<City>.fromJson(

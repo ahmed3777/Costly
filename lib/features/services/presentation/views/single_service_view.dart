@@ -16,26 +16,6 @@ class SingleServiceView extends StatefulWidget {
 }
 
 class _SingleServiceViewState extends State<SingleServiceView> {
-//     String userName = '';
-//   String imageUrl = '';
-//   @override
-//   void initState() {
-//     _loadUserData();
-//     super.initState();
-//   }
-// // Load the user data asynchronously
-//   void _loadUserData() async {
-//     String fetchedUserName =
-//         await SharedPref.getString(SharedPrefKeys.userName);
-//     String fetchedImageUrl =
-//         await SharedPref.getString(SharedPrefKeys.imageUrl);
-
-//     setState(() {
-//       userName = fetchedUserName;
-//       imageUrl = fetchedImageUrl;
-//     });
-//   }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

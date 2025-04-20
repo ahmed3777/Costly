@@ -25,7 +25,7 @@ class _AddressSectionState extends State<AddressSection> {
   String? address;
   String? address2;
   String? postalCodeController;
-@override
+  @override
   void initState() {
     super.initState();
     final userProfileState = context.read<UserProfileCubit>().state;
@@ -33,6 +33,7 @@ class _AddressSectionState extends State<AddressSection> {
       setUserData(userProfileState);
     }
   }
+
   void setUserData(UserProfileSuccess state) {
     setState(() {
       address = state.profile.billingAddressOne;
@@ -40,20 +41,23 @@ class _AddressSectionState extends State<AddressSection> {
       postalCodeController = state.profile.billingPostalCode;
       selectedCountryId = state.profile.billingCountryId;
       selectedCityId = state.profile.billingCityId;
-      widget.onAddressChanged(address ?? '');
+      //  widget.onAddressChanged(address ?? '');
     });
   }
+
   void onCountrySelected(String? countryId) {
     setState(() {
       selectedCountryId = countryId;
       selectedCityId = null; // Reset city when country changes
     });
   }
+
   void onCitySelected(String? cityId) {
     setState(() {
       selectedCityId = cityId;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<UserProfileCubit, UserProfileState>(
@@ -95,10 +99,17 @@ class _AddressSectionState extends State<AddressSection> {
                       SizedBox(height: 2.h),
                       CustomTextFormField(
                         hintText: address ?? S.of(context).fakeAddress,
-                        hintTextStyle:TextStyles.light10.copyWith(color: Colors.black),
-                        textStyle:TextStyles.light10.copyWith(color: Colors.black),
-                        onSaved: (value) {
-                          address = value;
+                        hintTextStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
+                        textStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
+                        onChanged: (value) {
+                          setState(() {
+                            address = value;
+                          });
+                          if (value!.isNotEmpty) {
+                            widget.onAddressChanged(value);
+                          }
                         },
                         borderSideColor: AppColors.grey,
                         keyboardType: TextInputType.streetAddress,
@@ -110,21 +121,26 @@ class _AddressSectionState extends State<AddressSection> {
                       CustomTextFormField(
                         hintText: address2 ?? S.of(context).fakeAddress,
                         borderSideColor: AppColors.grey,
-                        textStyle:TextStyles.light10.copyWith(color: Colors.black),
-                        hintTextStyle:TextStyles.light10.copyWith(color: Colors.black),
+                        textStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
+                        hintTextStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
                         onSaved: (value) {
                           address2 = value;
                         },
                         keyboardType: TextInputType.streetAddress,
                       ),
                       SizedBox(height: 10.h),
-                       Text(S.of(context).postalCode, style: TextStyles.light12),
-                       SizedBox(height: 2.h),
-                       CustomTextFormField(
-                        hintText:  postalCodeController ?? S.of(context).postalCode,
+                      Text(S.of(context).postalCode, style: TextStyles.light12),
+                      SizedBox(height: 2.h),
+                      CustomTextFormField(
+                        hintText:
+                            postalCodeController ?? S.of(context).postalCode,
                         borderSideColor: AppColors.grey,
-                        textStyle: TextStyles.light10.copyWith(color: Colors.black),
-                        hintTextStyle: TextStyles.light10.copyWith(color: Colors.black),
+                        textStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
+                        hintTextStyle:
+                            TextStyles.light10.copyWith(color: Colors.black),
                         keyboardType: TextInputType.number,
                         onSaved: (value) {
                           postalCodeController = value;

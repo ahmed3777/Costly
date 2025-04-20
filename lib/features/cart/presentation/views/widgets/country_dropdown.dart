@@ -7,29 +7,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CountryDropdown extends StatefulWidget {
-  const CountryDropdown({super.key, required this.onCountrySelected, this.initialCountryId});
+  const CountryDropdown(
+      {super.key, required this.onCountrySelected, this.initialCountryId});
   final Function(String?) onCountrySelected;
   final String? initialCountryId; // Add this
 
   @override
   State<CountryDropdown> createState() => _CountryDropdownState();
 }
+
 class _CountryDropdownState extends State<CountryDropdown> {
   String? selectedItem;
   List<Country> countriesList = [];
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CountriesCubit, CountriesState>(builder: (context, state) {
+    return BlocBuilder<CountriesCubit, CountriesState>(
+        builder: (context, state) {
       if (state is CountriesInitial) {
         return DropdownButton(
           value: selectedItem,
           hint: Text(
-             S.of(context).country,
+            S.of(context).country,
             style: TextStyles.light10.copyWith(color: Colors.black),
           ),
           items: [],
-          onChanged: null,  
-          );
+          onChanged: null,
+        );
       }
       if (state is CountriesFailure) {
         return Center(child: Text(state.errMessage));
@@ -40,12 +43,13 @@ class _CountryDropdownState extends State<CountryDropdown> {
       if (state is CountriesSuccess) {
         countriesList = state.countries;
 
-         if (selectedItem == null && widget.initialCountryId != null) {
-            bool exists = countriesList.any((co) => co.id == widget.initialCountryId);
-            if (exists) {
-              selectedItem = widget.initialCountryId;
-            }
+        if (selectedItem == null && widget.initialCountryId != null) {
+          bool exists =
+              countriesList.any((co) => co.id == widget.initialCountryId);
+          if (exists) {
+            selectedItem = widget.initialCountryId;
           }
+        }
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: (10)),
           decoration: BoxDecoration(
@@ -65,10 +69,11 @@ class _CountryDropdownState extends State<CountryDropdown> {
                   return DropdownMenuItem<String>(
                     value: co.id,
                     child: Text(isArabic() ? co.arName : co.enName,
-                        style: TextStyles.light10.copyWith(color: Colors.black)),
+                        style:
+                            TextStyles.light10.copyWith(color: Colors.black)),
                   );
                 }).toList(),
-                  onChanged: (value) {
+                onChanged: (value) {
                   setState(() {
                     selectedItem = value; // Update selected service
                     widget.onCountrySelected(value);

@@ -16,13 +16,16 @@ class CustomTextFormField extends StatelessWidget {
       this.cursorColor,
       this.textStyle,
       this.validator,
-      this.borderSideColor});
+      this.borderSideColor,
+      this.onChanged});
 
   final String hintText;
   final TextInputType keyboardType;
   final Widget? suffixIcon;
   final Color? cursorColor;
   final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
+
   final bool obscureText;
   final String? validatorMassege;
   final TextStyle? hintTextStyle;
@@ -44,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
                 color: AppColors.white, decoration: TextDecoration.none),
         obscureText: obscureText,
         onSaved: onSaved,
+        onChanged: onChanged,
         validator: validator ??
             (value) {
               if (value == null || value.isEmpty) {

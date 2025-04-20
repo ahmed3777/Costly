@@ -122,8 +122,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               if (password != rePassword) {
-                                showErrorBar(
-                                    context, 'Passwords do not match');
+                                showErrorBar(context, 'Passwords do not match');
                               } else {
                                 businessName = (widget.userType == 'provider' ||
                                         widget.userType == 'company')

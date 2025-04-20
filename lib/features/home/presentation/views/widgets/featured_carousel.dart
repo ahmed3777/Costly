@@ -6,6 +6,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'fearured_item.dart';
 
 class FeaturedCarousel extends StatefulWidget {
@@ -27,101 +28,112 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
     // context.read<HomeCubit>().getBanners();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    List<Banners> banners = [];
-    return BlocBuilder<BannerCubit, BannersState>(
-      builder: (context, state) {
-        if (state is BannersLoading) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (state is HomeFailure) {
-          return Center(child: Text(state.message));
-        }
-        if (state is BannersSuccess) {
-          banners = state.banners;
-          //final banners = state.banners.payload; // Get the list of banners from the state
-          return Column(
-            children: [
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: SizedBox(
-                      height: 110.h, // Set the height as needed
-                      child: CarouselSlider.builder(
-                        itemCount: banners.isEmpty ? 1 : banners.length,
-                        carouselController: _carouselController,
-                        options: CarouselOptions(
-                          height: 100.h,
-                          autoPlay: true,
-                          viewportFraction: 1,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              currentPos =
-                                  index; // Update the current position of the carousel
-                            });
-                          },
-                        ),
-                        itemBuilder: (context, index, realIndex) {
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: FeaturedItem(
-                              index: index,
-                              banners:
-                                  banners, // Pass the banners to FeaturedItem
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 15,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: DotsIndicator(
-                        dotsCount: banners.isEmpty
-                            ? 1
-                            : banners
-                                .length, // Number of dots is equal to the number of banners
-                        position:
-                            currentPos, // Current page position for the dots
-                        onTap: (int position) {
-                          // Jump to the clicked dot's corresponding page
-                          _carouselController.animateToPage(position);
-                        },
-                        decorator: DotsDecorator(
-                          size: Size(30, 4),
-                          color: Colors.grey,
-                          activeSize: Size(30, 4),
-                          activeColor: AppColors.secondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(3.0),
-                          ),
-                          activeShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(3.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        }
+ @override
+Widget build(BuildContext context) {
+  return BlocBuilder<BannerCubit, BannersState>(
+    builder: (context, state) {
+      List<Banners> banners = [];
+      bool isLoading = false;
 
-        // Default return for any unhandled states (shouldn't normally reach here)
+      if (state is BannersLoading) {
+        isLoading = true;
+        banners = List.generate(
+          2,
+          (index) => Banners(
+            id: '',
+            mainMediaUrl: '',
+            enName: '',
+            arName: '',
+            enDescription: '',
+            arDescription: '',
+            creatorId: '',
+            deletedAt: '',
+            createdAt: '',
+            updatedAt: '',
+            nameByLang: '',
+            descriptionByLang: '',
+          ),
+        );
+      } else if (state is BannersSuccess) {
+        banners = state.banners;
+      } else if (state is HomeFailure) {
+        return Center(child: Text(state.message));
+      } else {
         return const Center(
           child: Text(
             'Something went wrong',
             style: TextStyle(color: Colors.red),
           ),
         );
-      },
-    );
-  }
+      }
+
+      return Column(
+        children: [
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
+                  height: 110.h,
+                  child: CarouselSlider.builder(
+                    itemCount: banners.length,
+                    carouselController: _carouselController,
+                    options: CarouselOptions(
+                      height: 100.h,
+                      autoPlay: !isLoading,
+                      viewportFraction: 1,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentPos = index;
+                        });
+                      },
+                    ),
+                    itemBuilder: (context, index, realIndex) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Skeletonizer(
+                          enabled: isLoading,
+                          child: FeaturedItem(
+                            index: index,
+                            banners: banners,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 15,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: DotsIndicator(
+                    dotsCount: banners.length,
+                    position: currentPos,
+                    onTap: (int position) {
+                      _carouselController.animateToPage(position);
+                    },
+                    decorator: DotsDecorator(
+                      size: const Size(30, 4),
+                      color: Colors.grey,
+                      activeSize: const Size(30, 4),
+                      activeColor: AppColors.secondaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3.0),
+                      ),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    },
+  );
+}
 }

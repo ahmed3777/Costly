@@ -28,14 +28,17 @@ class CustomAppbar extends StatelessWidget {
           : null, // Set to null if there's no title
       centerTitle: true,
       backgroundColor: backgroundColor,
-      leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_outlined,
-            color: arrowColor ?? Colors.white,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          }),
+      leading: Padding(
+        padding: const EdgeInsets.only(top: 20.0),
+        child: IconButton(
+            icon: Icon(
+              Icons.arrow_back_outlined,
+              color: arrowColor ?? Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
 
       flexibleSpace: imageAsset != null
           ? Padding(

@@ -9,8 +9,8 @@ class CartItemList extends StatelessWidget {
   const CartItemList({super.key, required this.cart});
   @override
   Widget build(BuildContext context) {
-    final cartItems = cart.items ?? [];
-     return BlocConsumer<CartCubit, CartState>(
+    final cartItems = cart.items;
+    return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -33,27 +33,30 @@ class CartItemList extends StatelessWidget {
               totalPrice: item.itemTotalPrice,
               quantity: item.quantity,
               onDelete: () async {
-                if (item.product?.id != null && item.productVariationId != null) {
+                if (item.product?.id != null &&
+                    item.productVariationId != null) {
                   await context.read<CartCubit>().deleteFromCart(
-                    productId: item.product!.id,
-                    productVariationId: item.productVariationId!,
-                  );
+                        productId: item.product!.id,
+                        productVariationId: item.productVariationId!,
+                      );
                 }
               },
               incrementQuantity: () async {
-                if (item.product?.id != null && item.productVariationId != null) {
+                if (item.product?.id != null &&
+                    item.productVariationId != null) {
                   await context.read<CartCubit>().incrementQuantity(
-                    productId: item.product!.id,
-                    productVariationId: item.productVariationId!,
-                  );
+                        productId: item.product!.id,
+                        productVariationId: item.productVariationId!,
+                      );
                 }
               },
               decrementQuantity: () async {
-                if (item.product?.id != null && item.productVariationId != null) {
+                if (item.product?.id != null &&
+                    item.productVariationId != null) {
                   await context.read<CartCubit>().decrementQuantity(
-                    productId: item.product!.id,
-                    productVariationId: item.productVariationId!,
-                  );
+                        productId: item.product!.id,
+                        productVariationId: item.productVariationId!,
+                      );
                 }
               },
             );

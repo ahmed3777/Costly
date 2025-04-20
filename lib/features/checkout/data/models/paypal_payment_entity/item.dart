@@ -1,6 +1,5 @@
 import 'package:costly/features/cart/data/model/my_cart/item.dart';
 
-
 class ItemEntity {
   String? name;
   int? quantity;

@@ -15,8 +15,7 @@ class HomeViewBody extends StatefulWidget {
     super.key,
     required this.scaffoldKey,
   });
-  final GlobalKey<ScaffoldState>
-      scaffoldKey; // Accept scaffoldKey as a parameter
+  final GlobalKey<ScaffoldState> scaffoldKey; // Accept scaffoldKey as a parameter
 
   @override
   State<HomeViewBody> createState() => _HomeViewBodyState();
@@ -35,7 +34,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 scaffoldKey: widget.scaffoldKey,
               ),
               SizedBox(height: 1.h),
-              FeaturedCarousel(), // You can call the banners widget here
+              const FeaturedCarousel(),             
               SizedBox(height: 5.h),
               SpaceBetweenTextRow(
                 leftText: S.of(context).category,
@@ -63,7 +62,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
         ),
         VerticalGraidelOfProductCard(
-          lenghtOftheList: 7,
+          lenghtOfTheList: 7,
         ),
         SliverToBoxAdapter(
           child: Column(

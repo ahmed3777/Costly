@@ -16,7 +16,6 @@ class UserProfileCubit extends Cubit<UserProfileState> {
       },
       (profile) {
         emit(UserProfileSuccess(profile: profile.payload));
-        
       },
     );
   }

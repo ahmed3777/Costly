@@ -8,7 +8,8 @@ class ItemList {
   ItemList({this.items});
 
   factory ItemList.fromEntity({required List<Item> entity}) {
-    return ItemList(items: entity.map((e) => ItemEntity.fromEntity(e)).toList());
+    return ItemList(
+        items: entity.map((e) => ItemEntity.fromEntity(e)).toList());
   }
 
   Map<String, dynamic> toJson() => {

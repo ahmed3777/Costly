@@ -17,8 +17,8 @@ class ApiEndPoints {
   static const String updateCart = 'carts/update';
   static const String checkout = 'carts/checkout';
   static const String countries = 'countries';
-    static const String cities = 'cities';
-
+  static const String cities = 'cities';
+  static const String notifications = 'notifications';
 }
 
 class ApiErrors {
@@ -53,6 +53,4 @@ class SharedPrefKeys {
   static const String billingPostalCode = 'billingPostalCode';
   static const String billingCountryId = 'billingCountryId';
   static const String billingCityId = 'billingCityId';
- 
-
 }

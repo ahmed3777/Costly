@@ -10,6 +10,9 @@ import 'package:costly/features/category/data/repos_imp/category_repo_imp.dart';
 import 'package:costly/features/category/domain/repos/category_repo.dart';
 import 'package:costly/features/home/presentation/cubits/cities/cities_cubit.dart';
 import 'package:costly/features/home/presentation/cubits/countries/countries_cubit.dart';
+import 'package:costly/features/notifications/data/repos/notification_repo_imp.dart';
+import 'package:costly/features/notifications/domain/repos/notification_repo.dart';
+import 'package:costly/features/notifications/presentation/cubit/cubit/notifications_cubit.dart';
 import 'package:costly/features/products/data/repos/products_repo_imp.dart';
 import 'package:costly/features/products/domain/products_repo.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -51,7 +54,8 @@ void setupGetIt() {
   getIt.registerLazySingleton<HomeRepoImp>(
       () => HomeRepoImp(apiService: getIt<ApiService>()));
   getIt.registerFactory<BannerCubit>(() => BannerCubit(getIt<HomeRepo>()));
-  getIt.registerFactory<CountriesCubit>(() => CountriesCubit(getIt<HomeRepo>()));
+  getIt
+      .registerFactory<CountriesCubit>(() => CountriesCubit(getIt<HomeRepo>()));
   getIt.registerFactory<CitiesCubit>(() => CitiesCubit(getIt<HomeRepo>()));
 
   ///products
@@ -79,7 +83,8 @@ void setupGetIt() {
       () => ServiceDetailsCubit(getIt<AuthRepo>()));
 
   ///profile
-  getIt.registerLazySingleton<UserProfileRepo>(() => getIt<UserProfileRepoImp>());
+  getIt.registerLazySingleton<UserProfileRepo>(
+      () => getIt<UserProfileRepoImp>());
   getIt.registerLazySingleton<UserProfileRepoImp>(
     () => UserProfileRepoImp(apiService: getIt<ApiService>()),
   );
@@ -95,4 +100,13 @@ void setupGetIt() {
     ),
   );
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
+
+
+  ///Notifications
+  getIt.registerLazySingleton<NotificationRepo>(() => getIt<NotificationRepoImp>());
+  getIt.registerLazySingleton<NotificationRepoImp>(() => NotificationRepoImp(
+      getIt<ApiService>(),
+    ),
+  );
+  getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt<NotificationRepo>()));
 }

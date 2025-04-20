@@ -13,7 +13,7 @@ class ProductCard extends StatelessWidget {
   final int? originalPrice;
   final String productId;
   final String? productVariationId;
-
+  final bool isLoading ;
   const ProductCard({
     super.key,
     required this.mediaLinks,
@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
     required this.salePrice,
     required this.productId,
     this.productVariationId,
-    this.originalPrice,
+    this.originalPrice, required this.isLoading,
   });
 
   @override
@@ -95,6 +95,7 @@ class ProductCard extends StatelessWidget {
             ),
 
             // Sale tag (e.g., Sale, New, etc.)
+            if (!isLoading)
             Positioned(
               left: 10,
               top: 10,

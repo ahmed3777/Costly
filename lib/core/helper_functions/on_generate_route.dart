@@ -5,6 +5,7 @@ import 'package:costly/features/auth/presentation/views/widgets/sign_up_form_fei
 import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
+import 'package:costly/features/notifications/presentation/views/notifications_view.dart';
 import 'package:costly/features/products/presentation/views/products_by_category_view.dart';
 import 'package:costly/features/checkout/presentation/views/checkout_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
@@ -99,9 +100,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
               ));
 
     case CheckoutView.routeName:
-      return MaterialPageRoute(builder: (context) =>  CheckoutView(
-          cart: settings.arguments as Cart,
-      ));
+      return MaterialPageRoute(
+          builder: (context) => CheckoutView(
+                cart: settings.arguments as Cart,
+              ));
+    case NotificationsView.routeName:
+      return MaterialPageRoute(builder: (context) => const NotificationsView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

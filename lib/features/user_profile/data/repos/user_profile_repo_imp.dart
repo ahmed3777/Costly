@@ -19,13 +19,14 @@ class UserProfileRepoImp implements UserProfileRepo {
       final token = await SharedPref.getSecuredString(SharedPrefKeys.userToken);
       final response = await apiService.get(ApiEndPoints.profile, token: token);
       final Profile profile = Profile.fromJson(response.data);
-        await SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);
-        await SharedPref.setData(SharedPrefKeys.userImageUrl, profile.payload.logoUrl);
-        // await SharedPref.setData(SharedPrefKeys.billingAddressOne, profile.payload.billingAddressOne);
-       // SharedPref.setData(SharedPrefKeys.billingAddressTwo, profile.payload.billingAddressTwo);
+      await SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);
+      await SharedPref.setData(
+          SharedPrefKeys.userImageUrl, profile.payload.logoUrl);
+      // await SharedPref.setData(SharedPrefKeys.billingAddressOne, profile.payload.billingAddressOne);
+      // SharedPref.setData(SharedPrefKeys.billingAddressTwo, profile.payload.billingAddressTwo);
       // SharedPref.setData(SharedPrefKeys.billingPostalCode, profile.payload.billingPostalCode);
-    // SharedPref.setData(SharedPrefKeys.billingCountryId, profile.payload.billingCountryId);
-  // SharedPref.setData(SharedPrefKeys.billingCityId, profile.payload.billingCityId);
+      // SharedPref.setData(SharedPrefKeys.billingCountryId, profile.payload.billingCountryId);
+      // SharedPref.setData(SharedPrefKeys.billingCityId, profile.payload.billingCityId);
 
       return right(profile);
     } catch (e) {

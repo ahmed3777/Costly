@@ -19,16 +19,21 @@ class FeaturedItem extends StatelessWidget {
         width: itemWidth,
         child: Stack(
           children: [
-            Positioned(
-                left: 0,
-                top: 0,
-                bottom: 0,
-                right: 0,
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  width: itemWidth,
-                )),
+             Positioned.fill(
+              child: imageUrl.isEmpty
+                  ? Container(
+                      color: Colors.grey[300], // Placeholder grey color
+                    )
+                  : Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      width: itemWidth,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.image_not_supported),
+                      ),
+                    ),
+            ),
             Padding(
               padding: isArabic()
                   ? EdgeInsets.only(right: 20)

@@ -25,33 +25,41 @@ class CartViewConsumer extends StatelessWidget {
             child: Center(child: CircularProgressIndicator()),
           );
         }
-        if (state is CartSuccess) { 
+        if (state is CartSuccess) {
           Cart cart = state.cart.payload;
-          List<Item> cartItemsList = cart.items ?? [];
+          List<Item> cartItemsList = cart.items;
           if (cartItemsList.isEmpty) {
             return SliverImageEmptyCart();
           } else {
             return SliverList(
-            delegate: SliverChildBuilderDelegate(
+              delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  if (index == 0) {return CartItemList(cart: cart);} 
-                  else if (index == 1) {return CartTotalAndVoucher(totalPrice: cart.totalPrice!);}
-                  else if (index == 2) {return  VoucherFormField();}
-                  else if (index == 3) {return  CustomCartButton(cart: cart);}
+                  if (index == 0) {
+                    return CartItemList(cart: cart);
+                  } else if (index == 1) {
+                    return CartTotalAndVoucher(totalPrice: cart.totalPrice!);
+                  } else if (index == 2) {
+                    return VoucherFormField();
+                  } else if (index == 3) {
+                    return CustomCartButton(cart: cart);
+                  }
                   return null;
                 },
-                childCount: cartItemsList.isNotEmpty ? 4 : 1, // Only two items in the list
+                childCount: cartItemsList.isNotEmpty
+                    ? 4
+                    : 1, // Only two items in the list
               ),
             );
           }
         }
-        return  SliverToBoxAdapter(
+        return SliverToBoxAdapter(
           child: Center(child: Text(S.of(context).unexpectedState)),
         );
       },
     );
   }
 }
+
 class SliverImageEmptyCart extends StatelessWidget {
   const SliverImageEmptyCart({
     super.key,
