@@ -1,5 +1,5 @@
+import 'package:costly/core/helper_functions/dummy_products_list.dart';
 import 'package:costly/core/helper_functions/is_arbic.dart';
-import 'package:costly/features/products/data/models/products/main_variation.dart';
 import 'package:costly/features/products/data/models/products/product.dart';
 import 'package:costly/features/products/presentation/views/widgets/product_card.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -68,24 +68,5 @@ class VerticalGraidelOfProductCard extends StatelessWidget {
    );
   }
 
-  List<Product> dummyProducts() {
-    return List.generate(
-           6,(index) => Product(
-            id :"",
-            enName: "",
-            arName: "",
-            arSlug:"",
-            enSlug:"",
-            mainVariationPrice: 0,
-            status: "", creatorId: '', 
-            mainMediaUrl: '',
-            mainVariation: MainVariation(
-            id: '',
-            price: 0,
-            priceAfterDiscount: 0,
-    // باقي الخصائص لو في، حسب ما يتطلب الموديل
-  ),
-          ),
-        );
-  }
+ 
 }

@@ -8,6 +8,7 @@ import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/notifications/presentation/views/notifications_view.dart';
 import 'package:costly/features/products/presentation/views/products_by_category_view.dart';
 import 'package:costly/features/checkout/presentation/views/checkout_view.dart';
+import 'package:costly/features/search/presentation/views/search_products_view.dart';
 import 'package:costly/features/services/presentation/views/services_view.dart';
 import 'package:costly/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:costly/features/services/presentation/views/single_service_view.dart';
@@ -106,6 +107,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
               ));
     case NotificationsView.routeName:
       return MaterialPageRoute(builder: (context) => const NotificationsView());
+
+      case SearchProductsView.routeName:
+      final query  = settings.arguments as String;
+      return MaterialPageRoute(builder: (context) =>  SearchProductsView( query: query,));
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

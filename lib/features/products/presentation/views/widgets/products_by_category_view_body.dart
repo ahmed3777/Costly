@@ -29,7 +29,7 @@ class _ProductsByCategoryViewBodyState
             CustomHomeAppBar(
               scaffoldKey: widget.scaffoldKey,
               centerText: S.of(context).discover,
-              visible: false,
+              visibleNotification: false,
             ),
             SizedBox(height: 4.h),
           ],

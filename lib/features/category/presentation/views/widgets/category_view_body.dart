@@ -23,7 +23,7 @@ class _CategoryViewBodyState extends State<CategoryViewBody> {
             CustomHomeAppBar(
               scaffoldKey: widget.scaffoldKey,
               centerText: S.of(context).discover,
-              visible: true,
+              visibleNotification: true,
             ),
             SizedBox(
               height: 4.h,

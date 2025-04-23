@@ -19,6 +19,7 @@ class ApiEndPoints {
   static const String countries = 'countries';
   static const String cities = 'cities';
   static const String notifications = 'notifications';
+ 
 }
 
 class ApiErrors {

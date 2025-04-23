@@ -17,6 +17,9 @@ import 'package:costly/features/products/data/repos/products_repo_imp.dart';
 import 'package:costly/features/products/domain/products_repo.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
 import 'package:costly/features/products/presentation/cubit/product/single_product/singleproduct_cubit.dart';
+import 'package:costly/features/search/data/repos/search_repo_imp.dart';
+import 'package:costly/features/search/domin/repo/search_repo.dart';
+import 'package:costly/features/search/presentation/cubit/cubit/search_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/service_detail/service_details_cubit.dart';
 import 'package:costly/features/services/presentation/cubit/servicescubit/services_cubit.dart';
 import 'package:costly/features/auth/presentation/cubits/cubit/signincubit/cubit/signin_cubit.dart';
@@ -109,4 +112,11 @@ void setupGetIt() {
     ),
   );
   getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt<NotificationRepo>()));
+  ///search
+   getIt.registerLazySingleton<SearchRepo>(() => getIt<SearchRepoImp>());
+  getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(apiService: 
+      getIt<ApiService>(),
+    ),
+  );
+  getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
 }
