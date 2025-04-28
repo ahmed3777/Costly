@@ -2,6 +2,7 @@ import 'package:costly/core/helper_functions/on_generate_route.dart';
 import 'package:costly/core/services/custom_bloc_observer.dart';
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
+import 'package:costly/core/services/notification_service.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -29,6 +30,10 @@ void main() async {
   );
 
   setupGetIt();
+  
+  // Initialize notification service
+  await getIt<NotificationService>().initialize();
+  
   runApp(const MyApp());
 }
 

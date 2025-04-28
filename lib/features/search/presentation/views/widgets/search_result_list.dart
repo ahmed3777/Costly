@@ -52,7 +52,7 @@ class SearshResultList extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: searchResult.length,
+              itemCount: searchResult.length, 
             ),
           ),
         );

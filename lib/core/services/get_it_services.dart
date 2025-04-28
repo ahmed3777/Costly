@@ -1,6 +1,7 @@
 // service_locator.dart
 import 'package:costly/core/services/api_services.dart';
 import 'package:costly/core/services/firebase_services.dart';
+import 'package:costly/core/services/notification_service.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:costly/features/auth/domin/repos/auth_repo.dart';
 import 'package:costly/features/cart/data/repos/cart_repo_imp.dart';
@@ -40,6 +41,9 @@ void setupGetIt() {
   getIt.registerLazySingleton<ApiService>(() => ApiService());
   getIt.registerLazySingleton<FirebaseAuthService>(
     () => FirebaseAuthService(),
+  );
+  getIt.registerLazySingleton<NotificationService>(
+    () => NotificationService(),
   );
 
   ///auth
@@ -114,9 +118,6 @@ void setupGetIt() {
   getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt<NotificationRepo>()));
   ///search
    getIt.registerLazySingleton<SearchRepo>(() => getIt<SearchRepoImp>());
-  getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(apiService: 
-      getIt<ApiService>(),
-    ),
-  );
-  getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
+   getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(apiService: getIt<ApiService>(),));
+   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
 }
