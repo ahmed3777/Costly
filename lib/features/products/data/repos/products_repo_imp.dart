@@ -23,7 +23,6 @@ class ProductsRepoImp implements ProductsRepo {
     bool? priceHigh,
   }) async {
     try {
-      // Build query parameters based on filter
       final queryParameters = <String, dynamic>{
         if (mostPopular != null) 'most_popular': mostPopular,
         if (mostRecently != null) 'most_recently': mostRecently,
@@ -31,19 +30,31 @@ class ProductsRepoImp implements ProductsRepo {
         if (priceLow != null) 'price_low': priceLow,
         if (priceHigh != null) 'price_high': priceHigh
       };
+      
       final response = await apiService.get(
         ApiEndPoints.products,
-        queryParameters: queryParameters, // Pass query parameters here
+        queryParameters: queryParameters,
       );
 
       final products = MainProductsResponse.fromJson(response.data);
-      return right(products);
-    } catch (e) {
-      if (e is DioException) {
-        return left(handleError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
+      
+      // Check if the API response indicates an error
+      if (products.code != 200 && products.code != 201) {
+        return left(ServerFailure(products.messages?.toString() ?? 'Unknown error occurred.'));
       }
+      
+      return right(products);
+    } on DioException catch (e) {
+      // Handle Dio-specific errors
+      if (e.response?.data != null) {
+        final errorData = e.response!.data;
+        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+          return left(ServerFailure(errorData['messages'].toString()));
+        }
+      }
+      return left(handleError(e));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -53,14 +64,26 @@ class ProductsRepoImp implements ProductsRepo {
     try {
       final response = await apiService.get(
           '${ApiEndPoints.products}/$productId/${ApiEndPoints.singleProduct}/$productVariationId');
-      final products = ProductDetails.fromJson(response.data);
-      return right(products);
-    } catch (e) {
-      if (e is DioException) {
-        return left(handleError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
+      
+      final productDetails = ProductDetails.fromJson(response.data);
+      
+      // Check if the API response indicates an error
+      if (productDetails.code != 200 && productDetails.code != 201) {
+        return left(ServerFailure(productDetails.messages?.toString() ?? 'Unknown error occurred.'));
       }
+      
+      return right(productDetails);
+    } on DioException catch (e) {
+      // Handle Dio-specific errors
+      if (e.response?.data != null) {
+        final errorData = e.response!.data;
+        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+          return left(ServerFailure(errorData['messages'].toString()));
+        }
+      }
+      return left(handleError(e));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -71,14 +94,26 @@ class ProductsRepoImp implements ProductsRepo {
       final response = await apiService.get(
         "products?categories[]=$categoryId",
       );
-      final categories = MainProductsResponse.fromJson(response.data);
-      return right(categories);
-    } catch (e) {
-      if (e is DioException) {
-        return left(handleError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
+      
+      final products = MainProductsResponse.fromJson(response.data);
+      
+      // Check if the API response indicates an error
+      if (products.code != 200 && products.code != 201) {
+        return left(ServerFailure(products.messages?.toString() ?? 'Unknown error occurred.'));
       }
+      
+      return right(products);
+    } on DioException catch (e) {
+      // Handle Dio-specific errors
+      if (e.response?.data != null) {
+        final errorData = e.response!.data;
+        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+          return left(ServerFailure(errorData['messages'].toString()));
+        }
+      }
+      return left(handleError(e));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
     }
   }
 }

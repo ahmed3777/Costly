@@ -14,8 +14,9 @@ class SearshResultList extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-        List<Product> searchResult = [];
-        bool isLoading = false;
+    List<Product> searchResult = [];
+    bool isLoading = false;
+    
     return BlocConsumer<SearchCubit, SearchState>(
       listener: (context, state) {
         if (state is SearchLoading) {
@@ -26,7 +27,7 @@ class SearshResultList extends StatelessWidget {
           showErrorBar(context, state.message);
         }
         else if (state is SearchSuccess) {
-           searchResult = state.mainProductsResponse.product ?? [];
+          searchResult = state.mainProductsResponse.product ?? [];
         }
       },
       builder: (context, state) {
@@ -40,14 +41,18 @@ class SearshResultList extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 16),
                   child: GestureDetector(
                     onTap: () {
-                     Navigator.pushReplacementNamed(context, ProductDetailsView.routeName,
+                      Navigator.pushReplacementNamed(
+                        context, 
+                        ProductDetailsView.routeName,
                         arguments: {
                           'productId': searchResult[index].id,
-                          'productVariationId': searchResult[index].mainVariation!.id,});
+                          'productVariationId': searchResult[index].mainVariation!.id,
+                        }
+                      );
                     },
                     child: Text(
-                        searchResult[index].enName,
-                        style: TextStyles.regular14,
+                      searchResult[index].enName,
+                      style: TextStyles.regular14,
                     ),
                   ),
                 );
@@ -59,5 +64,4 @@ class SearshResultList extends StatelessWidget {
       },
     );
   }
-   
 }

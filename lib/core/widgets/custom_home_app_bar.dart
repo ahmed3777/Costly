@@ -1,5 +1,6 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
+import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/search/presentation/cubit/cubit/search_cubit.dart';
 import 'package:costly/features/search/presentation/views/widgets/search_text_field.dart';
 import 'package:costly/core/widgets/notification_widget.dart';
@@ -9,14 +10,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
-  const CustomHomeAppBar({super.key, this.centerText, required this.scaffoldKey, this.visibleNotification, this.searchController});
+  const CustomHomeAppBar({
+    super.key, 
+    this.centerText, 
+    required this.scaffoldKey, 
+    this.visibleNotification, 
+    this.searchController,
+    this.onBackPressed,
+  });
   final String? centerText;
   final bool? visibleNotification;
   final GlobalKey<ScaffoldState> scaffoldKey; 
   final TextEditingController? searchController;
+  final VoidCallback? onBackPressed;
+
   @override
   Widget build(BuildContext context) {
-  final TextEditingController controller = searchController ?? TextEditingController();
+    final TextEditingController controller = searchController ?? TextEditingController();
 
     return SizedBox(
       height: 140.h,
@@ -31,12 +41,16 @@ class CustomHomeAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.menu,
+                  icon: Icon(
+                    onBackPressed != null ? Icons.arrow_back : Icons.menu,
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    scaffoldKey.currentState!.openDrawer();
+                    if (onBackPressed != null) {
+                      onBackPressed!();
+                    } else {
+                      scaffoldKey.currentState!.openDrawer();
+                    }
                   },
                 ),
                 centerText != null && centerText!.isNotEmpty
@@ -49,7 +63,10 @@ class CustomHomeAppBar extends StatelessWidget {
                     : SizedBox(
                         width: 152.w,
                         height: 31.30.h,
-                        child: Image.asset("assets/images/costly.png"),
+                        child: Image.asset(
+                          Assets.imagesLogo,
+                          fit: BoxFit.fill,
+                        )
                       ),
                 NotificationWidget(
                   visible: visibleNotification ?? false,
@@ -71,7 +88,7 @@ class CustomHomeAppBar extends StatelessWidget {
                Navigator.pushNamed(
                 context,
                 SearchProductsView.routeName,
-                arguments: query).then((_){
+                  arguments: query).then((_){
                   controller.clear();
                   });
                 }else{
