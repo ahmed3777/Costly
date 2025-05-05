@@ -4,6 +4,7 @@ import 'package:costly/core/networking/api_constants.dart';
 import 'package:costly/core/services/api_services.dart';
 import 'package:costly/core/services/firebase_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
+import 'package:costly/core/extensions/api_service_extensions.dart';
 import 'package:costly/features/auth/data/models/login_response/login_response.dart';
 import 'package:costly/features/services/data/service_details/single_service.dart';
 import 'package:costly/features/services/data/service_type/service_type/service_type.dart';
@@ -41,14 +42,10 @@ class AuthRepoImp implements AuthRepo {
         if (serviceId != null) 'service_type_id': serviceId
       });
       var userData = SignupResponse.fromJson(response);
-      // SharedPref.setData(
-      //   SharedPrefKeys.userImageUrl,
-      //   userData.userData!.userLogo,
-      // );
-      // SharedPref.setData(SharedPrefKeys.userName, userData.userData!.userName);
-      // SharedPref.setData(
-      //     SharedPrefKeys.userEmail, userData.userData!.userEmail);
-      // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phoneNumber);
+
+      // Send FCM token to backend after successful signup
+      await apiService.sendFcmTokenToBackend();
+
       return right(userData);
     } catch (e) {
       if (e is DioException) {
@@ -60,26 +57,68 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, LoginResponse>> signInWithPhoneAndPassword(
-      {required String phone, required String password}) async {
+  Future<Either<Failure, LoginResponse>> signInWithPhoneAndPassword({
+    required String phone,
+    required String password,
+  }) async {
     try {
+      print('Attempting login with phone: $phone');
       final response = await apiService.post(ApiEndPoints.login, {
         'phone': phone,
         'password': password,
       });
-      var userData = LoginResponse.fromJson(response);
-      SharedPref.setData(SharedPrefKeys.userName, userData.user!.userName);
-      SharedPref.setData(SharedPrefKeys.userImageUrl, userData.user!.userLogo);
-      SharedPref.setSecuredString(
-          SharedPrefKeys.userToken, userData.user!.token!);
-      // SharedPref.setData(SharedPrefKeys.userPhoneNumber, phone);
-      return right(userData);
-    } catch (e) {
-      if (e is DioException) {
-        return left(handleError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
+
+      // Debug: Print raw response
+      print('Raw API response: $response');
+
+      // Parse response
+      final loginResponse = LoginResponse.fromJson(response);
+      print('Parsed login response: $loginResponse');
+
+      // Check status code
+      if (loginResponse.code != 200 && loginResponse.code != 201) {
+        final errorMessage = loginResponse.messages?.toString() ?? 'Login failed';
+        print('Login failed with code ${loginResponse.code}: $errorMessage');
+        return left(ServerFailure(errorMessage));
       }
+
+      // Verify user data exists
+      if (loginResponse.user == null) {
+        print('Login response missing user data');
+        return left(ServerFailure('User data is missing in the response'));
+      }
+
+      // Verify critical fields
+      if (loginResponse.user!.token == null || loginResponse.user!.token!.isEmpty) {
+        print('Login response missing token');
+        return left(ServerFailure('Authentication token is missing'));
+      }
+
+      // Save user data
+      SharedPref.setData(
+        SharedPrefKeys.userName,
+        loginResponse.user!.userName ?? 'No name',
+      );
+      SharedPref.setData(
+        SharedPrefKeys.userImageUrl,
+        loginResponse.user!.userLogo ?? '',
+      );
+      SharedPref.setSecuredString(
+        SharedPrefKeys.userToken,
+        loginResponse.user!.token!,
+      );
+
+      // Send FCM token to backend after successful login
+      await apiService.sendFcmTokenToBackend();
+
+      print('Login successful for user: ${loginResponse.user!.userName}');
+      return right(loginResponse);
+    } on DioException catch (e) {
+      print('Dio error during login: ${e.message}');
+      return left(handleError(e));
+    } catch (e) {
+      print('Unexpected error during login: $e');
+      return left(ServerFailure('Unexpected error: ${e.toString()}'));
     }
   }
 
@@ -127,6 +166,7 @@ class AuthRepoImp implements AuthRepo {
       if (request != null && request['payload'] != null) {
         var userData = UserData.fromJson(request['payload']);
         SharedPref.setSecuredString(SharedPrefKeys.userToken, userData.token!);
+        await apiService.sendFcmTokenToBackend();
         return right(userData); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));
@@ -167,7 +207,7 @@ class AuthRepoImp implements AuthRepo {
         print("Payload: $signupRequestToApi");
         var req = UserData.fromJson(signupRequestToApi);
         SharedPref.setSecuredString(SharedPrefKeys.userToken, req.token!);
-
+        await apiService.sendFcmTokenToBackend();
         return right(req); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));
@@ -205,6 +245,7 @@ class AuthRepoImp implements AuthRepo {
     await SharedPref.clearAllSecuredData();
     await SharedPref.clearAllData();
     await firebaseAuthService.signOut();
+    
   }
 
   @override

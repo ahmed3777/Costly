@@ -43,7 +43,7 @@ void setupGetIt() {
     () => FirebaseAuthService(),
   );
   getIt.registerLazySingleton<NotificationService>(
-    () => NotificationService(),
+    () => NotificationService(getIt<ApiService>()),
   );
 
   ///auth

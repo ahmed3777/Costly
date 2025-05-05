@@ -1,6 +1,5 @@
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/app_text_styles.dart';
-import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/search/presentation/cubit/cubit/search_cubit.dart';
 import 'package:costly/features/search/presentation/views/widgets/search_text_field.dart';
 import 'package:costly/core/widgets/notification_widget.dart';
@@ -63,10 +62,7 @@ class CustomHomeAppBar extends StatelessWidget {
                     : SizedBox(
                         width: 152.w,
                         height: 31.30.h,
-                        child: Image.asset(
-                          Assets.imagesLogo,
-                          fit: BoxFit.fill,
-                        )
+                        child: Image.asset("assets/images/costly.png"),
                       ),
                 NotificationWidget(
                   visible: visibleNotification ?? false,
@@ -88,7 +84,7 @@ class CustomHomeAppBar extends StatelessWidget {
                Navigator.pushNamed(
                 context,
                 SearchProductsView.routeName,
-                  arguments: query).then((_){
+                arguments: query).then((_){
                   controller.clear();
                   });
                 }else{

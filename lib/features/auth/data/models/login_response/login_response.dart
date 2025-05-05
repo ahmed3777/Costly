@@ -8,19 +8,21 @@ class LoginResponse {
 
   LoginResponse({this.user, this.status, this.code, this.messages});
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
-        user: json['payload'] == null
-            ? null
-            : UserData.fromJson(json['payload'] as Map<String, dynamic>),
-        status: json['status'] as bool?,
-        code: json['code'] as int?,
-        messages: json['messages'] as dynamic,
-      );
+  factory LoginResponse.fromJson(Map<String, dynamic> json) {
+    // Debug: Print the raw response
+    print('Raw login response: $json');
 
-  Map<String, dynamic> toJson() => {
-        'payload': user?.toJson(),
-        'status': status,
-        'code': code,
-        'messages': messages,
-      };
+    // Use the existing UserData.fromJson factory method
+    UserData? userData;
+    if (json['user_id'] != null) {
+      userData = UserData.fromJson(json);
+    }
+
+    return LoginResponse(
+      user: userData,
+      status: true, // Since we got user data, consider it successful
+      code: 200, // Since we got user data, consider it successful
+      messages: null, // No error messages if we got user data
+    );
+  }
 }

@@ -32,7 +32,6 @@ class _SearchProductsViewState extends State<SearchProductsView> {
     searchController.clear();
     Navigator.pushReplacementNamed(context, HomeView.routeName);
   }
-
   @override
   Widget build(BuildContext context) {
     return PopScope(

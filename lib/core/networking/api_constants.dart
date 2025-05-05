@@ -19,6 +19,8 @@ class ApiEndPoints {
   static const String countries = 'countries';
   static const String cities = 'cities';
   static const String notifications = 'notifications';
+    static const String sendFcmToken = 'profile/update/fcm_token';
+
  
 }
 
@@ -54,4 +56,5 @@ class SharedPrefKeys {
   static const String billingPostalCode = 'billingPostalCode';
   static const String billingCountryId = 'billingCountryId';
   static const String billingCityId = 'billingCityId';
+  static const String fcmToken = 'fcmToken';
 }

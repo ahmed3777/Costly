@@ -8,10 +8,8 @@ class SearchViewBody extends StatelessWidget {
     required this.searchController,
     this.onBackPressed,
   });
-
   final TextEditingController searchController;
   final VoidCallback? onBackPressed;
-
   @override
   Widget build(BuildContext context) {
     return Column(
