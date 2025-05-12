@@ -11,6 +11,7 @@ import 'package:costly/features/home/presentation/cubits/banner/banners_cubit.da
 import 'package:costly/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:costly/features/splash/presentation/views/splash_view.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
+import 'package:costly/features/brands/presentation/cubit/brands_cubit.dart';
 import 'package:costly/firebase_options.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -61,6 +62,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt.get<CartCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<BrandsCubit>(),
         )
       ],
       child: ScreenUtilInit(

@@ -11,6 +11,15 @@ abstract class ProductsRepo {
     bool? highestRated,
     bool? priceLow,
     bool? priceHigh,
+  
+  });
+  Future<Either<Failure, MainProductsResponse>> filterProducts({
+    int? priceFrom,
+    int? priceTo,
+    List<String>? selectedBrands,
+    List<String>? selectedCategoryis,
+    // List<String>? selectedColors,
+    // List<String>? selectedSizes,
   });
   Future<Either<Failure, ProductDetails>> getSingleProduct(
       String productId, String productVariationId);

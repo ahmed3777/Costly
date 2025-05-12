@@ -6,6 +6,7 @@ class ApiEndPoints {
   static const String socialLogin = 'social/process';
   static const String banners = 'banners';
   static const String categories = 'categories';
+  static const String brands = 'brands';
   static const String products = 'products';
   static const String singleProduct = 'product-variation';
   static const String profile = 'profile';

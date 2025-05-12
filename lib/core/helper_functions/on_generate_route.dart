@@ -15,6 +15,7 @@ import 'package:costly/features/services/presentation/views/single_service_view.
 import 'package:costly/features/splash/presentation/views/splash_view.dart';
 import 'package:costly/features/user_profile/presentation/views/user_account_view.dart';
 import 'package:costly/features/user_profile/presentation/views/user_setting.dart';
+import 'package:costly/features/filter/presentation/views/filter_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/views/home_view.dart';
@@ -108,9 +109,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case NotificationsView.routeName:
       return MaterialPageRoute(builder: (context) => const NotificationsView());
 
-      case SearchProductsView.routeName:
+    case SearchProductsView.routeName:
       final query  = settings.arguments as String;
       return MaterialPageRoute(builder: (context) =>  SearchProductsView( query: query,));
+
+    case FilterView.routeName:
+      return MaterialPageRoute(builder: (context) => const FilterView());
+
+   
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

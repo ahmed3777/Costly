@@ -33,6 +33,9 @@ import 'package:costly/features/user_profile/data/repos/user_profile_repo_imp.da
 import 'package:costly/features/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:costly/features/brands/data/repos/brands_repo_imp.dart';
+import 'package:costly/features/brands/domain/repos/brands_repo.dart';
+import 'package:costly/features/brands/presentation/cubit/brands_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -84,6 +87,12 @@ void setupGetIt() {
 
   getIt.registerLazySingleton<CategoryRepoImp>(
       () => CategoryRepoImp(apiService: getIt<ApiService>()));
+
+  ///brands
+  getIt.registerLazySingleton<BrandsRepo>(() => getIt<BrandsRepoImp>());
+  getIt.registerLazySingleton<BrandsRepoImp>(
+      () => BrandsRepoImp(apiService: getIt<ApiService>()));
+  getIt.registerFactory<BrandsCubit>(() => BrandsCubit(getIt<BrandsRepo>()));
 
   ///services
   getIt.registerFactory<ServiceDetailsCubit>(

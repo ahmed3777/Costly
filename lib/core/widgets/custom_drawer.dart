@@ -92,30 +92,42 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 buildDrawerItem(
                   iconPath: Assets.imagesHome,
                   title: S.of(context).home,
-                  onTap: () => Navigator.pushNamed(context, HomeView.routeName),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, HomeView.routeName);
+                  },
                 ),
                 buildDrawerItem(
                   iconPath: Assets.imagesProfile,
                   title: S.of(context).account,
-                  onTap: () =>
-                      Navigator.pushNamed(context, UserAccountView.routeName),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, UserAccountView.routeName);
+                  },
                 ),
                 buildDrawerItem(
                   icon: Icons.table_chart_outlined,
                   title: S.of(context).products,
-                  onTap: () =>
-                      Navigator.pushNamed(context, CategoryView.routeName),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, CategoryView.routeName);
+                  },
                 ),
                 buildDrawerItem(
                   icon: Icons.wallet,
                   title: S.of(context).services,
-                  onTap: () =>
-                      Navigator.pushNamed(context, ServicesView.routeName),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, ServicesView.routeName);
+                  },
                 ),
                 buildDrawerItem(
                   icon: Icons.shopping_basket_outlined,
                   title: S.of(context).cart,
-                  onTap: () => Navigator.pushNamed(context, CartView.routeName),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, CartView.routeName);
+                  },
                 ),
                 buildDrawerItem(
                   icon: Icons.mail_outline,

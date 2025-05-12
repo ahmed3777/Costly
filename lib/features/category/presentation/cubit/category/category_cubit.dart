@@ -6,7 +6,7 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.categoryRepo) : super(CategoryInitial());
   final CategoryRepo categoryRepo;
-
+  List<CategoriesModel> categories = [];
   Future<void> getCategories() async {
     emit(CategoryLoading());
     final result = await categoryRepo.getCategories();
@@ -16,6 +16,7 @@ class CategoryCubit extends Cubit<CategoryState> {
       },
       (categories) {
         emit(CategorySuccess(categories.payload));
+        this.categories = categories.payload;
       },
     );
   }

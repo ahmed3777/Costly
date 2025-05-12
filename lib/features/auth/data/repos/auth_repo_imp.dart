@@ -4,7 +4,6 @@ import 'package:costly/core/networking/api_constants.dart';
 import 'package:costly/core/services/api_services.dart';
 import 'package:costly/core/services/firebase_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
-import 'package:costly/core/extensions/api_service_extensions.dart';
 import 'package:costly/features/auth/data/models/login_response/login_response.dart';
 import 'package:costly/features/services/data/service_details/single_service.dart';
 import 'package:costly/features/services/data/service_type/service_type/service_type.dart';
@@ -42,9 +41,6 @@ class AuthRepoImp implements AuthRepo {
         if (serviceId != null) 'service_type_id': serviceId
       });
       var userData = SignupResponse.fromJson(response);
-
-      // Send FCM token to backend after successful signup
-      await apiService.sendFcmTokenToBackend();
 
       return right(userData);
     } catch (e) {
@@ -108,9 +104,6 @@ class AuthRepoImp implements AuthRepo {
         loginResponse.user!.token!,
       );
 
-      // Send FCM token to backend after successful login
-      await apiService.sendFcmTokenToBackend();
-
       print('Login successful for user: ${loginResponse.user!.userName}');
       return right(loginResponse);
     } on DioException catch (e) {
@@ -166,7 +159,6 @@ class AuthRepoImp implements AuthRepo {
       if (request != null && request['payload'] != null) {
         var userData = UserData.fromJson(request['payload']);
         SharedPref.setSecuredString(SharedPrefKeys.userToken, userData.token!);
-        await apiService.sendFcmTokenToBackend();
         return right(userData); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));
@@ -207,7 +199,6 @@ class AuthRepoImp implements AuthRepo {
         print("Payload: $signupRequestToApi");
         var req = UserData.fromJson(signupRequestToApi);
         SharedPref.setSecuredString(SharedPrefKeys.userToken, req.token!);
-        await apiService.sendFcmTokenToBackend();
         return right(req); // Ensure 'payload' is used correctly
       } else {
         return left(ServerFailure('No valid payload received'));
@@ -245,7 +236,7 @@ class AuthRepoImp implements AuthRepo {
     await SharedPref.clearAllSecuredData();
     await SharedPref.clearAllData();
     await firebaseAuthService.signOut();
-    
+
   }
 
   @override
