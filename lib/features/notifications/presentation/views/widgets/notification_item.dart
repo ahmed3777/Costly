@@ -48,7 +48,8 @@ class NotificationItem extends StatelessWidget {
                 SizedBox(height: 4.h),
                 Row(
                   children: [
-                    Icon(Icons.calendar_today_outlined, size: 20.sp, color: Colors.red),
+                    Icon(Icons.calendar_today_outlined,
+                        size: 20.sp, color: Colors.red),
                     SizedBox(width: 4.w),
                     Text(
                       'قبل 5 دقائق', // مثال للوقت

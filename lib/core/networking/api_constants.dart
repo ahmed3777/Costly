@@ -7,6 +7,8 @@ class ApiEndPoints {
   static const String banners = 'banners';
   static const String categories = 'categories';
   static const String brands = 'brands';
+  static const String orders = 'profile/orders/history?scope=running';
+  static const String singleOrders = 'profile/orders/history/';
   static const String products = 'products';
   static const String singleProduct = 'product-variation';
   static const String profile = 'profile';
@@ -20,9 +22,7 @@ class ApiEndPoints {
   static const String countries = 'countries';
   static const String cities = 'cities';
   static const String notifications = 'notifications';
-    static const String sendFcmToken = 'profile/update/fcm_token';
-
- 
+  static const String sendFcmToken = 'profile/update/fcm_token';
 }
 
 class ApiErrors {

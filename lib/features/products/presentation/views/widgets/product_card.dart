@@ -13,7 +13,7 @@ class ProductCard extends StatelessWidget {
   final int? originalPrice;
   final String productId;
   final String? productVariationId;
-  final bool isLoading ;
+  final bool isLoading;
   const ProductCard({
     super.key,
     required this.mediaLinks,
@@ -21,7 +21,8 @@ class ProductCard extends StatelessWidget {
     required this.salePrice,
     required this.productId,
     this.productVariationId,
-    this.originalPrice, required this.isLoading,
+    this.originalPrice,
+    required this.isLoading,
   });
 
   @override
@@ -96,25 +97,25 @@ class ProductCard extends StatelessWidget {
 
             // Sale tag (e.g., Sale, New, etc.)
             if (!isLoading)
-            Positioned(
-              left: 10,
-              top: 10,
-              child: Container(
-                width: 40,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: Color(0xFFFF0000),
-                  borderRadius: BorderRadius.circular(29),
-                ),
-                child: Center(
-                  child: Text(
-                    'Sale',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+              Positioned(
+                left: 10,
+                top: 10,
+                child: Container(
+                  width: 40,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFF0000),
+                    borderRadius: BorderRadius.circular(29),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Sale',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
-            ),
             Positioned(
                 bottom: 60,
                 right: 8,

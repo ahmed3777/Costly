@@ -15,4 +15,4 @@ final class BrandsSuccess extends BrandsState {
 final class BrandsFailure extends BrandsState {
   final String errMessage;
   BrandsFailure(this.errMessage);
-} 
+}

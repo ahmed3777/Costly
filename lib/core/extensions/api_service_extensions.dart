@@ -7,11 +7,11 @@ extension FcmTokenExtension on ApiService {
   /// Returns true if successful, false otherwise
   Future<bool> sendFcmTokenToBackend() async {
     try {
-      String? fcmToken = await SharedPref.getSecuredString(SharedPrefKeys.fcmToken);
+      String? fcmToken =
+          await SharedPref.getSecuredString(SharedPrefKeys.fcmToken);
       if (fcmToken != null && fcmToken.isNotEmpty) {
-        await patch(ApiEndPoints.sendFcmToken, {
-          'firebase_cloud_messaging_token': fcmToken
-        });
+        await patch(ApiEndPoints.sendFcmToken,
+            {'firebase_cloud_messaging_token': fcmToken});
         print('FCM token sent to backend successfully');
         return true;
       }
@@ -21,4 +21,4 @@ extension FcmTokenExtension on ApiService {
       return false;
     }
   }
-} 
+}

@@ -52,4 +52,4 @@ class SizeChip extends StatelessWidget {
       child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
-} 
+}

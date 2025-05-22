@@ -52,8 +52,7 @@ class ApiService {
     try {
       final headers = _buildHeaders(token);
       final response = await _dio.patch(endpoint,
-           data: data,
-           options: Options(headers: headers));
+          data: data, options: Options(headers: headers));
 
       return _handleResponse(response);
     } on DioException catch (e) {

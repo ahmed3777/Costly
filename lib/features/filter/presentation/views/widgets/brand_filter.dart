@@ -18,7 +18,7 @@ class BrandFilterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterSection(
-      title:"brand",
+      title: "brand",
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: BlocBuilder<BrandsCubit, BrandsState>(
@@ -35,7 +35,8 @@ class BrandFilterWidget extends StatelessWidget {
                     title: Text(brand.nameByLang),
                     value: selectedBrands.contains(brand.id),
                     onChanged: (value) {
-                      final newSelectedBrands = List<String>.from(selectedBrands);
+                      final newSelectedBrands =
+                          List<String>.from(selectedBrands);
                       if (value == true) {
                         newSelectedBrands.add(brand.id);
                       } else {
@@ -57,4 +58,3 @@ class BrandFilterWidget extends StatelessWidget {
     );
   }
 }
-

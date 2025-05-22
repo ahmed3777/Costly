@@ -17,14 +17,14 @@ class NotificationItemList extends StatelessWidget {
           return Center(child: Text(state.message));
         }
         if (state is NotificationsSuccess) {
-        return ListView.builder(
-            itemCount: state.notifications.length,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return NotificationItem();
-            });
-      }
+          return ListView.builder(
+              itemCount: state.notifications.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return NotificationItem();
+              });
+        }
         return Container();
       },
     );

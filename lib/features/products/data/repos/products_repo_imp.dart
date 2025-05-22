@@ -21,7 +21,6 @@ class ProductsRepoImp implements ProductsRepo {
     bool? highestRated,
     bool? priceLow,
     bool? priceHigh,
-    
   }) async {
     try {
       final queryParameters = <String, dynamic>{
@@ -30,27 +29,28 @@ class ProductsRepoImp implements ProductsRepo {
         if (highestRated != null) 'highest_rated': highestRated,
         if (priceLow != null) 'price_low': priceLow,
         if (priceHigh != null) 'price_high': priceHigh,
-       
       };
-      
+
       final response = await apiService.get(
         ApiEndPoints.products,
         queryParameters: queryParameters,
       );
 
       final products = MainProductsResponse.fromJson(response.data);
-      
+
       // Check if the API response indicates an error
       if (products.code != 200 && products.code != 201) {
-        return left(ServerFailure(products.messages?.toString() ?? 'Unknown error occurred.'));
+        return left(ServerFailure(
+            products.messages?.toString() ?? 'Unknown error occurred.'));
       }
-      
+
       return right(products);
     } on DioException catch (e) {
       // Handle Dio-specific errors
       if (e.response?.data != null) {
         final errorData = e.response!.data;
-        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+        if (errorData is Map<String, dynamic> &&
+            errorData['messages'] != null) {
           return left(ServerFailure(errorData['messages'].toString()));
         }
       }
@@ -66,20 +66,22 @@ class ProductsRepoImp implements ProductsRepo {
     try {
       final response = await apiService.get(
           '${ApiEndPoints.products}/$productId/${ApiEndPoints.singleProduct}/$productVariationId');
-      
+
       final productDetails = ProductDetails.fromJson(response.data);
-      
+
       // Check if the API response indicates an error
       if (productDetails.code != 200 && productDetails.code != 201) {
-        return left(ServerFailure(productDetails.messages?.toString() ?? 'Unknown error occurred.'));
+        return left(ServerFailure(
+            productDetails.messages?.toString() ?? 'Unknown error occurred.'));
       }
-      
+
       return right(productDetails);
     } on DioException catch (e) {
       // Handle Dio-specific errors
       if (e.response?.data != null) {
         final errorData = e.response!.data;
-        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+        if (errorData is Map<String, dynamic> &&
+            errorData['messages'] != null) {
           return left(ServerFailure(errorData['messages'].toString()));
         }
       }
@@ -96,20 +98,22 @@ class ProductsRepoImp implements ProductsRepo {
       final response = await apiService.get(
         "products?categories[]=$categoryId",
       );
-      
+
       final products = MainProductsResponse.fromJson(response.data);
-      
+
       // Check if the API response indicates an error
       if (products.code != 200 && products.code != 201) {
-        return left(ServerFailure(products.messages?.toString() ?? 'Unknown error occurred.'));
+        return left(ServerFailure(
+            products.messages?.toString() ?? 'Unknown error occurred.'));
       }
-      
+
       return right(products);
     } on DioException catch (e) {
       // Handle Dio-specific errors
       if (e.response?.data != null) {
         final errorData = e.response!.data;
-        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+        if (errorData is Map<String, dynamic> &&
+            errorData['messages'] != null) {
           return left(ServerFailure(errorData['messages'].toString()));
         }
       }
@@ -118,7 +122,7 @@ class ProductsRepoImp implements ProductsRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
   Future<Either<Failure, MainProductsResponse>> filterProducts({
     int? priceFrom,
@@ -130,28 +134,32 @@ class ProductsRepoImp implements ProductsRepo {
       final queryParameters = <String, dynamic>{
         if (priceFrom != null) 'price_from': priceFrom,
         if (priceTo != null) 'price_to': priceTo,
-        if (selectedBrands != null && selectedBrands.isNotEmpty) 'brands[]': selectedBrands,
-        if (selectedCategoryis != null && selectedCategoryis.isNotEmpty) 'categories[]': selectedCategoryis,
+        if (selectedBrands != null && selectedBrands.isNotEmpty)
+          'brands[]': selectedBrands,
+        if (selectedCategoryis != null && selectedCategoryis.isNotEmpty)
+          'categories[]': selectedCategoryis,
       };
-      
+
       final response = await apiService.get(
         ApiEndPoints.products,
         queryParameters: queryParameters,
       );
-      
+
       final products = MainProductsResponse.fromJson(response.data);
-      
+
       // Check if the API response indicates an error
       if (products.code != 200 && products.code != 201) {
-        return left(ServerFailure(products.messages?.toString() ?? 'Unknown error occurred.'));
+        return left(ServerFailure(
+            products.messages?.toString() ?? 'Unknown error occurred.'));
       }
-      
+
       return right(products);
     } on DioException catch (e) {
       // Handle Dio-specific errors
       if (e.response?.data != null) {
         final errorData = e.response!.data;
-        if (errorData is Map<String, dynamic> && errorData['messages'] != null) {
+        if (errorData is Map<String, dynamic> &&
+            errorData['messages'] != null) {
           return left(ServerFailure(errorData['messages'].toString()));
         }
       }

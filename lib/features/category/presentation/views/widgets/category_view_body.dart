@@ -17,22 +17,19 @@ class CategoryViewBody extends StatefulWidget {
 }
 
 class _CategoryViewBodyState extends State<CategoryViewBody> {
- 
-
   Future<void> _handleFilterPressed(BuildContext context) async {
     final filters = await Navigator.pushNamed(
       context,
       FilterView.routeName,
     ) as Map<String, dynamic>?;
-    
+
     if (filters != null && context.mounted) {
-        context.read<ProductCubit>().filterProduct(
-          priceFrom: filters['minPrice']?.toInt(),
-          priceTo: filters['maxPrice']?.toInt(),
-          selectedBrands: filters['brands'],
-          selectedCategoryis: filters['categoriesID'],
-        );
-      
+      context.read<ProductCubit>().filterProduct(
+            priceFrom: filters['minPrice']?.toInt(),
+            priceTo: filters['maxPrice']?.toInt(),
+            selectedBrands: filters['brands'],
+            selectedCategoryis: filters['categoriesID'],
+          );
     }
   }
 
@@ -42,15 +39,15 @@ class _CategoryViewBodyState extends State<CategoryViewBody> {
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         // App Bar Section
-         SliverToBoxAdapter(
-           child: CustomHomeAppBar(
-                scaffoldKey: widget.scaffoldKey,
-                centerText: S.of(context).discover,
-                visibleNotification: true,
-                visibleFilter: true,
-                onFilterPressed: () => _handleFilterPressed(context),
-              ),
-         ),
+        SliverToBoxAdapter(
+          child: CustomHomeAppBar(
+            scaffoldKey: widget.scaffoldKey,
+            centerText: S.of(context).discover,
+            visibleNotification: true,
+            visibleFilter: true,
+            onFilterPressed: () => _handleFilterPressed(context),
+          ),
+        ),
 
         // Filter Buttons Section
         SliverPadding(

@@ -3,6 +3,6 @@ import 'package:costly/features/products/data/models/products/main_products_resp
 import 'package:dartz/dartz.dart';
 
 abstract class SearchRepo {
-  Future<Either<Failure, MainProductsResponse>> searchByKeyword({required String keyword});
-  
+  Future<Either<Failure, MainProductsResponse>> searchByKeyword(
+      {required String keyword});
 }

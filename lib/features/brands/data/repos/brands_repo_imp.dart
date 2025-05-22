@@ -17,12 +17,12 @@ class BrandsRepoImp implements BrandsRepo {
   Future<Either<Failure, MainResponseModel<BrandModel>>> getBrands() async {
     try {
       final response = await apiService.get(ApiEndPoints.brands);
-      
+
       final brands = MainResponseModel<BrandModel>.fromJson(
         response.data,
         (json) => BrandModel.fromJson(json),
       );
-      
+
       return right(brands);
     } on DioException catch (e) {
       return left(handleError(e));
@@ -30,4 +30,4 @@ class BrandsRepoImp implements BrandsRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-} 
+}

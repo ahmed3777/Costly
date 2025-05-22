@@ -28,112 +28,112 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
     // context.read<HomeCubit>().getBanners();
   }
 
- @override
-Widget build(BuildContext context) {
-  return BlocBuilder<BannerCubit, BannersState>(
-    builder: (context, state) {
-      List<Banners> banners = [];
-      bool isLoading = false;
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<BannerCubit, BannersState>(
+      builder: (context, state) {
+        List<Banners> banners = [];
+        bool isLoading = false;
 
-      if (state is BannersLoading) {
-        isLoading = true;
-        banners = List.generate(
-          2,
-          (index) => Banners(
-            id: '',
-            mainMediaUrl: '',
-            enName: '',
-            arName: '',
-            enDescription: '',
-            arDescription: '',
-            creatorId: '',
-            deletedAt: '',
-            createdAt: '',
-            updatedAt: '',
-            nameByLang: '',
-            descriptionByLang: '',
-          ),
-        );
-      } else if (state is BannersSuccess) {
-        banners = state.banners;
-      } else if (state is HomeFailure) {
-        return Center(child: Text(state.message));
-      } else {
-        return const Center(
-          child: Text(
-            'Something went wrong',
-            style: TextStyle(color: Colors.red),
-          ),
-        );
-      }
+        if (state is BannersLoading) {
+          isLoading = true;
+          banners = List.generate(
+            2,
+            (index) => Banners(
+              id: '',
+              mainMediaUrl: '',
+              enName: '',
+              arName: '',
+              enDescription: '',
+              arDescription: '',
+              creatorId: '',
+              deletedAt: '',
+              createdAt: '',
+              updatedAt: '',
+              nameByLang: '',
+              descriptionByLang: '',
+            ),
+          );
+        } else if (state is BannersSuccess) {
+          banners = state.banners;
+        } else if (state is HomeFailure) {
+          return Center(child: Text(state.message));
+        } else {
+          return const Center(
+            child: Text(
+              'Something went wrong',
+              style: TextStyle(color: Colors.red),
+            ),
+          );
+        }
 
-      return Column(
-        children: [
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SizedBox(
-                  height: 110.h,
-                  child: CarouselSlider.builder(
-                    itemCount: banners.length,
-                    carouselController: _carouselController,
-                    options: CarouselOptions(
-                      height: 100.h,
-                      autoPlay: !isLoading,
-                      viewportFraction: 1,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentPos = index;
-                        });
+        return Column(
+          children: [
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    height: 110.h,
+                    child: CarouselSlider.builder(
+                      itemCount: banners.length,
+                      carouselController: _carouselController,
+                      options: CarouselOptions(
+                        height: 100.h,
+                        autoPlay: !isLoading,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentPos = index;
+                          });
+                        },
+                      ),
+                      itemBuilder: (context, index, realIndex) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: Skeletonizer(
+                            enabled: isLoading,
+                            child: FeaturedItem(
+                              index: index,
+                              banners: banners,
+                            ),
+                          ),
+                        );
                       },
                     ),
-                    itemBuilder: (context, index, realIndex) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Skeletonizer(
-                          enabled: isLoading,
-                          child: FeaturedItem(
-                            index: index,
-                            banners: banners,
-                          ),
-                        ),
-                      );
-                    },
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 0,
-                left: 15,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: DotsIndicator(
-                    dotsCount: banners.length,
-                    position: currentPos,
-                    onTap: (int position) {
-                      _carouselController.animateToPage(position);
-                    },
-                    decorator: DotsDecorator(
-                      size: const Size(30, 4),
-                      color: Colors.grey,
-                      activeSize: const Size(30, 4),
-                      activeColor: AppColors.secondaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3.0),
-                      ),
-                      activeShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3.0),
+                Positioned(
+                  bottom: 0,
+                  left: 15,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: DotsIndicator(
+                      dotsCount: banners.length,
+                      position: currentPos,
+                      onTap: (int position) {
+                        _carouselController.animateToPage(position);
+                      },
+                      decorator: DotsDecorator(
+                        size: const Size(30, 4),
+                        color: Colors.grey,
+                        activeSize: const Size(30, 4),
+                        activeColor: AppColors.secondaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
+                        activeShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
-      );
-    },
-  );
-}
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

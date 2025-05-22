@@ -13,16 +13,16 @@ class SearchViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-       children: [
-         CustomHomeAppBar(
-           scaffoldKey: GlobalKey<ScaffoldState>(),
-           searchController: searchController,
-           onBackPressed: onBackPressed,
-         ),
-         Expanded(
-            child: SearshResultList(),
-          )
-       ],
-     );
+      children: [
+        CustomHomeAppBar(
+          scaffoldKey: GlobalKey<ScaffoldState>(),
+          searchController: searchController,
+          onBackPressed: onBackPressed,
+        ),
+        Expanded(
+          child: SearshResultList(),
+        )
+      ],
+    );
   }
 }

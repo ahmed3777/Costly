@@ -29,9 +29,10 @@ class _GradientCardState extends State<GradientCard> {
 
             Positioned.fill(
               child: Image.network(
-                widget.imageUrl.isNotEmpty ? widget.imageUrl :
-                    "https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg",
-                 // Provide either an asset or a network URL
+                widget.imageUrl.isNotEmpty
+                    ? widget.imageUrl
+                    : "https://costly.mix-code.com/storage/5/beach-2_a122bd1ba7611a9dd03c8f59077830a4.jpg",
+                // Provide either an asset or a network URL
                 width: 50.w, // Adjust the width as necessary
                 height: 50.h,
                 // Adjust the height as necessary

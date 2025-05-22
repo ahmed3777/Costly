@@ -38,8 +38,8 @@ class CartViewConsumer extends StatelessWidget {
         }
         if (state is CartSuccess) {
           final cart = state.cart.payload;
-          return cart.items.isEmpty 
-              ? const _EmptyCartState() 
+          return cart.items.isEmpty
+              ? const _EmptyCartState()
               : _CartContent(cart: cart);
         }
         return _ErrorState(
@@ -88,7 +88,8 @@ class _EmptyCartState extends StatelessWidget {
             child: SizedBox(
               width: 300.w,
               child: CustomButton(
-                onPressed: () => Navigator.pushNamed(context, HomeView.routeName),
+                onPressed: () =>
+                    Navigator.pushNamed(context, HomeView.routeName),
                 text: S.of(context).start_shopping,
                 color: AppColors.secondaryColor,
               ),
@@ -108,7 +109,10 @@ class _CartContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height - kToolbarHeight - kBottomNavigationBarHeight - 100.h,
+        height: MediaQuery.of(context).size.height -
+            kToolbarHeight -
+            kBottomNavigationBarHeight -
+            100.h,
         child: Column(
           children: [
             Expanded(

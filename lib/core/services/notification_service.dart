@@ -14,7 +14,8 @@ class NotificationService {
   Future<void> initialize() async {
     try {
       // Request permission for iOS
-      NotificationSettings settings = await _firebaseMessaging.requestPermission(
+      NotificationSettings settings =
+          await _firebaseMessaging.requestPermission(
         alert: true,
         badge: true,
         sound: true,
@@ -34,7 +35,8 @@ class NotificationService {
         debugPrint('Message data: ${message.data}');
 
         if (message.notification != null) {
-          debugPrint('Message also contained a notification: ${message.notification}');
+          debugPrint(
+              'Message also contained a notification: ${message.notification}');
         }
       });
 
@@ -87,4 +89,4 @@ class NotificationService {
 @pragma('vm:entry-point')
 Future<void> _firebaseBackgroundHandler(RemoteMessage message) async {
   debugPrint('Handling a background message: ${message.messageId}');
-} 
+}

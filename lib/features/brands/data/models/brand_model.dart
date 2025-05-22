@@ -64,4 +64,4 @@ class BrandModel {
       'main_media_url': mainMediaUrl,
     };
   }
-} 
+}

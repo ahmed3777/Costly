@@ -11,20 +11,19 @@ class SearchRepoImp implements SearchRepo {
   final ApiService apiService;
   SearchRepoImp({required this.apiService});
   @override
-  Future<Either<Failure, MainProductsResponse>> searchByKeyword({required String keyword}) async {
-    try{
-        final response = await apiService.get(ApiEndPoints.products,
-         queryParameters: {'keyword': keyword});
-        final result = MainProductsResponse.fromJson(response.data);
-        return right(result);
-        }catch(e){
-          if(e is DioException){
-            return left(handleError(e));
-          }else{
-            return left(ServerFailure(e.toString()));
-          }
-        }
-        }
-
-
+  Future<Either<Failure, MainProductsResponse>> searchByKeyword(
+      {required String keyword}) async {
+    try {
+      final response = await apiService
+          .get(ApiEndPoints.products, queryParameters: {'keyword': keyword});
+      final result = MainProductsResponse.fromJson(response.data);
+      return right(result);
+    } catch (e) {
+      if (e is DioException) {
+        return left(handleError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

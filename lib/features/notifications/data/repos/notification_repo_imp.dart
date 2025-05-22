@@ -17,7 +17,8 @@ class NotificationRepoImp implements NotificationRepo {
   Future<Either<Failure, Notifications>> getNotifications() async {
     try {
       final token = await SharedPref.getSecuredString(SharedPrefKeys.userToken);
-      final response = await apiService.get(ApiEndPoints.notifications, token: token);
+      final response =
+          await apiService.get(ApiEndPoints.notifications, token: token);
       final Notifications notifications = Notifications.fromJson(response.data);
       return right(notifications);
     } catch (e) {
@@ -26,32 +27,30 @@ class NotificationRepoImp implements NotificationRepo {
       } else {
         return left(ServerFailure(e.toString()));
       }
+    }
   }
 
-}
   @override
-  Future<Either<Failure,Profile>> sendFcmToken() async {
-      try{
-        final token = await SharedPref.getSecuredString(SharedPrefKeys.userToken);
-        final fcmToken= await SharedPref.getSecuredString(SharedPrefKeys.fcmToken);
-        final response = await apiService.patch(ApiEndPoints.sendFcmToken, 
-        {
-          'firebase_cloud_messaging_token': fcmToken
-        },
-        token: token
-        );
-        final Profile profile = Profile.fromJson(response.data);
-        if (profile.code != 200 && profile.code != 201) {
-          return left(ServerFailure(profile.messages ?? "Unknown error occurred."));
-        }
-        return right(profile);
-
-      } catch (e) {
-        if (e is DioException) {
-          return left(handleError(e));
-        } else {
-          return left(ServerFailure(e.toString()));
-        }
+  Future<Either<Failure, Profile>> sendFcmToken() async {
+    try {
+      final token = await SharedPref.getSecuredString(SharedPrefKeys.userToken);
+      final fcmToken =
+          await SharedPref.getSecuredString(SharedPrefKeys.fcmToken);
+      final response = await apiService.patch(ApiEndPoints.sendFcmToken,
+          {'firebase_cloud_messaging_token': fcmToken},
+          token: token);
+      final Profile profile = Profile.fromJson(response.data);
+      if (profile.code != 200 && profile.code != 201) {
+        return left(
+            ServerFailure(profile.messages ?? "Unknown error occurred."));
       }
-  } 
+      return right(profile);
+    } catch (e) {
+      if (e is DioException) {
+        return left(handleError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

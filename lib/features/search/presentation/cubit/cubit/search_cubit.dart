@@ -5,12 +5,12 @@ part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitial());
-  final SearchRepo searchRepo ;
+  final SearchRepo searchRepo;
 
   Future<void> searchByKeyword({required String keyword}) async {
     emit(SearchLoading());
     final result = await searchRepo.searchByKeyword(keyword: keyword);
     result.fold((l) => emit(SearchFailure(message: l.toString())),
-     (products) => emit(SearchSuccess(mainProductsResponse:products)));
+        (products) => emit(SearchSuccess(mainProductsResponse: products)));
   }
 }

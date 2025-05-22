@@ -31,10 +31,10 @@ void main() async {
   );
 
   setupGetIt();
-  
+
   // Initialize notification service
   await getIt<NotificationService>().initialize();
-  
+
   runApp(const MyApp());
 }
 

@@ -21,7 +21,8 @@ class NotificationPayload {
     this.updatedAt,
   });
 
-  factory NotificationPayload.fromJson(Map<String, dynamic> json) => NotificationPayload(
+  factory NotificationPayload.fromJson(Map<String, dynamic> json) =>
+      NotificationPayload(
         id: json['id'] as String?,
         type: json['type'] as String?,
         notifiableType: json['notifiable_type'] as String?,

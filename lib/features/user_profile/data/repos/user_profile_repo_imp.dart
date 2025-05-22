@@ -25,14 +25,13 @@ class UserProfileRepoImp implements UserProfileRepo {
       await SharedPref.setData(SharedPrefKeys.userEmail, profile.payload.email);
       await SharedPref.setData(
           SharedPrefKeys.userImageUrl, profile.payload.logoUrl);
-      
+
       // Check if FCM token is null in the response
       if (profile.payload.firebaseCloudMessagingToken == null) {
         // Get the stored FCM token
-          await apiService.sendFcmTokenToBackend();
-        }
+        await apiService.sendFcmTokenToBackend();
+      }
 
-      
       return right(profile);
     } catch (e) {
       if (e is DioException) {

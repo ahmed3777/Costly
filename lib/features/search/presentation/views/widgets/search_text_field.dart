@@ -6,13 +6,12 @@ class SearchField extends StatelessWidget {
   final TextEditingController? controller;
   final VoidCallback onSearchPressed;
   final ValueChanged<String>? onChanged;
-  
 
   const SearchField({
     super.key,
     required this.controller,
     required this.onSearchPressed,
-     this.onChanged,
+    this.onChanged,
   });
   @override
   Widget build(BuildContext context) {
@@ -38,8 +37,7 @@ class SearchField extends StatelessWidget {
         },
         decoration: InputDecoration(
           prefixIcon: IconButton(
-              onPressed: onSearchPressed, 
-              icon: const Icon(Icons.search)),
+              onPressed: onSearchPressed, icon: const Icon(Icons.search)),
           hintStyle: TextStyles.regular14.copyWith(
             color: const Color(0xFF949D9E),
           ),

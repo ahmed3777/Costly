@@ -6,6 +6,8 @@ import 'package:costly/features/cart/data/model/my_cart/cart.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/category/presentation/views/category_view.dart';
 import 'package:costly/features/notifications/presentation/views/notifications_view.dart';
+import 'package:costly/features/orders/presentation/views/order_details_view.dart';
+import 'package:costly/features/orders/presentation/views/order_view.dart';
 import 'package:costly/features/products/presentation/views/products_by_category_view.dart';
 import 'package:costly/features/checkout/presentation/views/checkout_view.dart';
 import 'package:costly/features/search/presentation/views/search_products_view.dart';
@@ -110,13 +112,21 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const NotificationsView());
 
     case SearchProductsView.routeName:
-      final query  = settings.arguments as String;
-      return MaterialPageRoute(builder: (context) =>  SearchProductsView( query: query,));
+      final query = settings.arguments as String;
+      return MaterialPageRoute(
+          builder: (context) => SearchProductsView(
+                query: query,
+              ));
 
     case FilterView.routeName:
       return MaterialPageRoute(builder: (context) => const FilterView());
 
-   
+    case OrderView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderView());
+
+      case OrderDetailsView.routeName:
+      final orderId = settings.arguments as String;
+      return MaterialPageRoute(builder: (context) =>  OrderDetailsView(orderId: orderId,));
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

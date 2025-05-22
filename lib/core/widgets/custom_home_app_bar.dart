@@ -32,7 +32,8 @@ class CustomHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller =searchController ?? TextEditingController();
+    final TextEditingController controller =
+        searchController ?? TextEditingController();
 
     return SizedBox(
       height: 140.h,

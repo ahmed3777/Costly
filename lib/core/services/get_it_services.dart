@@ -14,6 +14,9 @@ import 'package:costly/features/home/presentation/cubits/countries/countries_cub
 import 'package:costly/features/notifications/data/repos/notification_repo_imp.dart';
 import 'package:costly/features/notifications/domain/repos/notification_repo.dart';
 import 'package:costly/features/notifications/presentation/cubit/cubit/notifications_cubit.dart';
+import 'package:costly/features/orders/data/repo/order_repo_imp.dart';
+import 'package:costly/features/orders/domain/repo/order_repo.dart';
+import 'package:costly/features/orders/presentation/cubit/cubit/orders_cubit.dart';
 import 'package:costly/features/products/data/repos/products_repo_imp.dart';
 import 'package:costly/features/products/domain/products_repo.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -32,6 +35,7 @@ import 'package:costly/features/category/presentation/cubit/category/category_cu
 import 'package:costly/features/user_profile/data/repos/user_profile_repo_imp.dart';
 import 'package:costly/features/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
+import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
 import 'package:costly/features/brands/data/repos/brands_repo_imp.dart';
 import 'package:costly/features/brands/domain/repos/brands_repo.dart';
@@ -106,6 +110,16 @@ void setupGetIt() {
   );
   getIt.registerLazySingleton<UserProfileCubit>(
       () => UserProfileCubit(getIt<UserProfileRepo>()));
+      ///Orders
+    
+  getIt.registerLazySingleton<OrderRepo>(
+      () => getIt<OrderRepoImp>());
+  getIt.registerLazySingleton<OrderRepoImp>(
+    () => OrderRepoImp(apiService: getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<OrdersCubit>(
+      () => OrdersCubit(getIt<OrderRepo>()));
+
 
   ///cart
   getIt.registerLazySingleton<CartRepo>(() => getIt<CartRepoImp>());
@@ -117,16 +131,21 @@ void setupGetIt() {
   );
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 
-
   ///Notifications
-  getIt.registerLazySingleton<NotificationRepo>(() => getIt<NotificationRepoImp>());
-  getIt.registerLazySingleton<NotificationRepoImp>(() => NotificationRepoImp(
+  getIt.registerLazySingleton<NotificationRepo>(
+      () => getIt<NotificationRepoImp>());
+  getIt.registerLazySingleton<NotificationRepoImp>(
+    () => NotificationRepoImp(
       getIt<ApiService>(),
     ),
   );
-  getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt<NotificationRepo>()));
+  getIt.registerFactory<NotificationsCubit>(
+      () => NotificationsCubit(getIt<NotificationRepo>()));
+
   ///search
-   getIt.registerLazySingleton<SearchRepo>(() => getIt<SearchRepoImp>());
-   getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(apiService: getIt<ApiService>(),));
-   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
+  getIt.registerLazySingleton<SearchRepo>(() => getIt<SearchRepoImp>());
+  getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(
+        apiService: getIt<ApiService>(),
+      ));
+  getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
 }

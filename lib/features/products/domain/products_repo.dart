@@ -11,7 +11,6 @@ abstract class ProductsRepo {
     bool? highestRated,
     bool? priceLow,
     bool? priceHigh,
-  
   });
   Future<Either<Failure, MainProductsResponse>> filterProducts({
     int? priceFrom,

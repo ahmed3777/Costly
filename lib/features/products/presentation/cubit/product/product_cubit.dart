@@ -6,7 +6,6 @@ class ProductCubit extends Cubit<ProductState> {
   ProductCubit(this.productsRepo) : super(ProductInitial());
   final ProductsRepo productsRepo;
 
-
   Future<void> filterProduct({
     int? priceFrom,
     int? priceTo,
@@ -41,7 +40,6 @@ class ProductCubit extends Cubit<ProductState> {
     bool? highestRated,
     bool? priceLow,
     bool? priceHigh,
-  
   }) async {
     emit(ProductLoading());
     final result = await productsRepo.getProducts(

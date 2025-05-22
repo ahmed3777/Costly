@@ -20,8 +20,8 @@ class Notifications {
   });
 
   factory Notifications.fromJson(Map<String, dynamic> json) => Notifications(
-        payload: (json['payload'] as List<dynamic>?)
-            !.map((e) => NotificationPayload.fromJson(e as Map<String, dynamic>))
+        payload: (json['payload'] as List<dynamic>?)!
+            .map((e) => NotificationPayload.fromJson(e as Map<String, dynamic>))
             .toList(),
         links: json['links'] == null
             ? null

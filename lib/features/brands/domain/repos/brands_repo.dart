@@ -5,4 +5,4 @@ import 'package:dartz/dartz.dart';
 
 abstract class BrandsRepo {
   Future<Either<Failure, MainResponseModel<BrandModel>>> getBrands();
-} 
+}

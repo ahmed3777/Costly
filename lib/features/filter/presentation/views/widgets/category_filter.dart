@@ -17,43 +17,44 @@ class CategoryFilterWidget extends StatelessWidget {
   });
 
   @override
-Widget build(BuildContext context) {
-  return BlocBuilder<CategoryCubit, CategoryState>(
-    builder: (context, state) {
-      if (state is CategoryLoading) {
-        return const CircularProgressIndicator();
-      } else if (state is CategorySuccess) {
-        final categories = state.category; // from payload
-        return FilterSection(
-          title: S.of(context).category,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
-            child: ListView.builder(
-              itemCount: categories.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-                return CheckboxListTile(
-                  value: selectedCategory.contains(category.id ?? ''),
-                  onChanged: (value) {
-                    final newSelected = List<String>.from(selectedCategory);
-                    value == true
-                        ? newSelected.add(category.id ?? '')
-                        : newSelected.remove(category.id ?? '');
-                    onCategoryChanged(newSelected);
-                  },
-                  title: Text(category.nameByLang ?? '', style: TextStyles.light14),
-                );
-              },
+  Widget build(BuildContext context) {
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      builder: (context, state) {
+        if (state is CategoryLoading) {
+          return const CircularProgressIndicator();
+        } else if (state is CategorySuccess) {
+          final categories = state.category; // from payload
+          return FilterSection(
+            title: S.of(context).category,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.h),
+              child: ListView.builder(
+                itemCount: categories.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  return CheckboxListTile(
+                    value: selectedCategory.contains(category.id ?? ''),
+                    onChanged: (value) {
+                      final newSelected = List<String>.from(selectedCategory);
+                      value == true
+                          ? newSelected.add(category.id ?? '')
+                          : newSelected.remove(category.id ?? '');
+                      onCategoryChanged(newSelected);
+                    },
+                    title: Text(category.nameByLang ?? '',
+                        style: TextStyles.light14),
+                  );
+                },
+              ),
             ),
-          ),
-        );
-      } else if (state is CategoryFailure) {
-        return Text("Error: ${state.message}");
-      } else {
-        return const SizedBox.shrink(); // initial
-      }
-    },
-  );
-}
+          );
+        } else if (state is CategoryFailure) {
+          return Text("Error: ${state.message}");
+        } else {
+          return const SizedBox.shrink(); // initial
+        }
+      },
+    );
+  }
 }

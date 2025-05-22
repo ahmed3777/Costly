@@ -16,8 +16,9 @@ class _HomeViewState extends State<HomeView> {
   DateTime? _lastBackPressed;
 
   Future<bool> _onWillPop() async {
-    if (_lastBackPressed == null || 
-        DateTime.now().difference(_lastBackPressed!) > const Duration(seconds: 2)) {
+    if (_lastBackPressed == null ||
+        DateTime.now().difference(_lastBackPressed!) >
+            const Duration(seconds: 2)) {
       // First back press
       _lastBackPressed = DateTime.now();
       showErrorBar(context, 'Press back again to exit');

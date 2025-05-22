@@ -73,7 +73,8 @@ class AuthRepoImp implements AuthRepo {
 
       // Check status code
       if (loginResponse.code != 200 && loginResponse.code != 201) {
-        final errorMessage = loginResponse.messages?.toString() ?? 'Login failed';
+        final errorMessage =
+            loginResponse.messages?.toString() ?? 'Login failed';
         print('Login failed with code ${loginResponse.code}: $errorMessage');
         return left(ServerFailure(errorMessage));
       }
@@ -85,7 +86,8 @@ class AuthRepoImp implements AuthRepo {
       }
 
       // Verify critical fields
-      if (loginResponse.user!.token == null || loginResponse.user!.token!.isEmpty) {
+      if (loginResponse.user!.token == null ||
+          loginResponse.user!.token!.isEmpty) {
         print('Login response missing token');
         return left(ServerFailure('Authentication token is missing'));
       }
@@ -236,7 +238,6 @@ class AuthRepoImp implements AuthRepo {
     await SharedPref.clearAllSecuredData();
     await SharedPref.clearAllData();
     await firebaseAuthService.signOut();
-
   }
 
   @override

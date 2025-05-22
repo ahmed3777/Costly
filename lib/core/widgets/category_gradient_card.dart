@@ -12,11 +12,10 @@ class CategoryGradientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-         List<CategoriesModel> categories = [];
-    bool isLoading = false;
+        List<CategoriesModel> categories = [];
+        bool isLoading = false;
         if (state is CategoryLoading) {
           isLoading = true;
           categories = List.generate(
@@ -31,43 +30,36 @@ class CategoryGradientCard extends StatelessWidget {
               createdAt: '',
               updatedAt: '',
               nameByLang: '',
-              
             ),
           );
-        }
-        
-        else if (state is CategoryFailure) {
+        } else if (state is CategoryFailure) {
           return Center(child: Text(state.message));
-        }
-        else if (state is CategorySuccess) {
+        } else if (state is CategorySuccess) {
           //  final categories = state.category.payload;
           categories = state.category;
+        } else {
+          return const Center(child: Text("No categories available"));
         }
-          else{
-            return const Center(child: Text("No categories available"));
-
-          }
-         return SizedBox(
-            height: 120.h,
-            child: ListView.builder(
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, ProductsByCategoryView.routeName,
-                      arguments: {'categoryId': categories[index].id});
-                },
-                child: Skeletonizer(
-                  enabled: isLoading,
-                  child: GradientCard(
-                    imageUrl: categories[index].mainMediaUrl ?? "",
-                    text: categories[index].enName ?? "",
-                  ),
+        return SizedBox(
+          height: 120.h,
+          child: ListView.builder(
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, ProductsByCategoryView.routeName,
+                    arguments: {'categoryId': categories[index].id});
+              },
+              child: Skeletonizer(
+                enabled: isLoading,
+                child: GradientCard(
+                  imageUrl: categories[index].mainMediaUrl ?? "",
+                  text: categories[index].enName ?? "",
                 ),
               ),
-              itemCount: categories.length,
-              scrollDirection: Axis.horizontal,
             ),
-          );
-      
+            itemCount: categories.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        );
       },
     );
   }

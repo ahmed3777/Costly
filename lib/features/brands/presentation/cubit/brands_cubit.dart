@@ -19,4 +19,4 @@ class BrandsCubit extends Cubit<BrandsState> {
       },
     );
   }
-} 
+}

@@ -19,7 +19,7 @@ class FeaturedItem extends StatelessWidget {
         width: itemWidth,
         child: Stack(
           children: [
-             Positioned.fill(
+            Positioned.fill(
               child: imageUrl.isEmpty
                   ? Container(
                       color: Colors.grey[300], // Placeholder grey color

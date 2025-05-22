@@ -2,6 +2,7 @@ import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/core/utils/assets.dart';
 import 'package:costly/features/cart/presentation/views/cart_view.dart';
 import 'package:costly/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:costly/features/user_profile/presentation/views/user_account_view.dart';
 import 'package:costly/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'custom_bottom_nav_item.dart';
@@ -29,7 +30,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     final List<Widget> widgetOptions = <Widget>[
       CartView(),
       HomeViewBody(scaffoldKey: widget.scaffoldKey),
-      const Center(child: Text('Profile Screen')),
+      UserAccountView(),
     ];
 
     return Scaffold(

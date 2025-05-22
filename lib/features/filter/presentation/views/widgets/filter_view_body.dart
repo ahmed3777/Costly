@@ -28,6 +28,7 @@ class _FilterViewBodyState extends State<FilterViewBody> {
     super.initState();
     context.read<BrandsCubit>().getBrands();
   }
+
   List<String> getSelectedBrands() => selectedBrands;
   List<String> getSelectedCategory() => selectedCategories;
   @override
@@ -53,13 +54,13 @@ class _FilterViewBodyState extends State<FilterViewBody> {
                   ),
                 ),
                 CategoryFilterWidget(
-                selectedCategory: selectedCategories, 
-                onCategoryChanged: (category) {
-                  setState(() {
-                    selectedCategories.clear();
-                    selectedCategories.addAll(category);
-                  });
-                }),
+                    selectedCategory: selectedCategories,
+                    onCategoryChanged: (category) {
+                      setState(() {
+                        selectedCategories.clear();
+                        selectedCategories.addAll(category);
+                      });
+                    }),
                 FilterSection(
                   title: 'Color',
                   child: Padding(
@@ -108,8 +109,10 @@ class _FilterViewBodyState extends State<FilterViewBody> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${_priceRange.start.toInt()} EGP', style: TextStyle(color: AppColors.red)),
-                            Text('${_priceRange.end.toInt()} EGP', style: TextStyle(color: AppColors.red)),
+                            Text('${_priceRange.start.toInt()} EGP',
+                                style: TextStyle(color: AppColors.red)),
+                            Text('${_priceRange.end.toInt()} EGP',
+                                style: TextStyle(color: AppColors.red)),
                           ],
                         ),
                         SliderTheme(
@@ -150,11 +153,12 @@ class _FilterViewBodyState extends State<FilterViewBody> {
                       // Add category if selected
                       if (selectedCategories.isNotEmpty) {
                         filters['categoriesID'] = selectedCategories;
-                        print ('selectedCategories:   $selectedCategories');
+                        print('selectedCategories:   $selectedCategories');
                       }
-                      
+
                       // Add price range if changed from default
-                      if (_priceRange.start != 1000 || _priceRange.end != 3000) {
+                      if (_priceRange.start != 1000 ||
+                          _priceRange.end != 3000) {
                         filters['minPrice'] = _priceRange.start;
                         filters['maxPrice'] = _priceRange.end;
                       }
@@ -166,7 +170,8 @@ class _FilterViewBodyState extends State<FilterViewBody> {
 
                       Navigator.pop(context, filters);
                     },
-                    child: Text('Results', style: TextStyles.bold16.copyWith(color: Colors.white)),
+                    child: Text('Results',
+                        style: TextStyles.bold16.copyWith(color: Colors.white)),
                   ),
                 ),
                 SizedBox(height: 24.h),
@@ -178,4 +183,3 @@ class _FilterViewBodyState extends State<FilterViewBody> {
     );
   }
 }
-

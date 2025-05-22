@@ -8,13 +8,15 @@ class FilterView extends StatelessWidget {
   static const String routeName = 'filter';
   @override
   Widget build(BuildContext context) {
-      GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
         drawer: CustomDrawer(),
-        body: FilterViewBody( scaffoldKey: scaffoldKey,),
+        body: FilterViewBody(
+          scaffoldKey: scaffoldKey,
+        ),
       ),
     );
   }
-} 
+}
