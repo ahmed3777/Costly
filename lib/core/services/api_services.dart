@@ -20,7 +20,6 @@ class ApiService {
       throw handleError(e);
     }
   }
-
   /// POST request
   Future<dynamic> post(String endpoint, dynamic data, {String? token}) async {
     try {

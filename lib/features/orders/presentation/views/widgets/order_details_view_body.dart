@@ -130,9 +130,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
 
 class OrderItemList extends StatelessWidget {
   const OrderItemList({super.key, required this.order});
-
   final List<Orders>? order;
-
   @override
   Widget build(BuildContext context) {
     if (order == null || order!.isEmpty) {
@@ -144,7 +142,7 @@ class OrderItemList extends StatelessWidget {
       itemCount: order![0].items!.length,
       itemBuilder: (context, index) {
         final item = order![0].items![index];
-        ;
+        
         return _buildOrderItem(
           imageUrl: item.product?.mediaLinks?.first.link ?? '',
           title: item.product?.enName ?? '',

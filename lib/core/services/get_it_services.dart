@@ -35,7 +35,6 @@ import 'package:costly/features/category/presentation/cubit/category/category_cu
 import 'package:costly/features/user_profile/data/repos/user_profile_repo_imp.dart';
 import 'package:costly/features/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:costly/features/user_profile/presentation/cubit/cubit/user_profile_cubit.dart';
-import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
 import 'package:costly/features/brands/data/repos/brands_repo_imp.dart';
 import 'package:costly/features/brands/domain/repos/brands_repo.dart';
