@@ -3,6 +3,7 @@ import 'package:costly/core/services/custom_bloc_observer.dart';
 import 'package:costly/core/services/get_it_services.dart';
 import 'package:costly/core/services/shared_preferences_singleton.dart';
 import 'package:costly/core/services/notification_service.dart';
+import 'package:costly/core/services/connectivity_service.dart';
 import 'package:costly/core/utils/app_colors.dart';
 import 'package:costly/features/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:costly/features/products/presentation/cubit/product/product_cubit.dart';
@@ -20,6 +21,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -36,11 +39,16 @@ void main() async {
   await getIt<NotificationService>().initialize();
 
   runApp(const MyApp());
+
+  // Initialize connectivity service after app is built
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    getIt<ConnectivityService>().initialize(navigatorKey.currentContext!);
+  });
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-// This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -73,6 +81,7 @@ class MyApp extends StatelessWidget {
           splitScreenMode: true,
           builder: (context, child) {
             return MaterialApp(
+              navigatorKey: navigatorKey,
               theme: ThemeData(
                 fontFamily: 'JosefinSans',
                 scaffoldBackgroundColor: Colors.white,

@@ -2,6 +2,7 @@
 import 'package:costly/core/services/api_services.dart';
 import 'package:costly/core/services/firebase_services.dart';
 import 'package:costly/core/services/notification_service.dart';
+import 'package:costly/core/services/connectivity_service.dart';
 import 'package:costly/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:costly/features/auth/domin/repos/auth_repo.dart';
 import 'package:costly/features/cart/data/repos/cart_repo_imp.dart';
@@ -50,6 +51,9 @@ void setupGetIt() {
   );
   getIt.registerLazySingleton<NotificationService>(
     () => NotificationService(getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<ConnectivityService>(
+    () => ConnectivityService(),
   );
 
   ///auth
